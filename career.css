@@ -1444,3 +1444,138 @@ select.form-input:hover {
   visibility: visible !important;
   opacity: 1 !important;
 }
+/* ============================================================================
+   MODERN ALERT BOXES (NO ICONS)
+   ============================================================================ */
+
+/* Success Alert */
+.modern-alert-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+  animation: slideInUp 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-alert-success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #34d399, #6ee7b7);
+}
+
+.modern-alert-success .alert-content {
+  color: white;
+}
+
+.modern-alert-success .alert-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.modern-alert-success .alert-message {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+/* Error Alert */
+.modern-alert-error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.25);
+  animation: shake 0.4s ease-out, slideInUp 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-alert-error::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f87171, #fca5a5);
+}
+
+.modern-alert-error .alert-content {
+  color: white;
+}
+
+.modern-alert-error .alert-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.modern-alert-error .alert-message {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modern-alert-success,
+  .modern-alert-error {
+    padding: 20px 24px;
+    border-radius: 10px;
+  }
+
+  .modern-alert-success .alert-title,
+  .modern-alert-error .alert-title {
+    font-size: 1.1rem;
+  }
+
+  .modern-alert-success .alert-message,
+  .modern-alert-error .alert-message {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark theme support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .modern-alert-success {
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+  }
+
+  .modern-alert-error {
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
+  }
+}
