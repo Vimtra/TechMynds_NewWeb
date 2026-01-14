@@ -26,6 +26,70 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
     />
+    <style>
+      /* Enhanced Form Validation Styles */
+      .form-input.is-invalid,
+      .form-input.is-invalid:focus {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+      }
+
+      .form-input.is-valid,
+      .form-input.is-valid:focus {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+      }
+
+      .invalid-feedback {
+        display: block;
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        font-weight: 500;
+      }
+
+      .invalid-feedback::before {
+        content: "⚠ ";
+        margin-right: 0.25rem;
+      }
+
+      /* File input validation feedback */
+      input[type="file"].is-invalid ~ .file-label {
+        color: #dc3545;
+      }
+
+      input[type="file"].is-valid ~ .file-label {
+        color: #28a745;
+      }
+
+      /* Select validation feedback */
+      select.is-invalid {
+        border-color: #dc3545 !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dc3545' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+      }
+
+      select.is-valid {
+        border-color: #28a745 !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2328a745' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+      }
+
+      /* Smooth transitions for validation states */
+      .form-input,
+      select {
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+
+      /* Error shake animation */
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+
+      .is-invalid {
+        animation: shake 0.5s;
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -746,22 +810,56 @@
       }
 
       // ============================================
-      // FORM VALIDATION
+      // FORM VALIDATION - ENHANCED
       // ============================================
       const validationRules = {
         name: {
-          pattern: /^[a-zA-Z\s]{2,50}$/,
-          message:
-            "Name must be 2-50 characters and contain only letters and spaces",
+          pattern: /^[a-zA-Z\s'-]{2,50}$/,
+          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
+        },
+        referrer_name: {
+          pattern: /^[a-zA-Z\s'-]{2,50}$/,
+          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
+        },
+        candidate_name: {
+          pattern: /^[a-zA-Z\s'-]{2,50}$/,
+          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
         },
         email: {
-          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-          message: "Please enter a valid email address",
+          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          message: "Please enter a valid email address (e.g., john@example.com)",
+        },
+        referrer_email: {
+          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          message: "Please enter a valid email address (e.g., john@example.com)",
+        },
+        candidate_email: {
+          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          message: "Please enter a valid email address (e.g., john@example.com)",
         },
         phone: {
-          pattern: /^[0-9]{10}$/,
-          message: "Please enter a valid 10-digit phone number",
+          pattern: /^\d{10}$/,
+          message: "Please enter exactly 10 digits (e.g., 1234567890)",
         },
+        referrer_phone: {
+          pattern: /^\d{10}$/,
+          message: "Please enter exactly 10 digits (e.g., 1234567890)",
+        },
+        candidate_phone: {
+          pattern: /^\d{10}$/,
+          message: "Please enter exactly 10 digits (e.g., 1234567890)",
+        },
+      };
+
+      // File validation rules
+      const fileValidationRules = {
+        maxSize: 10 * 1024 * 1024, // 10MB
+        allowedExtensions: ['.pdf', '.doc', '.docx'],
+        allowedMimeTypes: [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        ]
       };
 
       function showError(inputElement, message) {
@@ -805,6 +903,7 @@
         const fieldName = inputElement.name;
         const value = inputElement.value.trim();
 
+        // Check if field is required and empty
         if (!value && inputElement.required) {
           showError(
             inputElement,
@@ -816,6 +915,13 @@
           return false;
         }
 
+        // Skip validation if field is empty and not required
+        if (!value && !inputElement.required) {
+          removeError(inputElement);
+          return true;
+        }
+
+        // Apply validation rules if they exist
         if (validationRules[fieldName]) {
           const rule = validationRules[fieldName];
           if (!rule.pattern.test(value)) {
@@ -828,22 +934,111 @@
         return true;
       }
 
+      // Validate file input (resume/document upload)
+      function validateFile(fileInput) {
+        if (!fileInput.files || fileInput.files.length === 0) {
+          if (fileInput.required) {
+            showError(fileInput, "Please select a file to upload");
+            return false;
+          }
+          return true;
+        }
+
+        const file = fileInput.files[0];
+        
+        // Check file size
+        if (file.size > fileValidationRules.maxSize) {
+          const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+          const maxSizeMB = (fileValidationRules.maxSize / (1024 * 1024)).toFixed(0);
+          showError(fileInput, `File size (${sizeMB}MB) exceeds maximum allowed size of ${maxSizeMB}MB`);
+          return false;
+        }
+
+        // Check file extension
+        const fileName = file.name.toLowerCase();
+        const fileExtension = '.' + fileName.split('.').pop();
+        if (!fileValidationRules.allowedExtensions.includes(fileExtension)) {
+          showError(
+            fileInput,
+            `Invalid file type. Please upload ${fileValidationRules.allowedExtensions.join(', ')} files only`
+          );
+          return false;
+        }
+
+        // Check MIME type
+        if (file.type && !fileValidationRules.allowedMimeTypes.includes(file.type)) {
+          showError(
+            fileInput,
+            `Invalid file format. Please upload PDF, DOC, or DOCX files only`
+          );
+          return false;
+        }
+
+        removeError(fileInput);
+        return true;
+      }
+
+      // Validate select dropdown
+      function validateSelect(selectElement) {
+        const value = selectElement.value.trim();
+
+        if (!value && selectElement.required) {
+          showError(
+            selectElement,
+            `${
+              selectElement.labels[0]?.textContent.replace("*", "").trim() ||
+              "Please select an option"
+            }`
+          );
+          return false;
+        }
+
+        removeError(selectElement);
+        return true;
+      }
+
       function setupRealtimeValidation(formId) {
         const form = document.getElementById(formId);
+        
+        // Text and email inputs
         const inputs = form.querySelectorAll(
           'input[name="name"], input[name="email"], input[name="phone"], input[name="referrer_name"], input[name="referrer_email"], input[name="referrer_phone"], input[name="candidate_name"], input[name="candidate_email"], input[name="candidate_phone"]'
         );
 
         inputs.forEach((input) => {
+          // Validate on blur (when user leaves the field)
           input.addEventListener("blur", function () {
             if (this.value.trim()) {
               validateField(this);
             }
           });
 
+          // Remove error as user types
           input.addEventListener("input", function () {
             if (this.classList.contains("is-invalid")) {
               removeError(this);
+            }
+          });
+        });
+
+        // File inputs validation
+        const fileInputs = form.querySelectorAll('input[type="file"]');
+        fileInputs.forEach((fileInput) => {
+          fileInput.addEventListener("change", function () {
+            validateFile(this);
+          });
+        });
+
+        // Select dropdowns validation
+        const selectInputs = form.querySelectorAll('select');
+        selectInputs.forEach((select) => {
+          select.addEventListener("change", function () {
+            validateSelect(this);
+          });
+
+          select.addEventListener("blur", function () {
+            if (this.value.trim()) {
+              validateSelect(this);
             }
           });
         });
@@ -919,12 +1114,16 @@
           const nameInput = document.getElementById("jobFullName");
           const emailInput = document.getElementById("jobEmail");
           const phoneInput = document.getElementById("jobPhone");
+          const fileInput = document.getElementById("jobResume");
 
+          // Validate all fields
           const isNameValid = validateField(nameInput);
           const isEmailValid = validateField(emailInput);
           const isPhoneValid = validateField(phoneInput);
+          const isFileValid = validateFile(fileInput);
 
-          if (!isNameValid || !isEmailValid || !isPhoneValid) {
+          // If any validation fails, scroll to first error
+          if (!isNameValid || !isEmailValid || !isPhoneValid || !isFileValid) {
             const firstError = this.querySelector(".is-invalid");
             if (firstError) {
               firstError.focus();
@@ -952,30 +1151,7 @@
           }
 
           try {
-            const fileInput = document.getElementById("jobResume");
-            if (!fileInput.files || fileInput.files.length === 0) {
-              throw new Error("Please select a resume file to upload.");
-            }
-
             const file = fileInput.files[0];
-            const maxSize = 10 * 1024 * 1024;
-
-            if (file.size > maxSize) {
-              throw new Error(
-                "File size must be less than 10MB. Your file is " +
-                  (file.size / (1024 * 1024)).toFixed(2) +
-                  "MB."
-              );
-            }
-
-            const allowedTypes = [".pdf", ".doc", ".docx"];
-            const fileExt = "." + file.name.split(".").pop().toLowerCase();
-            if (!allowedTypes.includes(fileExt)) {
-              throw new Error(
-                "Please upload a PDF, DOC, or DOCX file. Your file type: " +
-                  fileExt
-              );
-            }
 
             console.log(
               `Processing file: ${file.name} (${(file.size / 1024).toFixed(
@@ -1107,7 +1283,10 @@
           const candNameInput = document.getElementById("refCandidateName");
           const candEmailInput = document.getElementById("refCandidateEmail");
           const candPhoneInput = document.getElementById("refCandidatePhone");
+          const positionInput = document.getElementById("refCandidatePosition");
+          const fileInput = document.getElementById("refCandidateResume");
 
+          // Validate all fields
           const validations = [
             validateField(refNameInput),
             validateField(refEmailInput),
@@ -1115,6 +1294,8 @@
             validateField(candNameInput),
             validateField(candEmailInput),
             validateField(candPhoneInput),
+            validateSelect(positionInput),
+            validateFile(fileInput),
           ];
 
           if (!validations.every((v) => v)) {
@@ -1145,30 +1326,7 @@
           }
 
           try {
-            const fileInput = document.getElementById("refCandidateResume");
-            if (!fileInput.files || fileInput.files.length === 0) {
-              throw new Error("Please select a resume file for the candidate.");
-            }
-
             const file = fileInput.files[0];
-            const maxSize = 10 * 1024 * 1024;
-
-            if (file.size > maxSize) {
-              throw new Error(
-                "File size must be less than 10MB. Your file is " +
-                  (file.size / (1024 * 1024)).toFixed(2) +
-                  "MB."
-              );
-            }
-
-            const allowedTypes = [".pdf", ".doc", ".docx"];
-            const fileExt = "." + file.name.split(".").pop().toLowerCase();
-            if (!allowedTypes.includes(fileExt)) {
-              throw new Error(
-                "Please upload a PDF, DOC, or DOCX file. Your file type: " +
-                  fileExt
-              );
-            }
 
             console.log(
               `📎 Processing file: ${file.name} (${(file.size / 1024).toFixed(
