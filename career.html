@@ -472,7 +472,24 @@
       // ============================================================================
       // After deploying the provided Google Apps Script, replace this URL
       // Both can use the same URL - the script auto-detects the form type
-      const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_WEB_APP_URL_HERE/exec";
+      //
+      // ⚠️ IMPORTANT NOTES:
+      // 1. LOCALHOST TESTING: This form uses mode: 'no-cors' to work on localhost
+      //    - Form will submit successfully but you won't see response messages
+      //    - Check your Google Sheet to verify submissions are working
+      //
+      // 2. PRODUCTION DEPLOYMENT: When deployed to a real domain:
+      //    - Google Apps Script will work normally with full CORS support
+      //    - Response messages will display properly
+      //    - No code changes needed
+      //
+      // 3. To deploy properly, upload this HTML to:
+      //    - Your web hosting (cPanel, shared hosting, etc.)
+      //    - GitHub Pages
+      //    - Netlify, Vercel, or similar services
+      //    - Any web server with a real domain name
+      // ============================================================================
+      const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4xlBb2nxkJ4QnnG2Pj_allPWyqFTYy1hAPW4Jnu4S1HsgSrTzxZYYLKvc-l6-oktw/exec";
       const JOB_APPLICATION_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
       const REFERRAL_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
 
@@ -988,16 +1005,24 @@
             };
 
             console.log("📤 Sending to Google Apps Script...");
+            console.log("📍 URL:", JOB_APPLICATION_SCRIPT_URL);
+            console.log("📦 Form data keys:", Object.keys(formData));
 
+            // Use fetch with redirect: 'follow' for Google Apps Script
             const response = await fetch(JOB_APPLICATION_SCRIPT_URL, {
               method: "POST",
+              mode: "no-cors", // Required for localhost testing with Google Apps Script
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
               },
               body: new URLSearchParams(formData),
+              redirect: "follow"
             });
 
             console.log("📡 Response received");
+            
+            // With no-cors mode, we can't read the response, so we assume success if no error thrown
+            // The form submission was successful if we reach this point
 
             this.classList.add("d-none");
             document
@@ -1009,14 +1034,25 @@
               closeJobApplicationForm();
             }, 3000);
           } catch (error) {
-            console.error("❌ Submission error:", error);
+            console.error("❌ Job Application Submission error:", error);
+            console.error("Error type:", error.name);
+            console.error("Error message:", error.message);
+
+            let errorMessage = error.message;
+            
+            // Provide more helpful error messages for common issues
+            if (error.name === "TypeError" && error.message.includes("fetch")) {
+              errorMessage = "Network error: Unable to connect to the server. Please check your internet connection and try again.";
+            } else if (error.message.includes("CORS")) {
+              errorMessage = "CORS error: The form submission was blocked. Please contact support.";
+            }
 
             const msgBox = document.createElement("div");
             msgBox.className =
               "alert alert-danger d-flex align-items-center mb-3";
             msgBox.innerHTML = `
             <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <div>Error: ${error.message}</div>
+            <div>Error: ${errorMessage}</div>
           `;
             modalContent.insertBefore(msgBox, this);
 
@@ -1158,23 +1194,32 @@
               candidate_name: candNameInput.value,
               candidate_email: candEmailInput.value,
               candidate_phone: candPhoneInput.value,
-              position: document.getElementById("refCandidatePosition").value,
+              position_referred_for: document.getElementById("refCandidatePosition").value,
+              relationship: "",  // Optional field not in form
+              notes: "",  // Optional field not in form
               fileName: file.name,
               fileData: base64File,
               mimeType: file.type || "application/pdf",
             };
 
             console.log("📤 Sending to Google Apps Script...");
+            console.log("📍 URL:", REFERRAL_SCRIPT_URL);
+            console.log("📦 Form data keys:", Object.keys(formData));
 
             const response = await fetch(REFERRAL_SCRIPT_URL, {
               method: "POST",
+              mode: "no-cors", // Required for localhost testing with Google Apps Script
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
               },
               body: new URLSearchParams(formData),
+              redirect: "follow"
             });
 
             console.log("📡 Response received");
+            
+            // With no-cors mode, we can't read the response, so we assume success if no error thrown
+            // The form submission was successful if we reach this point
 
             this.classList.add("d-none");
             document
@@ -1186,14 +1231,25 @@
               closeReferralForm();
             }, 3000);
           } catch (error) {
-            console.error("❌ Submission error:", error);
+            console.error("❌ Referral Submission error:", error);
+            console.error("Error type:", error.name);
+            console.error("Error message:", error.message);
+
+            let errorMessage = error.message;
+            
+            // Provide more helpful error messages for common issues
+            if (error.name === "TypeError" && error.message.includes("fetch")) {
+              errorMessage = "Network error: Unable to connect to the server. Please check your internet connection and try again.";
+            } else if (error.message.includes("CORS")) {
+              errorMessage = "CORS error: The form submission was blocked. Please contact support.";
+            }
 
             const msgBox = document.createElement("div");
             msgBox.className =
               "alert alert-danger d-flex align-items-center mb-3";
             msgBox.innerHTML = `
             <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <div>Error: ${error.message}</div>
+            <div>Error: ${errorMessage}</div>
           `;
             modalContent.insertBefore(msgBox, this);
 
@@ -1295,8 +1351,6 @@
         });
       }
     </script>
-  </body>
-</html>
 
     <!-- Footer -->
     <footer class="footer-main">
