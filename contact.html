@@ -172,7 +172,7 @@
             </div>
             <div class="card-content">
               <h4>Email Address</h4>
-              <a href="mailto:hr@techmyndsinc.com"><span class="__cf_email__" data-cfemail="cea7a0a8a18ebaabada6a3b7a0aabde0ada1a3">hr@techmyndsinc.com</span></a>
+              <a href="/cdn-cgi/l/email-protection#a2cad0e2d6c7c1cacfdbccc6d1cbccc18cc1cdcf"><span class="__cf_email__" data-cfemail="cea7a0a8a18ebaabada6a3b7a0aabde0ada1a3"><span class="__cf_email__" data-cfemail="a8c0dae8dccdcbc0c5d1c6ccdbc1c6cb86cbc7c5">[email&#160;protected]</span></span></a>
             </div>
           </div>
 
@@ -326,10 +326,7 @@
               class="footer-logo mb-3"
             />
             <p class="company-description">
-              Premier IT staffing and recruitment solutions connecting talent
-              with opportunity across the USA. As a reliable and resourceful
-              organization, we aim to be your talent partner with the focus on
-              your present and future business goals.
+Premier IT staffing and recruitment solutions connecting top talent with opportunities across the USA, your reliable partner for present and future business goals.
             </p>
           </div>
 
@@ -350,7 +347,7 @@
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
                 <i class="fas fa-envelope me-3 mt-1"></i>
-                <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
+                <a href="/cdn-cgi/l/email-protection#a2cad0e2d6c7c1cacfdbccc6d1cbccc18cc1cdcf" class="footer-link p-0"><span class="__cf_email__" data-cfemail="e8809aa89c8d8b808591868c9b81868bc68b8785">[email&#160;protected]</span></a>
               </li>
               <li class="d-flex mb-2">
                 <i class="fas fa-phone-alt me-3 mt-1"></i>
@@ -382,7 +379,7 @@
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       // Initialize AOS
@@ -520,8 +517,14 @@
         if (validationRules[fieldName]) {
           const rule = validationRules[fieldName];
           
+          // Special handling for phone number - strip formatting before validation
+          let testValue = value;
+          if (fieldName === 'phone') {
+            testValue = value.replace(/\D/g, ''); // Remove all non-digit characters
+          }
+          
           // Pattern validation
-          if (rule.pattern && !rule.pattern.test(value)) {
+          if (rule.pattern && !rule.pattern.test(testValue)) {
             showError(inputElement, rule.message);
             return false;
           }
@@ -843,13 +846,29 @@
       // Geometric shapes parallax animation
       const geoShapes = document.querySelectorAll('.geo-shape');
       
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        geoShapes.forEach((shape, index) => {
-          const speed = (index + 1) * 0.1;
-          shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+      if (geoShapes.length > 0) {
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          geoShapes.forEach((shape, index) => {
+            const speed = (index + 1) * 0.5;
+            shape.style.transform = `translateY(${scrolled * speed}px)`;
+          });
         });
+      }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
       });
     </script>
+
   </body>
 </html>

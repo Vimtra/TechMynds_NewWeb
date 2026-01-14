@@ -215,7 +215,7 @@
                 joining a community committed to making an impact in the tech
                 industry.
               </p> -->
-              <h3 class="referral-benefits-title">Why Participate?</h3>
+              <!-- <h3 class="referral-benefits-title">Why Participate?</h3> -->
               <ul class="benefits-list">
                 <li>
                   <i class="fas fa-check-circle"></i>
@@ -329,7 +329,7 @@
               >Upload Resume (PDF, DOC, DOCX - Max 10MB)
               <span class="required">*</span></label
             >
-            <div class="file-upload">
+            <div class="file-upload" data-input-id="jobResume">
               <input
                 type="file"
                 id="jobResume"
@@ -338,13 +338,15 @@
                 accept=".pdf,.doc,.docx"
                 required
               />
-              <span class="file-label">Choose file or drag here</span>
-            </div>
-            <div
-              class="form-text"
-              style="font-size: 0.875rem; color: #6c757d; margin-top: 0.25rem"
-            >
-              Accepted formats: PDF, DOC, DOCX. Maximum size: 10MB
+              <div class="file-upload-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div class="file-upload-content">
+                <div class="file-upload-title">Click or Drag to Upload</div>
+                <div class="file-upload-subtitle">Your resume will be uploaded securely</div>
+                <div class="file-upload-formats">PDF, DOC, DOCX (Max 10MB)</div>
+              </div>
+              <span class="file-label">No file chosen</span>
             </div>
           </div>
 
@@ -353,14 +355,20 @@
 
         <div
           id="jobThankYouMessage"
-          class="modern-alert-success d-none"
+          class="thank-you-container d-none mt-3 text-center"
         >
-          <div class="alert-content">
-            <h4 class="alert-title">Application Submitted Successfully!</h4>
-            <p class="alert-message">
-              We have received your application and will review it shortly. Our HR team will contact you if your qualifications match our requirements.
-            </p>
+          <div
+            class="checkmark-circle mb-3"
+            style="font-size: 3rem; color: var(--accent)"
+          >
+            <i class="bi bi-check-circle-fill"></i>
           </div>
+          <h5>Thank You for Your Application!</h5>
+          <p>
+            We have received your application and will review it shortly.<br />
+            Our HR team will contact you if your qualifications match our
+            requirements.
+          </p>
         </div>
       </div>
     </div>
@@ -377,7 +385,7 @@
         <form id="referralApplicationForm" class="application-form">
           <!-- Your Information -->
           <fieldset class="form-fieldset">
-            <legend class="fieldset-legend">Your Information</legend>
+            <!-- <legend class="fieldset-legend">Your Information</legend> -->
 
             <div class="form-group">
               <label for="refYourName" class="form-label"
@@ -424,7 +432,7 @@
 
           <!-- Candidate Information -->
           <fieldset class="form-fieldset">
-            <legend class="fieldset-legend">Candidate Information</legend>
+            <!-- <legend class="fieldset-legend">Candidate Information</legend> -->
 
             <div class="form-group">
               <label for="refCandidateName" class="form-label"
@@ -494,7 +502,7 @@
                 >Candidate Resume (PDF, DOC, DOCX - Max 10MB)
                 <span class="required">*</span></label
               >
-              <div class="file-upload">
+              <div class="file-upload" data-input-id="refCandidateResume">
                 <input
                   type="file"
                   id="refCandidateResume"
@@ -503,13 +511,15 @@
                   accept=".pdf,.doc,.docx"
                   required
                 />
-                <span class="file-label">Choose file or drag here</span>
-              </div>
-              <div
-                class="form-text"
-                style="font-size: 0.875rem; color: #6c757d; margin-top: 0.25rem"
-              >
-                Accepted formats: PDF, DOC, DOCX. Maximum size: 10MB
+                <div class="file-upload-icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="file-upload-content">
+                  <div class="file-upload-title">Click or Drag to Upload</div>
+                  <div class="file-upload-subtitle">Candidate's resume will be uploaded securely</div>
+                  <div class="file-upload-formats">PDF, DOC, DOCX (Max 10MB)</div>
+                </div>
+                <span class="file-label">No file chosen</span>
               </div>
             </div>
           </fieldset>
@@ -519,14 +529,19 @@
 
         <div
           id="referralThankYouMessage"
-          class="modern-alert-success d-none"
+          class="thank-you-container d-none mt-3 text-center"
         >
-          <div class="alert-content">
-            <h4 class="alert-title">Referral Submitted Successfully!</h4>
-            <p class="alert-message">
-              We have received your referral and will review it shortly. Our HR team will contact you about the referral status.
-            </p>
+          <div
+            class="checkmark-circle mb-3"
+            style="font-size: 3rem; color: var(--accent)"
+          >
+            <i class="bi bi-check-circle-fill"></i>
           </div>
+          <h5>Thank You for Your Referral!</h5>
+          <p>
+            We have received your referral and will review it shortly.<br />
+            Our HR team will contact you about the referral status.
+          </p>
         </div>
       </div>
     </div>
@@ -543,10 +558,7 @@
               class="footer-logo mb-3"
             />
             <p class="company-description">
-              Premier IT staffing and recruitment solutions connecting talent
-              with opportunity across the USA. As a reliable and resourceful
-              organization, we aim to be your talent partner with the focus on
-              your present and future business goals.
+Premier IT staffing and recruitment solutions connecting top talent with opportunities across the USA, your reliable partner for present and future business goals.
             </p>
           </div>
 
@@ -567,7 +579,7 @@
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
                 <i class="fas fa-envelope me-3 mt-1"></i>
-                <a href="/cdn-cgi/l/email-protection#f29a80b28697919a9f8b9c96819b9c91dc919d9f" class="footer-link p-0"><span class="__cf_email__" data-cfemail="8ce4feccf8e9efe4e1f5e2e8ffe5e2efa2efe3e1">[email&#160;protected]</span></a>
+                <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
               </li>
               <li class="d-flex mb-2">
                 <i class="fas fa-phone-alt me-3 mt-1"></i>
@@ -1234,7 +1246,7 @@
             "#jobApplicationModal .modal-content"
           );
           const existingMsgBox = modalContent.querySelector(
-            ".modern-alert-error, .modern-alert-success"
+            ".alert-danger, .alert-warning"
           );
           if (existingMsgBox) {
             existingMsgBox.remove();
@@ -1316,13 +1328,12 @@
             }
 
             const msgBox = document.createElement("div");
-            msgBox.className = "modern-alert-error mb-3";
+            msgBox.className =
+              "alert alert-danger d-flex align-items-center mb-3";
             msgBox.innerHTML = `
-              <div class="alert-content">
-                <h5 class="alert-title">Submission Failed</h5>
-                <p class="alert-message">${errorMessage}</p>
-              </div>
-            `;
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <div>Error: ${errorMessage}</div>
+          `;
             modalContent.insertBefore(msgBox, this);
 
             submitBtn.disabled = false;
@@ -1412,7 +1423,7 @@
             "#referralApplicationModal .modal-content"
           );
           const existingMsgBox = modalContent.querySelector(
-            ".modern-alert-error, .modern-alert-success"
+            ".alert-danger, .alert-warning"
           );
           if (existingMsgBox) {
             existingMsgBox.remove();
@@ -1500,13 +1511,12 @@
             }
 
             const msgBox = document.createElement("div");
-            msgBox.className = "modern-alert-error mb-3";
+            msgBox.className =
+              "alert alert-danger d-flex align-items-center mb-3";
             msgBox.innerHTML = `
-              <div class="alert-content">
-                <h5 class="alert-title">Submission Failed</h5>
-                <p class="alert-message">${errorMessage}</p>
-              </div>
-            `;
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <div>Error: ${errorMessage}</div>
+          `;
             modalContent.insertBefore(msgBox, this);
 
             submitBtn.disabled = false;
@@ -1540,31 +1550,39 @@
       if (jobFileUpload && jobFileInput) {
         // Make file upload clickable
         jobFileUpload.addEventListener("click", (e) => {
-          jobFileInput.click();
+          if (e.target !== jobFileInput) {
+            jobFileInput.click();
+          }
         });
 
         jobFileUpload.addEventListener("dragover", (e) => {
           e.preventDefault();
+          e.stopPropagation();
           jobFileUpload.classList.add("dragover");
         });
 
-        jobFileUpload.addEventListener("dragleave", () => {
+        jobFileUpload.addEventListener("dragleave", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
           jobFileUpload.classList.remove("dragover");
         });
 
         jobFileUpload.addEventListener("drop", (e) => {
           e.preventDefault();
+          e.stopPropagation();
           jobFileUpload.classList.remove("dragover");
-          jobFileInput.files = e.dataTransfer.files;
+          
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            jobFileInput.files = files;
+            updateFileUploadUI(jobFileUpload, files[0]);
+          }
         });
 
         // Update label when file is selected
         jobFileInput.addEventListener("change", (e) => {
           if (jobFileInput.files.length > 0) {
-            const fileLabel = jobFileUpload.querySelector(".file-label");
-            if (fileLabel) {
-              fileLabel.textContent = jobFileInput.files[0].name;
-            }
+            updateFileUploadUI(jobFileUpload, jobFileInput.files[0]);
           }
         });
       }
@@ -1578,33 +1596,65 @@
       if (refFileUpload && refFileInput) {
         // Make file upload clickable
         refFileUpload.addEventListener("click", (e) => {
-          refFileInput.click();
+          if (e.target !== refFileInput) {
+            refFileInput.click();
+          }
         });
 
         refFileUpload.addEventListener("dragover", (e) => {
           e.preventDefault();
+          e.stopPropagation();
           refFileUpload.classList.add("dragover");
         });
 
-        refFileUpload.addEventListener("dragleave", () => {
+        refFileUpload.addEventListener("dragleave", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
           refFileUpload.classList.remove("dragover");
         });
 
         refFileUpload.addEventListener("drop", (e) => {
           e.preventDefault();
+          e.stopPropagation();
           refFileUpload.classList.remove("dragover");
-          refFileInput.files = e.dataTransfer.files;
+          
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            refFileInput.files = files;
+            updateFileUploadUI(refFileUpload, files[0]);
+          }
         });
 
         // Update label when file is selected
         refFileInput.addEventListener("change", (e) => {
           if (refFileInput.files.length > 0) {
-            const fileLabel = refFileUpload.querySelector(".file-label");
-            if (fileLabel) {
-              fileLabel.textContent = refFileInput.files[0].name;
-            }
+            updateFileUploadUI(refFileUpload, refFileInput.files[0]);
           }
         });
+      }
+      
+      // Helper function to update file upload UI
+      function updateFileUploadUI(uploadElement, file) {
+        const fileLabel = uploadElement.querySelector(".file-label");
+        const uploadIcon = uploadElement.querySelector(".file-upload-icon");
+        const uploadTitle = uploadElement.querySelector(".file-upload-title");
+        
+        if (fileLabel) {
+          fileLabel.textContent = file.name;
+        }
+        
+        // Add has-file class for styling
+        uploadElement.classList.add("has-file");
+        
+        // Update icon to checkmark
+        if (uploadIcon) {
+          uploadIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+        }
+        
+        // Update title
+        if (uploadTitle) {
+          uploadTitle.textContent = "File Selected Successfully!";
+        }
       }
     </script>
 
@@ -1618,7 +1668,7 @@
       AOS.init({
         duration: 800,
         once: true,
-        offset: 100
+        offset: 100,
       });
     </script>
   </body>
