@@ -1,0 +1,1157 @@
+// ===============================================================================
+// GOOGLE APPS SCRIPT - CAREER, CONTACT & REFERRAL FORM HANDLER
+// ===============================================================================
+// This script handles form submissions from career.html and contact.html
+// Now includes Employee Referral Program support
+// ===============================================================================
+
+// === CONFIGURATION (UPDATE THESE VALUES) ===
+const SPREADSHEET_ID = "1TFwMEg8yYB1Xq3ZvBjF1c18xmyu29VlfQGq23k-_AQ0";  // Replace with your Google Sheets ID
+const DRIVE_FOLDER_ID = "1fi_ABvEN-Y1dubyItpyodA1AD0h_PGno";  // Replace with your Google Drive folder ID
+const RECIPIENT_EMAIL_CAREER = "johninfant021@gmail.com";  // Email for career notifications
+const RECIPIENT_EMAIL_CONTACT = "johninfant021@gmail.com";  // Email for contact form notifications
+const RECIPIENT_EMAIL_REFERRAL = "johninfant021@gmail.com";  // Email for referral notifications
+const CAREER_SHEET_NAME = "Career Applications";
+const CONTACT_SHEET_NAME = "Contact Submissions";
+const REFERRAL_SHEET_NAME = "Employee Referrals";
+
+/**
+ * Handle GET requests - Test endpoint
+ * Returns status to verify the script is deployed correctly
+ */
+function doGet() {
+  return ContentService.createTextOutput(JSON.stringify({
+    status: "online",
+    message: "Career, Contact & Referral Form API is running",
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      career: "POST with job_applied_for and fileData",
+      contact: "POST with message field",
+      referral: "POST with referrer_name and candidate_name"
+    }
+  })).setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Handle POST requests - Route to appropriate handler
+ * Detects form type and routes to correct handler
+ */
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+
+  try {
+    // Try to acquire lock (wait up to 10 seconds)
+    lock.tryLock(10000);
+    
+    const formData = e.parameter || {};
+    Logger.log("📨 Received POST request");
+    Logger.log("Form data keys: " + Object.keys(formData).join(", "));
+    
+    // Detect which form was submitted based on form fields
+    if (formData.referrer_name && formData.candidate_name) {
+      // Employee Referral (has both referrer and candidate info)
+      Logger.log("👥 Routing to Employee Referral handler");
+      return handleReferralSubmission(e);
+    } else if (formData.job_applied_for && formData.fileData) {
+      // Career Application (has job_applied_for field and resume file)
+      Logger.log("📋 Routing to Career Application handler");
+      return handleCareerApplication(e);
+    } else if (formData.message && !formData.job_applied_for) {
+      // Contact Form (has message field, no job field)
+      Logger.log("📧 Routing to Contact Form handler");
+      return handleContactForm(e);
+    } else {
+      throw new Error("Unable to determine form type. Please check form field names.");
+    }
+
+  } catch (err) {
+    Logger.log("❌ Error in doPost: " + err.message);
+    return ContentService.createTextOutput(
+      JSON.stringify({
+        status: "error",
+        message: err.message
+      })
+    ).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    // Always release the lock when done
+    if (lock.hasLock()) {
+      lock.releaseLock();
+    }
+  }
+}
+
+/**
+ * ============================================================================
+ * EMPLOYEE REFERRAL HANDLER
+ * ============================================================================
+ * Handles employee referral submissions from career.html
+ * - Validates form data
+ * - Uploads candidate resume to Google Drive
+ * - Saves referral to Google Sheets
+ * - Sends email notification
+ */
+function handleReferralSubmission(e) {
+  try {
+    Logger.log("📨 ========== NEW EMPLOYEE REFERRAL ==========");
+    
+    const formData = e.parameter || {};
+    Logger.log("Form data received: " + JSON.stringify(Object.keys(formData)));
+
+    // Extract and validate REFERRER fields
+    const referrerName = (formData.referrer_name || "").trim();
+    const referrerEmail = (formData.referrer_email || "").trim();
+    const referrerPhone = (formData.referrer_phone || "").trim();
+    const relationship = (formData.relationship || "").trim();
+    
+    // Extract and validate CANDIDATE fields
+    const candidateName = (formData.candidate_name || "").trim();
+    const candidateEmail = (formData.candidate_email || "").trim();
+    const candidatePhone = (formData.candidate_phone || "").trim();
+    const positionReferredFor = (formData.position_referred_for || "").trim();
+    
+    // Extract file data
+    const fileData = formData.fileData || "";
+    const fileName = formData.fileName || "candidate_resume.pdf";
+    const mimeType = formData.mimeType || "application/pdf";
+    
+    // Additional notes (optional)
+    const notes = (formData.notes || "").trim();
+
+    // Validate required fields
+    if (!referrerName) throw new Error("Missing required field: referrer_name");
+    if (!referrerEmail) throw new Error("Missing required field: referrer_email");
+    if (!candidateName) throw new Error("Missing required field: candidate_name");
+    if (!candidateEmail) throw new Error("Missing required field: candidate_email");
+    if (!positionReferredFor) throw new Error("Missing required field: position_referred_for");
+    if (!fileData) throw new Error("Candidate resume is required");
+
+    // Validate email formats
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(referrerEmail)) {
+      throw new Error("Invalid referrer email format");
+    }
+    if (!emailRegex.test(candidateEmail)) {
+      throw new Error("Invalid candidate email format");
+    }
+
+    Logger.log(`👥 Processing referral from ${referrerName} for candidate ${candidateName}`);
+
+    // Upload candidate resume to Google Drive
+    let fileUrl = "N/A";
+    try {
+      // Decode base64 file data
+      const fileBytes = Utilities.base64Decode(fileData);
+      const fileBlob = Utilities.newBlob(fileBytes, mimeType, fileName);
+
+      // Get the destination folder
+      const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
+      
+      // Create a safe filename with timestamp
+      const safeCandidateName = candidateName.replace(/[^a-zA-Z0-9]/g, "_");
+      const safeReferrerName = referrerName.replace(/[^a-zA-Z0-9]/g, "_");
+      const safePosition = positionReferredFor.replace(/[^a-zA-Z0-9]/g, "_").substring(0, 30);
+      const timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyyMMdd_HHmmss");
+      const fileExtension = fileName.split('.').pop();
+      const newFileName = `REFERRAL_${safePosition}_${safeCandidateName}_by_${safeReferrerName}_${timestamp}.${fileExtension}`;
+
+      // Create file in Drive
+      const newFile = folder.createFile(fileBlob);
+      newFile.setName(newFileName);
+      newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+      fileUrl = newFile.getUrl();
+      Logger.log(`✅ File uploaded successfully: ${newFileName}`);
+      Logger.log(`📍 File URL: ${fileUrl}`);
+    } catch (fileError) {
+      Logger.log("❌ File upload error: " + fileError.message);
+      throw new Error("Failed to upload candidate resume: " + fileError.message);
+    }
+
+    // Save to Google Sheets
+    const doc = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = doc.getSheetByName(REFERRAL_SHEET_NAME);
+    
+    // Create sheet if it doesn't exist
+    if (!sheet) {
+      sheet = doc.insertSheet(REFERRAL_SHEET_NAME);
+      Logger.log(`✅ Created new sheet: ${REFERRAL_SHEET_NAME}`);
+    }
+
+    // Add headers if sheet is empty
+    if (sheet.getLastRow() === 0) {
+      const headers = [
+        "Timestamp",
+        "Position",
+        "Referrer Name",
+        "Referrer Email",
+        "Referrer Phone",
+        "Relationship",
+        "Candidate Name",
+        "Candidate Email",
+        "Candidate Phone",
+        "Resume Link",
+        "Notes"
+      ];
+      sheet.appendRow(headers);
+      
+      // Format headers
+      const headerRange = sheet.getRange(1, 1, 1, headers.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#86047d");
+      headerRange.setFontColor("#FFFFFF");
+      
+      // Set column widths
+      sheet.setColumnWidth(1, 150);  // Timestamp
+      sheet.setColumnWidth(2, 150);  // Position
+      sheet.setColumnWidth(3, 150);  // Referrer Name
+      sheet.setColumnWidth(4, 200);  // Referrer Email
+      sheet.setColumnWidth(5, 120);  // Referrer Phone
+      sheet.setColumnWidth(6, 120);  // Relationship
+      sheet.setColumnWidth(7, 150);  // Candidate Name
+      sheet.setColumnWidth(8, 200);  // Candidate Email
+      sheet.setColumnWidth(9, 120);  // Candidate Phone
+      sheet.setColumnWidth(10, 300); // Resume Link
+      sheet.setColumnWidth(11, 300); // Notes
+      
+      Logger.log("✅ Headers created in Referral sheet");
+    }
+
+    // Prepare row data
+    const newRowData = {
+      Timestamp: Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "MM/dd/yyyy HH:mm:ss"),
+      Position: positionReferredFor,
+      ReferrerName: referrerName,
+      ReferrerEmail: referrerEmail,
+      ReferrerPhone: referrerPhone || "N/A",
+      Relationship: relationship || "N/A",
+      CandidateName: candidateName,
+      CandidateEmail: candidateEmail,
+      CandidatePhone: candidatePhone || "N/A",
+      ResumeLink: fileUrl,
+      Notes: notes || "N/A"
+    };
+
+    // Append row to sheet
+    sheet.appendRow([
+      newRowData.Timestamp,
+      newRowData.Position,
+      newRowData.ReferrerName,
+      newRowData.ReferrerEmail,
+      newRowData.ReferrerPhone,
+      newRowData.Relationship,
+      newRowData.CandidateName,
+      newRowData.CandidateEmail,
+      newRowData.CandidatePhone,
+      newRowData.ResumeLink,
+      newRowData.Notes
+    ]);
+
+    SpreadsheetApp.flush();
+    Logger.log("✅ Referral saved to Google Sheets");
+
+    // Send email notification
+    sendReferralNotificationEmail(newRowData);
+
+    // Return success response
+    return ContentService.createTextOutput(
+      JSON.stringify({
+        status: "success",
+        message: "Referral submitted successfully",
+        referrer: referrerName,
+        candidate: candidateName,
+        position: positionReferredFor,
+        fileUrl: fileUrl
+      })
+    ).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    Logger.log("❌ Referral Submission Error: " + err.message);
+    Logger.log("Error stack: " + err.stack);
+    
+    // Send error notification email
+    sendReferralErrorEmail(e.parameter || {});
+    
+    throw err;
+  }
+}
+
+/**
+ * ============================================================================
+ * CAREER APPLICATION HANDLER
+ * ============================================================================
+ * Handles job application submissions from career.html
+ * - Validates form data
+ * - Uploads resume to Google Drive
+ * - Saves application to Google Sheets
+ * - Sends email notification
+ */
+function handleCareerApplication(e) {
+  try {
+    Logger.log("📨 ========== NEW CAREER APPLICATION ==========");
+    
+    const formData = e.parameter || {};
+    Logger.log("Form data received: " + JSON.stringify(Object.keys(formData)));
+
+    // Extract and validate form fields
+    const applicantName = (formData.name || "").trim();
+    const applicantEmail = (formData.email || "").trim();
+    const applicantPhone = (formData.phone || "").trim();
+    const jobAppliedFor = (formData.job_applied_for || "").trim();
+    const fileData = formData.fileData || "";
+    const fileName = formData.fileName || "resume.pdf";
+    const mimeType = formData.mimeType || "application/pdf";
+
+    // Validate required fields
+    if (!applicantName) throw new Error("Missing required field: name");
+    if (!applicantEmail) throw new Error("Missing required field: email");
+    if (!jobAppliedFor) throw new Error("Missing required field: job_applied_for");
+    if (!fileData) throw new Error("Resume file is required");
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(applicantEmail)) {
+      throw new Error("Invalid email format");
+    }
+
+    Logger.log(`📎 Processing file: ${fileName} for ${applicantName}`);
+
+    // Upload resume to Google Drive
+    let fileUrl = "N/A";
+    try {
+      // Decode base64 file data
+      const fileBytes = Utilities.base64Decode(fileData);
+      const fileBlob = Utilities.newBlob(fileBytes, mimeType, fileName);
+
+      // Get the destination folder
+      const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
+      
+      // Create a safe filename with timestamp
+      const safeName = applicantName.replace(/[^a-zA-Z0-9]/g, "_");
+      const safeJob = jobAppliedFor.replace(/[^a-zA-Z0-9]/g, "_").substring(0, 30);
+      const timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyyMMdd_HHmmss");
+      const fileExtension = fileName.split('.').pop();
+      const newFileName = `${safeJob}_${safeName}_${timestamp}.${fileExtension}`;
+
+      // Create file in Drive
+      const newFile = folder.createFile(fileBlob);
+      newFile.setName(newFileName);
+      newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+      fileUrl = newFile.getUrl();
+      Logger.log(`✅ File uploaded successfully: ${newFileName}`);
+      Logger.log(`📍 File URL: ${fileUrl}`);
+    } catch (fileError) {
+      Logger.log("❌ File upload error: " + fileError.message);
+      throw new Error("Failed to upload resume file: " + fileError.message);
+    }
+
+    // Save to Google Sheets
+    const doc = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = doc.getSheetByName(CAREER_SHEET_NAME);
+    
+    // Create sheet if it doesn't exist
+    if (!sheet) {
+      sheet = doc.insertSheet(CAREER_SHEET_NAME);
+      Logger.log(`✅ Created new sheet: ${CAREER_SHEET_NAME}`);
+    }
+
+    // Add headers if sheet is empty
+    if (sheet.getLastRow() === 0) {
+      const headers = ["Timestamp", "Position", "Full Name", "Email", "Phone", "Resume Link"];
+      sheet.appendRow(headers);
+      
+      // Format headers
+      const headerRange = sheet.getRange(1, 1, 1, headers.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#86047d");
+      headerRange.setFontColor("#FFFFFF");
+      
+      // Set column widths
+      sheet.setColumnWidth(1, 150);  // Timestamp
+      sheet.setColumnWidth(2, 150);  // Position
+      sheet.setColumnWidth(3, 150);  // Full Name
+      sheet.setColumnWidth(4, 200);  // Email
+      sheet.setColumnWidth(5, 120);  // Phone
+      sheet.setColumnWidth(6, 300);  // Resume Link
+      
+      Logger.log("✅ Headers created in Career sheet");
+    }
+
+    // Prepare row data
+    const newRowData = {
+      Timestamp: Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "MM/dd/yyyy HH:mm:ss"),
+      Position: jobAppliedFor,
+      FullName: applicantName,
+      Email: applicantEmail,
+      Phone: applicantPhone || "N/A",
+      ResumeLink: fileUrl
+    };
+
+    // Append row to sheet
+    sheet.appendRow([
+      newRowData.Timestamp,
+      newRowData.Position,
+      newRowData.FullName,
+      newRowData.Email,
+      newRowData.Phone,
+      newRowData.ResumeLink
+    ]);
+
+    SpreadsheetApp.flush();
+    Logger.log("✅ Career application saved to Google Sheets");
+
+    // Send email notification
+    sendCareerNotificationEmail(newRowData);
+
+    // Return success response
+    return ContentService.createTextOutput(
+      JSON.stringify({
+        status: "success",
+        message: "Application submitted successfully",
+        applicant: applicantName,
+        position: jobAppliedFor,
+        fileUrl: fileUrl
+      })
+    ).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    Logger.log("❌ Career Application Error: " + err.message);
+    Logger.log("Error stack: " + err.stack);
+    
+    // Send error notification email
+    sendCareerErrorEmail(e.parameter || {});
+    
+    throw err;
+  }
+}
+
+/**
+ * ============================================================================
+ * CONTACT FORM HANDLER
+ * ============================================================================
+ * Handles contact form submissions from contact.html
+ * - Validates form data
+ * - Saves submission to Google Sheets
+ * - Sends email notification
+ */
+function handleContactForm(e) {
+  try {
+    Logger.log("📨 ========== NEW CONTACT SUBMISSION ==========");
+    
+    const formData = e.parameter || {};
+    Logger.log("Form data received: " + JSON.stringify(Object.keys(formData)));
+
+    // Extract and validate form fields
+    const contactName = (formData.fullName || formData.name || "").trim();
+    const contactEmail = (formData.email || "").trim();
+    const contactPhone = (formData.phone || "").trim();
+    const contactSubject = (formData.subject || "").trim();
+    const contactMessage = (formData.message || "").trim();
+
+    // Validate required fields
+    if (!contactName) throw new Error("Missing required field: name");
+    if (!contactEmail) throw new Error("Missing required field: email");
+    if (!contactMessage) throw new Error("Missing required field: message");
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactEmail)) {
+      throw new Error("Invalid email format");
+    }
+
+    Logger.log(`📧 Processing contact form from: ${contactName}`);
+
+    // Save to Google Sheets
+    const doc = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = doc.getSheetByName(CONTACT_SHEET_NAME);
+    
+    // Create sheet if it doesn't exist
+    if (!sheet) {
+      sheet = doc.insertSheet(CONTACT_SHEET_NAME);
+      Logger.log(`✅ Created new sheet: ${CONTACT_SHEET_NAME}`);
+    }
+
+    // Add headers if sheet is empty
+    if (sheet.getLastRow() === 0) {
+      const headers = ["Timestamp", "Full Name", "Email", "Phone", "Subject", "Message"];
+      sheet.appendRow(headers);
+      
+      // Format headers
+      const headerRange = sheet.getRange(1, 1, 1, headers.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#86047d");
+      headerRange.setFontColor("#FFFFFF");
+      
+      // Set column widths
+      sheet.setColumnWidth(1, 150);  // Timestamp
+      sheet.setColumnWidth(2, 150);  // Full Name
+      sheet.setColumnWidth(3, 200);  // Email
+      sheet.setColumnWidth(4, 120);  // Phone
+      sheet.setColumnWidth(5, 150);  // Subject
+      sheet.setColumnWidth(6, 400);  // Message
+      
+      Logger.log("✅ Headers created in Contact sheet");
+    }
+
+    // Prepare row data
+    const newRowData = {
+      Timestamp: Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "MM/dd/yyyy HH:mm:ss"),
+      FullName: contactName,
+      Email: contactEmail,
+      Phone: contactPhone || "N/A",
+      Subject: contactSubject || "N/A",
+      Message: contactMessage
+    };
+
+    // Append row to sheet
+    sheet.appendRow([
+      newRowData.Timestamp,
+      newRowData.FullName,
+      newRowData.Email,
+      newRowData.Phone,
+      newRowData.Subject,
+      newRowData.Message
+    ]);
+
+    SpreadsheetApp.flush();
+    Logger.log("✅ Contact form saved to Google Sheets");
+
+    // Send email notification
+    sendContactNotificationEmail(newRowData);
+
+    // Return success response
+    return ContentService.createTextOutput(
+      JSON.stringify({
+        status: "success",
+        message: "Message sent successfully",
+        name: contactName
+      })
+    ).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    Logger.log("❌ Contact Form Error: " + err.message);
+    Logger.log("Error stack: " + err.stack);
+    
+    // Send error notification email
+    sendContactErrorEmail(e.parameter || {});
+    
+    throw err;
+  }
+}
+
+/**
+ * ============================================================================
+ * EMAIL NOTIFICATION FUNCTIONS
+ * ============================================================================
+ */
+
+/**
+ * Send Employee Referral Notification Email
+ */
+function sendReferralNotificationEmail(data) {
+  try {
+    const subject = `👥 New Employee Referral: ${data.Position} - ${data.CandidateName} (Referred by ${data.ReferrerName})`;
+    
+    const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #86047d, #45073c); padding: 32px 40px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
+                👥 New Employee Referral
+              </h1>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 32px 40px;">
+              
+              <!-- Position -->
+              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
+                <p style="margin: 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Position</p>
+                <p style="margin: 8px 0 0 0; color: #1e293b; font-size: 18px; font-weight: 700;">${data.Position}</p>
+              </div>
+              
+              <!-- Referrer Information -->
+              <h3 style="margin: 0 0 16px 0; color: #86047d; font-size: 16px;">Referrer Information</h3>
+              
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Name:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <span style="color: #1e293b;">${data.ReferrerName}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Email:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="mailto:${data.ReferrerEmail}" style="color: #86047d; text-decoration: none;">${data.ReferrerEmail}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Phone:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="tel:${data.ReferrerPhone}" style="color: #86047d; text-decoration: none;">${data.ReferrerPhone}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0;">
+                    <strong style="color: #475569;">Relationship:</strong>
+                  </td>
+                  <td style="padding: 8px 0; text-align: right;">
+                    <span style="color: #1e293b;">${data.Relationship}</span>
+                  </td>
+                </tr>
+              </table>
+              
+              <!-- Candidate Information -->
+              <h3 style="margin: 24px 0 16px 0; color: #86047d; font-size: 16px;">Candidate Information</h3>
+              
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Name:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <span style="color: #1e293b;">${data.CandidateName}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Email:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="mailto:${data.CandidateEmail}" style="color: #86047d; text-decoration: none;">${data.CandidateEmail}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Phone:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="tel:${data.CandidatePhone}" style="color: #86047d; text-decoration: none;">${data.CandidatePhone}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0;">
+                    <strong style="color: #475569;">Submitted:</strong>
+                  </td>
+                  <td style="padding: 8px 0; text-align: right;">
+                    <span style="color: #1e293b;">${data.Timestamp}</span>
+                  </td>
+                </tr>
+              </table>
+              
+              ${data.Notes !== "N/A" ? `
+              <!-- Additional Notes -->
+              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
+                <p style="margin: 0 0 8px 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Additional Notes</p>
+                <p style="margin: 0; color: #1e293b; white-space: pre-wrap; line-height: 1.6;">${data.Notes}</p>
+              </div>
+              ` : ''}
+              
+              <!-- Action Buttons -->
+              <div style="text-align: center; margin-top: 24px;">
+                <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #86047d, #45073c); color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 10px;">
+                  📄 View Resume
+                </a>
+                <a href="mailto:${data.CandidateEmail}?subject=Re: Referral for ${data.Position}" style="display: inline-block; background: #45073c; color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                  ✉️ Contact Candidate
+                </a>
+              </div>
+              
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8fafc; padding: 20px 40px; text-align: center; border-radius: 0 0 8px 8px;">
+              <p style="margin: 0; color: #94a3b8; font-size: 12px;">
+                This is an automated notification from your Employee Referral System
+              </p>
+            </td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL_REFERRAL,
+      subject: subject,
+      htmlBody: htmlBody
+    });
+    
+    Logger.log("✅ Referral notification email sent successfully");
+  } catch (err) {
+    Logger.log("⚠️ Failed to send referral notification email: " + err.message);
+  }
+}
+
+/**
+ * Send Career Application Notification Email
+ */
+function sendCareerNotificationEmail(data) {
+  try {
+    const subject = `🎯 New Job Application: ${data.Position} - ${data.FullName}`;
+    
+    const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #86047d, #45073c); padding: 32px 40px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
+                🎯 New Job Application
+              </h1>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 32px 40px;">
+              
+              <!-- Position Applied -->
+              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
+                <p style="margin: 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Position</p>
+                <p style="margin: 8px 0 0 0; color: #1e293b; font-size: 18px; font-weight: 700;">${data.Position}</p>
+              </div>
+              
+              <!-- Candidate Information -->
+              <h3 style="margin: 0 0 16px 0; color: #86047d; font-size: 16px;">Candidate Information</h3>
+              
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Full Name:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <span style="color: #1e293b;">${data.FullName}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Email:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="mailto:${data.Email}" style="color: #86047d; text-decoration: none;">${data.Email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Phone:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="tel:${data.Phone}" style="color: #86047d; text-decoration: none;">${data.Phone}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0;">
+                    <strong style="color: #475569;">Applied:</strong>
+                  </td>
+                  <td style="padding: 8px 0; text-align: right;">
+                    <span style="color: #1e293b;">${data.Timestamp}</span>
+                  </td>
+                </tr>
+              </table>
+              
+              <!-- Action Buttons -->
+              <div style="text-align: center; margin-top: 24px;">
+                <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #86047d, #45073c); color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 10px;">
+                  📄 View Resume
+                </a>
+                <a href="mailto:${data.Email}?subject=Re: Your Application for ${data.Position}" style="display: inline-block; background: #45073c; color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                  ✉️ Reply to Candidate
+                </a>
+              </div>
+              
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8fafc; padding: 20px 40px; text-align: center; border-radius: 0 0 8px 8px;">
+              <p style="margin: 0; color: #94a3b8; font-size: 12px;">
+                This is an automated notification from your Career Application System
+              </p>
+            </td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL_CAREER,
+      subject: subject,
+      htmlBody: htmlBody
+    });
+    
+    Logger.log("✅ Career notification email sent successfully");
+  } catch (err) {
+    Logger.log("⚠️ Failed to send career notification email: " + err.message);
+  }
+}
+
+/**
+ * Send Contact Form Notification Email
+ */
+function sendContactNotificationEmail(data) {
+  try {
+    const subject = `📩 New Contact Message from ${data.FullName}`;
+    
+    const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #86047d, #45073c); padding: 32px 40px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
+                📩 New Contact Message
+              </h1>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 32px 40px;">
+              
+              <!-- Contact Information -->
+              <h3 style="margin: 0 0 16px 0; color: #86047d; font-size: 16px;">Contact Information</h3>
+              
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Name:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <span style="color: #1e293b;">${data.FullName}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Email:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="mailto:${data.Email}" style="color: #86047d; text-decoration: none;">${data.Email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Phone:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <a href="tel:${data.Phone}" style="color: #86047d; text-decoration: none;">${data.Phone}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                    <strong style="color: #475569;">Subject:</strong>
+                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
+                    <span style="color: #1e293b;">${data.Subject}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0;">
+                    <strong style="color: #475569;">Received:</strong>
+                  </td>
+                  <td style="padding: 8px 0; text-align: right;">
+                    <span style="color: #1e293b;">${data.Timestamp}</span>
+                  </td>
+                </tr>
+              </table>
+              
+              <!-- Message Content -->
+              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
+                <p style="margin: 0 0 8px 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Message</p>
+                <p style="margin: 0; color: #1e293b; white-space: pre-wrap; line-height: 1.6;">${data.Message}</p>
+              </div>
+              
+              <!-- Action Button -->
+              <div style="text-align: center; margin-top: 24px;">
+                <a href="mailto:${data.Email}?subject=Re: ${data.Subject}" style="display: inline-block; background: linear-gradient(135deg, #86047d, #45073c); color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                  ✉️ Reply via Email
+                </a>
+              </div>
+              
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8fafc; padding: 20px 40px; text-align: center; border-radius: 0 0 8px 8px;">
+              <p style="margin: 0; color: #94a3b8; font-size: 12px;">
+                This is an automated notification from your Contact Form System
+              </p>
+            </td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL_CONTACT,
+      subject: subject,
+      htmlBody: htmlBody
+    });
+    
+    Logger.log("✅ Contact notification email sent successfully");
+  } catch (err) {
+    Logger.log("⚠️ Failed to send contact notification email: " + err.message);
+  }
+}
+
+/**
+ * ============================================================================
+ * ERROR NOTIFICATION FUNCTIONS
+ * ============================================================================
+ */
+
+/**
+ * Send error notification for referrals
+ */
+function sendReferralErrorEmail(data) {
+  try {
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL_REFERRAL,
+      subject: "❌ Employee Referral Error",
+      body: `Error processing employee referral.\n\nReferrer: ${data.referrer_name || "Unknown"}\nCandidate: ${data.candidate_name || "Unknown"}\nTime: ${new Date().toISOString()}`
+    });
+    Logger.log("✅ Referral error notification sent");
+  } catch (err) {
+    Logger.log("⚠️ Failed to send referral error email: " + err.message);
+  }
+}
+
+/**
+ * Send error notification for career applications
+ */
+function sendCareerErrorEmail(data) {
+  try {
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL_CAREER,
+      subject: "❌ Career Application Error",
+      body: `Error processing career application.\n\nApplicant: ${data.name || "Unknown"}\nEmail: ${data.email || "Unknown"}\nTime: ${new Date().toISOString()}`
+    });
+    Logger.log("✅ Career error notification sent");
+  } catch (err) {
+    Logger.log("⚠️ Failed to send career error email: " + err.message);
+  }
+}
+
+/**
+ * Send error notification for contact form
+ */
+function sendContactErrorEmail(data) {
+  try {
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL_CONTACT,
+      subject: "❌ Contact Form Error",
+      body: `Error processing contact form submission.\n\nName: ${data.fullName || data.name || "Unknown"}\nEmail: ${data.email || "Unknown"}\nTime: ${new Date().toISOString()}`
+    });
+    Logger.log("✅ Contact error notification sent");
+  } catch (err) {
+    Logger.log("⚠️ Failed to send contact error email: " + err.message);
+  }
+}
+
+/**
+ * ============================================================================
+ * UTILITY FUNCTIONS
+ * ============================================================================
+ */
+
+/**
+ * Test configuration - Run this to verify your setup
+ * Instructions: In Apps Script editor, click the function dropdown and select testConfiguration, then click Run
+ */
+function testConfiguration() {
+  try {
+    Logger.log("🧪 ========== TESTING CONFIGURATION ==========");
+    
+    // Test Spreadsheet access
+    Logger.log("Testing Spreadsheet access...");
+    const doc = SpreadsheetApp.openById(SPREADSHEET_ID);
+    Logger.log(`✅ Spreadsheet accessible: "${doc.getName()}"`);
+    
+    // Test/Create Career Sheet
+    let careerSheet = doc.getSheetByName(CAREER_SHEET_NAME);
+    if (!careerSheet) {
+      careerSheet = doc.insertSheet(CAREER_SHEET_NAME);
+      Logger.log(`✅ Created Career sheet: "${CAREER_SHEET_NAME}"`);
+    } else {
+      Logger.log(`✅ Career sheet exists: "${CAREER_SHEET_NAME}"`);
+    }
+    
+    // Test/Create Contact Sheet
+    let contactSheet = doc.getSheetByName(CONTACT_SHEET_NAME);
+    if (!contactSheet) {
+      contactSheet = doc.insertSheet(CONTACT_SHEET_NAME);
+      Logger.log(`✅ Created Contact sheet: "${CONTACT_SHEET_NAME}"`);
+    } else {
+      Logger.log(`✅ Contact sheet exists: "${CONTACT_SHEET_NAME}"`);
+    }
+    
+    // Test/Create Referral Sheet
+    let referralSheet = doc.getSheetByName(REFERRAL_SHEET_NAME);
+    if (!referralSheet) {
+      referralSheet = doc.insertSheet(REFERRAL_SHEET_NAME);
+      Logger.log(`✅ Created Referral sheet: "${REFERRAL_SHEET_NAME}"`);
+    } else {
+      Logger.log(`✅ Referral sheet exists: "${REFERRAL_SHEET_NAME}"`);
+    }
+    
+    // Test Drive Folder access
+    Logger.log("Testing Drive folder access...");
+    const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
+    Logger.log(`✅ Drive folder accessible: "${folder.getName()}"`);
+    
+    // Test Email configuration
+    Logger.log("Testing email configuration...");
+    Logger.log(`✅ Career notifications: ${RECIPIENT_EMAIL_CAREER}`);
+    Logger.log(`✅ Contact notifications: ${RECIPIENT_EMAIL_CONTACT}`);
+    Logger.log(`✅ Referral notifications: ${RECIPIENT_EMAIL_REFERRAL}`);
+    
+    Logger.log("🎉 ========== ALL TESTS PASSED ==========");
+    Logger.log("Your configuration is correct and ready to use!");
+    
+    return true;
+  } catch (err) {
+    Logger.log(`❌ Configuration test failed: ${err.message}`);
+    Logger.log("Please check your SPREADSHEET_ID and DRIVE_FOLDER_ID values");
+    return false;
+  }
+}
+
+/**
+ * Manual test for Referral Submission
+ * Simulates a referral form submission for testing
+ */
+function testReferralSubmission() {
+  Logger.log("🧪 Testing Employee Referral...");
+  
+  const testEvent = {
+    parameter: {
+      referrer_name: "John Employee",
+      referrer_email: "john.employee@techmynds.com",
+      referrer_phone: "1234567890",
+      relationship: "Former Colleague",
+      candidate_name: "Jane Candidate",
+      candidate_email: "jane.candidate@example.com",
+      candidate_phone: "9876543210",
+      position_referred_for: "Software Developer",
+      notes: "Jane is an excellent developer with 5 years of experience.",
+      fileData: Utilities.base64Encode("Test candidate resume content"),
+      fileName: "jane_candidate_resume.pdf",
+      mimeType: "application/pdf"
+    }
+  };
+  
+  try {
+    const result = handleReferralSubmission(testEvent);
+    Logger.log("✅ Test passed: " + result.getContent());
+  } catch (err) {
+    Logger.log("❌ Test failed: " + err.message);
+  }
+}
+
+/**
+ * Manual test for Career Application
+ * Simulates a career form submission for testing
+ */
+function testCareerSubmission() {
+  Logger.log("🧪 Testing Career Application...");
+  
+  const testEvent = {
+    parameter: {
+      name: "John Doe",
+      email: "john.doe@example.com",
+      phone: "1234567890",
+      job_applied_for: "Software Developer",
+      fileData: Utilities.base64Encode("Test resume content"),
+      fileName: "test_resume.pdf",
+      mimeType: "application/pdf"
+    }
+  };
+  
+  try {
+    const result = handleCareerApplication(testEvent);
+    Logger.log("✅ Test passed: " + result.getContent());
+  } catch (err) {
+    Logger.log("❌ Test failed: " + err.message);
+  }
+}
+
+/**
+ * Manual test for Contact Form
+ * Simulates a contact form submission for testing
+ */
+function testContactSubmission() {
+  Logger.log("🧪 Testing Contact Form...");
+  
+  const testEvent = {
+    parameter: {
+      fullName: "Jane Smith",
+      email: "jane.smith@example.com",
+      phone: "9876543210",
+      subject: "General Inquiry",
+      message: "This is a test message from the contact form."
+    }
+  };
+  
+  try {
+    const result = handleContactForm(testEvent);
+    Logger.log("✅ Test passed: " + result.getContent());
+  } catch (err) {
+    Logger.log("❌ Test failed: " + err.message);
+  }
+}

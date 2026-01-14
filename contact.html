@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - TechMynds</title>
+    <link rel="icon" href="./Images/Techmynds-logo.png" type="image/png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="contact.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-container">
+        <a href="./index.html" class="brand-logo">
+          <img
+            src="./Images/Techmynds-logo.png"
+            alt="TechMynds Logo"
+            class="logo-image"
+          />
+        </a>
+
+        <div class="hamburger-btn" id="hamburgerBtn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./about.html" class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="./career.html" class="nav-link">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Geometric Background -->
+    <div class="geometric-bg">
+      <div class="geo-shape geo-circle-1"></div>
+      <div class="geo-shape geo-circle-2"></div>
+      <div class="geo-shape geo-square-1"></div>
+      <div class="geo-shape geo-triangle-1"></div>
+    </div>
+
+    <!-- Compact Hero -->
+    <section class="compact-hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
+            <h1 class="compact-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+              Get in Touch<br />
+              <span class="highlight-text">With Our Team</span>
+            </h1>
+            <p class="compact-description" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+              We're here to help you succeed. Reach out for staffing solutions, career opportunities, or general inquiries.
+            </p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-easing="ease-out-cubic">
+            <div class="hero-image-wrapper" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+              <img src="./Images/contact-hero.jpg" alt="Contact" class="hero-img" />
+              <div class="floating-badge badge-1" data-aos="fade-down-left" data-aos-duration="600" data-aos-delay="600">
+                <i class="bi bi-telephone-fill"></i>
+                <span>Call Us</span>
+              </div>
+              <div class="floating-badge badge-2" data-aos="fade-up-right" data-aos-duration="600" data-aos-delay="700">
+                <i class="bi bi-envelope-fill"></i>
+                <span>Email</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compact Info Cards -->
+    <section class="info-cards-section">
+      <div class="container">
+        <div class="cards-row">
+          <div class="info-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" data-aos-anchor-placement="top-bottom">
+            <div class="card-icon-wrapper" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+            <div class="card-content">
+              <h4>Email Address</h4>
+              <a href="mailto:info@techmynds.com">info@techmynds.com</a>
+            </div>
+          </div>
+
+          <div class="info-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150" data-aos-anchor-placement="top-bottom">
+            <div class="card-icon-wrapper" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="350">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div class="card-content">
+              <h4>Contact No</h4>
+              <a href="tel:+17325876750">+1 732-587-6750</a>
+            </div>
+          </div>
+
+          <div class="info-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" data-aos-anchor-placement="top-bottom">
+            <div class="card-icon-wrapper" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div class="card-content">
+              <h4>Office Location</h4>
+                <a href="#map-area">1981 J N Pease Pl Ste, 104 Charlotte, NC 28262.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrated Form and Map Section -->
+    <section class="form-map-section" id="map-area">
+      <div class="container-fluid px-0">
+        <div class="row g-0">
+          <!-- Contact Form -->
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="0">
+            <div class="form-box">
+              <div class="form-header-compact" data-aos="fade-down" data-aos-duration="600" data-aos-delay="100">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you soon</p>
+              </div>
+
+              <form id="contactForm" class="compact-form">
+                <div class="form-grid">
+                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+                    <div class="input-wrapper">
+                      <i class="bi bi-person"></i>
+                      <input type="text" name="fullName" placeholder="Full Name *" required />
+                    </div>
+                  </div>
+
+                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
+                    <div class="input-wrapper">
+                      <i class="bi bi-envelope"></i>
+                      <input type="email" name="email" placeholder="Email Address *" required />
+                    </div>
+                  </div>
+
+                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+                    <div class="input-wrapper">
+                      <i class="bi bi-telephone"></i>
+                      <input type="tel" name="phone" placeholder="Phone Number" />
+                    </div>
+                  </div>
+
+                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
+                    <div class="input-wrapper">
+                      <i class="bi bi-tag"></i>
+                      <select name="subject" required>
+                        <option value="">Select Subject *</option>
+                        <option value="staffing">Staffing Solutions</option>
+                        <option value="career">Career Inquiry</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="input-group-wrapper full-width" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
+                    <div class="input-wrapper">
+                      <i class="bi bi-chat-left-text"></i>
+                      <textarea name="message" placeholder="Your Message *" rows="5" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-actions full-width" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="450">
+                    <button type="submit" class="submit-btn-compact">
+                      <span>Send Message</span>
+                      <i class="bi bi-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+            <div class="map-box">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3257.8287373086394!2d-80.7558!3d35.2827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDE2JzU3LjciTiA4MMKwNDUnMjAuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div class="map-info-overlay" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="map-pin">
+                  <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <h5>Visit Our Office</h5>
+                <p>1981 J N Pease Pl Ste, 104<br />Charlotte, NC 28262.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compact CTA -->
+    <section class="compact-cta">
+      <div class="container">
+        <div class="cta-wrapper" data-aos="zoom-in" data-aos-duration="1000">
+          <div class="cta-icon-circle" data-aos="flip-left" data-aos-duration="800" data-aos-delay="200">
+            <i class="bi bi-briefcase-fill"></i>
+          </div>
+          <h3>Looking for Career Opportunities?</h3>
+          <p>
+            Explore exciting positions across IT, healthcare, and engineering sectors. Join our talent network today.
+          </p>
+          <div class="cta-btn-group">
+            <a href="./career.html" class="cta-link">
+              <span>Explore Openings</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="./about.html" class="cta-link cta-link-alt">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-main">
+      <div class="footer-blur-background"></div>
+      <div class="container py-5">
+        <div class="row d-flex justify-content-between align-items-start">
+          <!-- Brand Section -->
+          <div class="col-lg-3 col-md-6 mb-4 text-md-start">
+            <img
+              src="./Images/Techmynds-logo.png"
+              alt="TechMynds Logo"
+              class="footer-logo mb-3"
+            />
+            <p class="company-description">
+              Premier IT staffing and recruitment solutions connecting talent
+              with opportunity across the USA. As a reliable and resourceful
+              organization, we aim to be your talent partner with the focus on
+              your present and future business goals.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-3 mb-4 text-center">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="footer-link">Home</a></li>
+              <li><a href="about.html" class="footer-link">About Us</a></li>
+              <li><a href="career.html" class="footer-link">Career</a></li>
+              <li><a href="contact.html" class="footer-link">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-lg-5 col-md-6 mb-4 footer-contact-info text-md-start">
+            <h5>Connect With Us</h5>
+            <ul class="list-unstyled contact-list">
+              <li class="d-flex mb-2">
+                <i class="fas fa-envelope me-3 mt-1"></i>
+                <a href="mailto:info@techmynds.com" class="footer-link p-0">info@techmynds.com</a>
+              </li>
+              <li class="d-flex mb-2">
+                <i class="fas fa-phone-alt me-3 mt-1"></i>
+                <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-map-marker-alt me-3 mt-1"></i>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer-link p-0"
+                  >1981 J N Pease Pl Ste, 104 Charlotte, NC 28262.</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="footer-divider my-4" />
+
+        <!-- Bottom Section -->
+        <div class="row align-items-center justify-content-between pt-2">
+          <div class="col-md-6 text-center text-md-start mb-2">
+            <p class="copyright-text mb-0">
+              &copy; 2025 TechMynds Inc. All Rights Reserved.
+            </p>
+          </div>
+
+          <div class="col-md-6 text-center text-md-end">
+            <div
+              class="social-links-combined d-flex justify-content-center justify-content-md-end"
+            >
+              <span class="mb-0 me-3 d-none d-sm-block">Follow us on:</span>
+              <a
+                href="https://www.linkedin.com/company/techmyndsinc/"
+                target="_blank"
+                aria-label="LinkedIn"
+                class="social-icon-footer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 100,
+      });
+
+      // Elements
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const navMenu = document.getElementById("navMenu");
+      const mainNav = document.getElementById("mainNav");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      // Hamburger Toggle
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      // Close menu on link click
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburgerBtn.classList.remove("active");
+          navMenu.classList.remove("active");
+        });
+      });
+
+      // Close menu on outside click
+      document.addEventListener("click", (e) => {
+        if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+          hamburgerBtn.classList.remove("active");
+          navMenu.classList.remove("active");
+        }
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          mainNav.classList.add("scrolled");
+        } else {
+          mainNav.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // ============================================================================
+      // GOOGLE APPS SCRIPT INTEGRATION - CONTACT FORM (CORRECTED VERSION)
+      // ============================================================================
+      // 🚨 CRITICAL: This is your actual Google Apps Script Web App URL
+      // DO NOT CHANGE THIS unless you redeploy your Apps Script
+      const CONTACT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcErz2Keus9ipSlIM2INIQuUXavDDCzyxFy63FbMRORg7ZwNp75-8IKTG9QMZ93Y_v/exec";
+      
+      // Debug: Log the script URL on page load
+      console.log("🔗 Contact Script URL:", CONTACT_SCRIPT_URL);
+      
+      // Verification: Check if script URL is configured
+      if (!CONTACT_SCRIPT_URL || CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")) {
+        console.error("⚠️ CRITICAL: Google Apps Script URL not configured!");
+        console.error("Please update CONTACT_SCRIPT_URL with your deployed web app URL");
+      } else {
+        console.log("✅ Script URL is configured");
+      }
+      
+      document.getElementById("contactForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector(".submit-btn-compact");
+        const originalHTML = submitBtn.innerHTML;
+        const formElement = this;
+        
+        console.log("📝 Form submission started");
+        
+        // Validate script URL is configured
+        if (!CONTACT_SCRIPT_URL || CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")) {
+          showNotification("❌ Configuration Error: Script URL not set", "error");
+          console.error("Contact form script URL is not configured");
+          return;
+        }
+        
+        // Disable button and show loading state
+        submitBtn.innerHTML = '<span>Sending...</span> <i class="bi bi-hourglass-split"></i>';
+        submitBtn.style.pointerEvents = 'none';
+        submitBtn.disabled = true;
+        
+        try {
+          // Collect and validate form data
+          const fullName = this.querySelector('input[name="fullName"]').value.trim();
+          const email = this.querySelector('input[name="email"]').value.trim();
+          const phone = this.querySelector('input[name="phone"]').value.trim();
+          const subject = this.querySelector('select[name="subject"]').value;
+          const message = this.querySelector('textarea[name="message"]').value.trim();
+          
+          console.log("📊 Form data collected:");
+          console.log("  Name:", fullName);
+          console.log("  Email:", email);
+          console.log("  Subject:", subject);
+          
+          // Basic validation
+          if (!fullName || !email || !subject || !message) {
+            throw new Error("Please fill in all required fields");
+          }
+          
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            throw new Error("Please enter a valid email address");
+          }
+          
+          // Prepare form data
+          const formData = new URLSearchParams();
+          formData.append('fullName', fullName);
+          formData.append('email', email);
+          formData.append('phone', phone || 'N/A');
+          formData.append('subject', subject);
+          formData.append('message', message);
+          
+          console.log('📤 Submitting to Google Apps Script...');
+          console.log('Target URL:', CONTACT_SCRIPT_URL);
+          
+          // Send to Google Apps Script
+          const response = await fetch(CONTACT_SCRIPT_URL, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // Required for Google Apps Script
+          });
+          
+          // Note: With no-cors mode, we can't read the response
+          // Assume success if no error was thrown
+          console.log('✅ Form submitted successfully to Apps Script');
+          console.log('⏳ Waiting for email to be processed...');
+          console.log('📧 Check your email: johninfant021@gmail.com');
+          console.log('📧 Also check SPAM folder!');
+          
+          // Show success message
+          submitBtn.innerHTML = '<span>Message Sent!</span> <i class="bi bi-check-circle-fill"></i>';
+          submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+          
+          // Show success notification
+          showNotification("✅ Thank you! Your message has been sent successfully.", "success");
+          
+          // Reset form
+          formElement.reset();
+          
+          // Restore button after 3 seconds
+          setTimeout(() => {
+            submitBtn.innerHTML = originalHTML;
+            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+          }, 3000);
+          
+        } catch (error) {
+          console.error('❌ Form submission error:', error);
+          console.error('Error details:', error.message);
+          
+          // Show error message
+          submitBtn.innerHTML = '<span>Failed!</span> <i class="bi bi-exclamation-circle-fill"></i>';
+          submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #c82333)';
+          
+          // Show error notification
+          showNotification("❌ " + error.message, "error");
+          
+          // Restore button after 3 seconds
+          setTimeout(() => {
+            submitBtn.innerHTML = originalHTML;
+            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+          }, 3000);
+        }
+      });
+      
+      /**
+       * Show notification message
+       */
+      function showNotification(message, type = 'info') {
+        console.log(`📢 Notification (${type}):`, message);
+        
+        // Remove existing notification if any
+        const existingNotification = document.querySelector('.form-notification');
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `form-notification notification-${type}`;
+        notification.innerHTML = message;
+        
+        // Style the notification
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 15px 25px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          z-index: 10000;
+          font-weight: 500;
+          animation: slideIn 0.3s ease-out;
+          max-width: 400px;
+          ${type === 'success' ? 'background: linear-gradient(135deg, #28a745, #20c997); color: white;' : ''}
+          ${type === 'error' ? 'background: linear-gradient(135deg, #dc3545, #c82333); color: white;' : ''}
+          ${type === 'info' ? 'background: linear-gradient(135deg, #007bff, #0056b3); color: white;' : ''}
+        `;
+        
+        // Add animation keyframes if not already added
+        if (!document.querySelector('#notification-animation')) {
+          const style = document.createElement('style');
+          style.id = 'notification-animation';
+          style.textContent = `
+            @keyframes slideIn {
+              from {
+                transform: translateX(400px);
+                opacity: 0;
+              }
+              to {
+                transform: translateX(0);
+                opacity: 1;
+              }
+            }
+            @keyframes slideOut {
+              from {
+                transform: translateX(0);
+                opacity: 1;
+              }
+              to {
+                transform: translateX(400px);
+                opacity: 0;
+              }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+          notification.style.animation = 'slideOut 0.3s ease-out';
+          setTimeout(() => {
+            notification.remove();
+          }, 300);
+        }, 5000);
+      }
+
+      // Geometric shapes parallax animation
+      const geoShapes = document.querySelectorAll('.geo-shape');
+      
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        geoShapes.forEach((shape, index) => {
+          const speed = (index + 1) * 0.1;
+          shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+        });
+      });
+      
+      // On page load: Log initial status
+      console.log("=".repeat(60));
+      console.log("📧 CONTACT FORM READY");
+      console.log("=".repeat(60));
+      console.log("Script URL:", CONTACT_SCRIPT_URL);
+      console.log("Status: Ready to submit");
+      console.log("=".repeat(60));
+    </script>
+  </body>
+</html>
