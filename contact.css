@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Lexend", sans-serif;
   /* color: var(--text-dark); */
   overflow-x: hidden;
   background: var(--bg-white);
@@ -89,6 +89,7 @@ body {
 .compact-hero {
   padding: 100px 0 50px;
   position: relative;
+
 }
 
 .compact-hero .container {
@@ -697,6 +698,7 @@ body {
 
 @media (max-width: 576px) {
   .compact-hero {
+    margin-top: 50px;
     padding: 60px 0 25px;
   }
   

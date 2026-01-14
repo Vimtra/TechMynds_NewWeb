@@ -25,18 +25,26 @@
    GLOBAL FONT
    ================================ */
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
   font-family: "Lexend", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* text-align: justify; */
 }
 
 /* ================================
    RESPONSIVE TEXT ALIGNMENT
    ================================ */
-/* Paragraphs - Always Justified */
-p, .referral-text p, .job-description p, .card-details, .company-description {
-  text-align: justify !important;
-}
 
-/* Headings - Center on mobile, Left on desktop */
+
+
+/* Headings - Center on mobile, Left on desktop
 h1, h2, h3, h4, h5, h6, 
 .listings-title, 
 .job-header-title, 
@@ -58,7 +66,8 @@ h1, h2, h3, h4, h5, h6,
   h1, .listings-title {
     text-align: center;
   }
-}
+} */
+
 
 /* ================================
    HERO SECTION
@@ -281,12 +290,12 @@ h1, h2, h3, h4, h5, h6,
 .jobs-section {
   background: var(--light-bg);
   padding: 80px 20px;
-  margin: 60px 0;
+  margin: 30px 0;
 }
 
 .referral-section {
   background: var(--white);
-  padding: 80px 20px;
+  /* padding: 40px 20px; */
   /* margin: 30px 0; */
 }
 
@@ -475,6 +484,7 @@ h1, h2, h3, h4, h5, h6,
 
 .job-title-section span {
   color: var(--primary-color);
+  text-align: left;
 }
 
 .meta-grid {
@@ -614,14 +624,14 @@ h1, h2, h3, h4, h5, h6,
 .referral-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 40px;
   align-items: center;
 }
 
 .referral-text {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .referral-text p {
@@ -1199,7 +1209,7 @@ select.form-input:hover {
   }
 
   .job-header-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .job-header-meta {
@@ -1215,6 +1225,10 @@ select.form-input:hover {
     font-size: 1.3rem;
     text-align: left;
   }
+  .job-title-section span {
+    font-size: 1rem;
+    text-align: left;
+}
 }
 
 @media (max-width: 600px) {

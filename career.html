@@ -81,9 +81,23 @@
 
       /* Error shake animation */
       @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-5px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(5px);
+        }
       }
 
       .is-invalid {
@@ -527,6 +541,75 @@
         </div>
       </div>
     </div>
+        <!-- Footer (copied from index.html) -->
+    <footer class="footer-main">
+      <div class="footer-blur-background"></div>
+      <div class="container py-5">
+        <div class="row d-flex justify-content-between align-items-start">
+          <!-- Brand Section -->
+          <div class="col-lg-3 col-md-6 mb-4 text-md-start">
+            <img
+              src="./Images/Techmynds-logo.png"
+              alt="TechMynds Logo"
+              class="footer-logo mb-3"
+            />
+            <p class="company-description">
+              Premier IT staffing and recruitment solutions connecting talent
+              with opportunity across the USA. As a reliable and resourceful
+              organization, we aim to be your talent partner with the focus on
+              your present and future business goals.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-3 mb-4 text-center">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="footer-link">Home</a></li>
+              <li><a href="about.html" class="footer-link">About Us</a></li>
+              <li><a href="career.html" class="footer-link">Career</a></li>
+              <li><a href="contact.html" class="footer-link">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-lg-5 col-md-6 mb-4 footer-contact-info text-md-start">
+            <h5>Connect With Us</h5>
+            <ul class="list-unstyled contact-list">
+              <li class="d-flex mb-2">
+                <i class="fas fa-envelope me-3 mt-1"></i>
+                <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
+              </li>
+              <li class="d-flex mb-2">
+                <i class="fas fa-phone-alt me-3 mt-1"></i>
+                <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-map-marker-alt me-3 mt-1"></i>
+                <a href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262" target="_blank" rel="noopener noreferrer" class="footer-link p-0">1981 J N Pease Pl Ste, 104 Charlotte, NC 28262</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="footer-divider my-4" />
+
+        <!-- Bottom Section -->
+        <div class="row align-items-center justify-content-between pt-2">
+          <div class="col-md-6 text-center text-md-start mb-2">
+            <p class="copyright-text mb-0">&copy; 2025 TechMynds Inc. All Rights Reserved.</p>
+          </div>
+
+          <div class="col-md-6 text-center text-md-end">
+            <div class="social-links-combined d-flex justify-content-center justify-content-md-end">
+              <span class="mb-0 me-3 d-none d-sm-block">Follow us on:</span>
+              <a href="https://www.linkedin.com/company/techmyndsinc/" target="_blank" aria-label="LinkedIn" class="social-icon-footer"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -553,7 +636,8 @@
       //    - Netlify, Vercel, or similar services
       //    - Any web server with a real domain name
       // ============================================================================
-      const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyulZssC79kZBNg6HovrSBY-zlkNAikGMq0FFw1zu9M39Oynb8IHK1nOzXw89ZEP8Eu/exec";
+      const GOOGLE_APPS_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbyulZssC79kZBNg6HovrSBY-zlkNAikGMq0FFw1zu9M39Oynb8IHK1nOzXw89ZEP8Eu/exec";
       const JOB_APPLICATION_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
       const REFERRAL_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
 
@@ -815,27 +899,33 @@
       const validationRules = {
         name: {
           pattern: /^[a-zA-Z\s'-]{2,50}$/,
-          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
+          message:
+            "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
         },
         referrer_name: {
           pattern: /^[a-zA-Z\s'-]{2,50}$/,
-          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
+          message:
+            "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
         },
         candidate_name: {
           pattern: /^[a-zA-Z\s'-]{2,50}$/,
-          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
+          message:
+            "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
         },
         email: {
           pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          message: "Please enter a valid email address (e.g., john@example.com)",
+          message:
+            "Please enter a valid email address (e.g., john@example.com)",
         },
         referrer_email: {
           pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          message: "Please enter a valid email address (e.g., john@example.com)",
+          message:
+            "Please enter a valid email address (e.g., john@example.com)",
         },
         candidate_email: {
           pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          message: "Please enter a valid email address (e.g., john@example.com)",
+          message:
+            "Please enter a valid email address (e.g., john@example.com)",
         },
         phone: {
           pattern: /^\d{10}$/,
@@ -854,12 +944,12 @@
       // File validation rules
       const fileValidationRules = {
         maxSize: 10 * 1024 * 1024, // 10MB
-        allowedExtensions: ['.pdf', '.doc', '.docx'],
+        allowedExtensions: [".pdf", ".doc", ".docx"],
         allowedMimeTypes: [
-          'application/pdf',
-          'application/msword',
-          'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-        ]
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ],
       };
 
       function showError(inputElement, message) {
@@ -945,28 +1035,39 @@
         }
 
         const file = fileInput.files[0];
-        
+
         // Check file size
         if (file.size > fileValidationRules.maxSize) {
           const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-          const maxSizeMB = (fileValidationRules.maxSize / (1024 * 1024)).toFixed(0);
-          showError(fileInput, `File size (${sizeMB}MB) exceeds maximum allowed size of ${maxSizeMB}MB`);
+          const maxSizeMB = (
+            fileValidationRules.maxSize /
+            (1024 * 1024)
+          ).toFixed(0);
+          showError(
+            fileInput,
+            `File size (${sizeMB}MB) exceeds maximum allowed size of ${maxSizeMB}MB`
+          );
           return false;
         }
 
         // Check file extension
         const fileName = file.name.toLowerCase();
-        const fileExtension = '.' + fileName.split('.').pop();
+        const fileExtension = "." + fileName.split(".").pop();
         if (!fileValidationRules.allowedExtensions.includes(fileExtension)) {
           showError(
             fileInput,
-            `Invalid file type. Please upload ${fileValidationRules.allowedExtensions.join(', ')} files only`
+            `Invalid file type. Please upload ${fileValidationRules.allowedExtensions.join(
+              ", "
+            )} files only`
           );
           return false;
         }
 
         // Check MIME type
-        if (file.type && !fileValidationRules.allowedMimeTypes.includes(file.type)) {
+        if (
+          file.type &&
+          !fileValidationRules.allowedMimeTypes.includes(file.type)
+        ) {
           showError(
             fileInput,
             `Invalid file format. Please upload PDF, DOC, or DOCX files only`
@@ -999,7 +1100,7 @@
 
       function setupRealtimeValidation(formId) {
         const form = document.getElementById(formId);
-        
+
         // Text and email inputs
         const inputs = form.querySelectorAll(
           'input[name="name"], input[name="email"], input[name="phone"], input[name="referrer_name"], input[name="referrer_email"], input[name="referrer_phone"], input[name="candidate_name"], input[name="candidate_email"], input[name="candidate_phone"]'
@@ -1030,7 +1131,7 @@
         });
 
         // Select dropdowns validation
-        const selectInputs = form.querySelectorAll('select');
+        const selectInputs = form.querySelectorAll("select");
         selectInputs.forEach((select) => {
           select.addEventListener("change", function () {
             validateSelect(this);
@@ -1192,11 +1293,11 @@
                 "Content-Type": "application/x-www-form-urlencoded",
               },
               body: new URLSearchParams(formData),
-              redirect: "follow"
+              redirect: "follow",
             });
 
             console.log("📡 Response received");
-            
+
             // With no-cors mode, we can't read the response, so we assume success if no error thrown
             // The form submission was successful if we reach this point
 
@@ -1215,12 +1316,14 @@
             console.error("Error message:", error.message);
 
             let errorMessage = error.message;
-            
+
             // Provide more helpful error messages for common issues
             if (error.name === "TypeError" && error.message.includes("fetch")) {
-              errorMessage = "Network error: Unable to connect to the server. Please check your internet connection and try again.";
+              errorMessage =
+                "Network error: Unable to connect to the server. Please check your internet connection and try again.";
             } else if (error.message.includes("CORS")) {
-              errorMessage = "CORS error: The form submission was blocked. Please contact support.";
+              errorMessage =
+                "CORS error: The form submission was blocked. Please contact support.";
             }
 
             const msgBox = document.createElement("div");
@@ -1352,9 +1455,11 @@
               candidate_name: candNameInput.value,
               candidate_email: candEmailInput.value,
               candidate_phone: candPhoneInput.value,
-              position_referred_for: document.getElementById("refCandidatePosition").value,
-              relationship: "",  // Optional field not in form
-              notes: "",  // Optional field not in form
+              position_referred_for: document.getElementById(
+                "refCandidatePosition"
+              ).value,
+              relationship: "", // Optional field not in form
+              notes: "", // Optional field not in form
               fileName: file.name,
               fileData: base64File,
               mimeType: file.type || "application/pdf",
@@ -1371,11 +1476,11 @@
                 "Content-Type": "application/x-www-form-urlencoded",
               },
               body: new URLSearchParams(formData),
-              redirect: "follow"
+              redirect: "follow",
             });
 
             console.log("📡 Response received");
-            
+
             // With no-cors mode, we can't read the response, so we assume success if no error thrown
             // The form submission was successful if we reach this point
 
@@ -1394,12 +1499,14 @@
             console.error("Error message:", error.message);
 
             let errorMessage = error.message;
-            
+
             // Provide more helpful error messages for common issues
             if (error.name === "TypeError" && error.message.includes("fetch")) {
-              errorMessage = "Network error: Unable to connect to the server. Please check your internet connection and try again.";
+              errorMessage =
+                "Network error: Unable to connect to the server. Please check your internet connection and try again.";
             } else if (error.message.includes("CORS")) {
-              errorMessage = "CORS error: The form submission was blocked. Please contact support.";
+              errorMessage =
+                "CORS error: The form submission was blocked. Please contact support.";
             }
 
             const msgBox = document.createElement("div");
@@ -1510,102 +1617,17 @@
       }
     </script>
 
-    <!-- Footer -->
-    <footer class="footer-main">
-      <div class="footer-blur-background"></div>
-      <div class="container py-5">
-        <div class="row d-flex justify-content-between align-items-start">
-          <!-- Brand Section -->
-          <div class="col-lg-3 col-md-6 mb-4 text-md-start">
-            <img
-              src="./Images/Techmynds-logo.png"
-              alt="TechMynds Logo"
-              class="footer-logo mb-3"
-            />
-            <p class="company-description">
-              Premier IT staffing and recruitment solutions connecting talent
-              with opportunity across the USA. As a reliable and resourceful
-              organization, we aim to be your talent partner with the focus on
-              your present and future business goals.
-            </p>
-          </div>
-
-          <!-- Quick Links -->
-          <div class="col-lg-2 col-md-3 mb-4 text-center">
-            <h5>Quick Links</h5>
-            <ul class="list-unstyled">
-              <li><a href="index.html" class="footer-link">Home</a></li>
-              <li><a href="about.html" class="footer-link">About Us</a></li>
-              <li><a href="career.html" class="footer-link">Career</a></li>
-              <li><a href="contact.html" class="footer-link">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact Info -->
-          <div class="col-lg-5 col-md-6 mb-4 footer-contact-info text-md-start">
-            <h5>Connect With Us</h5>
-            <ul class="list-unstyled contact-list">
-              <li class="d-flex mb-2">
-                <i class="fas fa-envelope me-3 mt-1"></i>
-                <a href="/cdn-cgi/l/email-protection#0d657f4d79686e65607463697e64636e236e6260" class="footer-link p-0"><span class="__cf_email__" data-cfemail="60081220140503080d190e0413090e034e030f0d">[email&#160;protected]</span></a
-                >
-              </li>
-              <li class="d-flex mb-2">
-                <i class="fas fa-phone-alt me-3 mt-1"></i>
-                <a href="tel:+17325876750" class="footer-link p-0"
-                  >+1 732-587-6750</a
-                >
-              </li>
-              <li class="d-flex">
-                <i class="fas fa-map-marker-alt me-3 mt-1"></i>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="footer-link p-0"
-                  >1981 J N Pease Pl Ste, 104 Charlotte, NC 28262</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <hr class="footer-divider my-4" />
-
-        <!-- Bottom Section -->
-        <div class="row align-items-center justify-content-between pt-2">
-          <div class="col-md-6 text-center text-md-start mb-2">
-            <p class="copyright-text mb-0">
-              &copy; 2025 TechMynds Inc. All Rights Reserved.
-            </p>
-          </div>
-
-          <div class="col-md-6 text-center text-md-end">
-            <div
-              class="social-links-combined d-flex justify-content-center justify-content-md-end"
-            >
-              <span class="mb-0 me-3 d-none d-sm-block">Follow us on:</span>
-              <a
-                href="https://www.linkedin.com/company/techmyndsinc/"
-                target="_blank"
-                aria-label="LinkedIn"
-                class="social-icon-footer"
-                ><i class="fab fa-linkedin-in"></i
-         ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 800,
         once: true,
-        offset: 100
+        offset: 100,
       });
     </script>
   </body>

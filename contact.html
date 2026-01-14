@@ -11,6 +11,12 @@
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Lexend:wght@375;400;500;600;700;800;900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
@@ -20,6 +26,68 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="contact.css" />
+    <style>
+      /* Enhanced Form Validation Styles */
+      .input-wrapper input.is-invalid,
+      .input-wrapper textarea.is-invalid,
+      .input-wrapper select.is-invalid {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+      }
+
+      .input-wrapper input.is-valid,
+      .input-wrapper textarea.is-valid,
+      .input-wrapper select.is-valid {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+      }
+
+      .invalid-feedback {
+        display: block;
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        padding-left: 2.5rem;
+      }
+
+      .invalid-feedback::before {
+        content: "⚠ ";
+        margin-right: 0.25rem;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      /* Smooth transitions for validation states */
+      .input-wrapper input,
+      .input-wrapper textarea,
+      .input-wrapper select {
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+
+      /* Error shake animation */
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+
+      .is-invalid {
+        animation: shake 0.5s;
+      }
+
+      /* Success checkmark for valid fields */
+      .is-valid ~ i {
+        color: #28a745;
+      }
+
+      /* Error icon for invalid fields */
+      .is-invalid ~ i {
+        color: #dc3545;
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -104,7 +172,7 @@
             </div>
             <div class="card-content">
               <h4>Email Address</h4>
-              <a href="mailto:info@techmynds.com">info@techmynds.com</a>
+              <a href="mailto:hr@techmyndsinc.com"><span class="__cf_email__" data-cfemail="cea7a0a8a18ebaabada6a3b7a0aabde0ada1a3">hr@techmyndsinc.com</span></a>
             </div>
           </div>
 
@@ -245,7 +313,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
+        <!-- Footer (copied from index.html) -->
     <footer class="footer-main">
       <div class="footer-blur-background"></div>
       <div class="container py-5">
@@ -282,7 +350,7 @@
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
                 <i class="fas fa-envelope me-3 mt-1"></i>
-                <a href="mailto:info@techmynds.com" class="footer-link p-0">info@techmynds.com</a>
+                <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
               </li>
               <li class="d-flex mb-2">
                 <i class="fas fa-phone-alt me-3 mt-1"></i>
@@ -290,13 +358,7 @@
               </li>
               <li class="d-flex">
                 <i class="fas fa-map-marker-alt me-3 mt-1"></i>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="footer-link p-0"
-                  >1981 J N Pease Pl Ste, 104 Charlotte, NC 28262.</a
-                >
+                <a href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262" target="_blank" rel="noopener noreferrer" class="footer-link p-0">1981 J N Pease Pl Ste, 104 Charlotte, NC 28262</a>
               </li>
             </ul>
           </div>
@@ -307,30 +369,20 @@
         <!-- Bottom Section -->
         <div class="row align-items-center justify-content-between pt-2">
           <div class="col-md-6 text-center text-md-start mb-2">
-            <p class="copyright-text mb-0">
-              &copy; 2025 TechMynds Inc. All Rights Reserved.
-            </p>
+            <p class="copyright-text mb-0">&copy; 2025 TechMynds Inc. All Rights Reserved.</p>
           </div>
 
           <div class="col-md-6 text-center text-md-end">
-            <div
-              class="social-links-combined d-flex justify-content-center justify-content-md-end"
-            >
+            <div class="social-links-combined d-flex justify-content-center justify-content-md-end">
               <span class="mb-0 me-3 d-none d-sm-block">Follow us on:</span>
-              <a
-                href="https://www.linkedin.com/company/techmyndsinc/"
-                target="_blank"
-                aria-label="LinkedIn"
-                class="social-icon-footer"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
+              <a href="https://www.linkedin.com/company/techmyndsinc/" target="_blank" aria-label="LinkedIn" class="social-icon-footer"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       // Initialize AOS
@@ -391,9 +443,188 @@
       // ============================================================================
       // GOOGLE APPS SCRIPT INTEGRATION - CONTACT FORM (CORRECTED VERSION)
       // ============================================================================
-      // 🚨 CRITICAL: This is your actual Google Apps Script Web App URL
-      // DO NOT CHANGE THIS unless you redeploy your Apps Script
-      const CONTACT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcErz2Keus9ipSlIM2INIQuUXavDDCzyxFy63FbMRORg7ZwNp75-8IKTG9QMZ93Y_v/exec";
+      // 🚨 UPDATED: This is your actual Google Apps Script Web App URL
+      const CONTACT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyulZssC79kZBNg6HovrSBY-zlkNAikGMq0FFw1zu9M39Oynb8IHK1nOzXw89ZEP8Eu/exec";
+
+      // ============================================================================
+      // FORM VALIDATION - ENHANCED
+      // ============================================================================
+      const validationRules = {
+        fullName: {
+          pattern: /^[a-zA-Z\s'-]{2,50}$/,
+          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes"
+        },
+        email: {
+          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          message: "Please enter a valid email address (e.g., john@example.com)"
+        },
+        phone: {
+          pattern: /^\d{10}$/,
+          message: "Please enter exactly 10 digits (e.g., 1234567890)"
+        },
+        message: {
+          minLength: 10,
+          maxLength: 1000,
+          message: "Message must be between 10 and 1000 characters"
+        }
+      };
+
+      function showError(inputElement, message) {
+        removeError(inputElement);
+        inputElement.classList.add("is-invalid");
+        inputElement.classList.remove("is-valid");
+
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "invalid-feedback";
+        errorDiv.textContent = message;
+        errorDiv.setAttribute("data-error-for", inputElement.name);
+
+        inputElement.closest('.input-wrapper').appendChild(errorDiv);
+      }
+
+      function removeError(inputElement) {
+        inputElement.classList.remove("is-invalid");
+        inputElement.classList.add("is-valid");
+
+        const errorDiv = inputElement.closest('.input-wrapper').querySelector(`[data-error-for="${inputElement.name}"]`);
+        if (errorDiv) {
+          errorDiv.remove();
+        }
+      }
+
+      function clearAllErrors() {
+        document.querySelectorAll('.is-invalid, .is-valid').forEach(el => {
+          el.classList.remove('is-invalid', 'is-valid');
+        });
+        document.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
+      }
+
+      function validateField(inputElement) {
+        const fieldName = inputElement.name;
+        const value = inputElement.value.trim();
+
+        // Check if field is required and empty
+        if (!value && inputElement.required) {
+          const fieldLabel = inputElement.placeholder.replace('*', '').trim() || 'This field';
+          showError(inputElement, `${fieldLabel} is required`);
+          return false;
+        }
+
+        // Skip validation if field is empty and not required
+        if (!value && !inputElement.required) {
+          removeError(inputElement);
+          return true;
+        }
+
+        // Apply validation rules
+        if (validationRules[fieldName]) {
+          const rule = validationRules[fieldName];
+          
+          // Pattern validation
+          if (rule.pattern && !rule.pattern.test(value)) {
+            showError(inputElement, rule.message);
+            return false;
+          }
+
+          // Length validation (for textarea)
+          if (rule.minLength && value.length < rule.minLength) {
+            showError(inputElement, `Message must be at least ${rule.minLength} characters`);
+            return false;
+          }
+
+          if (rule.maxLength && value.length > rule.maxLength) {
+            showError(inputElement, `Message must not exceed ${rule.maxLength} characters`);
+            return false;
+          }
+        }
+
+        removeError(inputElement);
+        return true;
+      }
+
+      function validateSelect(selectElement) {
+        const value = selectElement.value.trim();
+
+        if (!value && selectElement.required) {
+          showError(selectElement, 'Please select a subject');
+          return false;
+        }
+
+        removeError(selectElement);
+        return true;
+      }
+
+      // Setup real-time validation
+      function setupRealtimeValidation() {
+        const form = document.getElementById('contactForm');
+        
+        // Text and email inputs
+        const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+        inputs.forEach(input => {
+          input.addEventListener('blur', function() {
+            if (this.value.trim()) {
+              validateField(this);
+            }
+          });
+
+          input.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+              removeError(this);
+            }
+          });
+        });
+
+        // Textarea
+        const textarea = form.querySelector('textarea');
+        if (textarea) {
+          textarea.addEventListener('blur', function() {
+            if (this.value.trim()) {
+              validateField(this);
+            }
+          });
+
+          textarea.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+              removeError(this);
+            }
+          });
+        }
+
+        // Select dropdown
+        const select = form.querySelector('select[name="subject"]');
+        if (select) {
+          select.addEventListener('change', function() {
+            validateSelect(this);
+          });
+        }
+      }
+
+      // Auto-format phone number
+      function setupPhoneFormatting() {
+        const phoneInput = document.querySelector('input[name="phone"]');
+        if (phoneInput) {
+          phoneInput.addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 10) {
+              value = value.slice(0, 10);
+            }
+            
+            if (value.length >= 6) {
+              this.value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6)}`;
+            } else if (value.length >= 3) {
+              this.value = `(${value.slice(0,3)}) ${value.slice(3)}`;
+            } else {
+              this.value = value;
+            }
+          });
+        }
+      }
+
+      // Initialize validation on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        setupRealtimeValidation();
+        setupPhoneFormatting();
+      });
       
       // Debug: Log the script URL on page load
       console.log("🔗 Contact Script URL:", CONTACT_SCRIPT_URL);
@@ -414,6 +645,34 @@
         const formElement = this;
         
         console.log("📝 Form submission started");
+
+        // Get form inputs
+        const fullNameInput = this.querySelector('input[name="fullName"]');
+        const emailInput = this.querySelector('input[name="email"]');
+        const phoneInput = this.querySelector('input[name="phone"]');
+        const subjectInput = this.querySelector('select[name="subject"]');
+        const messageInput = this.querySelector('textarea[name="message"]');
+
+        // Validate all fields
+        const isNameValid = validateField(fullNameInput);
+        const isEmailValid = validateField(emailInput);
+        const isPhoneValid = phoneInput.value.trim() ? validateField(phoneInput) : true; // Phone is optional
+        const isSubjectValid = validateSelect(subjectInput);
+        const isMessageValid = validateField(messageInput);
+
+        // If any validation fails, scroll to first error
+        if (!isNameValid || !isEmailValid || !isPhoneValid || !isSubjectValid || !isMessageValid) {
+          const firstError = this.querySelector(".is-invalid");
+          if (firstError) {
+            firstError.focus();
+            firstError.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+          showNotification("❌ Please fix the errors in the form", "error");
+          return;
+        }
         
         // Validate script URL is configured
         if (!CONTACT_SCRIPT_URL || CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")) {
@@ -428,28 +687,17 @@
         submitBtn.disabled = true;
         
         try {
-          // Collect and validate form data
-          const fullName = this.querySelector('input[name="fullName"]').value.trim();
-          const email = this.querySelector('input[name="email"]').value.trim();
-          const phone = this.querySelector('input[name="phone"]').value.trim();
-          const subject = this.querySelector('select[name="subject"]').value;
-          const message = this.querySelector('textarea[name="message"]').value.trim();
+          // Collect form data
+          const fullName = fullNameInput.value.trim();
+          const email = emailInput.value.trim();
+          const phone = phoneInput.value.replace(/\D/g, ''); // Remove formatting
+          const subject = subjectInput.value;
+          const message = messageInput.value.trim();
           
           console.log("📊 Form data collected:");
           console.log("  Name:", fullName);
           console.log("  Email:", email);
           console.log("  Subject:", subject);
-          
-          // Basic validation
-          if (!fullName || !email || !subject || !message) {
-            throw new Error("Please fill in all required fields");
-          }
-          
-          // Email validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            throw new Error("Please enter a valid email address");
-          }
           
           // Prepare form data
           const formData = new URLSearchParams();
@@ -466,7 +714,8 @@
           const response = await fetch(CONTACT_SCRIPT_URL, {
             method: 'POST',
             body: formData,
-            mode: 'no-cors' // Required for Google Apps Script
+            mode: 'no-cors', // Required for Google Apps Script
+            redirect: 'follow'
           });
           
           // Note: With no-cors mode, we can't read the response
@@ -483,8 +732,9 @@
           // Show success notification
           showNotification("✅ Thank you! Your message has been sent successfully.", "success");
           
-          // Reset form
+          // Reset form and clear validation
           formElement.reset();
+          clearAllErrors();
           
           // Restore button after 3 seconds
           setTimeout(() => {
@@ -600,14 +850,6 @@
           shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
         });
       });
-      
-      // On page load: Log initial status
-      console.log("=".repeat(60));
-      console.log("📧 CONTACT FORM READY");
-      console.log("=".repeat(60));
-      console.log("Script URL:", CONTACT_SCRIPT_URL);
-      console.log("Status: Ready to submit");
-      console.log("=".repeat(60));
     </script>
   </body>
 </html>
