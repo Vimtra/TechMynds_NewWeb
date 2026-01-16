@@ -11,7 +11,7 @@
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Lexend:wght@375;400;500;600;700;800;900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Quicksand&display=swap"
@@ -69,9 +69,23 @@
 
       /* Error shake animation */
       @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-5px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(5px);
+        }
       }
 
       .is-invalid {
@@ -136,23 +150,64 @@
     <section class="compact-hero">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
-            <h1 class="compact-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <div
+            class="col-lg-6"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-easing="ease-out-cubic"
+          >
+            <h1
+              class="compact-title"
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="100"
+            >
               Get in Touch<br />
               <span class="highlight-text">With Our Team</span>
             </h1>
-            <p class="compact-description" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-              We're here to help you succeed. Reach out for staffing solutions, career opportunities, or general inquiries.
+            <p
+              class="compact-description"
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="200"
+            >
+              We're here to help you succeed. Reach out for staffing solutions,
+              career opportunities, or general inquiries.
             </p>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-easing="ease-out-cubic">
-            <div class="hero-image-wrapper" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
-              <img src="./Images/contact-hero.jpg" alt="Contact" class="hero-img" />
-              <div class="floating-badge badge-1" data-aos="fade-down-left" data-aos-duration="600" data-aos-delay="600">
+          <div
+            class="col-lg-6"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            data-aos-easing="ease-out-cubic"
+          >
+            <div
+              class="hero-image-wrapper"
+              data-aos="zoom-in"
+              data-aos-duration="1000"
+              data-aos-delay="400"
+            >
+              <img
+                src="./Images/contact-hero.jpg"
+                alt="Contact"
+                class="hero-img"
+              />
+              <div
+                class="floating-badge badge-1"
+                data-aos="fade-down-left"
+                data-aos-duration="600"
+                data-aos-delay="600"
+              >
                 <i class="bi bi-telephone-fill"></i>
                 <span>Call Us</span>
               </div>
-              <div class="floating-badge badge-2" data-aos="fade-up-right" data-aos-duration="600" data-aos-delay="700">
+              <div
+                class="floating-badge badge-2"
+                data-aos="fade-up-right"
+                data-aos-duration="600"
+                data-aos-delay="700"
+              >
                 <i class="bi bi-envelope-fill"></i>
                 <span>Email</span>
               </div>
@@ -166,18 +221,50 @@
     <section class="info-cards-section">
       <div class="container">
         <div class="cards-row">
-          <div class="info-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" data-aos-anchor-placement="top-bottom">
-            <div class="card-icon-wrapper" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+          <div
+            class="info-card"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="0"
+            data-aos-anchor-placement="top-bottom"
+          >
+            <div
+              class="card-icon-wrapper"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+            >
               <i class="bi bi-envelope-fill"></i>
             </div>
             <div class="card-content">
               <h4>Email Address</h4>
-              <a href="mailto:hr@techmyndsinc.com"><span class="__cf_email__" data-cfemail="cea7a0a8a18ebaabada6a3b7a0aabde0ada1a3"><span class="__cf_email__" data-cfemail="a8c0dae8dccdcbc0c5d1c6ccdbc1c6cb86cbc7c5">hr@techmyndsinc.com</span></span></a>
+              <a href="mailto:hr@techmyndsinc.com"
+                ><span
+                  class="__cf_email__"
+                  data-cfemail="cea7a0a8a18ebaabada6a3b7a0aabde0ada1a3"
+                  ><span
+                    class="__cf_email__"
+                    data-cfemail="a8c0dae8dccdcbc0c5d1c6ccdbc1c6cb86cbc7c5"
+                    >hr@techmyndsinc.com</span
+                  ></span
+                ></a
+              >
             </div>
           </div>
 
-          <div class="info-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150" data-aos-anchor-placement="top-bottom">
-            <div class="card-icon-wrapper" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="350">
+          <div
+            class="info-card"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            data-aos-anchor-placement="top-bottom"
+          >
+            <div
+              class="card-icon-wrapper"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+              data-aos-delay="350"
+            >
               <i class="bi bi-telephone-fill"></i>
             </div>
             <div class="card-content">
@@ -186,13 +273,26 @@
             </div>
           </div>
 
-          <div class="info-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" data-aos-anchor-placement="top-bottom">
-            <div class="card-icon-wrapper" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
+          <div
+            class="info-card"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="300"
+            data-aos-anchor-placement="top-bottom"
+          >
+            <div
+              class="card-icon-wrapper"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+              data-aos-delay="500"
+            >
               <i class="bi bi-geo-alt-fill"></i>
             </div>
             <div class="card-content">
               <h4>Office Location</h4>
-                <a href="#map-area">1981 J N Pease Pl Ste, 104 Charlotte, NC 28262.</a>
+              <a href="#map-area"
+                >1981 J N Pease Pl Ste, 104 Charlotte, NC 28262.</a
+              >
             </div>
           </div>
         </div>
@@ -204,37 +304,81 @@
       <div class="container-fluid px-0">
         <div class="row g-0">
           <!-- Contact Form -->
-          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="0">
+          <div
+            class="col-lg-6"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="0"
+          >
             <div class="form-box">
-              <div class="form-header-compact" data-aos="fade-down" data-aos-duration="600" data-aos-delay="100">
+              <div
+                class="form-header-compact"
+                data-aos="fade-down"
+                data-aos-duration="600"
+                data-aos-delay="100"
+              >
                 <h2>Send Us a Message</h2>
                 <p>Fill out the form below and we'll get back to you soon</p>
               </div>
 
               <form id="contactForm" class="compact-form">
                 <div class="form-grid">
-                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+                  <div
+                    class="input-group-wrapper"
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    data-aos-delay="200"
+                  >
                     <div class="input-wrapper">
                       <i class="bi bi-person"></i>
-                      <input type="text" name="fullName" placeholder="Full Name *" required />
+                      <input
+                        type="text"
+                        name="fullName"
+                        placeholder="Full Name *"
+                        required
+                      />
                     </div>
                   </div>
 
-                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
+                  <div
+                    class="input-group-wrapper"
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    data-aos-delay="250"
+                  >
                     <div class="input-wrapper">
                       <i class="bi bi-envelope"></i>
-                      <input type="email" name="email" placeholder="Email Address *" required />
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address *"
+                        required
+                      />
                     </div>
                   </div>
 
-                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+                  <div
+                    class="input-group-wrapper"
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    data-aos-delay="300"
+                  >
                     <div class="input-wrapper">
                       <i class="bi bi-telephone"></i>
-                      <input type="tel" name="phone" placeholder="Phone Number" />
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number"
+                      />
                     </div>
                   </div>
 
-                  <div class="input-group-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
+                  <div
+                    class="input-group-wrapper"
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    data-aos-delay="350"
+                  >
                     <div class="input-wrapper">
                       <i class="bi bi-tag"></i>
                       <select name="subject" required>
@@ -248,14 +392,29 @@
                     </div>
                   </div>
 
-                  <div class="input-group-wrapper full-width" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
+                  <div
+                    class="input-group-wrapper full-width"
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    data-aos-delay="400"
+                  >
                     <div class="input-wrapper">
                       <i class="bi bi-chat-left-text"></i>
-                      <textarea name="message" placeholder="Your Message *" rows="5" required></textarea>
+                      <textarea
+                        name="message"
+                        placeholder="Your Message *"
+                        rows="5"
+                        required
+                      ></textarea>
                     </div>
                   </div>
 
-                  <div class="form-actions full-width" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="450">
+                  <div
+                    class="form-actions full-width"
+                    data-aos="zoom-in"
+                    data-aos-duration="600"
+                    data-aos-delay="450"
+                  >
                     <button type="submit" class="submit-btn-compact">
                       <span>Send Message</span>
                       <i class="bi bi-arrow-right"></i>
@@ -267,7 +426,12 @@
           </div>
 
           <!-- Map -->
-          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <div
+            class="col-lg-6"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
             <div class="map-box">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3257.8287373086394!2d-80.7558!3d35.2827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDE2JzU3LjciTiA4MMKwNDUnMjAuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
@@ -275,7 +439,12 @@
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
-              <div class="map-info-overlay" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+              <div
+                class="map-info-overlay"
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="400"
+              >
                 <div class="map-pin">
                   <i class="bi bi-geo-alt-fill"></i>
                 </div>
@@ -292,12 +461,18 @@
     <section class="compact-cta">
       <div class="container">
         <div class="cta-wrapper" data-aos="zoom-in" data-aos-duration="1000">
-          <div class="cta-icon-circle" data-aos="flip-left" data-aos-duration="800" data-aos-delay="200">
+          <div
+            class="cta-icon-circle"
+            data-aos="flip-left"
+            data-aos-duration="800"
+            data-aos-delay="200"
+          >
             <i class="bi bi-briefcase-fill"></i>
           </div>
           <h3>Looking for Career Opportunities?</h3>
           <p>
-            Explore exciting positions across IT, healthcare, and engineering sectors. Join our talent network today.
+            Explore exciting positions across IT, healthcare, and engineering
+            sectors. Join our talent network today.
           </p>
           <div class="cta-btn-group">
             <a href="./career.html" class="cta-link">
@@ -313,7 +488,7 @@
       </div>
     </section>
 
-        <!-- Footer (copied from index.html) -->
+    <!-- Footer (copied from index.html) -->
     <footer class="footer-main">
       <div class="footer-blur-background"></div>
       <div class="container py-5">
@@ -326,7 +501,9 @@
               class="footer-logo mb-3"
             />
             <p class="company-description">
-Premier IT staffing and recruitment solutions connecting top talent with opportunities across the USA, your reliable partner for present and future business goals.
+              Premier IT staffing and recruitment solutions connecting top
+              talent with opportunities across the USA, your reliable partner
+              for present and future business goals.
             </p>
           </div>
 
@@ -347,15 +524,25 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
                 <i class="fas fa-envelope me-3 mt-1"></i>
-                <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
+                <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0"
+                  >hr@techmyndsinc.com</a
+                >
               </li>
               <li class="d-flex mb-2">
                 <i class="fas fa-phone-alt me-3 mt-1"></i>
-                <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
+                <a href="tel:+17325876750" class="footer-link p-0"
+                  >+1 732-587-6750</a
+                >
               </li>
               <li class="d-flex">
                 <i class="fas fa-map-marker-alt me-3 mt-1"></i>
-                <a href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262" target="_blank" rel="noopener noreferrer" class="footer-link p-0">1981 J N Pease Pl Ste, 104 Charlotte, NC 28262</a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer-link p-0"
+                  >1981 J N Pease Pl Ste, 104 Charlotte, NC 28262</a
+                >
               </li>
             </ul>
           </div>
@@ -366,20 +553,38 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
         <!-- Bottom Section -->
         <div class="row align-items-center justify-content-between pt-2">
           <div class="col-md-6 text-center text-md-start mb-2">
-            <p class="copyright-text mb-0">&copy; 2025 TechMynds Inc. All Rights Reserved.</p>
+            <p class="copyright-text mb-0">
+              &copy; 2025 TechMynds Inc. All Rights Reserved.
+            </p>
           </div>
 
           <div class="col-md-6 text-center text-md-end">
-            <div class="social-links-combined d-flex justify-content-center justify-content-md-end">
+            <div
+              class="social-links-combined d-flex justify-content-center justify-content-md-end"
+            >
               <span class="mb-0 me-3 d-none d-sm-block">Follow us on:</span>
-              <a href="https://www.linkedin.com/company/techmyndsinc/" target="_blank" aria-label="LinkedIn" class="social-icon-footer"><i class="fab fa-linkedin-in"></i></a>
+              <a
+                href="https://www.linkedin.com/company/techmyndsinc/"
+                target="_blank"
+                aria-label="LinkedIn"
+                class="social-icon-footer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
             </div>
           </div>
         </div>
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       // Initialize AOS
@@ -441,7 +646,8 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
       // GOOGLE APPS SCRIPT INTEGRATION - CONTACT FORM (CORRECTED VERSION)
       // ============================================================================
       // 🚨 UPDATED: This is your actual Google Apps Script Web App URL
-      const CONTACT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxJowxJXekvek_8ZQFzJNPtrOopFpHFEwoCmtuBeSA0hPdhc66S64ypp9ULjaFV_tF/exec";
+      const CONTACT_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbxkNrcOK0gGk4eIQSMWHmZs8NYA4a6qUYNhwVzFvp8uHSJJnG3b4fvJXIHjpJxYhfG8/exec";
 
       // ============================================================================
       // FORM VALIDATION - ENHANCED
@@ -449,21 +655,23 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
       const validationRules = {
         fullName: {
           pattern: /^[a-zA-Z\s'-]{2,50}$/,
-          message: "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes"
+          message:
+            "Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes",
         },
         email: {
           pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          message: "Please enter a valid email address (e.g., john@example.com)"
+          message:
+            "Please enter a valid email address (e.g., john@example.com)",
         },
         phone: {
           pattern: /^\d{10}$/,
-          message: "Please enter exactly 10 digits (e.g., 1234567890)"
+          message: "Please enter exactly 10 digits (e.g., 1234567890)",
         },
         message: {
           minLength: 10,
           maxLength: 1000,
-          message: "Message must be between 10 and 1000 characters"
-        }
+          message: "Message must be between 10 and 1000 characters",
+        },
       };
 
       function showError(inputElement, message) {
@@ -476,24 +684,28 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
         errorDiv.textContent = message;
         errorDiv.setAttribute("data-error-for", inputElement.name);
 
-        inputElement.closest('.input-wrapper').appendChild(errorDiv);
+        inputElement.closest(".input-wrapper").appendChild(errorDiv);
       }
 
       function removeError(inputElement) {
         inputElement.classList.remove("is-invalid");
         inputElement.classList.add("is-valid");
 
-        const errorDiv = inputElement.closest('.input-wrapper').querySelector(`[data-error-for="${inputElement.name}"]`);
+        const errorDiv = inputElement
+          .closest(".input-wrapper")
+          .querySelector(`[data-error-for="${inputElement.name}"]`);
         if (errorDiv) {
           errorDiv.remove();
         }
       }
 
       function clearAllErrors() {
-        document.querySelectorAll('.is-invalid, .is-valid').forEach(el => {
-          el.classList.remove('is-invalid', 'is-valid');
+        document.querySelectorAll(".is-invalid, .is-valid").forEach((el) => {
+          el.classList.remove("is-invalid", "is-valid");
         });
-        document.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
+        document
+          .querySelectorAll(".invalid-feedback")
+          .forEach((el) => el.remove());
       }
 
       function validateField(inputElement) {
@@ -502,7 +714,8 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
 
         // Check if field is required and empty
         if (!value && inputElement.required) {
-          const fieldLabel = inputElement.placeholder.replace('*', '').trim() || 'This field';
+          const fieldLabel =
+            inputElement.placeholder.replace("*", "").trim() || "This field";
           showError(inputElement, `${fieldLabel} is required`);
           return false;
         }
@@ -516,13 +729,13 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
         // Apply validation rules
         if (validationRules[fieldName]) {
           const rule = validationRules[fieldName];
-          
+
           // Special handling for phone number - strip formatting before validation
           let testValue = value;
-          if (fieldName === 'phone') {
-            testValue = value.replace(/\D/g, ''); // Remove all non-digit characters
+          if (fieldName === "phone") {
+            testValue = value.replace(/\D/g, ""); // Remove all non-digit characters
           }
-          
+
           // Pattern validation
           if (rule.pattern && !rule.pattern.test(testValue)) {
             showError(inputElement, rule.message);
@@ -531,12 +744,18 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
 
           // Length validation (for textarea)
           if (rule.minLength && value.length < rule.minLength) {
-            showError(inputElement, `Message must be at least ${rule.minLength} characters`);
+            showError(
+              inputElement,
+              `Message must be at least ${rule.minLength} characters`
+            );
             return false;
           }
 
           if (rule.maxLength && value.length > rule.maxLength) {
-            showError(inputElement, `Message must not exceed ${rule.maxLength} characters`);
+            showError(
+              inputElement,
+              `Message must not exceed ${rule.maxLength} characters`
+            );
             return false;
           }
         }
@@ -549,7 +768,7 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
         const value = selectElement.value.trim();
 
         if (!value && selectElement.required) {
-          showError(selectElement, 'Please select a subject');
+          showError(selectElement, "Please select a subject");
           return false;
         }
 
@@ -559,35 +778,37 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
 
       // Setup real-time validation
       function setupRealtimeValidation() {
-        const form = document.getElementById('contactForm');
-        
+        const form = document.getElementById("contactForm");
+
         // Text and email inputs
-        const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
-        inputs.forEach(input => {
-          input.addEventListener('blur', function() {
+        const inputs = form.querySelectorAll(
+          'input[type="text"], input[type="email"], input[type="tel"]'
+        );
+        inputs.forEach((input) => {
+          input.addEventListener("blur", function () {
             if (this.value.trim()) {
               validateField(this);
             }
           });
 
-          input.addEventListener('input', function() {
-            if (this.classList.contains('is-invalid')) {
+          input.addEventListener("input", function () {
+            if (this.classList.contains("is-invalid")) {
               removeError(this);
             }
           });
         });
 
         // Textarea
-        const textarea = form.querySelector('textarea');
+        const textarea = form.querySelector("textarea");
         if (textarea) {
-          textarea.addEventListener('blur', function() {
+          textarea.addEventListener("blur", function () {
             if (this.value.trim()) {
               validateField(this);
             }
           });
 
-          textarea.addEventListener('input', function() {
-            if (this.classList.contains('is-invalid')) {
+          textarea.addEventListener("input", function () {
+            if (this.classList.contains("is-invalid")) {
               removeError(this);
             }
           });
@@ -596,7 +817,7 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
         // Select dropdown
         const select = form.querySelector('select[name="subject"]');
         if (select) {
-          select.addEventListener('change', function() {
+          select.addEventListener("change", function () {
             validateSelect(this);
           });
         }
@@ -606,16 +827,19 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
       function setupPhoneFormatting() {
         const phoneInput = document.querySelector('input[name="phone"]');
         if (phoneInput) {
-          phoneInput.addEventListener('input', function(e) {
-            let value = this.value.replace(/\D/g, '');
+          phoneInput.addEventListener("input", function (e) {
+            let value = this.value.replace(/\D/g, "");
             if (value.length > 10) {
               value = value.slice(0, 10);
             }
-            
+
             if (value.length >= 6) {
-              this.value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6)}`;
+              this.value = `(${value.slice(0, 3)}) ${value.slice(
+                3,
+                6
+              )}-${value.slice(6)}`;
             } else if (value.length >= 3) {
-              this.value = `(${value.slice(0,3)}) ${value.slice(3)}`;
+              this.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
             } else {
               this.value = value;
             }
@@ -624,167 +848,196 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
       }
 
       // Initialize validation on page load
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         setupRealtimeValidation();
         setupPhoneFormatting();
       });
-      
+
       // Debug: Log the script URL on page load
       console.log("🔗 Contact Script URL:", CONTACT_SCRIPT_URL);
-      
+
       // Verification: Check if script URL is configured
-      if (!CONTACT_SCRIPT_URL || CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")) {
+      if (
+        !CONTACT_SCRIPT_URL ||
+        CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")
+      ) {
         console.error("⚠️ CRITICAL: Google Apps Script URL not configured!");
-        console.error("Please update CONTACT_SCRIPT_URL with your deployed web app URL");
+        console.error(
+          "Please update CONTACT_SCRIPT_URL with your deployed web app URL"
+        );
       } else {
         console.log("✅ Script URL is configured");
       }
-      
-      document.getElementById("contactForm").addEventListener("submit", async function (e) {
-        e.preventDefault();
-        
-        const submitBtn = this.querySelector(".submit-btn-compact");
-        const originalHTML = submitBtn.innerHTML;
-        const formElement = this;
-        
-        console.log("📝 Form submission started");
 
-        // Get form inputs
-        const fullNameInput = this.querySelector('input[name="fullName"]');
-        const emailInput = this.querySelector('input[name="email"]');
-        const phoneInput = this.querySelector('input[name="phone"]');
-        const subjectInput = this.querySelector('select[name="subject"]');
-        const messageInput = this.querySelector('textarea[name="message"]');
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-        // Validate all fields
-        const isNameValid = validateField(fullNameInput);
-        const isEmailValid = validateField(emailInput);
-        const isPhoneValid = phoneInput.value.trim() ? validateField(phoneInput) : true; // Phone is optional
-        const isSubjectValid = validateSelect(subjectInput);
-        const isMessageValid = validateField(messageInput);
+          const submitBtn = this.querySelector(".submit-btn-compact");
+          const originalHTML = submitBtn.innerHTML;
+          const formElement = this;
 
-        // If any validation fails, scroll to first error
-        if (!isNameValid || !isEmailValid || !isPhoneValid || !isSubjectValid || !isMessageValid) {
-          const firstError = this.querySelector(".is-invalid");
-          if (firstError) {
-            firstError.focus();
-            firstError.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
+          console.log("📝 Form submission started");
+
+          // Get form inputs
+          const fullNameInput = this.querySelector('input[name="fullName"]');
+          const emailInput = this.querySelector('input[name="email"]');
+          const phoneInput = this.querySelector('input[name="phone"]');
+          const subjectInput = this.querySelector('select[name="subject"]');
+          const messageInput = this.querySelector('textarea[name="message"]');
+
+          // Validate all fields
+          const isNameValid = validateField(fullNameInput);
+          const isEmailValid = validateField(emailInput);
+          const isPhoneValid = phoneInput.value.trim()
+            ? validateField(phoneInput)
+            : true; // Phone is optional
+          const isSubjectValid = validateSelect(subjectInput);
+          const isMessageValid = validateField(messageInput);
+
+          // If any validation fails, scroll to first error
+          if (
+            !isNameValid ||
+            !isEmailValid ||
+            !isPhoneValid ||
+            !isSubjectValid ||
+            !isMessageValid
+          ) {
+            const firstError = this.querySelector(".is-invalid");
+            if (firstError) {
+              firstError.focus();
+              firstError.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }
+            showNotification("❌ Please fix the errors in the form", "error");
+            return;
           }
-          showNotification("❌ Please fix the errors in the form", "error");
-          return;
-        }
-        
-        // Validate script URL is configured
-        if (!CONTACT_SCRIPT_URL || CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")) {
-          showNotification("❌ Configuration Error: Script URL not set", "error");
-          console.error("Contact form script URL is not configured");
-          return;
-        }
-        
-        // Disable button and show loading state
-        submitBtn.innerHTML = '<span>Sending...</span> <i class="bi bi-hourglass-split"></i>';
-        submitBtn.style.pointerEvents = 'none';
-        submitBtn.disabled = true;
-        
-        try {
-          // Collect form data
-          const fullName = fullNameInput.value.trim();
-          const email = emailInput.value.trim();
-          const phone = phoneInput.value.replace(/\D/g, ''); // Remove formatting
-          const subject = subjectInput.value;
-          const message = messageInput.value.trim();
-          
-          console.log("📊 Form data collected:");
-          console.log("  Name:", fullName);
-          console.log("  Email:", email);
-          console.log("  Subject:", subject);
-          
-          // Prepare form data
-          const formData = new URLSearchParams();
-          formData.append('fullName', fullName);
-          formData.append('email', email);
-          formData.append('phone', phone || 'N/A');
-          formData.append('subject', subject);
-          formData.append('message', message);
-          
-          console.log('📤 Submitting to Google Apps Script...');
-          console.log('Target URL:', CONTACT_SCRIPT_URL);
-          
-          // Send to Google Apps Script
-          const response = await fetch(CONTACT_SCRIPT_URL, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors', // Required for Google Apps Script
-            redirect: 'follow'
-          });
-          
-          // Note: With no-cors mode, we can't read the response
-          // Assume success if no error was thrown
-          console.log('✅ Form submitted successfully to Apps Script');
-          console.log('⏳ Waiting for email to be processed...');
-          console.log('📧 Check your email: johninfant021@gmail.com');
-          console.log('📧 Also check SPAM folder!');
-          
-          // Show success message
-          submitBtn.innerHTML = '<span>Message Sent!</span> <i class="bi bi-check-circle-fill"></i>';
-          submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-          
-          // Show success notification
-          showNotification("✅ Thank you! Your message has been sent successfully.", "success");
-          
-          // Reset form and clear validation
-          formElement.reset();
-          clearAllErrors();
-          
-          // Restore button after 3 seconds
-          setTimeout(() => {
-            submitBtn.innerHTML = originalHTML;
-            submitBtn.style.pointerEvents = 'auto';
-            submitBtn.disabled = false;
-            submitBtn.style.background = '';
-          }, 3000);
-          
-        } catch (error) {
-          console.error('❌ Form submission error:', error);
-          console.error('Error details:', error.message);
-          
-          // Show error message
-          submitBtn.innerHTML = '<span>Failed!</span> <i class="bi bi-exclamation-circle-fill"></i>';
-          submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #c82333)';
-          
-          // Show error notification
-          showNotification("❌ " + error.message, "error");
-          
-          // Restore button after 3 seconds
-          setTimeout(() => {
-            submitBtn.innerHTML = originalHTML;
-            submitBtn.style.pointerEvents = 'auto';
-            submitBtn.disabled = false;
-            submitBtn.style.background = '';
-          }, 3000);
-        }
-      });
-      
+
+          // Validate script URL is configured
+          if (
+            !CONTACT_SCRIPT_URL ||
+            CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")
+          ) {
+            showNotification(
+              "❌ Configuration Error: Script URL not set",
+              "error"
+            );
+            console.error("Contact form script URL is not configured");
+            return;
+          }
+
+          // Disable button and show loading state
+          submitBtn.innerHTML =
+            '<span>Sending...</span> <i class="bi bi-hourglass-split"></i>';
+          submitBtn.style.pointerEvents = "none";
+          submitBtn.disabled = true;
+
+          try {
+            // Collect form data
+            const fullName = fullNameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.replace(/\D/g, ""); // Remove formatting
+            const subject = subjectInput.value;
+            const message = messageInput.value.trim();
+
+            console.log("📊 Form data collected:");
+            console.log("  Name:", fullName);
+            console.log("  Email:", email);
+            console.log("  Subject:", subject);
+
+            // Prepare form data
+            const formData = new URLSearchParams();
+            formData.append("fullName", fullName);
+            formData.append("email", email);
+            formData.append("phone", phone || "N/A");
+            formData.append("subject", subject);
+            formData.append("message", message);
+
+            console.log("📤 Submitting to Google Apps Script...");
+            console.log("Target URL:", CONTACT_SCRIPT_URL);
+
+            // Send to Google Apps Script
+            const response = await fetch(CONTACT_SCRIPT_URL, {
+              method: "POST",
+              body: formData,
+              mode: "no-cors", // Required for Google Apps Script
+              redirect: "follow",
+            });
+
+            // Note: With no-cors mode, we can't read the response
+            // Assume success if no error was thrown
+            console.log("✅ Form submitted successfully to Apps Script");
+            console.log("⏳ Waiting for email to be processed...");
+            console.log("📧 Check your email: johninfant021@gmail.com");
+            console.log("📧 Also check SPAM folder!");
+
+            // Show success message
+            submitBtn.innerHTML =
+              '<span>Message Sent!</span> <i class="bi bi-check-circle-fill"></i>';
+            submitBtn.style.background =
+              "linear-gradient(135deg, #28a745, #20c997)";
+
+            // Show success notification
+            showNotification(
+              "✅ Thank you! Your message has been sent successfully.",
+              "success"
+            );
+
+            // Reset form and clear validation
+            formElement.reset();
+            clearAllErrors();
+
+            // Restore button after 3 seconds
+            setTimeout(() => {
+              submitBtn.innerHTML = originalHTML;
+              submitBtn.style.pointerEvents = "auto";
+              submitBtn.disabled = false;
+              submitBtn.style.background = "";
+            }, 3000);
+          } catch (error) {
+            console.error("❌ Form submission error:", error);
+            console.error("Error details:", error.message);
+
+            // Show error message
+            submitBtn.innerHTML =
+              '<span>Failed!</span> <i class="bi bi-exclamation-circle-fill"></i>';
+            submitBtn.style.background =
+              "linear-gradient(135deg, #dc3545, #c82333)";
+
+            // Show error notification
+            showNotification("❌ " + error.message, "error");
+
+            // Restore button after 3 seconds
+            setTimeout(() => {
+              submitBtn.innerHTML = originalHTML;
+              submitBtn.style.pointerEvents = "auto";
+              submitBtn.disabled = false;
+              submitBtn.style.background = "";
+            }, 3000);
+          }
+        });
+
       /**
        * Show notification message
        */
-      function showNotification(message, type = 'info') {
+      function showNotification(message, type = "info") {
         console.log(`📢 Notification (${type}):`, message);
-        
+
         // Remove existing notification if any
-        const existingNotification = document.querySelector('.form-notification');
+        const existingNotification =
+          document.querySelector(".form-notification");
         if (existingNotification) {
           existingNotification.remove();
         }
-        
+
         // Create notification element
-        const notification = document.createElement('div');
+        const notification = document.createElement("div");
         notification.className = `form-notification notification-${type}`;
         notification.innerHTML = message;
-        
+
         // Style the notification
         notification.style.cssText = `
           position: fixed;
@@ -797,15 +1050,27 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
           font-weight: 500;
           animation: slideIn 0.3s ease-out;
           max-width: 400px;
-          ${type === 'success' ? 'background: linear-gradient(135deg, #28a745, #20c997); color: white;' : ''}
-          ${type === 'error' ? 'background: linear-gradient(135deg, #dc3545, #c82333); color: white;' : ''}
-          ${type === 'info' ? 'background: linear-gradient(135deg, #007bff, #0056b3); color: white;' : ''}
+          ${
+            type === "success"
+              ? "background: linear-gradient(135deg, #28a745, #20c997); color: white;"
+              : ""
+          }
+          ${
+            type === "error"
+              ? "background: linear-gradient(135deg, #dc3545, #c82333); color: white;"
+              : ""
+          }
+          ${
+            type === "info"
+              ? "background: linear-gradient(135deg, #007bff, #0056b3); color: white;"
+              : ""
+          }
         `;
-        
+
         // Add animation keyframes if not already added
-        if (!document.querySelector('#notification-animation')) {
-          const style = document.createElement('style');
-          style.id = 'notification-animation';
+        if (!document.querySelector("#notification-animation")) {
+          const style = document.createElement("style");
+          style.id = "notification-animation";
           style.textContent = `
             @keyframes slideIn {
               from {
@@ -830,13 +1095,13 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
           `;
           document.head.appendChild(style);
         }
-        
+
         // Add to page
         document.body.appendChild(notification);
-        
+
         // Auto-remove after 5 seconds
         setTimeout(() => {
-          notification.style.animation = 'slideOut 0.3s ease-out';
+          notification.style.animation = "slideOut 0.3s ease-out";
           setTimeout(() => {
             notification.remove();
           }, 300);
@@ -844,10 +1109,10 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
       }
 
       // Geometric shapes parallax animation
-      const geoShapes = document.querySelectorAll('.geo-shape');
-      
+      const geoShapes = document.querySelectorAll(".geo-shape");
+
       if (geoShapes.length > 0) {
-        window.addEventListener('scroll', () => {
+        window.addEventListener("scroll", () => {
           const scrolled = window.pageYOffset;
           geoShapes.forEach((shape, index) => {
             const speed = (index + 1) * 0.5;
@@ -859,16 +1124,15 @@ Premier IT staffing and recruitment solutions connecting top talent with opportu
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 1000,
         once: true,
-        offset: 100
+        offset: 100,
       });
     </script>
-
   </body>
 </html>
