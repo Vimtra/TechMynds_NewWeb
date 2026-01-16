@@ -335,17 +335,17 @@ p, span, li, a {
 .hero-content {
   flex: 1;
   text-align: left;
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateY(40px);
-  animation: fadeInUp 1s ease forwards 0.3s;
+  /* animation: fadeInUp 1s ease forwards 0.3s; */
 }
-
+/* 
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 .hero h1 {
   font-family: "Lexend", sans-serif;
