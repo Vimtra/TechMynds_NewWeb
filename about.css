@@ -761,3 +761,309 @@ body {
     font-size: 1.25rem;
   }
 }
+/* ========================================
+   WHY CHOOSE SECTION - MODERN LIST STYLE
+   ======================================== */
+
+.why-choose-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-choose-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(192, 0, 0, 0.04), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+.why-choose-section::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(192, 0, 0, 0.03), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.why-choose-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.why-choose-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.why-choose-title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--color-primary);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.why-choose-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
+}
+
+.why-choose-subtitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-medium);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* List Container */
+.why-choose-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* List Item */
+.why-choose-item {
+  background: var(--color-white);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  position: relative;
+}
+
+.why-choose-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary-dark));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.why-choose-item:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 30px rgba(192, 0, 0, 0.12);
+  transform: translateX(8px);
+}
+
+.why-choose-item:hover::before {
+  transform: scaleY(1);
+}
+
+/* Item Header */
+.item-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  position: relative;
+  background: linear-gradient(90deg, transparent, rgba(192, 0, 0, 0.02), transparent);
+}
+
+.item-number {
+  font-family: "Quicksand", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  min-width: 60px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.1), rgba(192, 0, 0, 0.05));
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+
+.why-choose-item:hover .item-number {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-dark));
+  color: var(--color-white);
+  transform: scale(1.1);
+}
+
+.item-title {
+  font-family: var(--font-family-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin: 0;
+  flex: 1;
+  transition: var(--transition-smooth);
+}
+
+.why-choose-item:hover .item-title {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.item-arrow {
+  font-size: 1.5rem;
+  color: var(--color-text-medium);
+  transition: var(--transition-smooth);
+  transform: rotate(0deg);
+}
+
+.why-choose-item:hover .item-arrow {
+  color: var(--color-primary);
+  transform: rotate(180deg);
+}
+
+/* Item Content */
+.item-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease;
+  opacity: 0;
+  padding: 0 32px;
+}
+
+.why-choose-item:hover .item-content {
+  max-height: 300px;
+  opacity: 1;
+  padding: 0 32px 28px;
+}
+
+.item-content p {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-medium);
+  margin: 0;
+  padding-left: 80px;
+  position: relative;
+}
+
+/* .item-content p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), transparent);
+} */
+
+/* Responsive styles for Why Choose Section */
+@media (max-width: 768px) {
+  .why-choose-section {
+    padding: 60px 0;
+  }
+
+  .why-choose-container {
+    padding: 0 24px;
+  }
+
+  .why-choose-header {
+    margin-bottom: 40px;
+  }
+
+  .why-choose-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .why-choose-subtitle {
+    font-size: 1rem;
+  }
+
+  .why-choose-list {
+    gap: 12px;
+  }
+
+  .item-header {
+    padding: 20px 24px;
+    gap: 16px;
+  }
+
+  .item-number {
+    font-size: 1.5rem;
+    min-width: 50px;
+    padding: 6px 12px;
+  }
+
+  .item-title {
+    font-size: 1.25rem;
+  }
+
+  .item-arrow {
+    font-size: 1.25rem;
+  }
+
+  .item-content p {
+    padding-left: 0;
+  }
+
+  .item-content p::before {
+    display: none;
+  }
+
+  .why-choose-item:hover .item-content {
+    padding: 0 24px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .why-choose-section {
+    padding: 50px 0;
+  }
+
+  .why-choose-title {
+    font-size: 1.75rem;
+  }
+
+  .why-choose-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .item-header {
+    padding: 16px 20px;
+  }
+
+  .item-number {
+    font-size: 1.25rem;
+    min-width: 45px;
+  }
+
+  .item-title {
+    font-size: 1.1rem;
+  }
+}
