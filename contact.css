@@ -68,7 +68,11 @@ body {
 .geo-square-1 {
   width: 200px;
   height: 200px;
-  background: linear-gradient(135deg, var(--maroon-primary), var(--maroon-light));
+  background: linear-gradient(
+    135deg,
+    var(--maroon-primary),
+    var(--maroon-light)
+  );
   transform: rotate(45deg);
   top: 50%;
   right: 10%;
@@ -89,7 +93,6 @@ body {
 .compact-hero {
   padding: 100px 0 50px;
   position: relative;
-
 }
 
 .compact-hero .container {
@@ -573,7 +576,7 @@ body {
   .form-box {
     padding: 35px 30px;
   }
-  
+
   .form-header-compact h2 {
     font-size: 1.85rem;
   }
@@ -585,24 +588,24 @@ body {
     flex-direction: column;
     min-height: auto;
   }
-  
+
   .form-box {
     min-height: auto;
     padding: 40px 25px;
   }
-  
+
   .map-box {
     min-height: 450px;
   }
-  
+
   .compact-hero {
     padding: 80px 0 40px;
   }
-  
+
   .compact-title {
     font-size: 2.5rem;
   }
-  
+
   .form-header-compact h2 {
     font-size: 1.75rem;
   }
@@ -612,59 +615,59 @@ body {
   .compact-hero {
     padding: 70px 0 30px;
   }
-  
+
   .compact-title {
     font-size: 2rem;
   }
-  
+
   .compact-description {
     font-size: 1rem;
   }
-  
+
   .info-cards-section {
     padding: 30px 0;
   }
-  
+
   .cards-row {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+
   .info-card {
     padding: 20px;
   }
-  
+
   .form-map-section {
     padding: 30px 0;
   }
-  
+
   .form-box {
     padding: 35px 20px;
   }
-  
+
   .form-header-compact h2 {
     font-size: 1.65rem;
   }
-  
+
   .form-header-compact p {
     font-size: 0.9rem;
   }
-  
+
   /* Single column form on mobile */
   .form-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .input-group-wrapper,
   .input-group-wrapper.full-width {
     grid-column: span 1;
   }
-  
+
   .map-box {
     min-height: 400px;
   }
-  
+
   .map-info-overlay {
     bottom: 20px;
     left: 20px;
@@ -672,24 +675,24 @@ body {
     max-width: none;
     padding: 20px;
   }
-  
+
   .compact-cta {
     padding: 40px 0;
   }
-  
+
   .cta-wrapper {
     padding: 40px 30px;
   }
-  
+
   .cta-wrapper h3 {
     font-size: 1.5rem;
   }
-  
+
   .cta-btn-group {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .cta-link {
     width: 100%;
     justify-content: center;
@@ -701,91 +704,91 @@ body {
     margin-top: 50px;
     padding: 60px 0 25px;
   }
-  
+
   .compact-title {
     font-size: 1.75rem;
   }
-  
+
   .hero-image-wrapper {
     margin-top: 30px;
   }
-  
+
   .floating-badge {
     padding: 10px 16px;
     font-size: 0.85rem;
   }
-  
+
   .form-box {
     padding: 30px 20px;
   }
-  
+
   .form-header-compact {
     margin-bottom: 30px;
   }
-  
+
   .form-header-compact h2 {
     font-size: 1.6rem;
   }
-  
+
   .compact-form {
     max-width: 100%;
   }
-  
+
   .form-grid {
     gap: 14px;
   }
-  
+
   .input-wrapper input,
   .input-wrapper select,
   .input-wrapper textarea {
     padding: 12px 14px 12px 44px;
     font-size: 0.9rem;
   }
-  
+
   .input-wrapper i {
     left: 14px;
     top: 14px;
     font-size: 1rem;
   }
-  
+
   .submit-btn-compact {
     max-width: 100%;
     padding: 14px 35px;
     font-size: 1rem;
   }
-  
+
   .map-box {
     min-height: 350px;
   }
-  
+
   .map-pin {
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
   }
-  
+
   .map-info-overlay h5 {
     font-size: 1.1rem;
   }
-  
+
   .map-info-overlay p {
     font-size: 0.85rem;
   }
-  
+
   .cta-wrapper {
     padding: 35px 20px;
   }
-  
+
   .cta-icon-circle {
     width: 70px;
     height: 70px;
     font-size: 1.8rem;
   }
-  
+
   .cta-wrapper h3 {
     font-size: 1.35rem;
   }
-  
+
   .cta-wrapper p {
     font-size: 0.95rem;
   }
