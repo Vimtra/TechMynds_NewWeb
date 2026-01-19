@@ -157,9 +157,11 @@ body {
 
 /* Hero Description */
 .hero-description {
+  
   font-size: 1.125rem;
   font-weight: 400;
-      font-family: var(--font-family-serif);
+    font-family: "Lexend", sans-serif;
+
   color: var(--color-text-medium);
   line-height: 1.8;
   margin-bottom: 40px;
@@ -633,6 +635,7 @@ body {
   }
 
   .img-about {
+    height: 250px;
     max-width: 100%;
   }
 
@@ -647,9 +650,13 @@ body {
 }
 
 @media (max-width: 768px) {
+  .staff-features-section{
+    margin: 0;
+  }
   .wrapper,
   .staff-container {
     padding: 0 24px;
+
   }
 
   .services-section,
@@ -691,7 +698,7 @@ body {
   }
 
   .staff-header h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     letter-spacing: 1px;
     text-align: center;
   }
