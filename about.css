@@ -14,7 +14,7 @@
   --color-border: #e0e0e0;
   --font-family-primary: "Manrope", sans-serif;
   --font-family-heading: "Lexend", sans-serif;
-  --font-family-serif: "Castoro", serif;
+  --font-family-serif: 'Overpass', sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -146,6 +146,8 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: 'Overpass', sans-serif;
+
 }
 
 /* Hero Lead Text */
@@ -173,7 +175,6 @@ body {
   font-size: 1.125rem;
   font-weight: 400;
   font-family: "Lexend", sans-serif;
-
   color: var(--color-text-medium);
   line-height: 1.8;
   margin-bottom: 40px;
@@ -291,7 +292,7 @@ body {
 }
 
 .section-title {
-  font-family: var(--font-family-heading);
+font-family: 'Overpass', sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: var(--color-primary);
   font-weight: 700;
@@ -400,7 +401,7 @@ body {
 
 /* Service Heading */
 .service-heading {
-  font-family: var(--font-family-serif);
+font-family: 'Overpass', sans-serif;
   font-size: 1.5rem;
   color: var(--color-text-dark);
   margin-bottom: 16px;
@@ -464,7 +465,7 @@ body {
 }
 
 .staff-header h2 {
-  font-family: var(--font-family-heading);
+font-family: 'Overpass', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--color-primary);
   font-weight: 700;
@@ -593,7 +594,7 @@ body {
 
 /* Feature Title */
 .staff-feature-title {
-  font-family: var(--font-family-serif);
+font-family: 'Overpass', sans-serif;
   font-size: 1.5rem;
   color: var(--color-text-dark);
   font-weight: 700;
@@ -843,7 +844,7 @@ body {
 }
 
 .why-choose-title {
-  font-family: var(--font-family-heading);
+font-family: 'Overpass', sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: var(--color-primary);
   font-weight: 800;
@@ -971,7 +972,7 @@ body {
 }
 
 .item-title {
-  font-family: var(--font-family-serif);
+font-family: 'Overpass', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-text-dark);

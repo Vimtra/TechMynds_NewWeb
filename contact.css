@@ -123,6 +123,8 @@ body {
   line-height: 1.1;
   color: var(--text-dark);
   margin-bottom: 20px;
+  font-family: 'Overpass', sans-serif;
+
 }
 
 .highlight-text {
@@ -240,7 +242,8 @@ body {
 }
 
 .card-content h4 {
-  font-size: 1rem;
+  font-family: 'Overpass', sans-serif;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 5px;
@@ -301,6 +304,8 @@ body {
 }
 
 .form-header-compact h2 {
+  font-family: 'Overpass', sans-serif;
+
   font-size: 2rem;
   font-weight: 800;
   color: var(--text-dark);
@@ -507,6 +512,8 @@ body {
 }
 
 .cta-wrapper h3 {
+  font-family: 'Overpass', sans-serif;
+
   font-size: 1.85rem;
   font-weight: 700;
   color: var(--text-dark);
@@ -515,6 +522,8 @@ body {
 }
 
 .cta-wrapper p {
+  font-family: 'Lexend', sans-serif;
+  text-align: center;
   font-size: 1.05rem;
   color: var(--text-gray);
   margin-bottom: 35px;
