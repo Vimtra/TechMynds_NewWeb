@@ -72,7 +72,7 @@
 
     <!-- Head Section -->
     <section class="hero" data-aos="fade-in" data-aos-duration="1000">
-      <video autoplay muted loop playsinline preload="auto">
+      <video autoplay muted loop playsinline preload="none">
         <source src="./Images/27091-361827476.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
@@ -406,8 +406,7 @@
                 <i class="fas fa-envelope me-3 mt-1"></i>
                 <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0"
                   >hr@techmyndsinc.com</a
-                >
-              </li>
+                >              </li>
               <li class="d-flex mb-2">
                 <i class="fas fa-phone-alt me-3 mt-1"></i>
                 <a href="tel:+17325876750" class="footer-link p-0"
@@ -456,7 +455,7 @@
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
       // Elements
@@ -618,14 +617,69 @@
       // Preload additional images after critical content loads
       window.addEventListener('load', function() {
         const imagesToPreload = [
-          './Images/exp.jpg',
-          './Images/partnership.jpg'
+          './Images/exp.jpg',          './Images/exp.jpg',
+          './Images/partnership.jpg',
+          './Images/Service_Img.jpg'
         ];
         
         imagesToPreload.forEach(src => {
-          const img = new Image();
-          img.src = src;
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = src;
+          document.head.appendChild(link);
         });
+      });
+    </script>
+    
+    <!-- Video Error Handling Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('.hero video');
+        
+        if (video) {
+          // Remove preload attribute to avoid cache errors
+          video.removeAttribute('preload');
+          
+          // Force video to load
+          video.load();
+          
+          // Handle video errors
+          video.addEventListener('error', function(e) {
+            console.error('Video loading error:', e);
+            const source = video.querySelector('source');
+            if (source) {
+              console.error('Failed to load:', source.src);
+            }
+            // Hide video if it fails to load
+            video.style.display = 'none';
+          });
+          
+          // Ensure video plays when loaded
+          video.addEventListener('loadeddata', function() {
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+              playPromise.then(function() {
+                console.log('Video playing successfully');
+              }).catch(function(error) {
+                console.log('Autoplay prevented:', error);
+              });
+            }
+          });
+          
+          // Fallback: attempt to play video on first user interaction
+          const tryPlayOnInteraction = function() {
+            if (video.paused) {
+              video.play().catch(function(error) {
+                console.log('Video play failed:', error);
+              });
+            }
+          };
+          
+          document.addEventListener('click', tryPlayOnInteraction, { once: true });
+          document.addEventListener('scroll', tryPlayOnInteraction, { once: true });
+        }
       });
     </script>
   </body>

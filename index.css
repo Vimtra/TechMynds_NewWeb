@@ -557,18 +557,20 @@ font-family: 'Overpass', sans-serif;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: stretch;
+  /* justify-content: center; */
   margin-bottom: 25px;
 }
 
 .about-image {
   position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-image .image-wrapper {
   width: 100%;
-  height: 100%;
+  height: 70%;
   min-height: 400px;
 }
 
@@ -640,7 +642,7 @@ font-family: 'Overpass', sans-serif;
 
 .carousel-container {
   position: relative;
-  max-width: 1000px;
+  max-width: 100vw;
   margin: 0 auto;
   padding: 20px;
   overflow: hidden;
@@ -651,7 +653,8 @@ font-family: 'Overpass', sans-serif;
   width: 100%;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  padding: 0 0 20px 0;
+  /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); */
 }
 
 .carousel-track {
@@ -868,7 +871,7 @@ font-family: 'Overpass', sans-serif;
 /* Modern footer section */
 .about-footer {
   text-align: center;
-  padding: 50px 40px;
+  padding: 30px 40px;
   background: linear-gradient(135deg, #9b2c2c, #8b0000);
   border-radius: 12px;
   /* box-shadow: 0 15px 40px rgba(192, 0, 0, 0.25); */
