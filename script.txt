@@ -1,13 +1,5 @@
-// ===============================================================================
-// GOOGLE APPS SCRIPT - CAREER, CONTACT & REFERRAL FORM HANDLER
-// ===============================================================================
-// This script handles form submissions from career.html and contact.html
-// Now includes Employee Referral Program support
-// ===============================================================================
-
-// === CONFIGURATION (UPDATE THESE VALUES) ===
 const SPREADSHEET_ID = "1TFwMEg8yYB1Xq3ZvBjF1c18xmyu29VlfQGq23k-_AQ0";  // Replace with your Google Sheets ID
-const DRIVE_FOLDER_ID = "1fi_ABvEN-Y1dubyItpyodA1AD0h_PGno";  // Replace with your Google Drive folder ID
+const DRIVE_FOLDER_ID = "1EPE6YelSMA0KfmqOeRHSKN0mnFRXzVTd";  // Your Google Drive folder ID
 const RECIPIENT_EMAIL_CAREER = "johninfant021@gmail.com";  // Email for career notifications
 const RECIPIENT_EMAIL_CONTACT = "johninfant021@gmail.com";  // Email for contact form notifications
 const RECIPIENT_EMAIL_REFERRAL = "johninfant021@gmail.com";  // Email for referral notifications
@@ -44,28 +36,28 @@ function doPost(e) {
     lock.tryLock(10000);
     
     const formData = e.parameter || {};
-    Logger.log("📨 Received POST request");
+    Logger.log("Received POST request");
     Logger.log("Form data keys: " + Object.keys(formData).join(", "));
     
     // Detect which form was submitted based on form fields
     if (formData.referrer_name && formData.candidate_name) {
       // Employee Referral (has both referrer and candidate info)
-      Logger.log("👥 Routing to Employee Referral handler");
+      Logger.log("Routing to Employee Referral handler");
       return handleReferralSubmission(e);
     } else if (formData.job_applied_for && formData.fileData) {
       // Career Application (has job_applied_for field and resume file)
-      Logger.log("📋 Routing to Career Application handler");
+      Logger.log("Routing to Career Application handler");
       return handleCareerApplication(e);
     } else if (formData.message && !formData.job_applied_for) {
       // Contact Form (has message field, no job field)
-      Logger.log("📧 Routing to Contact Form handler");
+      Logger.log("Routing to Contact Form handler");
       return handleContactForm(e);
     } else {
       throw new Error("Unable to determine form type. Please check form field names.");
     }
 
   } catch (err) {
-    Logger.log("❌ Error in doPost: " + err.message);
+    Logger.log("Error in doPost: " + err.message);
     return ContentService.createTextOutput(
       JSON.stringify({
         status: "error",
@@ -92,7 +84,7 @@ function doPost(e) {
  */
 function handleReferralSubmission(e) {
   try {
-    Logger.log("📨 ========== NEW EMPLOYEE REFERRAL ==========");
+    Logger.log("========== NEW EMPLOYEE REFERRAL ==========");
     
     const formData = e.parameter || {};
     Logger.log("Form data received: " + JSON.stringify(Object.keys(formData)));
@@ -134,7 +126,7 @@ function handleReferralSubmission(e) {
       throw new Error("Invalid candidate email format");
     }
 
-    Logger.log(`👥 Processing referral from ${referrerName} for candidate ${candidateName}`);
+    Logger.log(`Processing referral from ${referrerName} for candidate ${candidateName}`);
 
     // Upload candidate resume to Google Drive
     let fileUrl = "N/A";
@@ -160,10 +152,10 @@ function handleReferralSubmission(e) {
       newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
 
       fileUrl = newFile.getUrl();
-      Logger.log(`✅ File uploaded successfully: ${newFileName}`);
-      Logger.log(`📍 File URL: ${fileUrl}`);
+      Logger.log(`File uploaded successfully: ${newFileName}`);
+      Logger.log(`File URL: ${fileUrl}`);
     } catch (fileError) {
-      Logger.log("❌ File upload error: " + fileError.message);
+      Logger.log("File upload error: " + fileError.message);
       throw new Error("Failed to upload candidate resume: " + fileError.message);
     }
 
@@ -174,7 +166,7 @@ function handleReferralSubmission(e) {
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = doc.insertSheet(REFERRAL_SHEET_NAME);
-      Logger.log(`✅ Created new sheet: ${REFERRAL_SHEET_NAME}`);
+      Logger.log(`Created new sheet: ${REFERRAL_SHEET_NAME}`);
     }
 
     // Add headers if sheet is empty
@@ -213,7 +205,7 @@ function handleReferralSubmission(e) {
       sheet.setColumnWidth(10, 300); // Resume Link
       sheet.setColumnWidth(11, 300); // Notes
       
-      Logger.log("✅ Headers created in Referral sheet");
+      Logger.log("Headers created in Referral sheet");
     }
 
     // Prepare row data
@@ -247,7 +239,7 @@ function handleReferralSubmission(e) {
     ]);
 
     SpreadsheetApp.flush();
-    Logger.log("✅ Referral saved to Google Sheets");
+    Logger.log("Referral saved to Google Sheets");
 
     // Send email notification
     sendReferralNotificationEmail(newRowData);
@@ -265,7 +257,7 @@ function handleReferralSubmission(e) {
     ).setMimeType(ContentService.MimeType.JSON);
 
   } catch (err) {
-    Logger.log("❌ Referral Submission Error: " + err.message);
+    Logger.log("Referral Submission Error: " + err.message);
     Logger.log("Error stack: " + err.stack);
     
     // Send error notification email
@@ -287,7 +279,7 @@ function handleReferralSubmission(e) {
  */
 function handleCareerApplication(e) {
   try {
-    Logger.log("📨 ========== NEW CAREER APPLICATION ==========");
+    Logger.log("========== NEW CAREER APPLICATION ==========");
     
     const formData = e.parameter || {};
     Logger.log("Form data received: " + JSON.stringify(Object.keys(formData)));
@@ -313,7 +305,7 @@ function handleCareerApplication(e) {
       throw new Error("Invalid email format");
     }
 
-    Logger.log(`📎 Processing file: ${fileName} for ${applicantName}`);
+    Logger.log(`Processing file: ${fileName} for ${applicantName}`);
 
     // Upload resume to Google Drive
     let fileUrl = "N/A";
@@ -338,10 +330,10 @@ function handleCareerApplication(e) {
       newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
 
       fileUrl = newFile.getUrl();
-      Logger.log(`✅ File uploaded successfully: ${newFileName}`);
-      Logger.log(`📍 File URL: ${fileUrl}`);
+      Logger.log(`File uploaded successfully: ${newFileName}`);
+      Logger.log(`File URL: ${fileUrl}`);
     } catch (fileError) {
-      Logger.log("❌ File upload error: " + fileError.message);
+      Logger.log("File upload error: " + fileError.message);
       throw new Error("Failed to upload resume file: " + fileError.message);
     }
 
@@ -352,7 +344,7 @@ function handleCareerApplication(e) {
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = doc.insertSheet(CAREER_SHEET_NAME);
-      Logger.log(`✅ Created new sheet: ${CAREER_SHEET_NAME}`);
+      Logger.log(`Created new sheet: ${CAREER_SHEET_NAME}`);
     }
 
     // Add headers if sheet is empty
@@ -374,7 +366,7 @@ function handleCareerApplication(e) {
       sheet.setColumnWidth(5, 120);  // Phone
       sheet.setColumnWidth(6, 300);  // Resume Link
       
-      Logger.log("✅ Headers created in Career sheet");
+      Logger.log("Headers created in Career sheet");
     }
 
     // Prepare row data
@@ -398,7 +390,7 @@ function handleCareerApplication(e) {
     ]);
 
     SpreadsheetApp.flush();
-    Logger.log("✅ Career application saved to Google Sheets");
+    Logger.log("Career application saved to Google Sheets");
 
     // Send email notification
     sendCareerNotificationEmail(newRowData);
@@ -415,7 +407,7 @@ function handleCareerApplication(e) {
     ).setMimeType(ContentService.MimeType.JSON);
 
   } catch (err) {
-    Logger.log("❌ Career Application Error: " + err.message);
+    Logger.log("Career Application Error: " + err.message);
     Logger.log("Error stack: " + err.stack);
     
     // Send error notification email
@@ -436,7 +428,7 @@ function handleCareerApplication(e) {
  */
 function handleContactForm(e) {
   try {
-    Logger.log("📨 ========== NEW CONTACT SUBMISSION ==========");
+    Logger.log("========== NEW CONTACT SUBMISSION ==========");
     
     const formData = e.parameter || {};
     Logger.log("Form data received: " + JSON.stringify(Object.keys(formData)));
@@ -459,7 +451,7 @@ function handleContactForm(e) {
       throw new Error("Invalid email format");
     }
 
-    Logger.log(`📧 Processing contact form from: ${contactName}`);
+    Logger.log(`Processing contact form from: ${contactName}`);
 
     // Save to Google Sheets
     const doc = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -468,7 +460,7 @@ function handleContactForm(e) {
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = doc.insertSheet(CONTACT_SHEET_NAME);
-      Logger.log(`✅ Created new sheet: ${CONTACT_SHEET_NAME}`);
+      Logger.log(`Created new sheet: ${CONTACT_SHEET_NAME}`);
     }
 
     // Add headers if sheet is empty
@@ -490,7 +482,7 @@ function handleContactForm(e) {
       sheet.setColumnWidth(5, 150);  // Subject
       sheet.setColumnWidth(6, 400);  // Message
       
-      Logger.log("✅ Headers created in Contact sheet");
+      Logger.log("Headers created in Contact sheet");
     }
 
     // Prepare row data
@@ -514,7 +506,7 @@ function handleContactForm(e) {
     ]);
 
     SpreadsheetApp.flush();
-    Logger.log("✅ Contact form saved to Google Sheets");
+    Logger.log("Contact form saved to Google Sheets");
 
     // Send email notification
     sendContactNotificationEmail(newRowData);
@@ -529,7 +521,7 @@ function handleContactForm(e) {
     ).setMimeType(ContentService.MimeType.JSON);
 
   } catch (err) {
-    Logger.log("❌ Contact Form Error: " + err.message);
+    Logger.log("Contact Form Error: " + err.message);
     Logger.log("Error stack: " + err.stack);
     
     // Send error notification email
@@ -550,7 +542,7 @@ function handleContactForm(e) {
  */
 function sendReferralNotificationEmail(data) {
   try {
-    const subject = `👥 New Employee Referral: ${data.Position} - ${data.CandidateName} (Referred by ${data.ReferrerName})`;
+    const subject = `New Employee Referral: ${data.Position} - ${data.CandidateName} (Referred by ${data.ReferrerName})`;
     
     const htmlBody = `
 <!DOCTYPE html>
@@ -559,123 +551,190 @@ function sendReferralNotificationEmail(data) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(192,0,0,0.12);">
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #86047d, #45073c); padding: 32px 40px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
-                👥 New Employee Referral
+            <td style="background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); padding: 40px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;">
+                New Employee Referral
               </h1>
+              <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">
+                TechMynds Inc • Talent Acquisition
+              </p>
             </td>
           </tr>
           
           <!-- Content -->
           <tr>
-            <td style="padding: 32px 40px;">
+            <td style="padding: 40px;">
               
-              <!-- Position -->
-              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
-                <p style="margin: 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Position</p>
-                <p style="margin: 8px 0 0 0; color: #1e293b; font-size: 18px; font-weight: 700;">${data.Position}</p>
+              <!-- Position Banner -->
+              <div style="background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); padding: 20px 24px; margin-bottom: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(192,0,0,0.15);">
+                <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px;">POSITION APPLIED FOR</p>
+                <p style="margin: 8px 0 0 0; color: #ffffff; font-size: 20px; font-weight: 700;">${data.Position}</p>
               </div>
               
               <!-- Referrer Information -->
-              <h3 style="margin: 0 0 16px 0; color: #86047d; font-size: 16px;">Referrer Information</h3>
-              
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Name:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <span style="color: #1e293b;">${data.ReferrerName}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Email:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="mailto:${data.ReferrerEmail}" style="color: #86047d; text-decoration: none;">${data.ReferrerEmail}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Phone:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="tel:${data.ReferrerPhone}" style="color: #86047d; text-decoration: none;">${data.ReferrerPhone}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0;">
-                    <strong style="color: #475569;">Relationship:</strong>
-                  </td>
-                  <td style="padding: 8px 0; text-align: right;">
-                    <span style="color: #1e293b;">${data.Relationship}</span>
-                  </td>
-                </tr>
-              </table>
+              <div style="margin-bottom: 32px;">
+                <div style="border-left: 4px solid #c00000; padding-left: 16px; margin-bottom: 20px;">
+                  <h3 style="margin: 0; color: #c00000; font-size: 18px; font-weight: 700;">Referrer Information</h3>
+                </div>
+                
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #fafafa; border-radius: 8px; overflow: hidden;">
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Name</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.ReferrerName}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Email</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="mailto:${data.ReferrerEmail}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.ReferrerEmail}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Phone</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="tel:${data.ReferrerPhone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.ReferrerPhone}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Relationship</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.Relationship}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
               
               <!-- Candidate Information -->
-              <h3 style="margin: 24px 0 16px 0; color: #86047d; font-size: 16px;">Candidate Information</h3>
-              
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Name:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <span style="color: #1e293b;">${data.CandidateName}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Email:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="mailto:${data.CandidateEmail}" style="color: #86047d; text-decoration: none;">${data.CandidateEmail}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Phone:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="tel:${data.CandidatePhone}" style="color: #86047d; text-decoration: none;">${data.CandidatePhone}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0;">
-                    <strong style="color: #475569;">Submitted:</strong>
-                  </td>
-                  <td style="padding: 8px 0; text-align: right;">
-                    <span style="color: #1e293b;">${data.Timestamp}</span>
-                  </td>
-                </tr>
-              </table>
+              <div style="margin-bottom: 32px;">
+                <div style="border-left: 4px solid #c00000; padding-left: 16px; margin-bottom: 20px;">
+                  <h3 style="margin: 0; color: #c00000; font-size: 18px; font-weight: 700;">Candidate Information</h3>
+                </div>
+                
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #fafafa; border-radius: 8px; overflow: hidden;">
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Name</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.CandidateName}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Email</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="mailto:${data.CandidateEmail}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.CandidateEmail}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Phone</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="tel:${data.CandidatePhone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.CandidatePhone}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Submitted</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.Timestamp}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
               
               ${data.Notes !== "N/A" ? `
               <!-- Additional Notes -->
-              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
-                <p style="margin: 0 0 8px 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Additional Notes</p>
-                <p style="margin: 0; color: #1e293b; white-space: pre-wrap; line-height: 1.6;">${data.Notes}</p>
+              <div style="background-color: #fff5f5; border: 2px solid #ffcccc; border-left: 4px solid #c00000; padding: 20px; margin-bottom: 32px; border-radius: 8px;">
+                <p style="margin: 0 0 12px 0; color: #c00000; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">ADDITIONAL NOTES</p>
+                <p style="margin: 0; color: #333333; white-space: pre-wrap; line-height: 1.7; font-size: 14px;">${data.Notes}</p>
               </div>
               ` : ''}
               
               <!-- Action Buttons -->
-              <div style="text-align: center; margin-top: 24px;">
-                <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #86047d, #45073c); color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 10px;">
-                  📄 View Resume
-                </a>
-                <a href="mailto:${data.CandidateEmail}?subject=Re: Referral for ${data.Position}" style="display: inline-block; background: #45073c; color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600;">
-                  ✉️ Contact Candidate
-                </a>
+              <div style="text-align: center; margin-top: 32px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+                  <tr>
+                    <td style="padding: 0 8px;">
+                      <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
+                        View Resume
+                      </a>
+                    </td>
+                    <td style="padding: 0 8px;">
+                      <a href="mailto:${data.CandidateEmail}?subject=Re: Referral for ${data.Position}" style="display: inline-block; background-color: #ffffff; color: #c00000; border: 2px solid #c00000; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s;">
+                        Contact Candidate
+                      </a>
+                    </td>
+                  </tr>
+                </table>
               </div>
               
             </td>
@@ -683,9 +742,12 @@ function sendReferralNotificationEmail(data) {
           
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f8fafc; padding: 20px 40px; text-align: center; border-radius: 0 0 8px 8px;">
-              <p style="margin: 0; color: #94a3b8; font-size: 12px;">
-                This is an automated notification from your Employee Referral System
+            <td style="background-color: #1a1a1a; padding: 24px 40px; text-align: center;">
+              <p style="margin: 0 0 8px 0; color: #ffffff; font-size: 13px; font-weight: 600;">
+                TechMynds Inc • Employee Referral System
+              </p>
+              <p style="margin: 0; color: #999999; font-size: 11px;">
+                This is an automated notification • Please do not reply to this email
               </p>
             </td>
           </tr>
@@ -703,9 +765,9 @@ function sendReferralNotificationEmail(data) {
       htmlBody: htmlBody
     });
     
-    Logger.log("✅ Referral notification email sent successfully");
+    Logger.log("Referral notification email sent successfully");
   } catch (err) {
-    Logger.log("⚠️ Failed to send referral notification email: " + err.message);
+    Logger.log("Failed to send referral notification email: " + err.message);
   }
 }
 
@@ -714,7 +776,7 @@ function sendReferralNotificationEmail(data) {
  */
 function sendCareerNotificationEmail(data) {
   try {
-    const subject = `🎯 New Job Application: ${data.Position} - ${data.FullName}`;
+    const subject = `New Job Application: ${data.Position} - ${data.FullName}`;
     
     const htmlBody = `
 <!DOCTYPE html>
@@ -723,77 +785,116 @@ function sendCareerNotificationEmail(data) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(192,0,0,0.12);">
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #86047d, #45073c); padding: 32px 40px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
-                🎯 New Job Application
+            <td style="background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); padding: 40px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;">
+                New Job Application
               </h1>
+              <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">
+                TechMynds Inc • Career Portal
+              </p>
             </td>
           </tr>
           
           <!-- Content -->
           <tr>
-            <td style="padding: 32px 40px;">
+            <td style="padding: 40px;">
               
-              <!-- Position Applied -->
-              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
-                <p style="margin: 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Position</p>
-                <p style="margin: 8px 0 0 0; color: #1e293b; font-size: 18px; font-weight: 700;">${data.Position}</p>
+              <!-- Position Banner -->
+              <div style="background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); padding: 20px 24px; margin-bottom: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(192,0,0,0.15);">
+                <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px;">POSITION APPLIED FOR</p>
+                <p style="margin: 8px 0 0 0; color: #ffffff; font-size: 20px; font-weight: 700;">${data.Position}</p>
               </div>
               
               <!-- Candidate Information -->
-              <h3 style="margin: 0 0 16px 0; color: #86047d; font-size: 16px;">Candidate Information</h3>
-              
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Full Name:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <span style="color: #1e293b;">${data.FullName}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Email:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="mailto:${data.Email}" style="color: #86047d; text-decoration: none;">${data.Email}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Phone:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="tel:${data.Phone}" style="color: #86047d; text-decoration: none;">${data.Phone}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0;">
-                    <strong style="color: #475569;">Applied:</strong>
-                  </td>
-                  <td style="padding: 8px 0; text-align: right;">
-                    <span style="color: #1e293b;">${data.Timestamp}</span>
-                  </td>
-                </tr>
-              </table>
+              <div style="margin-bottom: 32px;">
+                <div style="border-left: 4px solid #c00000; padding-left: 16px; margin-bottom: 20px;">
+                  <h3 style="margin: 0; color: #c00000; font-size: 18px; font-weight: 700;">Candidate Information</h3>
+                </div>
+                
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #fafafa; border-radius: 8px; overflow: hidden;">
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Full Name</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.FullName}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Email</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="mailto:${data.Email}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.Email}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Phone</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="tel:${data.Phone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.Phone}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Applied</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.Timestamp}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
               
               <!-- Action Buttons -->
-              <div style="text-align: center; margin-top: 24px;">
-                <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #86047d, #45073c); color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 10px;">
-                  📄 View Resume
-                </a>
-                <a href="mailto:${data.Email}?subject=Re: Your Application for ${data.Position}" style="display: inline-block; background: #45073c; color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600;">
-                  ✉️ Reply to Candidate
-                </a>
+              <div style="text-align: center; margin-top: 32px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+                  <tr>
+                    <td style="padding: 0 8px;">
+                      <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
+                        View Resume
+                      </a>
+                    </td>
+                    <td style="padding: 0 8px;">
+                      <a href="mailto:${data.Email}?subject=Re: Your Application for ${data.Position}" style="display: inline-block; background-color: #ffffff; color: #c00000; border: 2px solid #c00000; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s;">
+                        Reply to Candidate
+                      </a>
+                    </td>
+                  </tr>
+                </table>
               </div>
               
             </td>
@@ -801,9 +902,12 @@ function sendCareerNotificationEmail(data) {
           
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f8fafc; padding: 20px 40px; text-align: center; border-radius: 0 0 8px 8px;">
-              <p style="margin: 0; color: #94a3b8; font-size: 12px;">
-                This is an automated notification from your Career Application System
+            <td style="background-color: #1a1a1a; padding: 24px 40px; text-align: center;">
+              <p style="margin: 0 0 8px 0; color: #ffffff; font-size: 13px; font-weight: 600;">
+                TechMynds Inc • Career Application System
+              </p>
+              <p style="margin: 0; color: #999999; font-size: 11px;">
+                This is an automated notification • Please do not reply to this email
               </p>
             </td>
           </tr>
@@ -821,9 +925,9 @@ function sendCareerNotificationEmail(data) {
       htmlBody: htmlBody
     });
     
-    Logger.log("✅ Career notification email sent successfully");
+    Logger.log("Career notification email sent successfully");
   } catch (err) {
-    Logger.log("⚠️ Failed to send career notification email: " + err.message);
+    Logger.log("Failed to send career notification email: " + err.message);
   }
 }
 
@@ -832,7 +936,7 @@ function sendCareerNotificationEmail(data) {
  */
 function sendContactNotificationEmail(data) {
   try {
-    const subject = `📩 New Contact Message from ${data.FullName}`;
+    const subject = `New Contact Message from ${data.FullName}`;
     
     const htmlBody = `
 <!DOCTYPE html>
@@ -841,81 +945,118 @@ function sendContactNotificationEmail(data) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(192,0,0,0.12);">
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #86047d, #45073c); padding: 32px 40px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
-                📩 New Contact Message
+            <td style="background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); padding: 40px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;">
+                New Contact Message
               </h1>
+              <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">
+                TechMynds Inc • Contact Form
+              </p>
             </td>
           </tr>
           
           <!-- Content -->
           <tr>
-            <td style="padding: 32px 40px;">
+            <td style="padding: 40px;">
               
               <!-- Contact Information -->
-              <h3 style="margin: 0 0 16px 0; color: #86047d; font-size: 16px;">Contact Information</h3>
-              
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Name:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <span style="color: #1e293b;">${data.FullName}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Email:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="mailto:${data.Email}" style="color: #86047d; text-decoration: none;">${data.Email}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Phone:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <a href="tel:${data.Phone}" style="color: #86047d; text-decoration: none;">${data.Phone}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                    <strong style="color: #475569;">Subject:</strong>
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; text-align: right;">
-                    <span style="color: #1e293b;">${data.Subject}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0;">
-                    <strong style="color: #475569;">Received:</strong>
-                  </td>
-                  <td style="padding: 8px 0; text-align: right;">
-                    <span style="color: #1e293b;">${data.Timestamp}</span>
-                  </td>
-                </tr>
-              </table>
+              <div style="margin-bottom: 32px;">
+                <div style="border-left: 4px solid #c00000; padding-left: 16px; margin-bottom: 20px;">
+                  <h3 style="margin: 0; color: #c00000; font-size: 18px; font-weight: 700;">Contact Information</h3>
+                </div>
+                
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #fafafa; border-radius: 8px; overflow: hidden;">
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Name</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.FullName}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Email</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="mailto:${data.Email}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.Email}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Phone</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <a href="tel:${data.Phone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.Phone}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Subject</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.Subject}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 20px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width: 40%;">
+                            <strong style="color: #666666; font-size: 13px;">Received</strong>
+                          </td>
+                          <td style="text-align: right;">
+                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.Timestamp}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
               
               <!-- Message Content -->
-              <div style="background-color: #f8fafc; border-left: 4px solid #86047d; padding: 16px; margin-bottom: 24px;">
-                <p style="margin: 0 0 8px 0; color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600;">Message</p>
-                <p style="margin: 0; color: #1e293b; white-space: pre-wrap; line-height: 1.6;">${data.Message}</p>
+              <div style="background-color: #fff5f5; border: 2px solid #ffcccc; border-left: 4px solid #c00000; padding: 20px; margin-bottom: 32px; border-radius: 8px;">
+                <p style="margin: 0 0 12px 0; color: #c00000; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">MESSAGE</p>
+                <p style="margin: 0; color: #333333; white-space: pre-wrap; line-height: 1.7; font-size: 14px;">${data.Message}</p>
               </div>
               
               <!-- Action Button -->
-              <div style="text-align: center; margin-top: 24px;">
-                <a href="mailto:${data.Email}?subject=Re: ${data.Subject}" style="display: inline-block; background: linear-gradient(135deg, #86047d, #45073c); color: white; padding: 12px 32px; text-decoration: none; border-radius: 6px; font-weight: 600;">
-                  ✉️ Reply via Email
+              <div style="text-align: center; margin-top: 32px;">
+                <a href="mailto:${data.Email}?subject=Re: ${data.Subject}" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
+                  Reply via Email
                 </a>
               </div>
               
@@ -924,9 +1065,12 @@ function sendContactNotificationEmail(data) {
           
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f8fafc; padding: 20px 40px; text-align: center; border-radius: 0 0 8px 8px;">
-              <p style="margin: 0; color: #94a3b8; font-size: 12px;">
-                This is an automated notification from your Contact Form System
+            <td style="background-color: #1a1a1a; padding: 24px 40px; text-align: center;">
+              <p style="margin: 0 0 8px 0; color: #ffffff; font-size: 13px; font-weight: 600;">
+                TechMynds Inc • Contact Form System
+              </p>
+              <p style="margin: 0; color: #999999; font-size: 11px;">
+                This is an automated notification • Please do not reply to this email
               </p>
             </td>
           </tr>
@@ -944,9 +1088,9 @@ function sendContactNotificationEmail(data) {
       htmlBody: htmlBody
     });
     
-    Logger.log("✅ Contact notification email sent successfully");
+    Logger.log("Contact notification email sent successfully");
   } catch (err) {
-    Logger.log("⚠️ Failed to send contact notification email: " + err.message);
+    Logger.log("Failed to send contact notification email: " + err.message);
   }
 }
 
@@ -963,12 +1107,12 @@ function sendReferralErrorEmail(data) {
   try {
     MailApp.sendEmail({
       to: RECIPIENT_EMAIL_REFERRAL,
-      subject: "❌ Employee Referral Error",
+      subject: "Employee Referral Error",
       body: `Error processing employee referral.\n\nReferrer: ${data.referrer_name || "Unknown"}\nCandidate: ${data.candidate_name || "Unknown"}\nTime: ${new Date().toISOString()}`
     });
-    Logger.log("✅ Referral error notification sent");
+    Logger.log("Referral error notification sent");
   } catch (err) {
-    Logger.log("⚠️ Failed to send referral error email: " + err.message);
+    Logger.log("Failed to send referral error email: " + err.message);
   }
 }
 
@@ -979,12 +1123,12 @@ function sendCareerErrorEmail(data) {
   try {
     MailApp.sendEmail({
       to: RECIPIENT_EMAIL_CAREER,
-      subject: "❌ Career Application Error",
+      subject: "Career Application Error",
       body: `Error processing career application.\n\nApplicant: ${data.name || "Unknown"}\nEmail: ${data.email || "Unknown"}\nTime: ${new Date().toISOString()}`
     });
-    Logger.log("✅ Career error notification sent");
+    Logger.log("Career error notification sent");
   } catch (err) {
-    Logger.log("⚠️ Failed to send career error email: " + err.message);
+    Logger.log("Failed to send career error email: " + err.message);
   }
 }
 
@@ -995,12 +1139,12 @@ function sendContactErrorEmail(data) {
   try {
     MailApp.sendEmail({
       to: RECIPIENT_EMAIL_CONTACT,
-      subject: "❌ Contact Form Error",
+      subject: "Contact Form Error",
       body: `Error processing contact form submission.\n\nName: ${data.fullName || data.name || "Unknown"}\nEmail: ${data.email || "Unknown"}\nTime: ${new Date().toISOString()}`
     });
-    Logger.log("✅ Contact error notification sent");
+    Logger.log("Contact error notification sent");
   } catch (err) {
-    Logger.log("⚠️ Failed to send contact error email: " + err.message);
+    Logger.log("Failed to send contact error email: " + err.message);
   }
 }
 
@@ -1016,57 +1160,57 @@ function sendContactErrorEmail(data) {
  */
 function testConfiguration() {
   try {
-    Logger.log("🧪 ========== TESTING CONFIGURATION ==========");
+    Logger.log("========== TESTING CONFIGURATION ==========");
     
     // Test Spreadsheet access
     Logger.log("Testing Spreadsheet access...");
     const doc = SpreadsheetApp.openById(SPREADSHEET_ID);
-    Logger.log(`✅ Spreadsheet accessible: "${doc.getName()}"`);
+    Logger.log(`Spreadsheet accessible: "${doc.getName()}"`);
     
     // Test/Create Career Sheet
     let careerSheet = doc.getSheetByName(CAREER_SHEET_NAME);
     if (!careerSheet) {
       careerSheet = doc.insertSheet(CAREER_SHEET_NAME);
-      Logger.log(`✅ Created Career sheet: "${CAREER_SHEET_NAME}"`);
+      Logger.log(`Created Career sheet: "${CAREER_SHEET_NAME}"`);
     } else {
-      Logger.log(`✅ Career sheet exists: "${CAREER_SHEET_NAME}"`);
+      Logger.log(`Career sheet exists: "${CAREER_SHEET_NAME}"`);
     }
     
     // Test/Create Contact Sheet
     let contactSheet = doc.getSheetByName(CONTACT_SHEET_NAME);
     if (!contactSheet) {
       contactSheet = doc.insertSheet(CONTACT_SHEET_NAME);
-      Logger.log(`✅ Created Contact sheet: "${CONTACT_SHEET_NAME}"`);
+      Logger.log(`Created Contact sheet: "${CONTACT_SHEET_NAME}"`);
     } else {
-      Logger.log(`✅ Contact sheet exists: "${CONTACT_SHEET_NAME}"`);
+      Logger.log(`Contact sheet exists: "${CONTACT_SHEET_NAME}"`);
     }
     
     // Test/Create Referral Sheet
     let referralSheet = doc.getSheetByName(REFERRAL_SHEET_NAME);
     if (!referralSheet) {
       referralSheet = doc.insertSheet(REFERRAL_SHEET_NAME);
-      Logger.log(`✅ Created Referral sheet: "${REFERRAL_SHEET_NAME}"`);
+      Logger.log(`Created Referral sheet: "${REFERRAL_SHEET_NAME}"`);
     } else {
-      Logger.log(`✅ Referral sheet exists: "${REFERRAL_SHEET_NAME}"`);
+      Logger.log(`Referral sheet exists: "${REFERRAL_SHEET_NAME}"`);
     }
     
     // Test Drive Folder access
     Logger.log("Testing Drive folder access...");
     const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
-    Logger.log(`✅ Drive folder accessible: "${folder.getName()}"`);
+    Logger.log(`Drive folder accessible: "${folder.getName()}"`);
     
     // Test Email configuration
     Logger.log("Testing email configuration...");
-    Logger.log(`✅ Career notifications: ${RECIPIENT_EMAIL_CAREER}`);
-    Logger.log(`✅ Contact notifications: ${RECIPIENT_EMAIL_CONTACT}`);
-    Logger.log(`✅ Referral notifications: ${RECIPIENT_EMAIL_REFERRAL}`);
+    Logger.log(`Career notifications: ${RECIPIENT_EMAIL_CAREER}`);
+    Logger.log(`Contact notifications: ${RECIPIENT_EMAIL_CONTACT}`);
+    Logger.log(`Referral notifications: ${RECIPIENT_EMAIL_REFERRAL}`);
     
-    Logger.log("🎉 ========== ALL TESTS PASSED ==========");
+    Logger.log("========== ALL TESTS PASSED ==========");
     Logger.log("Your configuration is correct and ready to use!");
     
     return true;
   } catch (err) {
-    Logger.log(`❌ Configuration test failed: ${err.message}`);
+    Logger.log(`Configuration test failed: ${err.message}`);
     Logger.log("Please check your SPREADSHEET_ID and DRIVE_FOLDER_ID values");
     return false;
   }
@@ -1077,7 +1221,7 @@ function testConfiguration() {
  * Simulates a referral form submission for testing
  */
 function testReferralSubmission() {
-  Logger.log("🧪 Testing Employee Referral...");
+  Logger.log("Testing Employee Referral...");
   
   const testEvent = {
     parameter: {
@@ -1098,9 +1242,9 @@ function testReferralSubmission() {
   
   try {
     const result = handleReferralSubmission(testEvent);
-    Logger.log("✅ Test passed: " + result.getContent());
+    Logger.log("Test passed: " + result.getContent());
   } catch (err) {
-    Logger.log("❌ Test failed: " + err.message);
+    Logger.log("Test failed: " + err.message);
   }
 }
 
@@ -1109,7 +1253,7 @@ function testReferralSubmission() {
  * Simulates a career form submission for testing
  */
 function testCareerSubmission() {
-  Logger.log("🧪 Testing Career Application...");
+  Logger.log("Testing Career Application...");
   
   const testEvent = {
     parameter: {
@@ -1125,9 +1269,9 @@ function testCareerSubmission() {
   
   try {
     const result = handleCareerApplication(testEvent);
-    Logger.log("✅ Test passed: " + result.getContent());
+    Logger.log("Test passed: " + result.getContent());
   } catch (err) {
-    Logger.log("❌ Test failed: " + err.message);
+    Logger.log("Test failed: " + err.message);
   }
 }
 
@@ -1136,7 +1280,7 @@ function testCareerSubmission() {
  * Simulates a contact form submission for testing
  */
 function testContactSubmission() {
-  Logger.log("🧪 Testing Contact Form...");
+  Logger.log("Testing Contact Form...");
   
   const testEvent = {
     parameter: {
@@ -1150,8 +1294,8 @@ function testContactSubmission() {
   
   try {
     const result = handleContactForm(testEvent);
-    Logger.log("✅ Test passed: " + result.getContent());
+    Logger.log("Test passed: " + result.getContent());
   } catch (err) {
-    Logger.log("❌ Test failed: " + err.message);
+    Logger.log("Test failed: " + err.message);
   }
 }
