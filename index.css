@@ -315,7 +315,7 @@ a {
   color: white;
   overflow: hidden;
   gap: 4rem;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 
 .hero video {

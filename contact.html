@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -64,7 +64,9 @@
       .input-wrapper input,
       .input-wrapper textarea,
       .input-wrapper select {
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition:
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
       }
 
       /* Error shake animation */
@@ -238,9 +240,7 @@
             </div>
             <div class="card-content">
               <h4>Email Address</h4>
-              <a href="mailto:hr@techmyndsinc.com"
-                >hr@techmyndsinc.com</a
-              >
+              <a href="mailto:hr@techmyndsinc.com">hr@techmyndsinc.com</a>
             </div>
           </div>
 
@@ -282,7 +282,7 @@
             </div>
             <div class="card-content">
               <h4>Office Location</h4>
-              <a href="#map-area"
+              <a href="https://maps.app.goo.gl/EYV55HEuKtbXYeQAA"
                 >1981 J N Pease Pl Ste, 104 Charlotte, NC 28262.</a
               >
             </div>
@@ -426,7 +426,8 @@
           >
             <div class="map-box">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3257.8287373086394!2d-80.7558!3d35.2827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDE2JzU3LjciTiA4MMKwNDUnMjAuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
+                src="https://www.google.com/maps?q=1981%20J%20N%20Pease%20Pl%20Ste%20104%2C%20Charlotte%2C%20NC%2028262&output=embed"
+                width="100%"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -529,7 +530,7 @@
               <li class="d-flex">
                 <i class="fas fa-map-marker-alt me-3 mt-1"></i>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=1981+J+N+Pease+Pl+Ste+104+Charlotte+NC+28262"
+                  href="https://maps.app.goo.gl/EYV55HEuKtbXYeQAA"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="footer-link p-0"
@@ -730,7 +731,7 @@
           if (rule.minLength && value.length < rule.minLength) {
             showError(
               inputElement,
-              `Message must be at least ${rule.minLength} characters`
+              `Message must be at least ${rule.minLength} characters`,
             );
             return false;
           }
@@ -738,7 +739,7 @@
           if (rule.maxLength && value.length > rule.maxLength) {
             showError(
               inputElement,
-              `Message must not exceed ${rule.maxLength} characters`
+              `Message must not exceed ${rule.maxLength} characters`,
             );
             return false;
           }
@@ -766,7 +767,7 @@
 
         // Text and email inputs
         const inputs = form.querySelectorAll(
-          'input[type="text"], input[type="email"], input[type="tel"]'
+          'input[type="text"], input[type="email"], input[type="tel"]',
         );
         inputs.forEach((input) => {
           input.addEventListener("blur", function () {
@@ -820,7 +821,7 @@
             if (value.length >= 6) {
               this.value = `(${value.slice(0, 3)}) ${value.slice(
                 3,
-                6
+                6,
               )}-${value.slice(6)}`;
             } else if (value.length >= 3) {
               this.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
@@ -847,7 +848,7 @@
       ) {
         console.error("⚠️ CRITICAL: Google Apps Script URL not configured!");
         console.error(
-          "Please update CONTACT_SCRIPT_URL with your deployed web app URL"
+          "Please update CONTACT_SCRIPT_URL with your deployed web app URL",
         );
       } else {
         console.log("✅ Script URL is configured");
@@ -907,7 +908,7 @@
           ) {
             showNotification(
               "❌ Configuration Error: Script URL not set",
-              "error"
+              "error",
             );
             console.error("Contact form script URL is not configured");
             return;
@@ -967,7 +968,7 @@
             // Show success notification
             showNotification(
               "✅ Thank you! Your message has been sent successfully.",
-              "success"
+              "success",
             );
 
             // Reset form and clear validation
