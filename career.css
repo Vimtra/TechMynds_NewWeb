@@ -290,6 +290,7 @@ h1, h2, h3, h4, h5, h6,
   background: var(--light-bg);
   padding: 60px 20px;
   margin: 10px 0;
+  display: none;
 }
 
 .referral-section {
