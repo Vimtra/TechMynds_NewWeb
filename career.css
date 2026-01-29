@@ -650,7 +650,7 @@ h1, h2, h3, h4, h5, h6,
    ================================ */
 .referral-content {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #fef5f5 0%, #ffffff 100%);
+  /* background: linear-gradient(135deg, #fef5f5 0%, #ffffff 100%); */
 }
 
 .referral-wrapper {
@@ -1235,7 +1235,7 @@ select.form-input option:checked {
 
   .jobs-section,
   .referral-section {
-    /* padding: 50px 15px; */
+    padding: 50px 15px;
     padding: 0;
     width: 100vw;
   }
