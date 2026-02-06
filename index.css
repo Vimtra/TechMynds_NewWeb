@@ -479,7 +479,7 @@ a {
   overflow: hidden;
   gap: 2rem;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -640,7 +640,7 @@ a {
     flex-direction: column-reverse;
     min-height: 100vh;
     height: auto;
-    padding: 100px 20px 60px;
+    padding: 60px 20px 60px;
     text-align: center;
     gap: 2rem;
   }
