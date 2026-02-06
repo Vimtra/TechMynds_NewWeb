@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Careers - TechMynds</title>
+    <title>IT Jobs Charlotte NC | Tech Career Opportunities | TechMynds</title>
+    <meta name="description" content="Search IT and technology jobs in Charlotte, NC. Explore career opportunities in software development, cloud engineering, and more. Apply with TechMynds today." />
+    <meta name="keywords" content="IT jobs Charlotte, tech jobs Charlotte NC, software developer jobs, cloud engineer positions, IT career opportunities" />
     <link rel="icon" href="./Images/Techmynds-logo.png" type="image/png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -129,20 +131,27 @@
           <span class="hamburger-line"></span>
         </div>
 
-        <ul class="nav-menu" id="navMenu">
-          <li class="nav-item">
-            <a href="./index.html" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="./about.html" class="nav-link">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a href="./career.html" class="nav-link">Careers</a>
-          </li>
-          <li class="nav-item">
-            <a href="./contact.html" class="nav-link">Contact Us</a>
-          </li>
-        </ul>
+        <div class="nav-right">
+          <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="./about.html" class="nav-link">US STAFFING</a>
+            </li>
+          </ul>
+
+          <div class="nav-cta-buttons" id="navCTA">
+            <a href="./career.html" class="nav-cta-btn">
+              <i class="bi bi-search"></i>
+              <span>Find Jobs</span>
+            </a>
+            <a href="./contact.html" class="nav-cta-btn nav-cta-btn-primary">
+              <i class="bi bi-arrow-right-circle"></i>
+              <span>Get Started</span>
+            </a>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -581,10 +590,10 @@
           <div class="col-lg-2 col-md-3 mb-4 text-center">
             <h5>Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a href="index.html" class="footer-link">Home</a></li>
-              <li><a href="about.html" class="footer-link">About Us</a></li>
-              <li><a href="career.html" class="footer-link">Career</a></li>
-              <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+              <li><a href="./index.html" class="footer-link">Home</a></li>
+              <li><a href="./about.html" class="footer-link">Us Staffing</a></li>
+              <li><a href="./career.html" class="footer-link">Career</a></li>
+              <li><a href="./contact.html" class="footer-link">Contact Us</a></li>
             </ul>
           </div>
 
@@ -607,7 +616,7 @@
               <li class="d-flex">
                 <i class="fas fa-map-marker-alt me-3 mt-1"></i>
                 <a
-                  href="https://maps.app.goo.gl/EYV55HEuKtbXYeQAA"
+                  href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="footer-link p-0"
@@ -636,7 +645,8 @@
               <a
                 href="https://www.linkedin.com/company/techmyndsinc/"
                 target="_blank"
-                aria-label="LinkedIn"
+                aria-label="Follow TechMynds on LinkedIn - where staffing professionals connect"
+                title="Connect with us on LinkedIn"
                 class="social-icon-footer"
                 ><i class="fab fa-linkedin-in"></i
               ></a>
@@ -663,29 +673,38 @@
 
       // Elements
       const hamburgerBtn = document.getElementById("hamburgerBtn");
-      const navMenu = document.getElementById("navMenu");
+      const navRight = document.querySelector(".nav-right");
       const mainNav = document.getElementById("mainNav");
       const navLinks = document.querySelectorAll(".nav-link");
+      const ctaButtons = document.querySelectorAll(".nav-cta-btn");
 
       // Hamburger Toggle
       hamburgerBtn.addEventListener("click", () => {
         hamburgerBtn.classList.toggle("active");
-        navMenu.classList.toggle("active");
+        navRight.classList.toggle("active");
       });
 
       // Close menu on link click
       navLinks.forEach((link) => {
         link.addEventListener("click", () => {
           hamburgerBtn.classList.remove("active");
-          navMenu.classList.remove("active");
+          navRight.classList.remove("active");
+        });
+      });
+
+      // Close menu on CTA button click
+      ctaButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          hamburgerBtn.classList.remove("active");
+          navRight.classList.remove("active");
         });
       });
 
       // Close menu on outside click
       document.addEventListener("click", (e) => {
-        if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        if (!navRight.contains(e.target) && !hamburgerBtn.contains(e.target)) {
           hamburgerBtn.classList.remove("active");
-          navMenu.classList.remove("active");
+          navRight.classList.remove("active");
         }
       });
 

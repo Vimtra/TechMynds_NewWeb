@@ -19,6 +19,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* GPU Acceleration for Animations */
+[data-aos] {
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+[data-aos].aos-animate {
+  will-change: auto;
 }
 
 body {
@@ -27,6 +40,54 @@ body {
   overflow-x: hidden;
   background: var(--bg-white);
   line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Mobile-First Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--bg-white);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #c00000;
+  box-shadow: 0 0 0 3px rgba(192, 0, 0, 0.1);
+}
+
+/* Touch-Friendly Buttons */
+button,
+input[type="button"],
+input[type="submit"],
+.btn {
+  min-height: 48px;
+  min-width: 120px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
 /* Geometric Background */
@@ -93,6 +154,7 @@ body {
 .compact-hero {
   padding: 100px 0 50px;
   position: relative;
+  margin-top: 80px;
 }
 
 .compact-hero .container {
@@ -244,9 +306,9 @@ body {
 .card-content h4 {
   font-family: 'Overpass', sans-serif;
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .card-content a {
@@ -400,11 +462,11 @@ body {
 .submit-btn-compact {
   background: var(--maroon-gradient);
   color: white;
-  padding: 13px 40px;
+  padding: 15px 44px;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -427,6 +489,7 @@ body {
   height: 100%;
   min-height: 550px;
   overflow: hidden;
+  border-radius: 14px;
 }
 
 .map-box iframe {
