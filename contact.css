@@ -7,7 +7,7 @@
   --text-gray: #4a4a4a;
   --text-light: #757575;
   --bg-white: #ffffff;
-  --bg-gray: #f7f8fa;
+  /* --bg-gray: #f7f8fa; */
   --border-light: #e5e7eb;
   --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -129,11 +129,7 @@ input[type="submit"],
 .geo-square-1 {
   width: 200px;
   height: 200px;
-  background: linear-gradient(
-    135deg,
-    var(--maroon-primary),
-    var(--maroon-light)
-  );
+  background: linear-gradient(135deg, var(--maroon-primary), var(--maroon-light));
   transform: rotate(45deg);
   top: 50%;
   right: 10%;
@@ -154,7 +150,7 @@ input[type="submit"],
 .compact-hero {
   padding: 100px 0 50px;
   position: relative;
-  margin-top: 80px;
+  margin-top: 90px;
 }
 
 .compact-hero .container {
@@ -180,13 +176,12 @@ input[type="submit"],
 }
 
 .compact-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.1;
   color: var(--text-dark);
   margin-bottom: 20px;
-  font-family: 'Overpass', sans-serif;
-
+  font-family: "Overpass", sans-serif;
 }
 
 .highlight-text {
@@ -304,7 +299,7 @@ input[type="submit"],
 }
 
 .card-content h4 {
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--text-dark);
@@ -332,7 +327,7 @@ input[type="submit"],
 /* Form and Map Section - Horizontal Layout */
 .form-map-section {
   padding: 40px 0;
-  background: white;
+  /* background: white; */
 }
 
 .form-map-section .container-fluid {
@@ -352,7 +347,7 @@ input[type="submit"],
 /* Form Box - Left Side */
 .form-box {
   padding: 45px 40px;
-  background: var(--bg-gray);
+  /* background: var(--bg-gray); */
   height: 100%;
   min-height: 550px;
   display: flex;
@@ -366,7 +361,7 @@ input[type="submit"],
 }
 
 .form-header-compact h2 {
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
 
   font-size: 2rem;
   font-weight: 800;
@@ -575,7 +570,7 @@ input[type="submit"],
 }
 
 .cta-wrapper h3 {
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
 
   font-size: 1.85rem;
   font-weight: 700;
@@ -585,7 +580,7 @@ input[type="submit"],
 }
 
 .cta-wrapper p {
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   text-align: center;
   font-size: 1.05rem;
   color: var(--text-gray);
@@ -993,5 +988,90 @@ input[type="submit"],
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c00000 0%, #800000 100%);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(192, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.scroll-to-top-btn:hover {
+  width: 55px;
+  height: 55px;
+  box-shadow: 0 15px 40px rgba(192, 0, 0, 0.4);
+  transform: translateY(-5px);
+}
+
+.scroll-to-top-btn:active {
+  transform: translateY(-2px);
+}
+
+.scroll-to-top-btn.show {
+  display: flex;
+  animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .scroll-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .scroll-to-top-btn:hover {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top-btn {
+    bottom: 15px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .scroll-to-top-btn:hover {
+    width: 48px;
+    height: 48px;
   }
 }

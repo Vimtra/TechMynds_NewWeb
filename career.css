@@ -170,27 +170,15 @@ h1, h2, h3, h4, h5, h6,
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-      circle at 20% 50%,
-      rgba(192, 0, 0, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(255, 68, 68, 0.1) 0%,
-      transparent 50%
-    );
+  background:
+    radial-gradient(circle at 20% 50%, rgba(192, 0, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 68, 68, 0.1) 0%, transparent 50%);
   z-index: 2;
 }
 
 .accent-bar {
   position: absolute;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(192, 0, 0, 0.6),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(192, 0, 0, 0.6), transparent);
   z-index: 2;
   pointer-events: none;
   box-shadow: 0 0 20px rgba(192, 0, 0, 0.4);
@@ -448,11 +436,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .job-accordion-header:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.02) 0%,
-    rgba(255, 68, 68, 0.02) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.02) 0%, rgba(255, 68, 68, 0.02) 100%);
 }
 
 .job-header-content {
@@ -550,11 +534,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.1) 0%,
-    rgba(255, 68, 68, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
   padding: 10px 22px;
   border-radius: 50px;
   border: 2px solid rgba(192, 0, 0, 0.2);
@@ -906,10 +886,10 @@ h1, h2, h3, h4, h5, h6,
 
 .modal-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  background: var(--light-bg);
-  border: 2px solid var(--border-color);
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
   color: var(--text-primary);
   font-size: 1.5rem;
   width: 45px;
@@ -919,14 +899,29 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.modal-close::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  background: transparent;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
 .modal-close:hover {
-  background: var(--primary-color);
-  color: var(--white);
-  border-color: var(--primary-color);
-  transform: rotate(90deg);
+  color: var(--primary-color);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.modal-close:hover::before {
+  opacity: 1;
+  inset: -12px;
 }
 
 .modal-title {
@@ -934,7 +929,8 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 12px;
-  padding-right: 50px;
+  padding-right: 0;
+  margin-right: 60px;
 }
 
 .modal-subtitle {
@@ -950,11 +946,7 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 12px;
   padding: 28px;
   margin-bottom: 28px;
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.01) 0%,
-    rgba(255, 68, 68, 0.01) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.01) 0%, rgba(255, 68, 68, 0.01) 100%);
 }
 
 .fieldset-legend {
@@ -1035,11 +1027,7 @@ select.form-input:hover {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.02) 0%,
-    rgba(255, 68, 68, 0.02) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.02) 0%, rgba(255, 68, 68, 0.02) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1102,33 +1090,21 @@ select.form-input:hover {
 }
 
 .file-upload:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.05) 0%,
-    rgba(255, 68, 68, 0.05) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.05) 0%, rgba(255, 68, 68, 0.05) 100%);
   border-color: var(--primary-dark);
   transform: translateY(-4px);
   box-shadow: 0 8px 24px var(--shadow-light);
 }
 
 .file-upload.dragover {
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.1) 0%,
-    rgba(255, 68, 68, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
   border-color: var(--primary-dark);
   border-style: solid;
   transform: scale(1.02);
 }
 
 .file-upload.has-file {
-  background: linear-gradient(
-    135deg,
-    rgba(16, 185, 129, 0.05) 0%,
-    rgba(5, 150, 105, 0.05) 100%
-  );
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
   border-color: var(--success);
   border-style: solid;
 }
@@ -1159,11 +1135,7 @@ select.form-input:hover {
 }
 
 .submit-btn {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--primary-dark) 100%
-  );
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: var(--white);
   padding: 16px 36px;
   border: none;
@@ -1218,11 +1190,7 @@ select.form-input option {
 }
 
 select.form-input option:checked {
-  background: linear-gradient(
-    135deg,
-    rgba(192, 0, 0, 0.1) 0%,
-    rgba(255, 68, 68, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
   color: var(--primary-color);
   font-weight: 600;
 }
@@ -1448,20 +1416,12 @@ select.form-input option:checked {
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    var(--primary-color) 0%,
-    var(--primary-dark) 100%
-  );
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    var(--primary-dark) 0%,
-    var(--primary-color) 100%
-  );
+  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-color) 100%);
 }
 .modal-subtitle {
   font-size: 1.1rem;
@@ -1551,4 +1511,89 @@ select.form-input option:checked {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c00000 0%, #800000 100%);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(192, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.scroll-to-top-btn:hover {
+  width: 55px;
+  height: 55px;
+  box-shadow: 0 15px 40px rgba(192, 0, 0, 0.4);
+  transform: translateY(-5px);
+}
+
+.scroll-to-top-btn:active {
+  transform: translateY(-2px);
+}
+
+.scroll-to-top-btn.show {
+  display: flex;
+  animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .scroll-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .scroll-to-top-btn:hover {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top-btn {
+    bottom: 15px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .scroll-to-top-btn:hover {
+    width: 48px;
+    height: 48px;
+  }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "techmynds-new-website---copy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vimtra/TechMynds_NewWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vimtra/TechMynds_NewWeb/issues"
+  },
+  "homepage": "https://github.com/Vimtra/TechMynds_NewWeb#readme",
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}

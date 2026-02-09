@@ -1,386 +1,410 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechMynds - Modern Navigation</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: #f8f9fa;
+      }
+
+      /* Navigation Styles */
+      .navbar {
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+      }
+
+      /* Logo Section */
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+        height: 45px;
+        width: auto;
+      }
+
+      .logo-text {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-text span {
+        color: #0066cc;
+      }
+
+      /* Main Navigation Links */
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #495057;
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #0066cc;
+      }
+
+      .nav-links a.active {
+        color: #0066cc;
+      }
+
+      .nav-links a.active::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #0066cc;
+      }
+
+      /* CTA Buttons Section */
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: #0066cc;
+        color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+      }
+
+      .btn-primary:hover {
+        background: #0052a3;
+        box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: #ffffff;
+        color: #0066cc;
+        border: 2px solid #0066cc;
+      }
+
+      .btn-secondary:hover {
+        background: #f0f7ff;
+        transform: translateY(-1px);
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #1a1a1a;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        list-style: none;
+        margin-bottom: 24px;
+      }
+
+      .mobile-nav-links a {
+        text-decoration: none;
+        color: #495057;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 12px 0;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .mobile-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .nav-links,
+        .nav-cta {
+          display: none;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f8f9fa;
+        .mobile-toggle {
+          display: flex;
         }
+      }
 
-        /* Navigation Styles */
-        .navbar {
-            background: #ffffff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e9ecef;
-        }
-
+      @media (max-width: 576px) {
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
-        }
-
-        /* Logo Section */
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo {
-            height: 45px;
-            width: auto;
+          padding: 0 16px;
+          height: 70px;
         }
 
         .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            letter-spacing: -0.5px;
+          font-size: 20px;
         }
 
-        .logo-text span {
-            color: #0066cc;
-        }
-
-        /* Main Navigation Links */
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #495057;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #0066cc;
-        }
-
-        .nav-links a.active {
-            color: #0066cc;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #0066cc;
-        }
-
-        /* CTA Buttons Section */
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .logo {
+          height: 38px;
         }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+          padding: 10px 20px;
+          font-size: 14px;
         }
+      }
 
-        .btn-primary {
-            background: #0066cc;
-            color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,102,204,0.2);
-        }
+      /* Icons for buttons */
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
 
-        .btn-primary:hover {
-            background: #0052a3;
-            box-shadow: 0 4px 8px rgba(0,102,204,0.3);
-            transform: translateY(-1px);
-        }
+      /* Demo content below nav */
+      .demo-content {
+        padding: 60px 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
 
-        .btn-secondary {
-            background: #ffffff;
-            color: #0066cc;
-            border: 2px solid #0066cc;
-        }
+      .demo-content h1 {
+        font-size: 48px;
+        color: #1a1a1a;
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
 
-        .btn-secondary:hover {
-            background: #f0f7ff;
-            transform: translateY(-1px);
-        }
-
-        /* Mobile Menu Toggle */
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .mobile-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #1a1a1a;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            padding: 24px;
-            max-height: calc(100vh - 80px);
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .mobile-nav-links a {
-            text-decoration: none;
-            color: #495057;
-            font-size: 16px;
-            font-weight: 500;
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .mobile-cta {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .nav-links,
-            .nav-cta {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .nav-container {
-                padding: 0 16px;
-                height: 70px;
-            }
-
-            .logo-text {
-                font-size: 20px;
-            }
-
-            .logo {
-                height: 38px;
-            }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-        }
-
-        /* Icons for buttons */
-        .icon {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Demo content below nav */
-        .demo-content {
-            padding: 60px 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .demo-content h1 {
-            font-size: 48px;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .demo-content p {
-            font-size: 20px;
-            color: #6c757d;
-            line-height: 1.6;
-        }
+      .demo-content p {
+        font-size: 20px;
+        color: #6c757d;
+        line-height: 1.6;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-container">
-            <!-- Logo Section -->
-            <div class="logo-section">
-                <!-- Replace with your actual logo -->
-                <img src="./Images/Techmynds-logo.png" alt="TechMynds Logo" class="logo">
-            </div>
-
-            <!-- Desktop Navigation Links -->
-            <ul class="nav-links">
-                <li><a href="./index.html" class="active">Home</a></li>
-                <li><a href="./about.html">US STAFFING</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./career.html">Careers</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-
-            <!-- Desktop CTA Buttons -->
-            <div class="nav-cta">
-                <a href="./contact.html?type=employer" class="btn btn-secondary">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                    Hire Talent
-                </a>
-                <a href="./career.html" class="btn btn-primary">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                    Find a Job
-                </a>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <div class="mobile-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="nav-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+          <!-- Replace with your actual logo -->
+          <img src="./Images/Techmynds-logo.png" alt="TechMynds Logo" class="logo" />
         </div>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="./index.html" class="active">Home</a></li>
+          <li><a href="./about.html">US STAFFING</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./career.html">Careers</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+
+        <!-- Desktop CTA Buttons -->
+        <div class="nav-cta">
+          <a href="./contact.html?type=employer" class="btn btn-secondary">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            Hire Talent
+          </a>
+          <a href="./career.html" class="btn btn-primary">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            Find a Job
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-toggle" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <ul class="mobile-nav-links">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./about.html">US STAFFING</a></li>
-            <li><a href="./services.html">Services</a></li>
-            <li><a href="./career.html">Careers</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-        </ul>
-        
-        <div class="mobile-cta">
-            <a href="./contact.html?type=employer" class="btn btn-secondary">
-                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                Hire Talent
-            </a>
-            <a href="./career.html" class="btn btn-primary">
-                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                Find a Job
-            </a>
-        </div>
+      <ul class="mobile-nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">US STAFFING</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./career.html">Careers</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+
+      <div class="mobile-cta">
+        <a href="./contact.html?type=employer" class="btn btn-secondary">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+          Hire Talent
+        </a>
+        <a href="./career.html" class="btn btn-primary">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          Find a Job
+        </a>
+      </div>
     </div>
 
     <!-- Demo Content (Remove this in production) -->
     <div class="demo-content">
-        <h1>Your Navigation is Ready! 🚀</h1>
-        <p>This modern navigation includes dual-path CTAs, mobile responsiveness, and clean design. Scroll down to see the sticky behavior.</p>
-        <br><br>
-        <p style="color: #0066cc; font-weight: 600;">Key Features:</p>
-        <ul style="margin-top: 16px; line-height: 2;">
-            <li>✅ Dual-path CTAs (Hire Talent + Find a Job)</li>
-            <li>✅ Sticky navigation that follows on scroll</li>
-            <li>✅ Fully responsive mobile menu</li>
-            <li>✅ Modern, professional design</li>
-            <li>✅ Smooth hover effects and transitions</li>
-            <li>✅ Active page indicator</li>
-        </ul>
-        
-        <!-- Spacer to demonstrate sticky nav -->
-        <div style="height: 150vh; padding-top: 60px;">
-            <h2 style="font-size: 32px; color: #495057;">Scroll down to see the sticky navigation in action...</h2>
-        </div>
+      <h1>Your Navigation is Ready! 🚀</h1>
+      <p>
+        This modern navigation includes dual-path CTAs, mobile responsiveness, and clean design.
+        Scroll down to see the sticky behavior.
+      </p>
+      <br /><br />
+      <p style="color: #0066cc; font-weight: 600">Key Features:</p>
+      <ul style="margin-top: 16px; line-height: 2">
+        <li>✅ Dual-path CTAs (Hire Talent + Find a Job)</li>
+        <li>✅ Sticky navigation that follows on scroll</li>
+        <li>✅ Fully responsive mobile menu</li>
+        <li>✅ Modern, professional design</li>
+        <li>✅ Smooth hover effects and transitions</li>
+        <li>✅ Active page indicator</li>
+      </ul>
+
+      <!-- Spacer to demonstrate sticky nav -->
+      <div style="height: 150vh; padding-top: 60px">
+        <h2 style="font-size: 32px; color: #495057">
+          Scroll down to see the sticky navigation in action...
+        </h2>
+      </div>
     </div>
 
     <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.mobile-toggle');
-            
-            mobileMenu.classList.toggle('active');
-            toggle.classList.toggle('active');
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const mobileMenu = document.getElementById("mobileMenu");
+        const toggle = document.querySelector(".mobile-toggle");
+
+        mobileMenu.classList.toggle("active");
+        toggle.classList.toggle("active");
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const mobileMenu = document.getElementById("mobileMenu");
+        const toggle = document.querySelector(".mobile-toggle");
+
+        if (!event.target.closest(".navbar") && !event.target.closest(".mobile-menu")) {
+          mobileMenu.classList.remove("active");
+          toggle.classList.remove("active");
         }
+      });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.mobile-toggle');
-            
-            if (!event.target.closest('.navbar') && !event.target.closest('.mobile-menu')) {
-                mobileMenu.classList.remove('active');
-                toggle.classList.remove('active');
-            }
-        });
+      // Add active class to current page
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll(".nav-links a, .mobile-nav-links a");
 
-        // Add active class to current page
-        window.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href').includes(currentPage)) {
-                    link.classList.add('active');
-                }
-            });
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href").includes(currentPage)) {
+            link.classList.add("active");
+          }
         });
+      });
     </script>
-
-</body>
+  </body>
 </html>
