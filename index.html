@@ -87,6 +87,9 @@
       </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
     <!-- Head Section -->
     <section class="hero">
       <video autoplay muted loop playsinline preload="none">
@@ -476,11 +479,13 @@
       const mainNav = document.getElementById("mainNav");
       const navLinks = document.querySelectorAll(".nav-link");
       const ctaButtons = document.querySelectorAll(".nav-cta-btn");
+      const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
 
-      // Hamburger Toggle
+      // Hamburger Toggle with Overlay
       hamburgerBtn.addEventListener("click", () => {
         hamburgerBtn.classList.toggle("active");
         navRight.classList.toggle("active");
+        mobileMenuOverlay.classList.toggle("active");
       });
 
       // Close menu on link click
@@ -488,6 +493,7 @@
         link.addEventListener("click", () => {
           hamburgerBtn.classList.remove("active");
           navRight.classList.remove("active");
+          mobileMenuOverlay.classList.remove("active");
         });
       });
 
@@ -496,7 +502,15 @@
         button.addEventListener("click", () => {
           hamburgerBtn.classList.remove("active");
           navRight.classList.remove("active");
+          mobileMenuOverlay.classList.remove("active");
         });
+      });
+
+      // Close menu on overlay click
+      mobileMenuOverlay.addEventListener("click", () => {
+        hamburgerBtn.classList.remove("active");
+        navRight.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
       });
 
       // Close menu on outside click
@@ -504,6 +518,7 @@
         if (!navRight.contains(e.target) && !hamburgerBtn.contains(e.target)) {
           hamburgerBtn.classList.remove("active");
           navRight.classList.remove("active");
+          mobileMenuOverlay.classList.remove("active");
         }
       });
 
