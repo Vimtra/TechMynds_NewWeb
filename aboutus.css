@@ -361,7 +361,7 @@ input[type="submit"],
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: var(--color-primary);
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: capitalize;
   display: inline-block;
   position: relative;

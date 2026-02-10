@@ -97,9 +97,6 @@ function handleReferralSubmission(e) {
     
     // Extract and validate CANDIDATE fields
     const candidateName = (formData.candidate_name || "").trim();
-    const candidateEmail = (formData.candidate_email || "").trim();
-    const candidatePhone = (formData.candidate_phone || "").trim();
-    const positionReferredFor = (formData.position_referred_for || "").trim();
     
     // Extract file data
     const fileData = formData.fileData || "";
@@ -113,17 +110,12 @@ function handleReferralSubmission(e) {
     if (!referrerName) throw new Error("Missing required field: referrer_name");
     if (!referrerEmail) throw new Error("Missing required field: referrer_email");
     if (!candidateName) throw new Error("Missing required field: candidate_name");
-    if (!candidateEmail) throw new Error("Missing required field: candidate_email");
-    if (!positionReferredFor) throw new Error("Missing required field: position_referred_for");
     if (!fileData) throw new Error("Candidate resume is required");
 
     // Validate email formats
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(referrerEmail)) {
       throw new Error("Invalid referrer email format");
-    }
-    if (!emailRegex.test(candidateEmail)) {
-      throw new Error("Invalid candidate email format");
     }
 
     Logger.log(`Processing referral from ${referrerName} for candidate ${candidateName}`);
@@ -141,10 +133,9 @@ function handleReferralSubmission(e) {
       // Create a safe filename with timestamp
       const safeCandidateName = candidateName.replace(/[^a-zA-Z0-9]/g, "_");
       const safeReferrerName = referrerName.replace(/[^a-zA-Z0-9]/g, "_");
-      const safePosition = positionReferredFor.replace(/[^a-zA-Z0-9]/g, "_").substring(0, 30);
       const timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyyMMdd_HHmmss");
       const fileExtension = fileName.split('.').pop();
-      const newFileName = `REFERRAL_${safePosition}_${safeCandidateName}_by_${safeReferrerName}_${timestamp}.${fileExtension}`;
+      const newFileName = `REFERRAL_${safeCandidateName}_by_${safeReferrerName}_${timestamp}.${fileExtension}`;
 
       // Create file in Drive
       const newFile = folder.createFile(fileBlob);
@@ -173,14 +164,11 @@ function handleReferralSubmission(e) {
     if (sheet.getLastRow() === 0) {
       const headers = [
         "Timestamp",
-        "Position",
         "Referrer Name",
         "Referrer Email",
         "Referrer Phone",
         "Relationship",
         "Candidate Name",
-        "Candidate Email",
-        "Candidate Phone",
         "Resume Link",
         "Notes"
       ];
@@ -194,16 +182,13 @@ function handleReferralSubmission(e) {
       
       // Set column widths
       sheet.setColumnWidth(1, 150);  // Timestamp
-      sheet.setColumnWidth(2, 150);  // Position
-      sheet.setColumnWidth(3, 150);  // Referrer Name
-      sheet.setColumnWidth(4, 200);  // Referrer Email
-      sheet.setColumnWidth(5, 120);  // Referrer Phone
-      sheet.setColumnWidth(6, 120);  // Relationship
-      sheet.setColumnWidth(7, 150);  // Candidate Name
-      sheet.setColumnWidth(8, 200);  // Candidate Email
-      sheet.setColumnWidth(9, 120);  // Candidate Phone
-      sheet.setColumnWidth(10, 300); // Resume Link
-      sheet.setColumnWidth(11, 300); // Notes
+      sheet.setColumnWidth(2, 150);  // Referrer Name
+      sheet.setColumnWidth(3, 200);  // Referrer Email
+      sheet.setColumnWidth(4, 120);  // Referrer Phone
+      sheet.setColumnWidth(5, 120);  // Relationship
+      sheet.setColumnWidth(6, 150);  // Candidate Name
+      sheet.setColumnWidth(7, 300);  // Resume Link
+      sheet.setColumnWidth(8, 300);  // Notes
       
       Logger.log("Headers created in Referral sheet");
     }
@@ -211,14 +196,11 @@ function handleReferralSubmission(e) {
     // Prepare row data
     const newRowData = {
       Timestamp: Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "MM/dd/yyyy HH:mm:ss"),
-      Position: positionReferredFor,
       ReferrerName: referrerName,
       ReferrerEmail: referrerEmail,
       ReferrerPhone: referrerPhone || "N/A",
       Relationship: relationship || "N/A",
       CandidateName: candidateName,
-      CandidateEmail: candidateEmail,
-      CandidatePhone: candidatePhone || "N/A",
       ResumeLink: fileUrl,
       Notes: notes || "N/A"
     };
@@ -226,14 +208,11 @@ function handleReferralSubmission(e) {
     // Append row to sheet
     sheet.appendRow([
       newRowData.Timestamp,
-      newRowData.Position,
       newRowData.ReferrerName,
       newRowData.ReferrerEmail,
       newRowData.ReferrerPhone,
       newRowData.Relationship,
       newRowData.CandidateName,
-      newRowData.CandidateEmail,
-      newRowData.CandidatePhone,
       newRowData.ResumeLink,
       newRowData.Notes
     ]);
@@ -251,7 +230,6 @@ function handleReferralSubmission(e) {
         message: "Referral submitted successfully",
         referrer: referrerName,
         candidate: candidateName,
-        position: positionReferredFor,
         fileUrl: fileUrl
       })
     ).setMimeType(ContentService.MimeType.JSON);
@@ -542,7 +520,7 @@ function handleContactForm(e) {
  */
 function sendReferralNotificationEmail(data) {
   try {
-    const subject = `New Employee Referral: ${data.Position} - ${data.CandidateName} (Referred by ${data.ReferrerName})`;
+    const subject = `New Employee Referral: ${data.CandidateName} (Referred by ${data.ReferrerName})`;
     
     const htmlBody = `
 <!DOCTYPE html>
@@ -572,12 +550,6 @@ function sendReferralNotificationEmail(data) {
           <!-- Content -->
           <tr>
             <td style="padding: 40px;">
-              
-              <!-- Position Banner -->
-              <div style="background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); padding: 20px 24px; margin-bottom: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(192,0,0,0.15);">
-                <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px;">POSITION APPLIED FOR</p>
-                <p style="margin: 8px 0 0 0; color: #ffffff; font-size: 20px; font-weight: 700;">${data.Position}</p>
-              </div>
               
               <!-- Referrer Information -->
               <div style="margin-bottom: 32px;">
@@ -667,34 +639,6 @@ function sendReferralNotificationEmail(data) {
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
-                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="width: 40%;">
-                            <strong style="color: #666666; font-size: 13px;">Email</strong>
-                          </td>
-                          <td style="text-align: right;">
-                            <a href="mailto:${data.CandidateEmail}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.CandidateEmail}</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
-                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="width: 40%;">
-                            <strong style="color: #666666; font-size: 13px;">Phone</strong>
-                          </td>
-                          <td style="text-align: right;">
-                            <a href="tel:${data.CandidatePhone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.CandidatePhone}</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
                     <td style="padding: 16px 20px;">
                       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
@@ -721,20 +665,9 @@ function sendReferralNotificationEmail(data) {
               
               <!-- Action Buttons -->
               <div style="text-align: center; margin-top: 32px;">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
-                  <tr>
-                    <td style="padding: 0 8px;">
-                      <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
-                        View Resume
-                      </a>
-                    </td>
-                    <td style="padding: 0 8px;">
-                      <a href="mailto:${data.CandidateEmail}?subject=Re: Referral for ${data.Position}" style="display: inline-block; background-color: #ffffff; color: #c00000; border: 2px solid #c00000; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s;">
-                        Contact Candidate
-                      </a>
-                    </td>
-                  </tr>
-                </table>
+                <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
+                  View Resume
+                </a>
               </div>
               
             </td>
@@ -1230,9 +1163,6 @@ function testReferralSubmission() {
       referrer_phone: "1234567890",
       relationship: "Former Colleague",
       candidate_name: "Jane Candidate",
-      candidate_email: "jane.candidate@example.com",
-      candidate_phone: "9876543210",
-      position_referred_for: "Software Developer",
       notes: "Jane is an excellent developer with 5 years of experience.",
       fileData: Utilities.base64Encode("Test candidate resume content"),
       fileName: "jane_candidate_resume.pdf",
