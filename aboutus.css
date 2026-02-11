@@ -29,18 +29,6 @@
   scroll-behavior: smooth;
 }
 
-/* GPU Acceleration for Animations */
-[data-aos] {
-  will-change: opacity, transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-[data-aos].aos-animate {
-  will-change: auto;
-}
-
 body {
   font-family: var(--font-family-primary);
   background-color: var(--color-bg-base);
@@ -93,6 +81,99 @@ input[type="submit"],
 }
 
 /* ========================================
+   AOS ANIMATIONS - CORPORATE STYLE
+   ======================================== */
+
+/* GPU Acceleration for Animations */
+[data-aos] {
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+[data-aos].aos-animate {
+  will-change: auto;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flipLeft {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-30deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg);
+  }
+}
+
+@keyframes flipRight {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(30deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
    HERO SECTION
    ======================================== */
 
@@ -101,15 +182,7 @@ input[type="submit"],
   display: flex;
   align-items: center;
   padding: 80px 20px 30px;
-  /* margin-top: 40px; */
-  /* position: relative;
-  background: linear-gradient(135deg, rgba(54, 27, 27, 0.92) 0%, rgba(255, 240, 240, 0.92) 100%),
-              url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop') center/cover,
-              linear-gradient(135deg, #ffffff 0%, #fff0f0 100%);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden; */
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -134,7 +207,6 @@ input[type="submit"],
   background: radial-gradient(circle, rgba(192, 0, 0, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  animation: float 6s ease-in-out infinite;
   z-index: 1;
 }
 
@@ -148,18 +220,7 @@ input[type="submit"],
   background: radial-gradient(circle, rgba(192, 0, 0, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  animation: float 8s ease-in-out infinite reverse;
   z-index: 1;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(20px);
-  }
 }
 
 .hero-content-area {
@@ -183,7 +244,6 @@ input[type="submit"],
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.08), rgba(192, 0, 0, 0.02));
   border: 1px solid rgba(192, 0, 0, 0.2);
   border-radius: 50px;
-  animation: fadeInUp 0.6s ease-out;
 }
 
 .brand-tag::before {
@@ -201,7 +261,6 @@ input[type="submit"],
   color: var(--color-text-dark);
   margin-bottom: 32px;
   letter-spacing: -2px;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
   background: linear-gradient(135deg, #1a1a2e 0%, #c00000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -221,7 +280,6 @@ input[type="submit"],
   border-right: 2px solid rgba(192, 0, 0, 0.2);
   background: linear-gradient(90deg, rgba(192, 0, 0, 0.08), transparent);
   border-radius: 4px;
-  animation: fadeInUp 1s ease-out 0.4s both;
   position: relative;
 }
 
@@ -236,13 +294,10 @@ input[type="submit"],
   font-family: "Lexend", sans-serif;
   color: var(--color-text-medium);
   line-height: 1.9;
-  /* margin-bottom: 48px; */
   max-width: 90%;
-  animation: fadeInUp 1.2s ease-out 0.6s both;
   padding: 20px;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 12px;
-  /* border: 1px solid rgba(192, 0, 0, 0.1); */
   backdrop-filter: blur(10px);
 }
 
@@ -252,31 +307,7 @@ input[type="submit"],
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeInRight 1s ease-out 0.4s both;
   z-index: 2;
-}
-
-/* .hero-image-right::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: linear-gradient(135deg, #c00000, #ff4444, #c00000);
-  border-radius: 24px;
-  opacity: 0;
-  z-index: -1;
-  animation: glow 3s ease-in-out infinite;
-} */
-
-@keyframes glow {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  50% {
-    opacity: 0.1;
-    transform: scale(1);
-  }
 }
 
 .img-about {
@@ -289,7 +320,6 @@ input[type="submit"],
     0 20px 60px rgba(192, 0, 0, 0.2),
     0 0 0 2px rgba(192, 0, 0, 0.1);
   transition: var(--transition-smooth);
-  border-radius: 5%;
   position: relative;
   z-index: 1;
 }
@@ -300,40 +330,6 @@ input[type="submit"],
     0 30px 80px rgba(192, 0, 0, 0.3),
     0 0 0 3px rgba(192, 0, 0, 0.15);
 }
-
-/* Scroll Animations for Hero Section */
-.hero-section-about.scroll-fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-section-about.scroll-fade-in.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-content-area {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-section-about.is-visible .hero-content-area {
-  opacity: 1;
-  transform: translateX(0);
-}
-/* 
-.hero-image-right {
-  opacity: 0;
-  transform: translateX(50px);
-  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-section-about.is-visible .hero-image-right {
-  opacity: 1;
-  transform: translateX(0);
-} */
 
 /* ========================================
    SERVICES SECTION
@@ -401,7 +397,7 @@ input[type="submit"],
   border-radius: 24px;
   padding: 48px 36px;
   position: relative;
-  overflow: hidden;
+
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -688,32 +684,6 @@ input[type="submit"],
 }
 
 /* ========================================
-   ANIMATIONS
-   ======================================== */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* ========================================
    RESPONSIVE DESIGN
    ======================================== */
 
@@ -778,7 +748,8 @@ input[type="submit"],
   }
 
   .section-title {
-    font-size: 2rem;
+    margin-bottom: 0;
+    font-size: 2.5rem;
     letter-spacing: 2px;
     padding: 0;
     text-align: center;
@@ -886,6 +857,7 @@ input[type="submit"],
     font-size: 1.25rem;
   }
 }
+
 /* ========================================
    WHY CHOOSE SECTION - MODERN LIST STYLE
    ======================================== */
@@ -1234,7 +1206,6 @@ input[type="submit"],
 
 .talent-pool-section {
   padding: 60px 0;
-  /* background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); */
   position: relative;
   overflow: hidden;
 }
