@@ -77,8 +77,6 @@
               <span>Find Jobs</span>
             </a>
             <a href="./contact.html" class="nav-cta-btn nav-cta-btn-primary">
-              <!-- <i class="bi bi-arrow-right-circle"></i> -->
-              <!-- <i class="bi bi-arrow-right"></i> -->
               <i class="bi bi-arrow-right-circle-fill"></i>
               <span>Get Started</span>
             </a>
@@ -249,9 +247,6 @@
       <div class="container">
         <div class="services-heading" data-aos="fade-up" data-aos-delay="50">
           <h2>Expert Professionals And Driving Business Success</h2>
-          <!-- <p style="font-size: 1.3rem">
-            Proven professionals that solve your business problems.
-          </p> -->
           <p style="font-size: 1.3rem">
             Meet the demands of today's rapidly changing business world with flexible talent
             solutions.
@@ -264,7 +259,6 @@
           </div>
 
           <div class="vision-text" data-aos="fade-up" data-aos-delay="150">
-            <!-- <h3>Our Vision</h3> -->
             <p>
               Whether you're in a permanent role or temporary position, we're dedicated to helping
               you grow your career.
@@ -411,55 +405,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- ABOUT -->
-    <script>
-      // Animated Counter
-      function animateCounter(element) {
-        const target = parseInt(element.getAttribute("data-count"));
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            element.textContent = target + (element.textContent.includes("%") ? "%" : "+");
-            clearInterval(timer);
-          } else {
-            element.textContent =
-              Math.floor(current) + (element.textContent.includes("%") ? "%" : "+");
-          }
-        }, 16);
-      }
-
-      // Intersection Observer for counters
-      const observerOptions = {
-        threshold: 0.5,
-        rootMargin: "0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const counters = entry.target.querySelectorAll(".stat-number");
-            counters.forEach((counter) => {
-              if (!counter.classList.contains("counted")) {
-                counter.classList.add("counted");
-                animateCounter(counter);
-              }
-            });
-          }
-        });
-      }, observerOptions);
-
-      // Observe stats section
-      document.addEventListener("DOMContentLoaded", () => {
-        const statsSection = document.querySelector(".stats-grid");
-        if (statsSection) {
-          observer.observe(statsSection);
-        }
-      });
-    </script>
     <script>
       // Elements
       const hamburgerBtn = document.getElementById("hamburgerBtn");
@@ -519,112 +464,7 @@
         }
       });
 
-      // Carousel Functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const track = document.querySelector(".carousel-track");
-        if (!track) return; // Exit if carousel doesn't exist
-        const slides = Array.from(track.children);
-        const nextButton = document.querySelector(".carousel-btn-next");
-        const prevButton = document.querySelector(".carousel-btn-prev");
-        const indicators = Array.from(document.querySelectorAll(".indicator"));
 
-        let currentIndex = 0;
-        let autoplayInterval;
-
-        const updateCarousel = (targetIndex) => {
-          slides.forEach((slide, index) => {
-            slide.classList.remove("active");
-            if (index === targetIndex) {
-              slide.classList.add("active");
-            }
-          });
-
-          indicators.forEach((indicator, index) => {
-            indicator.classList.remove("active");
-            if (index === targetIndex) {
-              indicator.classList.add("active");
-            }
-          });
-
-          currentIndex = targetIndex;
-        };
-
-        const nextSlide = () => {
-          const nextIndex = (currentIndex + 1) % slides.length;
-          updateCarousel(nextIndex);
-        };
-
-        const prevSlide = () => {
-          const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-          updateCarousel(prevIndex);
-        };
-
-        // Button event listeners
-        nextButton.addEventListener("click", () => {
-          nextSlide();
-          resetAutoplay();
-        });
-
-        prevButton.addEventListener("click", () => {
-          prevSlide();
-          resetAutoplay();
-        });
-
-        // Indicator event listeners
-        indicators.forEach((indicator, index) => {
-          indicator.addEventListener("click", () => {
-            updateCarousel(index);
-            resetAutoplay();
-          });
-        });
-
-        // Autoplay functionality
-        const startAutoplay = () => {
-          autoplayInterval = setInterval(nextSlide, 5000);
-        };
-
-        const resetAutoplay = () => {
-          clearInterval(autoplayInterval);
-          startAutoplay();
-        };
-
-        // Touch swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        track.addEventListener("touchstart", (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        });
-
-        track.addEventListener("touchend", (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          handleSwipe();
-        });
-
-        const handleSwipe = () => {
-          if (touchEndX < touchStartX - 50) {
-            nextSlide();
-            resetAutoplay();
-          }
-          if (touchEndX > touchStartX + 50) {
-            prevSlide();
-            resetAutoplay();
-          }
-        };
-
-        // Start autoplay
-        startAutoplay();
-
-        // Pause on hover
-        const carouselContainer = document.querySelector(".carousel-container");
-        carouselContainer.addEventListener("mouseenter", () => {
-          clearInterval(autoplayInterval);
-        });
-
-        carouselContainer.addEventListener("mouseleave", () => {
-          startAutoplay();
-        });
-      });
     </script>
 
     <!-- AOS Animation Script -->
@@ -646,9 +486,8 @@
       window.addEventListener("load", function () {
         const imagesToPreload = [
           "./Images/exp.jpg",
-          "./Images/exp.jpg",
           "./Images/partnership.jpg",
-          "./Images/Service_Img.jpg",
+          "./Images/index-hero.jpg",
         ];
 
         imagesToPreload.forEach((src) => {
@@ -729,7 +568,7 @@
           scrollToTopBtn.classList.add("show");
         } else {
           scrollToTopBtn.classList.remove("show");
-               }
+        }
       });
 
       // Smooth scroll to top

@@ -1,7 +1,47 @@
+/* =========================================
+   GLOBAL STYLES & CORE SETUP
+   ========================================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+  --color-primary: #c00000;
+  --color-secondary-dark: #800000;
+  --color-text-light: #f4f4f9;
+  --color-dark: #1a1a2e;
+  --font-family-primary: "Inter", sans-serif;
+}
+
+/* HTML & Document Setup */
+html {
+  scroll-padding-top: 80px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Body Styles */
+body {
+  background: #ffffff;
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-align: justify;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Element Alignment */
+p,
+span,
+li,
+a {
+  text-align: justify;
 }
 
 /* GPU Acceleration for Animations */
@@ -15,36 +55,11 @@
 [data-aos].aos-animate {
   will-change: auto;
 }
-:root {
-  --color-primary: #c00000; /* Deep Red/Maroon from nav */
-  --color-secondary-dark: #800000; /* Darker tone for hover */
-  --color-text-light: #f4f4f9;
-  --color-dark: #1a1a2e;
-  --font-family-primary: "Inter", sans-serif; /* Recommended modern font, assuming you link it */
-}
-html {
-  scroll-padding-top: 80px;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-body {
-  background: #ffffff;
-  font-family: "Arial", sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-  text-align: justify;
-  line-height: 1.8;
-}
 
-/* Justify all text elements */
-p,
-span,
-li,
-a {
-  text-align: justify;
-}
+/* =========================================
+   NAVIGATION BAR & MENU STYLES
+   ========================================= */
 
-/* --- Navigation Styles --- */
 .main-nav {
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(12px);
@@ -90,7 +105,8 @@ a {
   }
 }
 
-/* Logo Styles */
+/* Logo Section */
+
 .brand-logo {
   display: flex;
   align-items: center;
@@ -128,7 +144,7 @@ a {
   display: none;
 }
 
-/* Desktop Navigation */
+/* Navigation Menu Section */
 .nav-menu {
   display: flex;
   gap: 0.5rem;
@@ -141,6 +157,8 @@ a {
 .nav-item {
   position: relative;
 }
+
+/* Navigation Links Section */
 
 /* NAV LINK STYLES with modern hover effect */
 .nav-link {
@@ -193,7 +211,8 @@ a {
   width: 60%;
 }
 
-/* CTA Buttons on Right */
+/* CTA Buttons Section */
+
 .nav-cta-buttons {
   display: flex;
   gap: 1rem;
@@ -273,7 +292,8 @@ a {
   }
 }
 
-/* Hamburger Menu Button */
+/* Hamburger Menu Button Section */
+
 .hamburger-btn {
   flex-direction: column;
   gap: 6px;
@@ -327,7 +347,8 @@ a {
   width: 26px;
 }
 
-/* Mobile Navigation */
+/* Mobile Navigation Responsive Design */
+
 @media (max-width: 992px) {
   .hamburger-btn {
     display: flex;
@@ -351,7 +372,8 @@ a {
   }
 }
 
-/* Tablet & Mobile Navigation Menu - Top to Bottom Slide */
+/* Tablet & Mobile Menu Styles */
+
 @media (max-width: 768px) {
   .nav-container {
     padding: 0.8rem 1rem;
@@ -494,7 +516,8 @@ a {
   }
 }
 
-/* Mobile Menu Overlay */
+/* Mobile Menu Overlay Section */
+
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
@@ -503,7 +526,6 @@ a {
   bottom: 0;
   background: rgba(0, 0, 0, 0);
   z-index: 998;
-  /* transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
   pointer-events: none;
 }
 
@@ -512,7 +534,10 @@ a {
   pointer-events: auto;
 }
 
-/* --- Hero Section --- */
+/* =========================================
+   HERO SECTION - MAIN BANNER
+   ========================================= */
+
 .hero {
   position: relative;
   width: 100;
@@ -560,7 +585,7 @@ a {
 
 .hero-content {
   text-align: center;
-  max-width: 100vw;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   z-index: 1;
@@ -581,7 +606,7 @@ a {
 
 .hero h1 {
   font-family: "Overpass", sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
@@ -592,6 +617,7 @@ a {
   display: inline-block;
   width: 100%;
   max-width: 100%;
+  white-space: nowrap;
 }
 
 /* Modern underline accent */
@@ -614,7 +640,7 @@ a {
   color: rgba(255, 255, 255, 0.95);
   margin: 2.5rem auto 3rem;
   text-align: center;
-  width: 100vw;
+  width: 100%;
   max-width: 750px;
   line-height: 1.8;
   font-weight: 400;
@@ -664,12 +690,7 @@ a {
   transition: opacity 0.35s ease;
 }
 
-/* .btn-primary:hover::before {
-  opacity: 1;
-} */
-
 .btn-primary:hover {
-  /* color:#1a1a1a; */
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(192, 0, 0, 0.5);
 }
@@ -710,6 +731,10 @@ a {
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
+/* =========================================
+   HERO SECTION - RESPONSIVE DESIGN
+   ========================================= */
+
 /* Responsive for Hero */
 @media (max-width: 900px) {
   .hero {
@@ -726,6 +751,7 @@ a {
     font-size: clamp(2rem, 5vw, 2.8rem);
     margin-bottom: 1.2rem;
     width: 100%;
+    white-space: normal;
   }
 
   .hero h1::after {
@@ -793,12 +819,11 @@ a {
   }
 }
 
-/* ===================================
-   CORPORATE ABOUT SECTION
-   Clean, Professional, No Animations
-   =================================== */
+/* =========================================
+   ABOUT SECTION - CORPORATE CONTENT
+   ========================================= */
 
-/* --- About Section --- */
+/* About Section */
 .about-corporate {
   padding: 100px 0;
   background: #ffffff;
@@ -949,9 +974,10 @@ a {
   flex-shrink: 0;
 }
 
-/* ===================================
-   VALUES SECTION
-   =================================== */
+/* =========================================
+   VALUES SECTION - CORE VALUES CARDS
+   ========================================= */
+
 .values-section {
   margin-bottom: 60px;
 }
@@ -1061,13 +1087,13 @@ a {
   text-align: left;
 }
 
-/* ===================================
-   MISSION SECTION
-   =================================== */
+/* =========================================
+   MISSION SECTION - COMPANY MISSION
+   ========================================= */
+
 .mission-section {
   background: #fafafa;
   padding: 40px 40px;
-  border-left: 3px solid #c00000;
   border: 1px solid #e0e0e0;
   border-left: 3px solid #c00000;
 }
@@ -1295,7 +1321,11 @@ html {
   scroll-behavior: smooth;
 }
 
-/* --- Services Section --- */
+/* =========================================
+   SERVICES SECTION - OFFERINGS & VISION
+   ========================================= */
+
+/* Services Section */
 .services {
   padding: 100px 0;
   position: relative;
@@ -1478,7 +1508,11 @@ html {
   }
 }
 
-/* --- Bridging the Gap Section --- */
+/* =========================================
+   BRIDGING THE GAP SECTION - SOLUTIONS
+   ========================================= */
+
+/* Bridging the Gap Section */
 .bridging-gap {
   position: relative;
   overflow: hidden;
@@ -1600,7 +1634,11 @@ html {
   }
 }
 
-/* --- Footer Section --- */
+/* =========================================
+   FOOTER SECTION - FOOTER & CONTACT
+   ========================================= */
+
+/* Footer Section */
 .footer-main {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #ffffff;
@@ -1969,9 +2007,9 @@ html {
   }
 }
 
-/* ========================================
-   SCROLL TO TOP BUTTON - MODERN DESIGN
-   ======================================== */
+/* =========================================
+   SCROLL TO TOP BUTTON - ACTION BUTTON
+   ========================================= */
 
 .scroll-to-top-btn {
   position: fixed;
