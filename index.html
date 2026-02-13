@@ -97,23 +97,15 @@
       </video>
       <div class="hero-overlay"></div>
 
-      <!-- LEFT TEXT -->
       <div class="hero-content" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
         <h1>Shaping the Future of IT Staffing</h1>
         <p>
-          We connect skilled IT professionals with leading companies across the US. Our specialized
-          recruitment and training services ensure top-tier talent delivery and business success
-          through innovation and excellence.
+          Delivering top IT talent to leading US companies through expert recruitment and innovation-driven solutions.
         </p>
         <div class="hero-buttons">
           <a href="./aboutus.html" class="btn-primary">Our Services</a>
           <a href="./contact.html" class="btn-secondary">Contact Us</a>
         </div>
-      </div>
-
-      <!-- RIGHT IMAGE -->
-      <div class="hero-image">
-        <img src="./Images/hero_head.jpg" alt="Team Work" loading="eager" fetchpriority="high" />
       </div>
     </section>
 
@@ -418,10 +410,6 @@
       </div>
     </footer>
 
-    <script
-      data-cfasync="false"
-      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- ABOUT -->
     <script>
@@ -534,6 +522,7 @@
       // Carousel Functionality
       document.addEventListener("DOMContentLoaded", () => {
         const track = document.querySelector(".carousel-track");
+        if (!track) return; // Exit if carousel doesn't exist
         const slides = Array.from(track.children);
         const nextButton = document.querySelector(".carousel-btn-next");
         const prevButton = document.querySelector(".carousel-btn-prev");
@@ -740,10 +729,10 @@
           scrollToTopBtn.classList.add("show");
         } else {
           scrollToTopBtn.classList.remove("show");
-        }
+               }
       });
 
-      // Scroll to top when button is clicked
+      // Smooth scroll to top
       scrollToTopBtn.addEventListener("click", () => {
         window.scrollTo({
           top: 0,

@@ -307,6 +307,7 @@
               name="name"
               class="form-input"
               placeholder="Enter your full name"
+              autocomplete="name"
               required
             />
           </div>
@@ -319,6 +320,7 @@
               name="email"
               class="form-input"
               placeholder="Enter your email"
+              autocomplete="email"
               required
             />
           </div>
@@ -333,11 +335,12 @@
               name="phone"
               class="form-input"
               placeholder="Enter your phone number"
+              autocomplete="tel"
               required
             />
           </div>
 
-          <input type="hidden" id="jobTitleHidden" name="job_applied_for" />
+          <input type="hidden" id="jobTitleHidden" name="job_applied_for" autocomplete="off" />
 
           <div class="form-group">
             <label for="jobResume" class="form-label"
@@ -350,6 +353,7 @@
                 name="resumeFile"
                 class="file-input"
                 accept=".pdf,.doc,.docx"
+                autocomplete="off"
                 required
               />
               <div class="file-upload-icon">
@@ -404,6 +408,7 @@
                 name="referrer_name"
                 class="form-input"
                 placeholder="Enter your full name"
+                autocomplete="name"
                 required
               />
             </div>
@@ -418,6 +423,7 @@
                 name="referrer_email"
                 class="form-input"
                 placeholder="Enter your email"
+                autocomplete="email"
                 required
               />
             </div>
@@ -432,6 +438,7 @@
                 name="referrer_phone"
                 class="form-input"
                 placeholder="Enter your phone number"
+                autocomplete="tel"
                 required
               />
             </div>
@@ -451,6 +458,7 @@
                 name="candidate_name"
                 class="form-input"
                 placeholder="Enter candidate's full name"
+                autocomplete="name"
                 required
               />
             </div>
@@ -466,6 +474,7 @@
                   name="candidateResume"
                   class="file-input"
                   accept=".pdf,.doc,.docx"
+                  autocomplete="off"
                   required
                 />
                 <div class="file-upload-icon">
