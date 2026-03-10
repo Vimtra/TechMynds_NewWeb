@@ -76,7 +76,7 @@ input[type="submit"],
   cursor: pointer;
   border-radius: 8px;
   font-family: inherit;
-  font-weight: 700;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
@@ -140,27 +140,6 @@ input[type="submit"],
   }
 }
 
-@keyframes flipLeft {
-  from {
-    opacity: 0;
-    transform: perspective(1200px) rotateY(-30deg);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(1200px) rotateY(0deg);
-  }
-}
-
-@keyframes flipRight {
-  from {
-    opacity: 0;
-    transform: perspective(1200px) rotateY(30deg);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(1200px) rotateY(0deg);
-  }
-}
 
 @keyframes slideUp {
   from {
@@ -256,7 +235,7 @@ input[type="submit"],
 /* Hero Title */
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.1;
   color: var(--color-text-dark);
   margin-bottom: 32px;
@@ -271,7 +250,7 @@ input[type="submit"],
 /* Hero Lead Text */
 .hero-lead {
   font-size: clamp(1.25rem, 2vw, 1.2rem);
-  font-weight: 700;
+  font-weight: 600;
   color: #c00000;
   line-height: 1.7;
   margin-bottom: 36px;
@@ -283,9 +262,7 @@ input[type="submit"],
   position: relative;
 }
 
-.hero-lead::before {
-  display: none;
-}
+
 
 /* Hero Description */
 .hero-description {
@@ -356,7 +333,7 @@ input[type="submit"],
   font-family: "Overpass", sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: var(--color-primary);
-  font-weight: 900;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: capitalize;
   display: inline-block;
@@ -404,17 +381,7 @@ input[type="submit"],
   flex-direction: column;
 }
 
-.bento-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  background: transparent;
-  border-radius: 0 24px 0 200px;
-  display: none;
-}
+
 
 .bento-card:hover {
   border-color: rgba(192, 0, 0, 0.3);
@@ -462,10 +429,10 @@ input[type="submit"],
 /* Bento Heading */
 .bento-heading {
   font-family: "Overpass", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--color-text-dark);
   margin-bottom: 20px;
-  font-weight: 800;
+  font-weight: 600;
   position: relative;
   z-index: 2;
   line-height: 1.5;
@@ -473,7 +440,7 @@ input[type="submit"],
 
 /* Bento Description */
 .bento-description {
-  font-family: var(--font-family-heading);
+  font-family: "Lexend", sans-serif;
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--color-text-light);
@@ -487,7 +454,7 @@ input[type="submit"],
 .bento-accent {
   display: inline-block;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   background: rgba(192, 0, 0, 0.08);
@@ -542,7 +509,7 @@ input[type="submit"],
   font-family: "Overpass", sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--color-primary);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -644,7 +611,7 @@ input[type="submit"],
 .staff-feature-number {
   font-family: "Quicksand", sans-serif;
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 500;
   color: var(--color-primary);
   transition: var(--transition-smooth);
 }
@@ -914,7 +881,7 @@ input[type="submit"],
   font-family: "Overpass", sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: var(--color-primary);
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: capitalize;
   margin-bottom: 24px;
@@ -1099,15 +1066,6 @@ input[type="submit"],
   position: relative;
 }
 
-/* .item-content p::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-primary), transparent);
-} */
 
 /* Responsive styles for Why Choose Section */
 @media (max-width: 768px) {
@@ -1350,7 +1308,7 @@ input[type="submit"],
 .talent-card-title {
   font-family: "Overpass", sans-serif;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-text-dark);
   margin-bottom: 15px;
   font-family: var(--font-family-heading);

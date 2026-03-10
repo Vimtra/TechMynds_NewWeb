@@ -88,7 +88,7 @@ input[type="submit"],
   cursor: pointer;
   border-radius: 8px;
   font-family: inherit;
-  font-weight: 700;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6,
 
 .hero-main h1 {
   font-size: 5rem;
-  font-weight: 900;
+  font-weight: 500;
   letter-spacing: -2px;
   margin-bottom: 32px;
   text-shadow: 0 4px 20px rgba(192, 0, 0, 0.4);
@@ -332,7 +332,7 @@ h1, h2, h3, h4, h5, h6,
   background: var(--light-bg);
   padding: 60px 20px;
   margin: 10px 0;
-  /* display: none; */
+  display: none;
 }
 
 .referral-section {
@@ -357,7 +357,7 @@ h1, h2, h3, h4, h5, h6,
    ================================ */
 .listings-title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 40px;
   text-align: center;
@@ -518,7 +518,7 @@ h1, h2, h3, h4, h5, h6,
 
 .job-title-section h4 {
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   margin: 0;
   display: flex;
@@ -532,7 +532,7 @@ h1, h2, h3, h4, h5, h6,
 
 .job-title-section span {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--primary-color);
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
   padding: 10px 22px;
@@ -587,7 +587,7 @@ h1, h2, h3, h4, h5, h6,
 .meta-value {
   font-size: 1.05rem;
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -602,7 +602,7 @@ h1, h2, h3, h4, h5, h6,
 
 .job-section-label {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--primary-color);
   margin-bottom: 16px;
   display: flex;
@@ -638,7 +638,7 @@ h1, h2, h3, h4, h5, h6,
   position: absolute;
   left: 0;
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.1rem;
 }
 
@@ -713,12 +713,12 @@ h1, h2, h3, h4, h5, h6,
 
 .referral-text strong {
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .referral-benefits-title {
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   margin-top: 32px;
   margin-bottom: 20px;
@@ -781,8 +781,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .referral-card h3 {
+  font-family: overpass, sans-serif;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--primary-dark);
   margin-bottom: 12px;
   text-align: center;
@@ -811,7 +812,7 @@ h1, h2, h3, h4, h5, h6,
   border: none;
   border-radius: 50px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
@@ -926,7 +927,7 @@ h1, h2, h3, h4, h5, h6,
 
 .modal-title {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 12px;
   padding-right: 0;
@@ -950,7 +951,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .fieldset-legend {
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   padding: 0 12px;
   font-size: 1rem;
@@ -970,7 +971,7 @@ h1, h2, h3, h4, h5, h6,
 
 .form-label {
   display: block;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 10px;
   font-size: 0.95rem;
@@ -981,7 +982,7 @@ h1, h2, h3, h4, h5, h6,
 
 .required {
   color: #ef4444;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .form-input,
@@ -1072,7 +1073,7 @@ select.form-input:hover {
 
 .file-upload-title {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 8px;
 }
@@ -1131,7 +1132,7 @@ select.form-input:hover {
 
 .file-upload.has-file .file-label {
   color: var(--success);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .submit-btn {
@@ -1141,7 +1142,7 @@ select.form-input:hover {
   border: none;
   border-radius: 12px;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 0.3px;
@@ -1192,7 +1193,7 @@ select.form-input option {
 select.form-input option:checked {
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
   color: var(--primary-color);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ================================
