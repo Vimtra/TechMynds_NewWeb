@@ -36,8 +36,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 /* GPU Acceleration for Animations */
 [data-aos] {
   will-change: opacity, transform;
@@ -1303,8 +1301,6 @@ body {
     height: 440px;
   }
 }
-
-
 
 /* =========================================
    BRIDGING THE GAP SECTION - SOLUTIONS

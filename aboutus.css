@@ -140,7 +140,6 @@ input[type="submit"],
   }
 }
 
-
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -262,8 +261,6 @@ input[type="submit"],
   position: relative;
 }
 
-
-
 /* Hero Description */
 .hero-description {
   font-size: 1rem;
@@ -380,8 +377,6 @@ input[type="submit"],
   display: flex;
   flex-direction: column;
 }
-
-
 
 .bento-card:hover {
   border-color: rgba(192, 0, 0, 0.3);
@@ -1065,7 +1060,6 @@ input[type="submit"],
   padding-left: 80px;
   position: relative;
 }
-
 
 /* Responsive styles for Why Choose Section */
 @media (max-width: 768px) {
