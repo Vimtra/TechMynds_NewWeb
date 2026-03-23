@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Lexend:wght@375;400;500;600;700;800;900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Lexend:wght@375;400;500;600;700;800;900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&family=Quicksand&display=swap"
       rel="stylesheet"
     />
     <link
@@ -120,6 +120,39 @@
     </style>
   </head>
   <body>
+    <!-- Corporate Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-container">
+        <div class="top-bar-left">
+          <a
+            href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="top-bar-item top-bar-address"
+            ><i class="bi bi-geo-alt-fill"></i>
+            <span>1981 J N Pease Pl, Suite 104, Charlotte, NC 28262</span></a
+          >
+          <a href="mailto:hr@techmyndsinc.com" class="top-bar-item"
+            ><i class="bi bi-envelope-fill"></i> <span>hr@techmyndsinc.com</span></a
+          >
+          <a href="tel:+17325876750" class="top-bar-item"
+            ><i class="bi bi-telephone-fill"></i> <span>+1 732-587-6750</span></a
+          >
+        </div>
+        <div class="top-bar-right">
+          <a
+            href="https://www.linkedin.com/company/techmyndsinc/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="top-bar-social"
+          >
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="main-nav" id="mainNav">
       <div class="nav-container">
@@ -641,11 +674,14 @@
       });
 
       // Navbar scroll effect
+      const topBar = document.querySelector(".top-bar");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
-          mainNav.classList.add("scrolled");
+          if (mainNav) mainNav.classList.add("scrolled");
+          if (topBar) topBar.classList.add("scrolled");
         } else {
-          mainNav.classList.remove("scrolled");
+          if (mainNav) mainNav.classList.remove("scrolled");
+          if (topBar) topBar.classList.remove("scrolled");
         }
       });
 
