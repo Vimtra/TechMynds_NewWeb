@@ -782,6 +782,19 @@ input[type="submit"],
   box-shadow: var(--shadow-sm);
 }
 
+/* Background images for each card from Unsplash */
+.staff-features-grid .staff-feature-card:nth-child(1) {
+  /* background-image: url("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&w=800&q=80"); */
+}
+
+.staff-features-grid .staff-feature-card:nth-child(2) {
+  /* background-image: url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&w=800&q=80"); */
+}
+
+.staff-features-grid .staff-feature-card:nth-child(3) {
+  /* background-image: url("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&w=800&q=80"); */
+}
+
 .staff-feature-card::before {
   content: "";
   position: absolute;
@@ -835,7 +848,6 @@ input[type="submit"],
 .staff-feature-card:hover .staff-feature-icon {
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-dark));
   color: var(--color-white);
-  transform: rotate(360deg) scale(1.1);
 }
 
 .staff-feature-number {
