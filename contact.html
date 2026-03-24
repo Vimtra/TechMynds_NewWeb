@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Lexend:wght@375;400;500;600;700;800;900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Lexend:wght@375;400;500;600;700;800;900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -644,6 +644,13 @@
           if (mainNav) mainNav.classList.remove("scrolled");
           if (topBar) topBar.classList.remove("scrolled");
         }
+      });
+
+      // Active nav link detection
+      const currentPath = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        const linkPath = link.getAttribute("href").split("/").pop();
+        if (linkPath === currentPath) link.classList.add("active");
       });
 
       // Smooth scrolling

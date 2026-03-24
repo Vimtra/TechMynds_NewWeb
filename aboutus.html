@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Lexend:wght@375;400;500;600;700;800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Lexend:wght@375;400;500;600;700;800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="index.css" />
@@ -120,61 +120,81 @@
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-    <section class="hero-section-about">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="hero-content-area" data-aos="fade-up" data-aos-duration="900">
-              <div
-                class="brand-tag"
-                data-aos="zoom-in"
-                data-aos-duration="700"
-                data-aos-delay="100"
-              >
-                Tech Mynds Inc.
-              </div>
+    <!-- US Staffing Hero Section — Premium Enterprise Layout -->
+    <section class="us-staffing-hero">
+      <!-- Decorative background blobs -->
+      <div class="staffing-blob staffing-blob-1"></div>
+      <div class="staffing-blob staffing-blob-2"></div>
 
-              <h1
-                class="hero-title"
-                data-aos="fade-up"
-                data-aos-duration="900"
-                data-aos-delay="200"
-              >
-                US Staffing
-              </h1>
+      <div class="staffing-inner">
+        <!-- LEFT: Text Content -->
+        <div class="staffing-content" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50">
 
-              <p class="hero-lead" data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">
-                Tailored Staffing Solutions for Every Need
-              </p>
-
-              <p
-                class="hero-description"
-                data-aos="fade-up"
-                data-aos-duration="900"
-                data-aos-delay="400"
-              >
-                Every organization has unique staffing needs, and TechMynds is here to help you
-                navigate the complexities of talent acquisition. Our range of staffing services is
-                designed to provide the right solutions for your specific business objectives.
-              </p>
-            </div>
+          <!-- Badge -->
+          <div class="staffing-badge" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+            <span class="badge-dot"></span>
+            TechMynds Inc.
           </div>
 
-          <div class="col-lg-6">
-            <div
-              class="hero-image-right"
-              data-aos="fade-left"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <img
-                src="./Images/About.jpg"
-                alt="TechMynds IT staffing team in Charlotte, NC - Professional recruitment services"
-                class="img-about"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </div>
+          <!-- Heading -->
+          <h1 class="staffing-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="180">
+            Scale Your Workforce with Expert <span class="staffing-heading-highlight">US Staffing Solutions</span>
+          </h1>
+
+          <!-- Supporting text -->
+          <p class="staffing-subtext" data-aos="fade-up" data-aos-duration="800" data-aos-delay="260">
+            TechMynds connects businesses with top-tier talent through precise, fast, and reliable staffing — built for the modern enterprise.
+          </p>
+
+          <!-- Bullet Points -->
+          <ul class="staffing-bullets" data-aos="fade-up" data-aos-duration="800" data-aos-delay="320">
+            <li>
+              <span class="bullet-check"><i class="bi bi-check2"></i></span>
+              <span>IT &amp; Non-IT Staffing Solutions</span>
+            </li>
+            <li>
+              <span class="bullet-check"><i class="bi bi-check2"></i></span>
+              <span>Contract, C2C &amp; Full-Time Hiring</span>
+            </li>
+            <li>
+              <span class="bullet-check"><i class="bi bi-check2"></i></span>
+              <span>Fast &amp; Reliable Talent Acquisition</span>
+            </li>
+          </ul>
+
+          <!-- CTA Buttons -->
+          <div class="staffing-cta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="380">
+            <a href="./contact.html" class="staffing-btn staffing-btn-primary">
+              Hire Talent
+              <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="./contact.html" class="staffing-btn staffing-btn-outline">
+              Get Consultation
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Image Panel -->
+        <div class="staffing-image-panel" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+          <div class="staffing-image-wrapper">
+            <img
+              src="./Images/About.jpg"
+              alt="TechMynds IT staffing team in Charlotte, NC - Professional recruitment services"
+              class="staffing-img"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="staffing-image-overlay"></div>
+          </div>
+
+          <!-- Floating accent chip -->
+          <div class="staffing-chip staffing-chip-top" data-aos="fade-down-left" data-aos-duration="600" data-aos-delay="500">
+            <i class="bi bi-people-fill"></i>
+            <span>500+ Placements</span>
+          </div>
+          <div class="staffing-chip staffing-chip-bottom" data-aos="fade-up-right" data-aos-duration="600" data-aos-delay="600">
+            <i class="bi bi-lightning-charge-fill"></i>
+            <span>Fast Hiring</span>
           </div>
         </div>
       </div>
@@ -639,6 +659,13 @@
           }
         });
       }
+
+      // Active nav link detection
+      const currentPath = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        const linkPath = link.getAttribute("href").split("/").pop();
+        if (linkPath === currentPath) link.classList.add("active");
+      });
 
       // Smooth scrolling for internal anchors
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
