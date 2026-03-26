@@ -131,14 +131,14 @@
         <div
           class="staffing-content"
           data-aos="fade-right"
-          data-aos-duration="800"
+          data-aos-duration="1000"
           data-aos-delay="50"
         >
           <!-- Badge -->
           <div
             class="staffing-badge"
             data-aos="zoom-in"
-            data-aos-duration="600"
+            data-aos-duration="800"
             data-aos-delay="100"
           >
             <span class="badge-dot"></span>
@@ -149,8 +149,8 @@
           <h1
             class="staffing-heading"
             data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="180"
+            data-aos-duration="1000"
+            data-aos-delay="200"
           >
             Scale Your Workforce with Expert
             <span class="staffing-heading-highlight">US Staffing Solutions</span>
@@ -160,8 +160,8 @@
           <p
             class="staffing-subtext"
             data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="260"
+            data-aos-duration="1000"
+            data-aos-delay="300"
           >
             TechMynds connects businesses with top-tier talent through precise, fast, and reliable
             staffing — built for the modern enterprise.
@@ -171,13 +171,9 @@
           <ul
             class="staffing-bullets"
             data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="320"
+            data-aos-duration="1000"
+            data-aos-delay="400"
           >
-            <li>
-              <span class="bullet-check"><i class="bi bi-check2"></i></span>
-              <span>IT &amp; Non-IT Staffing Solutions</span>
-            </li>
             <li>
               <span class="bullet-check"><i class="bi bi-check2"></i></span>
               <span>Contract, C2C &amp; Full-Time Hiring</span>
@@ -187,54 +183,53 @@
               <span>Fast &amp; Reliable Talent Acquisition</span>
             </li>
           </ul>
-
-          <!-- CTA Buttons -->
-          <div class="staffing-cta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="380">
-            <a href="./contact.html" class="staffing-btn staffing-btn-primary">
-              Hire Talent
-              <i class="bi bi-arrow-right"></i>
-            </a>
-            <a href="./contact.html" class="staffing-btn staffing-btn-outline">
-              Get Consultation
-            </a>
-          </div>
         </div>
 
-        <!-- RIGHT: Image Panel -->
+        <!-- RIGHT: Image Panel - Redesigned Premium SaaS Style -->
         <div
           class="staffing-image-panel"
-          data-aos="fade-left"
-          data-aos-duration="900"
-          data-aos-delay="150"
+          data-aos="zoom-in"
+          data-aos-duration="1200"
+          data-aos-delay="250"
         >
+          <!-- Animated abstract background blob -->
+          <div class="staffing-image-bg-shape"></div>
+
+          <!-- Main Image Wrapper -->
           <div class="staffing-image-wrapper">
-            <img
-              src="./Images/About.jpg"
-              alt="TechMynds IT staffing team in Charlotte, NC - Professional recruitment services"
-              class="staffing-img"
-              loading="eager"
-              fetchpriority="high"
-            />
-            <div class="staffing-image-overlay"></div>
+            <div class="staffing-img-inner">
+              <img
+                src="./Images/About.jpg"
+                alt="TechMynds IT staffing team in Charlotte, NC - Professional recruitment services"
+                class="staffing-img"
+                loading="eager"
+                fetchpriority="high"
+              />
+              <div class="staffing-image-overlay"></div>
+            </div>
           </div>
 
-          <!-- Floating accent chip -->
+          <!-- Floating accent chips with Glassmorphism -->
           <div
             class="staffing-chip staffing-chip-top"
-            data-aos="fade-down-left"
-            data-aos-duration="600"
-            data-aos-delay="500"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="600"
           >
-            <i class="bi bi-people-fill"></i>
+            <div class="chip-icon-wrapper">
+              <i class="bi bi-people-fill"></i>
+            </div>
             <span>Trusted Partner</span>
           </div>
           <div
             class="staffing-chip staffing-chip-bottom"
-            data-aos="fade-up-right"
-            data-aos-duration="600"
-            data-aos-delay="600"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="800"
           >
-            <i class="bi bi-lightning-charge-fill"></i>
+            <div class="chip-icon-wrapper">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </div>
             <span>Fast Hiring</span>
           </div>
         </div>
@@ -546,6 +541,7 @@
         </div>
       </div>
     </section>
+
     <!-- Footer (copied from index.html) -->
     <footer class="footer-main">
       <div class="footer-blur-background"></div>
@@ -635,7 +631,7 @@
         duration: 800,
         once: true,
         offset: 100,
-        easing: "ease-in-out",
+        easing: "ease-out-cubic",
       });
 
       // Elements for navigation

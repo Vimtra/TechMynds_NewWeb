@@ -21,6 +21,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Lexend:wght@375;400;500;600;700;800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
@@ -169,113 +173,166 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="about-corporate">
+      <!-- Premium SaaS About Section -->
+      <section id="about" class="about-saas">
         <div class="container">
-          <!-- Header Section -->
-          <div class="about-header" data-aos="fade-up" data-aos-duration="500">
-            <span class="section-label">WHO WE ARE</span>
-            <h2 class="section-title">Welcome to <span class="highlight">TechMynds Inc</span></h2>
-            <p class="section-description">
-              We are more than just a US staffing company and career architects. Whether you're a
-              professional seeking your next big opportunity or a company in search of top-tier
-              talent, Tech Mynds is here to make the perfect connection.
-            </p>
-          </div>
+          <!-- Grid: Visual & Content -->
+          <div class="about-grid">
+            <!-- Left: Visual Composition -->
+            <div class="about-visual" data-aos="fade-right" data-aos-duration="1000">
+              <div class="visual-blob"></div>
 
-          <!-- Two Column Layout -->
-          <div class="about-two-column" data-aos="fade-up" data-aos-delay="100">
-            <div class="column-image" data-aos="fade-up" data-aos-delay="150">
-              <div class="image-container">
+              <!-- Floating Badge 1 -->
+              <div
+                class="glass-badge top-badge"
+                data-aos="fade-down"
+                data-aos-delay="400"
+                data-aos-duration="800"
+              >
+                <div class="badge-icon"><i class="bi bi-star-fill"></i></div>
+                <div class="badge-text">
+                  <span class="badge-title">Decade of Innovation</span>
+                  <span class="badge-sub">Driving Scalable Solutions</span>
+                </div>
+              </div>
+
+              <div class="image-wrapper">
+                <!-- Using Unsplash placeholder for demonstration. Replace with your actual image path -->
                 <img
-                  src="./Images/index-hero.jpg"
-                  alt="Tech Mynds Inc Professional Team"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="TechMynds Professional Team"
                   loading="lazy"
                 />
               </div>
+
+              <!-- Floating Badge 2 -->
+              <div
+                class="glass-badge bottom-badge"
+                data-aos="fade-up"
+                data-aos-delay="600"
+                data-aos-duration="800"
+              >
+                <div class="badge-icon"><i class="bi bi-shield-check"></i></div>
+                <div class="badge-text">
+                  <span class="badge-title">Strategic Hiring Partner</span>
+                  <span class="badge-sub">End-to-End Talent Solutions</span>
+                </div>
+              </div>
             </div>
 
-            <div class="column-content" data-aos="fade-up" data-aos-delay="200">
-              <div class="content-wrapper">
-                <p class="content-text">
-                  With years of expertise in staffing, recruitment, and workforce management, we
-                  provide the right talent at the right time. Our comprehensive approach ensures
-                  that both organizations and professionals achieve their goals through strategic
-                  partnerships.
-                </p>
-                <p class="content-text">
-                  We pride ourselves on building relationships that last, helping businesses grow
-                  while guiding professionals toward fulfilling career paths. Our commitment to
-                  excellence drives everything we do.
-                </p>
+            <!-- Right: Content -->
+            <div class="about-content" data-aos="fade-left" data-aos-duration="1000">
+              <div>
+                <span class="section-label">Who We Are</span>
+              </div>
+              <h2 class="section-title">
+                Welcome to <span class="text-gradient">TechMynds Inc</span>
+              </h2>
+              <p class="section-description">
+                We are more than just a US staffing company and career architects. Whether you're a
+                professional seeking your next big opportunity or a company in search of top-tier
+                talent, TechMynds is here to make the perfect connection.
+              </p>
+              <p class="section-description">
+                With years of expertise in staffing, recruitment, and workforce management, we
+                provide the right talent at the right time. Our approach ensures both organizations
+                and professionals achieve their goals through strategic partnerships.
+              </p>
 
-                <div class="content-highlights">
-                  <div class="highlight-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Expert Talent Acquisition</span>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Strategic Workforce Solutions</span>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>Long-term Partnership Focus</span>
-                  </div>
+              <!-- Clean SaaS List -->
+              <div class="content-highlights">
+                <div
+                  class="highlight-item"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  data-aos-duration="800"
+                >
+                  <i class="bi bi-bullseye"></i>
+                  <span>Expert Talent Acquisition</span>
+                </div>
+                <div
+                  class="highlight-item"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  data-aos-duration="800"
+                >
+                  <i class="bi bi-diagram-3"></i>
+                  <span>Strategic Workforce Solutions</span>
+                </div>
+                <div
+                  class="highlight-item"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                  data-aos-duration="800"
+                >
+                  <i class="bi bi-infinity"></i>
+                  <span>Long-term Partnership Focus</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Core Values Grid -->
+          <!-- Upgraded Core Values -->
           <div class="values-section">
-            <div class="section-header" data-aos="fade-up" data-aos-delay="100">
-              <h3 class="section-subtitle">Our Core Values</h3>
-              <div class="divider-line"></div>
+            <div class="values-header" data-aos="fade-up" data-aos-duration="800">
+              <span class="section-label" style="margin-bottom: 12px; justify-content: center"
+                >Our Principles</span
+              >
+              <h3 class="values-title">Core Values</h3>
             </div>
 
             <div class="values-grid">
-              <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+              <div
+                class="value-card"
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="1000"
+              >
                 <div class="value-image-wrapper">
+                  <span class="value-number">01</span>
                   <img src="./Images/us-staffing-img.jpg" alt="Excellence" loading="lazy" />
-                  <div class="value-overlay">
-                    <span class="value-number">01</span>
-                  </div>
                 </div>
                 <div class="value-content">
-                  <h4 class="value-title">Excellence</h4>
-                  <p class="value-description">
+                  <h4>Excellence</h4>
+                  <p>
                     Committed to delivering top-tier talent and exceptional service quality that
-                    exceeds expectations. We maintain the highest standards in every engagement.
+                    exceeds expectations. We maintain the highest standards.
                   </p>
                 </div>
               </div>
 
-              <div class="value-card" data-aos="fade-up" data-aos-delay="150">
+              <div
+                class="value-card"
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="1000"
+              >
                 <div class="value-image-wrapper">
+                  <span class="value-number">02</span>
                   <img src="./Images/exp.jpg" alt="Expertise" loading="lazy" />
-                  <div class="value-overlay">
-                    <span class="value-number">02</span>
-                  </div>
                 </div>
                 <div class="value-content">
-                  <h4 class="value-title">Expertise</h4>
-                  <p class="value-description">
+                  <h4>Expertise</h4>
+                  <p>
                     Years of industry experience in staffing and workforce solutions with proven
                     results. Our deep market knowledge ensures optimal outcomes.
                   </p>
                 </div>
               </div>
 
-              <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+              <div
+                class="value-card"
+                data-aos="fade-up"
+                data-aos-delay="300"
+                data-aos-duration="1000"
+              >
                 <div class="value-image-wrapper">
+                  <span class="value-number">03</span>
                   <img src="./Images/partnership.jpg" alt="Partnership" loading="lazy" />
-                  <div class="value-overlay">
-                    <span class="value-number">03</span>
-                  </div>
                 </div>
                 <div class="value-content">
-                  <h4 class="value-title">Partnership</h4>
-                  <p class="value-description">
+                  <h4>Partnership</h4>
+                  <p>
                     Building lasting relationships that drive mutual growth and success for all
                     stakeholders. We're invested in your long-term success.
                   </p>
@@ -284,20 +341,18 @@
             </div>
           </div>
 
-          <!-- Mission Statement -->
-          <div class="mission-section" data-aos="fade-up" data-aos-delay="100">
-            <div class="mission-content">
-              <div class="mission-icon">
-                <i class="bi bi-bookmark-fill"></i>
-              </div>
-              <div class="mission-text">
-                <h3>Our Mission</h3>
-                <p>
-                  If you're looking to advance your career or build a high-performing team,
-                  TechMynds is the place to be. Together, we shape the future of work through
-                  strategic talent solutions and unwavering commitment to excellence.
-                </p>
-              </div>
+          <!-- Upgraded Mission Banner -->
+          <div class="mission-banner" data-aos="zoom-in-up" data-aos-duration="1000">
+            <div class="mission-icon-box">
+              <i class="bi bi-rocket-takeoff"></i>
+            </div>
+            <div class="mission-text-box">
+              <h3>Our Mission</h3>
+              <p>
+                If you're looking to advance your career or build a high-performing team, TechMynds
+                is the place to be. Together, we shape the future of work through strategic talent
+                solutions and unwavering commitment to excellence.
+              </p>
             </div>
           </div>
         </div>
