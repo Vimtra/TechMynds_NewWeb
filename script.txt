@@ -149,7 +149,11 @@ function handleReferralSubmission(e) {
       // Create file in Drive
       const newFile = folder.createFile(fileBlob);
       newFile.setName(newFileName);
-      newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      try {
+        newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      } catch (sharingError) {
+        Logger.log("Note: Could not set public sharing (Shared Drive limitation): " + sharingError.message);
+      }
 
       fileUrl = newFile.getUrl();
       Logger.log(`File uploaded successfully: ${newFileName}`);
@@ -327,7 +331,11 @@ function handleCareerApplication(e) {
       // Create file in Drive
       const newFile = folder.createFile(fileBlob);
       newFile.setName(newFileName);
-      newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      try {
+        newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      } catch (sharingError) {
+        Logger.log("Note: Could not set public sharing (Shared Drive limitation): " + sharingError.message);
+      }
 
       fileUrl = newFile.getUrl();
       Logger.log(`File uploaded successfully: ${newFileName}`);
