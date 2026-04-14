@@ -262,12 +262,12 @@
                 your journey, TechMynds offers the tools, mentorship, and opportunities you need to
                 succeed.
               </p>
-              <!-- <p>
+              <p>
                 Our culture celebrates creativity, encourages bold thinking, and
                 supports professional development. When you join us, you're
                 joining a community committed to making an impact in the tech
                 industry.
-              </p> -->
+              </p>
               <!-- <h3 class="referral-benefits-title">Why Participate?</h3> -->
               <ul class="benefits-list">
                 <li>
@@ -785,13 +785,10 @@
             ${job.title}
           </div>
           <div class="job-header-meta">
+
             <div class="job-meta-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span><strong>Location:</strong> ${job.listing.location}</span>
-            </div>
-            <div class="job-meta-item">
-              <i class="fas fa-dollar-sign"></i>
-              <span><strong>Salary:</strong> ${job.details.salary}</span>
+              <i class="fa-regular fa-calendar"></i>
+              <span><strong>Date:</strong> ${job.details.postedDate}</span>
             </div>
             <div class="job-meta-item">
               <i class="fas fa-users"></i>
@@ -813,9 +810,7 @@
         accordionContent.className = "job-accordion-content";
         accordionContent.innerHTML = `
           <div class="job-details-wrapper">
-            <div class="job-title-section">
-              <h4>Position: <span>${job.title}</span></h4>
-            </div>
+
 
             <div class="meta-grid">
               <div class="meta-card">
@@ -823,23 +818,18 @@
                 <div class="meta-value">${job.details.salary}</div>
               </div>
               <div class="meta-card">
-                <span class="meta-label">Openings</span>
-                <div class="meta-value">${job.details.openings}</div>
+                <span class="meta-label">Work Schedule</span>
+                <div class="meta-value">${job.details.workingHours}</div>
               </div>
               <div class="meta-card">
-                <span class="meta-label">Posted Date</span>
-                <div class="meta-value">${job.details.postedDate}</div>
+                <span class="meta-label">Location</span>
+                <div class="meta-value">${job.details.location}</div>
               </div>
             </div>
 
             <div class="job-section">
-              <span class="job-section-label">Work Schedule</span>
-              <div class="meta-value">${job.details.workingHours}</div>
-            </div>
-
-            <div class="job-section">
-              <span class="job-section-label">Location</span>
-              <div class="meta-value">${job.details.location}</div>
+              <span class="job-section-label">Key Responsibilities</span>
+              <div class="job-section-content">${job.details.duties}</div>
             </div>
 
             <div class="job-section">
@@ -852,10 +842,7 @@
               <div class="job-section-content">${job.details.education}</div>
             </div>
 
-            <div class="job-section">
-              <span class="job-section-label">Key Responsibilities</span>
-              <div class="job-section-content">${job.details.duties}</div>
-            </div>
+
 
             <div class="apply-btn-wrapper">
               <button class="apply-btn" onclick="openJobApplicationForm('${job.title}')">
