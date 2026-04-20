@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="career.css" />
 
-    <!-- Preload Critical Images -->
     <link rel="preload" as="image" href="./Images/Techmynds-logo.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -120,7 +119,6 @@
     </style>
   </head>
   <body>
-    <!-- Corporate Top Bar -->
     <div class="top-bar">
       <div class="top-bar-container">
         <div class="top-bar-left">
@@ -153,7 +151,6 @@
       </div>
     </div>
 
-    <!-- Navigation Bar -->
     <nav class="main-nav" id="mainNav">
       <div class="nav-container">
         <a href="./index.html" class="brand-logo">
@@ -196,7 +193,6 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero-section">
       <div class="accent-bar accent-bar-top"></div>
       <div class="accent-bar accent-bar-mid"></div>
@@ -210,7 +206,6 @@
       </div>
     </section>
 
-    <!-- Job Openings Section -->
     <section class="jobs-section" id="jobs-tab">
       <div class="container">
         <h3 class="listings-title" data-aos="fade-up" data-aos-duration="800">
@@ -220,31 +215,10 @@
       </div>
     </section>
 
-    <!-- Employee Referral Section -->
     <section class="referral-section" id="referral-tab">
       <div class="container">
         <div class="referral-content">
-          <!-- <div
-            class="referral-header"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
-            <h2 data-aos="fade-up" data-aos-duration="800">
-              Employee Referral Program
-            </h2>
-            <p
-              class="referral-subtitle"
-              data-aos="fade-up"
-              data-aos-duration="800"
-              data-aos-delay="100"
-            >
-              Be part of a dynamic team that values innovation, collaboration,
-              and continuous growth.
-            </p>
-          </div> -->
-
           <div class="referral-wrapper">
-            <!-- Left Text Section -->
             <div
               class="referral-text"
               data-aos="fade-right"
@@ -263,12 +237,10 @@
                 succeed.
               </p>
               <p>
-                Our culture celebrates creativity, encourages bold thinking, and
-                supports professional development. When you join us, you're
-                joining a community committed to making an impact in the tech
-                industry.
+                Our culture celebrates creativity, encourages bold thinking, and supports
+                professional development. When you join us, you're joining a community committed to
+                making an impact in the tech industry.
               </p>
-              <!-- <h3 class="referral-benefits-title">Why Participate?</h3> -->
               <ul class="benefits-list">
                 <li>
                   <i class="fa-solid fa-check"></i>
@@ -289,7 +261,6 @@
               </ul>
             </div>
 
-            <!-- Right Card Section -->
             <div
               class="referral-card-wrapper"
               data-aos="zoom-in"
@@ -320,10 +291,9 @@
       </div>
     </section>
 
-    <!-- Job Application Modal -->
     <div id="jobApplicationModal" class="modal-overlay">
       <div class="modal-content">
-        <button class="modal-close" onclick="closeJobApplicationForm()">&times;</button>
+        <button class="modal-close" onclick="closeJobApplicationForm()">×</button>
         <h2 class="modal-title">Apply for Position</h2>
         <p class="modal-subtitle">
           Position: <strong id="jobPositionName">Software Developer</strong>
@@ -417,7 +387,6 @@
       </div>
     </div>
 
-    <!-- Referral Application Modal -->
     <div id="referralApplicationModal" class="modal-overlay">
       <div class="modal-content">
         <button class="modal-close" onclick="closeReferralForm()">
@@ -427,10 +396,7 @@
         <p class="modal-subtitle">Help us find great talent!</p>
 
         <form id="referralApplicationForm" class="application-form">
-          <!-- Your Information -->
           <fieldset class="form-fieldset">
-            <!-- <legend class="fieldset-legend">Your Information</legend> -->
-
             <div class="form-group">
               <label for="refYourName" class="form-label"
                 >Your Full Name <span class="required">*</span></label
@@ -477,10 +443,7 @@
             </div>
           </fieldset>
 
-          <!-- Candidate Information -->
           <fieldset class="form-fieldset">
-            <!-- <legend class="fieldset-legend">Candidate Information</legend> -->
-
             <div class="form-group">
               <label for="refCandidateName" class="form-label"
                 >Candidate Full Name <span class="required">*</span></label
@@ -492,6 +455,35 @@
                 class="form-input"
                 placeholder="Enter candidate's full name"
                 autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="refCandidateEmail" class="form-label"
+                >Candidate Email <span class="required">*</span></label
+              >
+              <input
+                type="email"
+                id="refCandidateEmail"
+                name="candidate_email"
+                class="form-input"
+                placeholder="Enter candidate's email"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="refPosition" class="form-label"
+                >Position Referred For <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="refPosition"
+                name="position_referred_for"
+                class="form-input"
+                placeholder="e.g. Software Developer"
                 required
               />
             </div>
@@ -540,12 +532,11 @@
         </div>
       </div>
     </div>
-    <!-- Footer (copied from index.html) -->
+
     <footer class="footer-main">
       <div class="footer-blur-background"></div>
       <div class="container py-5">
         <div class="row d-flex justify-content-between align-items-start">
-          <!-- Brand Section -->
           <div class="col-lg-3 col-md-6 mb-4 text-md-start">
             <img
               src="./Images/Techmynds-logo.png"
@@ -559,7 +550,6 @@
             </p>
           </div>
 
-          <!-- Quick Links -->
           <div class="col-lg-2 col-md-3 mb-4 text-center">
             <h5>Quick Links</h5>
             <ul class="list-unstyled">
@@ -570,7 +560,6 @@
             </ul>
           </div>
 
-          <!-- Contact Info -->
           <div class="col-lg-5 col-md-6 mb-4 footer-contact-info text-md-start">
             <h5>Connect With Us</h5>
             <ul class="list-unstyled contact-list">
@@ -598,10 +587,9 @@
 
         <hr class="footer-divider my-4" />
 
-        <!-- Bottom Section -->
         <div class="row align-items-center justify-content-between pt-2">
           <div class="col-md-6 text-center text-md-start mb-2">
-            <p class="copyright-text mb-0">&copy; 2026 TechMynds Inc. All Rights Reserved.</p>
+            <p class="copyright-text mb-0">© 2026 TechMynds Inc. All Rights Reserved.</p>
           </div>
 
           <div class="col-md-6 text-center text-md-end">
@@ -625,7 +613,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       const GOOGLE_APPS_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbwBkwcfSWI211Q4pe8iCXlVMiCCzLeYJkSPIl02DrHQe6LHaeVWraZ17kOPP4ez99zCOw/exec";
+        "https://script.google.com/macros/s/AKfycbxVgansEyw5juhwCgmIAHUkRq7ZOkAmoWbhle-wOW_MxtR8pa9VJMWwnDBm8BragcDqiA/exec";
       const JOB_APPLICATION_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
       const REFERRAL_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
 
@@ -1130,9 +1118,11 @@
 
       function setupEmailValidation(inputId) {
         const emailInput = document.getElementById(inputId);
-        emailInput.addEventListener("input", function () {
-          this.value = this.value.replace(/\s/g, "");
-        });
+        if (emailInput) {
+          emailInput.addEventListener("input", function () {
+            this.value = this.value.replace(/\s/g, "");
+          });
+        }
       }
 
       function setupNameFormatting(inputId) {
@@ -1317,6 +1307,7 @@
       setupRealtimeValidation("referralApplicationForm");
       setupPhoneFormatting("refYourPhone");
       setupEmailValidation("refYourEmail");
+      setupEmailValidation("refCandidateEmail"); // Added for candidate email
       setupNameFormatting("refYourName");
       setupNameFormatting("refCandidateName");
 
@@ -1330,6 +1321,8 @@
           const refEmailInput = document.getElementById("refYourEmail");
           const refPhoneInput = document.getElementById("refYourPhone");
           const candNameInput = document.getElementById("refCandidateName");
+          const candEmailInput = document.getElementById("refCandidateEmail");
+          const positionInput = document.getElementById("refPosition");
           const fileInput = document.getElementById("refCandidateResume");
 
           // Validate all fields
@@ -1338,6 +1331,8 @@
             validateField(refEmailInput),
             validateField(refPhoneInput),
             validateField(candNameInput),
+            validateField(candEmailInput),
+            validateField(positionInput),
             validateFile(fileInput),
           ];
 
@@ -1385,6 +1380,8 @@
               referrer_email: refEmailInput.value,
               referrer_phone: refPhoneInput.value,
               candidate_name: candNameInput.value,
+              candidate_email: candEmailInput.value,
+              position_referred_for: positionInput.value,
               fileName: file.name,
               fileData: base64File,
               mimeType: file.type || "application/pdf",
@@ -1610,7 +1607,6 @@
       <i class="bi bi-chevron-up"></i>
     </button>
 
-    <!-- Scroll to Top Script -->
     <script>
       const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
