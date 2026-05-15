@@ -543,7 +543,7 @@ body {
 
   .nav-right.active {
     height: auto;
-    padding: 80px 1.5rem 2rem;
+    padding: 96px 1.5rem 2rem;
     max-height: 85vh;
   }
 
@@ -1424,6 +1424,18 @@ body {
 /* =========================================
            RESPONSIVE DESIGN
            ========================================= */
+@media (min-width: 480px) and (max-width: 1024px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 1024px) {
   .about-grid {
     grid-template-columns: 1fr;
@@ -1444,10 +1456,6 @@ body {
     bottom: 0;
     left: 0;
   }
-
-  .values-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -1464,10 +1472,6 @@ body {
     text-align: center;
     padding: 40px 24px;
     gap: 24px;
-  }
-
-  .values-grid {
-    grid-template-columns: 1fr;
   }
 
   .glass-badge {
@@ -1593,42 +1597,52 @@ body {
   text-align: justify;
 }
 
-@media (max-width: 968px) {
-  .bridging-gap {
-    padding: 80px 0;
-  }
-
+/* Tablet: 2-column bridging cards (480px–968px) */
+@media (min-width: 480px) and (max-width: 968px) {
   .bridging-cards-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .bridging-gap {
-    padding: 30px 0;
+    padding: 80px 0;
   }
 
   .bridging-container {
     padding: 0 20px;
   }
 
-  .bridging-heading {
-    margin-bottom: 50px;
-  }
   .bridging-heading h2 {
     font-size: 2rem;
   }
 
-  .bridging-card {
-    padding: 32px 24px;
-    /* text-align: justify; */
-  }
   .bridging-card h3 {
     font-size: 1.4rem;
   }
   .bridging-card p {
     text-align: justify;
+  }
+}
+
+/* Mobile: 1-column bridging cards */
+@media (max-width: 479px) {
+  .bridging-gap {
+    padding: 50px 0;
+  }
+
+  .bridging-cards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bridging-heading {
+    margin-bottom: 36px;
+  }
+
+  .bridging-card {
+    padding: 28px 20px;
   }
 }
 
