@@ -12,9 +12,9 @@
   --color-bg-base: #f8f9fa;
   --color-white: #ffffff;
   --color-border: #e0e0e0;
-  --font-family-primary: "Manrope", sans-serif;
-  --font-family-heading: "Lexend", sans-serif;
-  --font-family-serif: "Overpass", sans-serif;
+  --font-family-primary: "Poppins", sans-serif;
+  --font-family-heading: "Poppins", sans-serif;
+  --font-family-serif: "Poppins", sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -157,36 +157,77 @@ input[type="submit"],
 
 .us-staffing-hero {
   position: relative;
-  background: linear-gradient(160deg, #ffffff 0%, #faf9f7 55%, #fff5f5 100%);
-  padding: 140px 0 90px;
+  background: linear-gradient(160deg, #ffffff 0%, #fdfcfb 60%, #fff2f2 100%);
+  padding: 160px 0 80px; /* Increased to avoid hiding behind navbar */
   overflow: hidden;
   min-height: 88vh;
   display: flex;
   align-items: center;
 }
 
-/* Decorative blobs */
+/* Premium Grid Texture */
+.us-staffing-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(198, 40, 40, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198, 40, 40, 0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle Glow Overlay */
+.us-staffing-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Decorative floating blur circles */
 .staffing-blob {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  filter: blur(70px);
+  animation: floatBlob 14s ease-in-out infinite alternate;
 }
 
 .staffing-blob-1 {
-  width: 520px;
-  height: 520px;
-  top: -140px;
-  right: -80px;
-  background: radial-gradient(circle, rgba(198, 40, 40, 0.07) 0%, transparent 70%);
+  width: 650px;
+  height: 650px;
+  top: -150px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(198, 40, 40, 0.12) 0%, transparent 65%);
+  animation-delay: 0s;
 }
 
 .staffing-blob-2 {
-  width: 400px;
-  height: 400px;
-  bottom: -120px;
-  left: -60px;
-  background: radial-gradient(circle, rgba(198, 40, 40, 0.05) 0%, transparent 70%);
+  width: 550px;
+  height: 550px;
+  bottom: -150px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(198, 40, 40, 0.08) 0%, transparent 65%);
+  animation-delay: -7s;
+}
+
+@keyframes floatBlob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 60px) scale(1.05);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
 }
 
 /* Inner container — two-column grid */
@@ -216,7 +257,7 @@ input[type="submit"],
   border-radius: 50px;
   font-family: var(--font-family-primary);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600; /* Reduced from 700 */
   color: #c62828;
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -248,7 +289,7 @@ input[type="submit"],
 .staffing-heading {
   font-family: var(--font-family-serif);
   font-size: clamp(2.1rem, 3.8vw, 2.6rem);
-  font-weight: 800;
+  font-weight: 600; /* Reduced from 800 */
   line-height: 1.22;
   text-align: left;
   color: #111827;
@@ -289,7 +330,7 @@ input[type="submit"],
   gap: 12px;
   font-family: var(--font-family-primary);
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 400; /* Reduced from 500 */
   color: #1f2937;
   line-height: 1.5;
 }
@@ -347,26 +388,28 @@ input[type="submit"],
   }
 }
 
-/* Main card wrapper */
+/* Main card wrapper - New Symmetrical Glass Frame */
 .staffing-image-wrapper {
   position: relative;
-  border-radius: 40px 120px 40px 40px; /* SaaS Asymmetric geometry */
+  border-radius: 24px;
   overflow: visible;
-  background: #ffffff;
-  padding: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 16px;
   box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.06),
-    0 12px 24px rgba(198, 40, 40, 0.04),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    0 30px 60px rgba(0, 0, 0, 0.08),
+    0 10px 20px rgba(198, 40, 40, 0.05);
   transition:
     transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.6s ease;
   z-index: 1;
 }
 
-/* Nested image container for framing effect */
+/* Nested image container */
 .staffing-img-inner {
-  border-radius: 32px 110px 32px 32px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -375,7 +418,7 @@ input[type="submit"],
 
 .staffing-img {
   width: 100%;
-  height: 520px;
+  height: 480px; /* Reduced from 520px to prevent overlapping */
   object-fit: cover;
   display: block;
   transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -394,9 +437,8 @@ input[type="submit"],
 .staffing-image-panel:hover .staffing-image-wrapper {
   transform: translateY(-8px) scale(1.02);
   box-shadow:
-    0 32px 64px rgba(0, 0, 0, 0.08),
-    0 16px 32px rgba(198, 40, 40, 0.06),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    0 40px 70px rgba(0, 0, 0, 0.12),
+    0 15px 30px rgba(198, 40, 40, 0.08);
 }
 
 .staffing-image-panel:hover .staffing-img {
@@ -471,7 +513,7 @@ input[type="submit"],
 
 @media (max-width: 900px) {
   .us-staffing-hero {
-    padding: 130px 0 70px;
+    padding: 150px 0 60px; /* Increased to clear navbar */
     min-height: auto;
   }
 
@@ -517,7 +559,7 @@ input[type="submit"],
 
 @media (max-width: 600px) {
   .us-staffing-hero {
-    padding: 120px 0 60px;
+    padding: 140px 0 50px; /* Increased to clear navbar */
   }
 
   .staffing-inner {
@@ -582,8 +624,7 @@ input[type="submit"],
 
 .services-section {
   background: var(--color-white);
-  padding: 50px 0;
-  margin-top: 30px;
+  padding: 80px 0;
 }
 
 .wrapper {
@@ -706,7 +747,7 @@ input[type="submit"],
 
 /* Bento Description */
 .bento-description {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--color-text-light);
@@ -795,9 +836,8 @@ input[type="submit"],
    ======================================== */
 
 .staff-features-section {
-  padding: 40px 0;
+  padding: 80px 0;
   background: transparent;
-  margin-top: 30px;
 }
 
 .staff-features-grid {
@@ -1018,10 +1058,9 @@ input[type="submit"],
 
 .why-choose-section {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
-  padding: 50px 0;
+  padding: 80px 0;
   position: relative;
   overflow: hidden;
-  margin-top: 30px;
 }
 
 .why-choose-section::before {
@@ -1349,7 +1388,7 @@ input[type="submit"],
    ======================================== */
 
 .talent-pool-section {
-  padding: 60px 0;
+  padding: 80px 0;
   position: relative;
   overflow: hidden;
 }
@@ -1502,7 +1541,7 @@ input[type="submit"],
 }
 
 .talent-card-description {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
 
   font-size: 1rem;
   color: var(--color-text-medium);

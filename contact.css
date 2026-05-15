@@ -35,7 +35,7 @@
 }
 
 body {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   /* color: var(--text-dark); */
   overflow-x: hidden;
   background: var(--bg-white);
@@ -148,9 +148,9 @@ input[type="submit"],
 
 /* Compact Hero Section */
 .compact-hero {
-  padding: 100px 0 50px;
+  padding: 80px 0 60px;
   position: relative;
-  margin-top: 90px;
+  margin-top: 116px; /* Match global navbar height */
 }
 
 .compact-hero .container {
@@ -181,7 +181,7 @@ input[type="submit"],
   line-height: 1.1;
   color: var(--text-dark);
   margin-bottom: 20px;
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .highlight-text {
@@ -244,7 +244,7 @@ input[type="submit"],
 
 /* Info Cards Section */
 .info-cards-section {
-  padding: 40px 0;
+  padding: 60px 0;
   background: var(--bg-gray);
 }
 
@@ -299,7 +299,7 @@ input[type="submit"],
 }
 
 .card-content h4 {
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--text-dark);
@@ -326,7 +326,7 @@ input[type="submit"],
 
 /* Form and Map Section - Horizontal Layout */
 .form-map-section {
-  padding: 40px 0;
+  padding: 60px 0;
   /* background: white; */
 }
 
@@ -361,7 +361,7 @@ input[type="submit"],
 }
 
 .form-header-compact h2 {
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
 
   font-size: 2rem;
   font-weight: 500;
@@ -536,7 +536,7 @@ input[type="submit"],
 
 /* Compact CTA */
 .compact-cta {
-  padding: 60px 0;
+  padding: 80px 0;
   background: var(--bg-gray);
 }
 
@@ -570,7 +570,7 @@ input[type="submit"],
 }
 
 .cta-wrapper h3 {
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
 
   font-size: 1.85rem;
   font-weight: 500;
@@ -580,7 +580,7 @@ input[type="submit"],
 }
 
 .cta-wrapper p {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
   font-size: 1.05rem;
   color: var(--text-gray);
@@ -666,7 +666,8 @@ input[type="submit"],
   }
 
   .compact-hero {
-    padding: 80px 0 40px;
+    padding: 60px 0 40px;
+    margin-top: 116px;
   }
 
   .compact-title {
@@ -680,7 +681,8 @@ input[type="submit"],
 
 @media (max-width: 768px) {
   .compact-hero {
-    padding: 70px 0 30px;
+    padding: 60px 0 30px;
+    margin-top: 116px;
   }
 
   .compact-title {
@@ -692,7 +694,7 @@ input[type="submit"],
   }
 
   .info-cards-section {
-    padding: 30px 0;
+    padding: 40px 0;
   }
 
   .cards-row {
@@ -744,7 +746,7 @@ input[type="submit"],
   }
 
   .compact-cta {
-    padding: 40px 0;
+    padding: 60px 0;
   }
 
   .cta-wrapper {
@@ -768,8 +770,8 @@ input[type="submit"],
 
 @media (max-width: 576px) {
   .compact-hero {
-    margin-top: 50px;
-    padding: 60px 0 25px;
+    margin-top: 110px; /* Prevent nav overlap */
+    padding: 50px 0 25px;
   }
 
   .compact-title {

@@ -42,14 +42,14 @@
   --nav-border-bottom: 2.5px solid #c62828;
 
   /* Typography */
-  --font-primary: "Manrope", "Inter", "Poppins", sans-serif;
-  --font-nav: "Lexend", sans-serif;
+  --font-primary: "Poppins", sans-serif;
+  --font-nav: "Poppins", sans-serif;
 
   /* Misc */
   --color-secondary-dark: #800000;
   --color-text-light: #f4f4f9;
   --color-dark: #1a1a2e;
-  --font-family-primary: "Inter", sans-serif;
+  --font-family-primary: "Poppins", sans-serif;
 }
 
 /* HTML & Document Setup */
@@ -734,9 +734,7 @@ body {
 }
 
 .hero h1 {
-  /* font-family: "Nunito", sans-serif; */
-  font-family:
-    "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 1.5rem;
   font-weight: 800;
@@ -767,7 +765,7 @@ body {
 }
 
 .hero p {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   color: rgba(255, 255, 255, 0.95);
   margin: 2.5rem auto 3rem;
@@ -797,7 +795,7 @@ body {
   gap: 8px;
   font-weight: 500;
   font-size: 1rem;
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   letter-spacing: 0.3px;
   /* text-transform: uppercase; */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -880,8 +878,8 @@ body {
   .hero {
     height: auto;
     min-height: 100vh;
-    padding: 120px 20px 60px;
-    margin-top: 0;
+    padding: 60px 20px 60px;
+    margin-top: 116px; /* Restored to prevent overlap with fixed nav */
   }
 
   .hero-content {
@@ -927,8 +925,10 @@ body {
 
 @media (max-width: 600px) {
   .hero {
-    min-height: 90vh;
-    padding: 100px 16px 50px;
+    min-height: auto;
+    height: auto;
+    padding: 60px 16px 50px;
+    margin-top: 116px;
   }
 
   .hero-content {
@@ -936,19 +936,20 @@ body {
   }
 
   .hero h1 {
-    font-size: clamp(1.6rem, 5.5vw, 2.4rem);
-    margin-bottom: 1.2rem;
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
   }
 
   .hero h1::after {
-    width: 70px;
+    width: 60px;
     height: 3px;
-    bottom: -10px;
+    bottom: -8px;
   }
 
   .hero p {
-    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-    margin: 2rem auto 2.5rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    margin: 1.2rem auto 1.5rem;
     width: 95%;
   }
 
@@ -960,44 +961,48 @@ body {
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 85vh;
-    padding: 80px 14px 40px;
+    min-height: auto;
+    height: auto;
+    padding: 50px 14px 50px;
+    margin-top: 100px;
   }
 
   .hero-content {
-    padding: 10px 5px 0;
+    padding: 0;
   }
 
   .hero h1 {
-    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-size: clamp(1.4rem, 6.5vw, 1.8rem);
     letter-spacing: -0.3px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
   }
 
   .hero h1::after {
-    width: 60px;
+    width: 50px;
     height: 2px;
-    bottom: -8px;
+    bottom: -6px;
   }
 
   .hero p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    width: 95%;
-    margin: 1.5rem auto 2rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    width: 98%;
+    margin: 1rem auto 1.5rem;
   }
 
   .btn-primary,
   .btn-secondary {
-    min-height: 48px;
+    min-height: 44px;
     font-size: 0.85rem;
-    padding: 12px 24px;
+    padding: 10px 20px;
   }
 
   .hero-buttons {
-    max-width: 160px;
-    width: 80%;
-    gap: 0.75rem;
+    max-width: 200px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 0.6rem;
   }
 
   .hero-buttons a {
@@ -1013,7 +1018,7 @@ body {
            PREMIUM ABOUT SECTION
            ========================================= */
 .about-saas {
-  padding: 120px 0;
+  padding: 80px 0;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   position: relative;
   overflow: hidden;
@@ -1265,8 +1270,8 @@ body {
            VALUES & MISSION SECTION (Upgraded)
            ========================================= */
 .values-section {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   position: relative;
   z-index: 1;
 }
@@ -1364,7 +1369,7 @@ body {
 .mission-banner {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border-radius: 24px;
-  padding: 24px;
+  padding: 40px 32px;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -1460,7 +1465,7 @@ body {
 
 @media (max-width: 768px) {
   .about-saas {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .section-title {
@@ -1470,8 +1475,8 @@ body {
   .mission-banner {
     flex-direction: column;
     text-align: center;
-    padding: 40px 24px;
-    gap: 24px;
+    padding: 32px 20px;
+    gap: 20px;
   }
 
   .glass-badge {
@@ -1518,10 +1523,9 @@ body {
 .bridging-gap {
   position: relative;
   overflow: hidden;
-  padding: 100px 0;
+  padding: 80px 0;
   background: #ffffff;
   border-top: 1px solid #e8e8e8;
-  margin-top: 40px;
 }
 
 .bridging-container {
@@ -1538,7 +1542,7 @@ body {
 }
 
 .bridging-heading h2 {
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 500;
   color: var(--color-primary);
@@ -1580,7 +1584,7 @@ body {
 }
 
 .bridging-card h3 {
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-primary);
@@ -1589,7 +1593,7 @@ body {
 }
 
 .bridging-card p {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
   color: #555;
@@ -1607,7 +1611,7 @@ body {
 
 @media (max-width: 968px) {
   .bridging-gap {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .bridging-container {
@@ -1629,7 +1633,7 @@ body {
 /* Mobile: 1-column bridging cards */
 @media (max-width: 479px) {
   .bridging-gap {
-    padding: 50px 0;
+    padding: 40px 0;
   }
 
   .bridging-cards-container {
@@ -1735,7 +1739,7 @@ body {
 
 /* Company Description */
 .company-description {
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #b8b8b8;
   line-height: 1.5;
   font-size: 1rem;
@@ -1753,7 +1757,7 @@ body {
   letter-spacing: 1.5px;
   position: relative;
   padding-bottom: 0.4rem;
-  font-family: "Overpass", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Footer Links */
@@ -1765,7 +1769,7 @@ body {
   display: inline-block;
   position: relative;
   padding: 0.25rem 0;
-  font-family: "Lexend", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .footer-link::before {
