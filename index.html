@@ -271,7 +271,7 @@
 
           <!-- Upgraded Core Values -->
           <div class="values-section">
-            <div class="values-header" data-aos="fade-up" data-aos-duration="800">
+            <div class="values-header">
               <span class="section-label" style="margin-bottom: 12px; justify-content: center"
                 >Our Principles</span
               >
@@ -279,15 +279,15 @@
             </div>
 
             <div class="values-grid">
-              <div
-                class="value-card"
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-aos-duration="1000"
-              >
+              <div class="value-card">
                 <div class="value-image-wrapper">
                   <span class="value-number">01</span>
-                  <img src="./Images/us-staffing-img.jpg" alt="Excellence" loading="lazy" />
+                  <img
+                    src="./Images/core-value-excellence.jpg"
+                    alt="Excellence"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div class="value-content">
                   <h4>Excellence</h4>
@@ -298,15 +298,15 @@
                 </div>
               </div>
 
-              <div
-                class="value-card"
-                data-aos="fade-up"
-                data-aos-delay="200"
-                data-aos-duration="1000"
-              >
+              <div class="value-card">
                 <div class="value-image-wrapper">
                   <span class="value-number">02</span>
-                  <img src="./Images/exp.jpg" alt="Expertise" loading="lazy" />
+                  <img
+                    src="./Images/core-value-expertise.jpg"
+                    alt="Expertise"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div class="value-content">
                   <h4>Expertise</h4>
@@ -317,15 +317,15 @@
                 </div>
               </div>
 
-              <div
-                class="value-card"
-                data-aos="fade-up"
-                data-aos-delay="300"
-                data-aos-duration="1000"
-              >
+              <div class="value-card">
                 <div class="value-image-wrapper">
                   <span class="value-number">03</span>
-                  <img src="./Images/partnership.jpg" alt="Partnership" loading="lazy" />
+                  <img
+                    src="./Images/core-value-partnership.jpg"
+                    alt="Partnership"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div class="value-content">
                   <h4>Partnership</h4>
@@ -339,7 +339,7 @@
           </div>
 
           <!-- Upgraded Mission Banner -->
-          <div class="mission-banner" data-aos="zoom-in-up" data-aos-duration="1000">
+          <div class="mission-banner">
             <div class="mission-icon-box">
               <i class="bi bi-award-fill"></i>
             </div>
@@ -536,15 +536,32 @@
 
       // Navbar scroll effect
       const topBar = document.querySelector(".top-bar");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          if (mainNav) mainNav.classList.add("scrolled");
-          if (topBar) topBar.classList.add("scrolled");
-        } else {
-          if (mainNav) mainNav.classList.remove("scrolled");
-          if (topBar) topBar.classList.remove("scrolled");
-        }
-      });
+      let scrollTicking = false;
+
+      function updateScrollUI() {
+        const scrollY = window.scrollY;
+        const hasScrolledNav = scrollY > 50;
+        const showScrollTop = scrollY > 300;
+        const scrollTopButton = document.getElementById("scrollToTopBtn");
+
+        if (mainNav) mainNav.classList.toggle("scrolled", hasScrolledNav);
+        if (topBar) topBar.classList.toggle("scrolled", hasScrolledNav);
+        if (scrollTopButton) scrollTopButton.classList.toggle("show", showScrollTop);
+
+        scrollTicking = false;
+      }
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!scrollTicking) {
+            window.requestAnimationFrame(updateScrollUI);
+            scrollTicking = true;
+          }
+        },
+        { passive: true }
+      );
+      updateScrollUI();
 
       // Active nav link detection
       const currentPath = window.location.pathname.split("/").pop() || "index.html";
@@ -562,7 +579,8 @@
         once: true,
         offset: 100,
         disable: false,
-        throttleDelay: 99,
+        throttleDelay: 120,
+        debounceDelay: 80,
         anchorPlacement: "top-bottom",
       });
     </script>
@@ -583,7 +601,7 @@
             if (video.paused) video.play().catch(function () {});
           };
           document.addEventListener("click", tryPlay, { once: true });
-          document.addEventListener("scroll", tryPlay, { once: true });
+          document.addEventListener("scroll", tryPlay, { once: true, passive: true });
         }
       });
     </script>
@@ -596,15 +614,6 @@
     <!-- Scroll to Top Script -->
     <script>
       const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-      // Show button when user scrolls down
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          scrollToTopBtn.classList.add("show");
-        } else {
-          scrollToTopBtn.classList.remove("show");
-        }
-      });
 
       // Smooth scroll to top
       scrollToTopBtn.addEventListener("click", () => {
