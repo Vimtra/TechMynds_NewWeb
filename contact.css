@@ -150,7 +150,7 @@ input[type="submit"],
 .compact-hero {
   padding: 80px 0 60px;
   position: relative;
-  margin-top: 116px;
+  margin-top: calc(var(--topbar-height) + var(--nav-height));
 }
 
 .compact-hero .container {
@@ -667,7 +667,7 @@ input[type="submit"],
 
   .compact-hero {
     padding: 60px 0 40px;
-    margin-top: 116px;
+    margin-top: calc(var(--topbar-height) + var(--nav-height));
   }
 
   .compact-title {
@@ -682,7 +682,7 @@ input[type="submit"],
 @media (max-width: 768px) {
   .compact-hero {
     padding: 60px 0 30px;
-    margin-top: 116px;
+    margin-top: calc(var(--topbar-height) + var(--nav-height));
   }
 
   .compact-title {
