@@ -1124,67 +1124,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Glassmorphism Floating Badges */
-.glass-badge {
-  position: absolute;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: 16px 24px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.3s ease;
-}
-
-.glass-badge:hover {
-  transform: translateY(-5px);
-}
-
-.glass-badge.top-badge {
-  top: -20px;
-  right: -20px;
-}
-
-.glass-badge.bottom-badge {
-  bottom: -30px;
-  left: -20px;
-}
-
-.badge-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  color: white;
-  border-radius: 14px;
-  font-size: 1.2rem;
-  box-shadow: 0 8px 16px rgba(192, 0, 0, 0.2);
-}
-
-.badge-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.badge-title {
-  font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--color-text-main);
-  line-height: 1.2;
-}
-
-.badge-sub {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  font-weight: 500;
-}
-
 /* --- RIGHT: CONTENT COMPOSITION --- */
 .about-content {
   display: flex;
@@ -1467,14 +1406,6 @@ body {
     margin: 0 auto;
   }
 
-  .glass-badge.top-badge {
-    top: 0;
-    right: 0;
-  }
-  .glass-badge.bottom-badge {
-    bottom: 0;
-    left: 0;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1493,32 +1424,14 @@ body {
     gap: 20px;
   }
 
-  .glass-badge {
-    padding: 12px 16px;
-  }
-  .badge-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-  .badge-title {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
   .about-visual {
     padding: 20px 0;
   }
-  .glass-badge {
-    position: relative;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    transform: none !important;
-    margin-top: 16px;
-    width: 100%;
+
+
   }
   .image-wrapper {
     border-radius: 20px;
@@ -1527,7 +1440,6 @@ body {
   .image-wrapper:hover {
     transform: none;
   }
-}
 
 /* =========================================
    BRIDGING THE GAP SECTION - SOLUTIONS
