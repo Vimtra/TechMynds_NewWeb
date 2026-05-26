@@ -158,9 +158,11 @@ input[type="submit"],
 .us-staffing-hero {
   position: relative;
   background: linear-gradient(160deg, #ffffff 0%, #fdfcfb 60%, #fff2f2 100%);
-  padding: 160px 0 80px;
+  /* Reduced top padding to bring hero closer to nav */
+  margin-top: calc(var(--topbar-height) + var(--nav-height) - 48px);
+  padding: 60px 0 60px;
   overflow: hidden;
-  min-height: 88vh;
+  min-height: 68vh;
   display: flex;
   align-items: center;
 }
@@ -457,7 +459,7 @@ input[type="submit"],
 
 @media (max-width: 900px) {
   .us-staffing-hero {
-    padding: 150px 0 60px;
+    padding: 80px 0 40px;
     min-height: auto;
   }
 
@@ -492,7 +494,7 @@ input[type="submit"],
 
 @media (max-width: 600px) {
   .us-staffing-hero {
-    padding: 140px 0 50px;
+    padding: 70px 0 40px;
   }
 
   .staffing-inner {

@@ -275,6 +275,7 @@ select {
   background: var(--nav-bg);
   border-bottom: var(--nav-border-bottom);
   box-shadow: var(--nav-shadow);
+  font-family: var(--font-nav);
   transition:
     top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.3s ease;
@@ -715,6 +716,14 @@ select {
    HERO SECTION - MAIN BANNER
    ========================================= */
 
+.hero,
+.hero-section,
+.service-hero,
+.compact-hero,
+.us-staffing-hero {
+  margin-top: calc(var(--topbar-height) + var(--nav-height));
+}
+
 .hero {
   position: relative;
   width: 100%;
@@ -727,7 +736,6 @@ select {
   color: white;
   overflow: hidden;
   padding: 0 20px;
-  margin-top: calc(var(--topbar-height) + var(--nav-height));
 }
 
 .hero video {
@@ -1583,10 +1591,10 @@ select {
 }
 
 .bridging-intro h2 {
-  font-family: var(--font-primary);
-  font-size: clamp(2.25rem, 4.5vw, 3.6rem);
+  font-family: var(--font-head);
+  color: var(--color-dark);
+  font-size: clamp(2.25rem, 4.5vw, 2.9rem);
   font-weight: 800;
-  color: var(--color-text-main);
   letter-spacing: 0;
   line-height: 1.08;
   margin-bottom: 22px;
@@ -1667,10 +1675,10 @@ select {
 }
 
 .bridging-step-content h3 {
-  font-family: var(--font-primary);
+  font-family: var(--font-head);
+  color: var(--color-primary);
   font-size: clamp(1.25rem, 2vw, 1.55rem);
   font-weight: 700;
-  color: var(--color-text-main);
   text-align: left;
   margin-bottom: 10px;
   line-height: 1.25;

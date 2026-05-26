@@ -150,7 +150,6 @@ input[type="submit"],
 .compact-hero {
   padding: 80px 0 60px;
   position: relative;
-  margin-top: calc(var(--topbar-height) + var(--nav-height));
 }
 
 .compact-hero .container {
