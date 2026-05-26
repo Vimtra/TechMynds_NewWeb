@@ -367,3 +367,387 @@
     padding: 54px 0;
   }
 }
+
+/* =========================================
+   SERVICE HERO SECTION
+   ========================================= */
+
+.service-hero {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background-image: url('./Images/Service_Img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 150px 0 100px; /* Accounts for fixed navbar */
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(198, 40, 40, 0.6) 100%);
+  z-index: -1;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 800;
+  color: #ffffff !important;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-title span {
+  color: #ffb4b4 !important;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.95) !important;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  padding: 14px 32px;
+  background: #c62828;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid #c62828;
+}
+
+.btn-hero-primary:hover {
+  background: #a01f1f;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(198, 40, 40, 0.3);
+  color: #ffffff;
+}
+
+.btn-hero-secondary {
+  padding: 14px 32px;
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* =========================================
+   MODERN SAAS SECTION (STRIPE-LIKE)
+   ========================================= */
+
+.services-saas-section {
+  padding: 100px 0;
+  background: #f8fbff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.why-choose-saas {
+  padding: 120px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Vibrant Animated Backgrounds */
+.saas-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.saas-background.inverted {
+  background: #f8fbff;
+}
+
+.saas-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: floatSaaS 10s infinite alternate ease-in-out;
+}
+
+.saas-blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: rgba(198, 40, 40, 0.08); }
+.saas-blob-2 { top: 20%; right: -5%; width: 600px; height: 600px; background: rgba(15, 23, 42, 0.05); animation-delay: -2s; }
+.saas-blob-3 { bottom: -20%; left: 30%; width: 400px; height: 400px; background: rgba(198, 40, 40, 0.05); animation-delay: -5s; }
+.saas-blob-4 { top: -10%; right: 10%; width: 550px; height: 550px; background: rgba(15, 23, 42, 0.05); }
+.saas-blob-5 { bottom: -10%; left: -5%; width: 600px; height: 600px; background: rgba(198, 40, 40, 0.08); animation-delay: -3s; }
+
+@keyframes floatSaaS {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 40px) scale(1.05); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Headers */
+.services-saas-header, .why-choose-saas-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.saas-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, rgba(198, 40, 40, 0.15) 0%, rgba(198, 40, 40, 0.05) 100%);
+  color: #c62828;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(198, 40, 40, 0.1);
+}
+
+.saas-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.saas-title span {
+  background: linear-gradient(135deg, #c62828 0%, #8b1c1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.saas-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Grids */
+.services-saas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.why-choose-saas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+/* Floating SaaS Cards */
+.service-saas-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 40px;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.service-saas-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.service-saas-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.service-saas-icon.color-1 { background: linear-gradient(135deg, #c62828 0%, #9b1919 100%); }
+.service-saas-icon.color-2 { background: linear-gradient(135deg, #e53935 0%, #c62828 100%); }
+.service-saas-icon.color-3 { background: linear-gradient(135deg, #f44336 0%, #b71c1c 100%); }
+
+.service-saas-card:hover .service-saas-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-saas-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.service-saas-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.saas-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #c62828;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.saas-link:hover {
+  gap: 12px;
+  color: #8b1c1c;
+}
+
+/* Why Choose SaaS Items */
+.why-saas-item {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  z-index: 2;
+  position: relative;
+}
+
+.why-saas-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(198, 40, 40, 0.3);
+}
+
+.why-saas-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(198, 40, 40, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #c62828;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.why-saas-item:hover .why-saas-icon {
+  background: #c62828;
+  color: #ffffff;
+}
+
+.why-saas-content h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.why-saas-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .service-hero { min-height: auto; padding: 120px 0 80px; }
+  .hero-cta-group { flex-direction: column; }
+  .btn-hero-primary, .btn-hero-secondary { width: 100%; text-align: center; }
+  .services-saas-section { padding: 100px 0 80px; }
+  .why-choose-saas { padding: 80px 0; }
+  .saas-title { font-size: 2.2rem; }
+  .why-saas-item { flex-direction: column; gap: 16px; }
+}
+
+@media (max-width: 768px) {
+  .services-premium-section,
+  .why-choose-premium {
+    padding: 80px 0;
+  }
+  
+  .premium-title {
+    font-size: 2.2rem;
+  }
+  
+  .why-feature-item {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
