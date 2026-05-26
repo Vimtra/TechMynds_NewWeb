@@ -58,6 +58,48 @@
   --font-family-primary: var(--font-primary);
 }
 
+/* =========================================
+   GLOBAL SECTION SPACING
+   Ensures consistent vertical rhythm across pages.
+   Override on specific sections (hero, custom layouts) where needed.
+   ========================================= */
+
+main > section {
+  padding: 64px 0;
+}
+
+/* Make inner containers stretch full-width vertically (no extra inner padding)
+   so spacing is applied uniformly at the section level. */
+main > section > .container,
+main > section > .wrapper,
+main > section > .staff-container,
+main > section > .about-grid,
+main > section > .staffing-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Exceptions: hero sections already have custom spacing handled separately */
+.hero,
+.us-staffing-hero {
+  /* Keep hero layout control in their own rules; ensure they don't double-pad */
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: calc(var(--topbar-height) + var(--nav-height));
+}
+
+@media (max-width: 900px) {
+  main > section {
+    padding: 48px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  main > section {
+    padding: 36px 0;
+  }
+}
+
 /* HTML & Document Setup */
 html {
   scroll-padding-top: calc(var(--topbar-height) + var(--nav-height) + 12px);
