@@ -39,7 +39,7 @@
 
     <!-- Preload Critical Images -->
     <link rel="preload" as="image" href="./Images/Techmynds-logo.png" />
-    <link rel="preload" as="image" href="./Images/vison.jpg" />
+    <link rel="preload" as="image" href="./Images/About-scroll.jpg" />
   </head>
   <body>
     <!-- Corporate Top Bar -->
@@ -202,11 +202,14 @@
           <div class="staffing-image-wrapper">
             <div class="staffing-img-inner">
               <img
-                src="./Images/About.jpg"
+                src="./Images/About-scroll.jpg"
                 alt="TechMynds IT staffing team in Charlotte, NC - Professional recruitment services"
                 class="staffing-img"
                 loading="eager"
+                decoding="async"
                 fetchpriority="high"
+                width="1400"
+                height="933"
               />
               <div class="staffing-image-overlay"></div>
             </div>
@@ -232,7 +235,14 @@
           <div class="staff-feature-row" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div class="staff-feature-image">
               <span class="strengths-image-count">01</span>
-              <img src="./Images/strength1.jpg" alt="Expertise Across Industries" loading="lazy" />
+              <img
+                src="./Images/strength1-scroll.jpg"
+                alt="Expertise Across Industries"
+                loading="lazy"
+                decoding="async"
+                width="1400"
+                height="933"
+              />
             </div>
             <div class="staff-feature-body">
               <span class="staff-feature-kicker">Industry Depth</span>
@@ -253,7 +263,14 @@
           <div class="staff-feature-row staff-feature-row-reverse" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             <div class="staff-feature-image">
               <span class="strengths-image-count">02</span>
-              <img src="./Images/strength2.jpg" alt="Efficient Hiring Process" loading="lazy" />
+              <img
+                src="./Images/strength2-scroll.jpg"
+                alt="Efficient Hiring Process"
+                loading="lazy"
+                decoding="async"
+                width="1400"
+                height="788"
+              />
             </div>
             <div class="staff-feature-body">
               <span class="staff-feature-kicker">Speed With Quality</span>
@@ -274,7 +291,14 @@
           <div class="staff-feature-row" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
             <div class="staff-feature-image">
               <span class="strengths-image-count">03</span>
-              <img src="./Images/strength3.jpg" alt="Customized Solutions" loading="lazy" />
+              <img
+                src="./Images/strength3-scroll.jpg"
+                alt="Customized Solutions"
+                loading="lazy"
+                decoding="async"
+                width="1400"
+                height="934"
+              />
             </div>
             <div class="staff-feature-body">
               <span class="staff-feature-kicker">Flexible Delivery</span>
@@ -324,6 +348,7 @@
                 alt="Quality talent pool representatives"
                 class="talent-card-image"
                 loading="lazy"
+                decoding="async"
               />
               <div class="card-overlay"></div>
             </div>
@@ -348,6 +373,7 @@
                 alt="Professional career development"
                 class="talent-card-image"
                 loading="lazy"
+                decoding="async"
               />
               <div class="card-overlay"></div>
             </div>
@@ -465,11 +491,14 @@
       // Smooth scrolling for internal anchors
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (!href || href === "#") return;
+
+          const target = document.querySelector(href);
+          if (!target) return;
+
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-          }
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
 
@@ -597,15 +626,6 @@
     <!-- Scroll to Top Script -->
     <script>
       const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-      // Show button when user scrolls down
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          scrollToTopBtn.classList.add("show");
-        } else {
-          scrollToTopBtn.classList.remove("show");
-        }
-      });
 
       // Scroll to top when button is clicked
       scrollToTopBtn.addEventListener("click", () => {

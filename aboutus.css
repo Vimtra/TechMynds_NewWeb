@@ -25,8 +25,9 @@
    GLOBAL STYLES
    ======================================== */
 
-* {
+html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--topbar-height, 40px) + var(--nav-height, 88px) + 16px);
 }
 
 body {
@@ -38,6 +39,14 @@ body {
   overflow-x: hidden;
   line-height: 1.8;
   font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: calc(
+      var(--topbar-height, 40px) + var(--nav-height-mobile, 72px) + 16px
+    );
+  }
 }
 
 /* Mobile-First Form and Button Styles */
