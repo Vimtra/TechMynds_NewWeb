@@ -387,6 +387,13 @@
   border-top: 3px solid var(--color-primary);
 }
 
+@media (min-width: 993px) {
+  .service-hero {
+    height: 100vh;
+    min-height: 600px;
+  }
+}
+
 .service-hero .hero-overlay {
   position: absolute;
   inset: 0;
@@ -756,6 +763,7 @@
 
 @media (max-width: 768px) {
   .service-hero {
+    height: auto;
     min-height: 600px;
     padding: 78px 0 68px;
     background-position: 62% center;

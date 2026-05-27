@@ -831,6 +831,14 @@ select {
   padding: 0 20px;
 }
 
+@media (min-width: 993px) {
+  .hero {
+    margin-top: 0;
+    height: 100vh;
+    min-height: 100vh;
+  }
+}
+
 .hero video {
   position: absolute;
   inset: 0;
