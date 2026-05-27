@@ -375,13 +375,13 @@
 .service-hero {
   position: relative;
   width: 100%;
-  min-height: 720px;
+  min-height: 680px;
   display: flex;
   align-items: center;
   background-image: url('./Images/Service_Img.jpg');
   background-size: cover;
   background-position: center right;
-  padding: 128px 0 94px;
+  padding: 104px 0 92px;
   z-index: 1;
   isolation: isolate;
   border-top: 3px solid var(--color-primary);
@@ -421,7 +421,7 @@
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.26);
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 800;
   font-size: 0.86rem;
   letter-spacing: 2.4px;
@@ -432,7 +432,7 @@
 }
 
 .service-hero .hero-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: clamp(3.2rem, 5.5vw, 5rem);
   font-weight: 800;
   color: #ffffff !important;
@@ -448,7 +448,7 @@
 }
 
 .service-hero .hero-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: clamp(1.06rem, 1.4vw, 1.25rem);
   color: rgba(255, 255, 255, 0.95) !important;
   line-height: 1.7;
@@ -470,7 +470,7 @@
   padding: 0 36px;
   background: #c62828;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 800;
   font-size: 1rem;
   border-radius: 8px;
@@ -494,7 +494,7 @@
   padding: 0 36px;
   background: rgba(15, 23, 42, 0.16);
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 800;
   font-size: 1rem;
   border-radius: 8px;
@@ -578,7 +578,7 @@
   padding: 6px 16px;
   background: linear-gradient(135deg, rgba(198, 40, 40, 0.15) 0%, rgba(198, 40, 40, 0.05) 100%);
   color: #c62828;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 1px;
@@ -589,7 +589,7 @@
 }
 
 .saas-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: clamp(2.5rem, 4.5vw, 3.8rem);
   font-weight: 800;
   color: #0f172a;
@@ -605,7 +605,7 @@
 }
 
 .saas-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.15rem;
   color: #64748b;
   line-height: 1.6;
@@ -667,7 +667,7 @@
 }
 
 .service-saas-card h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.4rem;
   font-weight: 700;
   color: #0f172a;
@@ -675,7 +675,7 @@
 }
 
 .service-saas-card p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.05rem;
   color: #64748b;
   line-height: 1.7;
@@ -686,7 +686,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 600;
   font-size: 1rem;
   color: #c62828;
@@ -739,7 +739,7 @@
 }
 
 .why-saas-content h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
@@ -747,7 +747,7 @@
 }
 
 .why-saas-content p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: 1rem;
   color: #64748b;
   line-height: 1.6;
@@ -756,8 +756,8 @@
 
 @media (max-width: 768px) {
   .service-hero {
-    min-height: 640px;
-    padding: 96px 0 72px;
+    min-height: 600px;
+    padding: 78px 0 68px;
     background-position: 62% center;
   }
 

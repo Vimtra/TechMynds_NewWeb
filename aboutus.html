@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="index.css" />
@@ -219,51 +219,79 @@
 
 
 
-    <section class="staff-features-section" id="strengths">
-      <div class="staff-container">
-        <div class="section-header" data-aos="fade-down" data-aos-duration="800">
-          <h2 class="section-title">Our Strengths</h2>
+    <section class="staff-features-section" id="strengths" aria-labelledby="strengths-title">
+      <div class="staff-container strengths-container">
+        <div class="section-header strengths-header" data-aos="fade-down" data-aos-duration="800">
+          <span class="strengths-eyebrow">Why businesses choose us</span>
+          <h2 class="section-title" id="strengths-title">Our Strengths</h2>
+          <p class="strengths-lede">
+            We combine market knowledge, responsive delivery, and flexible staffing models to keep
+            hiring clear, quick, and dependable.
+          </p>
         </div>
 
-        <!-- Feature 1 -->
-        <div class="staff-feature-row" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-          <div class="staff-feature-image">
-            <img src="./Images/strength1.jpg" alt="Expertise Across Industries" loading="lazy" />
+        <div class="strengths-list">
+          <!-- Feature 1 -->
+          <div class="staff-feature-row" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <div class="staff-feature-image">
+              <span class="strengths-image-count">01</span>
+              <img src="./Images/strength1.jpg" alt="Expertise Across Industries" loading="lazy" />
+            </div>
+            <div class="staff-feature-body">
+              <span class="staff-feature-kicker">Industry Depth</span>
+              <h3 class="staff-feature-title">Expertise Across Industries</h3>
+              <p class="staff-feature-text">
+                From technology and finance to healthcare and engineering, our recruiters bring
+                specialized knowledge to connect businesses with the right professionals.
+              </p>
+              <div class="strengths-tags" aria-label="Expertise focus areas">
+                <span><i class="bi bi-cpu"></i> Technology</span>
+                <span><i class="bi bi-heart-pulse"></i> Healthcare</span>
+                <span><i class="bi bi-building"></i> Finance</span>
+              </div>
+            </div>
           </div>
-          <div class="staff-feature-body">
-            <h3 class="staff-feature-title">Expertise Across Industries</h3>
-            <p class="staff-feature-text">
-              From technology and finance to healthcare and engineering, our recruiters bring
-              specialized knowledge to connect businesses with the right professionals.
-            </p>
-          </div>
-        </div>
 
-        <!-- Feature 2 -->
-        <div class="staff-feature-row staff-feature-row-reverse" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-          <div class="staff-feature-image">
-            <img src="./Images/strength2.jpg" alt="Efficient Hiring Process" loading="lazy" />
+          <!-- Feature 2 -->
+          <div class="staff-feature-row staff-feature-row-reverse" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <div class="staff-feature-image">
+              <span class="strengths-image-count">02</span>
+              <img src="./Images/strength2.jpg" alt="Efficient Hiring Process" loading="lazy" />
+            </div>
+            <div class="staff-feature-body">
+              <span class="staff-feature-kicker">Speed With Quality</span>
+              <h3 class="staff-feature-title">Efficient Hiring Process</h3>
+              <p class="staff-feature-text">
+                Our streamlined recruitment process reduces time-to-hire and ensures you get the best
+                candidates faster, without compromising on quality.
+              </p>
+              <div class="strengths-tags" aria-label="Hiring process strengths">
+                <span><i class="bi bi-lightning-charge"></i> Fast Shortlists</span>
+                <span><i class="bi bi-check2-circle"></i> Vetted Talent</span>
+                <span><i class="bi bi-clock-history"></i> Clear Updates</span>
+              </div>
+            </div>
           </div>
-          <div class="staff-feature-body">
-            <h3 class="staff-feature-title">Efficient Hiring Process</h3>
-            <p class="staff-feature-text">
-              Our streamlined recruitment process reduces time-to-hire and ensures you get the best
-              candidates faster, without compromising on quality.
-            </p>
-          </div>
-        </div>
 
-        <!-- Feature 3 -->
-        <div class="staff-feature-row" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-          <div class="staff-feature-image">
-            <img src="./Images/strength3.jpg" alt="Customized Solutions" loading="lazy" />
-          </div>
-          <div class="staff-feature-body">
-            <h3 class="staff-feature-title">Customized Solutions</h3>
-            <p class="staff-feature-text">
-              Every company is unique. We offer flexible staffing models, including contract,
-              contract-to-hire, and permanent placements.
-            </p>
+          <!-- Feature 3 -->
+          <div class="staff-feature-row" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+            <div class="staff-feature-image">
+              <span class="strengths-image-count">03</span>
+              <img src="./Images/strength3.jpg" alt="Customized Solutions" loading="lazy" />
+            </div>
+            <div class="staff-feature-body">
+              <span class="staff-feature-kicker">Flexible Delivery</span>
+              <h3 class="staff-feature-title">Customized Solutions</h3>
+              <p class="staff-feature-text">
+                Every company is unique. We offer flexible staffing models, including contract,
+                contract-to-hire, and permanent placements.
+              </p>
+              <div class="strengths-tags" aria-label="Staffing solution types">
+                <span><i class="bi bi-person-workspace"></i> Contract</span>
+                <span><i class="bi bi-arrow-repeat"></i> Contract-to-Hire</span>
+                <span><i class="bi bi-person-check"></i> Permanent</span>
+              </div>
+            </div>
           </div>
         </div>
 
