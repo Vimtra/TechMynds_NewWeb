@@ -471,7 +471,7 @@
   background: #c62828;
   color: #ffffff;
   font-family: var(--font-primary);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 1rem;
   border-radius: 8px;
   text-decoration: none;
@@ -495,7 +495,7 @@
   background: rgba(15, 23, 42, 0.16);
   color: #ffffff;
   font-family: var(--font-primary);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 1rem;
   border-radius: 8px;
   text-decoration: none;
