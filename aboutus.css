@@ -730,18 +730,6 @@ input[type="submit"],
   text-align: center;
 }
 
-.strengths-eyebrow {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  font-family: var(--font-family-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #8f1111;
-}
-
 .strengths-header .section-title {
   display: inline-block;
   margin-bottom: 18px;
