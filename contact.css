@@ -993,20 +993,26 @@ input[type="submit"],
 }
 
 /* Scroll to Top Button */
-.scroll-to-top-btn {
+#scrollToTopBtn.scroll-to-top-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  min-height: 50px;
-  padding: 0;
-  border-radius: 50%;
+  bottom: 30px !important;
+  right: 30px !important;
+  width: 52px !important;
+  height: 52px !important;
+  max-width: 52px !important;
+  max-height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  inline-size: 52px !important;
+  block-size: 52px !important;
+  aspect-ratio: 1 / 1;
+  padding: 0 !important;
+  border-radius: 50% !important;
   background: linear-gradient(135deg, #c00000 0%, #800000 100%);
   color: white;
   border: none;
   font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
   display: none;
   align-items: center;
@@ -1017,20 +1023,26 @@ input[type="submit"],
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.scroll-to-top-btn:hover {
-  width: 55px;
-  height: 55px;
+#scrollToTopBtn.scroll-to-top-btn:hover {
   box-shadow: 0 15px 40px rgba(192, 0, 0, 0.4);
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.08);
 }
 
-.scroll-to-top-btn:active {
+#scrollToTopBtn.scroll-to-top-btn i {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+#scrollToTopBtn.scroll-to-top-btn:active {
   transform: translateY(-2px);
 }
 
-.scroll-to-top-btn.show {
+#scrollToTopBtn.scroll-to-top-btn.show {
   display: flex;
   animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1048,31 +1060,41 @@ input[type="submit"],
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .scroll-to-top-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
+  #scrollToTopBtn.scroll-to-top-btn {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 46px !important;
+    height: 46px !important;
+    max-width: 46px !important;
+    max-height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    inline-size: 46px !important;
+    block-size: 46px !important;
     font-size: 1.3rem;
   }
 
-  .scroll-to-top-btn:hover {
-    width: 50px;
-    height: 50px;
+  #scrollToTopBtn.scroll-to-top-btn:hover {
+    transform: translateY(-4px) scale(1.06);
   }
 }
 
 @media (max-width: 480px) {
-  .scroll-to-top-btn {
-    bottom: 15px;
-    right: 15px;
-    width: 42px;
-    height: 42px;
+  #scrollToTopBtn.scroll-to-top-btn {
+    bottom: 15px !important;
+    right: 15px !important;
+    width: 44px !important;
+    height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    inline-size: 44px !important;
+    block-size: 44px !important;
     font-size: 1.1rem;
   }
 
-  .scroll-to-top-btn:hover {
-    width: 48px;
-    height: 48px;
+  #scrollToTopBtn.scroll-to-top-btn:hover {
+    transform: translateY(-3px) scale(1.05);
   }
 }
