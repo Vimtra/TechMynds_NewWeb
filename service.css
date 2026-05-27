@@ -763,7 +763,6 @@
 
 @media (max-width: 768px) {
   .service-hero {
-    margin-top: 0;
     height: auto;
     min-height: 600px;
     padding: 78px 0 68px;
