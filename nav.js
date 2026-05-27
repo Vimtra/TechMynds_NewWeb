@@ -20,6 +20,15 @@
     document.body.classList.toggle("nav-open", open);
     hamburgerBtn.setAttribute("aria-expanded", open ? "true" : "false");
     hamburgerBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    
+    // Prevent body scroll when menu is open
+    if (open) {
+      document.body.style.overflow = "hidden";
+      // Reset scroll position of nav panel
+      navPanel.scrollTop = 0;
+    } else {
+      document.body.style.overflow = "";
+    }
   }
 
   function closeMenu() {
@@ -74,10 +83,16 @@
     if (linkPath === currentPath) el.classList.add("active");
   });
 
+  let resizeTimeout;
   window.addEventListener(
     "resize",
     () => {
-      if (window.innerWidth > 992 && navPanel.classList.contains("active")) closeMenu();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (window.innerWidth > 992 && navPanel.classList.contains("active")) {
+          closeMenu();
+        }
+      }, 150);
     },
     { passive: true }
   );

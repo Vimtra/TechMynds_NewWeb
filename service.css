@@ -288,7 +288,7 @@
 
 @media (max-width: 992px) {
   .service-hero {
-    padding: 140px 0 72px;
+    padding: 48px 0 72px;
   }
 
   .service-hero-grid,
@@ -315,7 +315,7 @@
 
 @media (max-width: 640px) {
   .service-hero {
-    padding: 126px 0 58px;
+    padding: 32px 0 58px;
   }
 
   .service-hero h1 {

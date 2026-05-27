@@ -713,8 +713,26 @@ input[type="submit"],
   overflow: hidden;
   border-radius: 16px;
   height: 400px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --img-shadow-color: rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 10px 40px var(--img-shadow-color),
+    0 4px 16px var(--img-shadow-color);
   transition: all 0.5s ease;
+}
+
+.staff-feature-image.shadow-loaded {
+  box-shadow:
+    0 14px 50px var(--img-shadow-color),
+    0 6px 20px var(--img-shadow-color),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.staff-feature-row:hover .staff-feature-image.shadow-loaded {
+  box-shadow:
+    0 20px 60px var(--img-shadow-color),
+    0 8px 30px var(--img-shadow-color),
+    0 0 80px color-mix(in srgb, var(--img-shadow-color) 30%, transparent);
+  transform: translateY(-4px);
 }
 
 .staff-feature-image img {
