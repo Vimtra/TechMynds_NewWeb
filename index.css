@@ -820,6 +820,7 @@ select {
   width: 100%;
   height: 100vh;
   min-height: 600px;
+  background: #111827 url("./Images/index-hero.jpg") center / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;

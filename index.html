@@ -66,7 +66,7 @@
 
     <!-- Preload Critical Images -->
     <link rel="preload" as="image" href="./Images/Techmynds-logo.png" />
-    <link rel="preload" as="image" href="./Images/hero_head.jpg" />
+    <link rel="preload" as="image" href="./Images/index-hero.jpg" />
   </head>
   <body>
     <!-- Corporate Top Bar -->
@@ -164,7 +164,7 @@
     <main>
       <!-- Head Section -->
       <section class="hero">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline poster="./Images/index-hero.jpg">
           <source src="./Images/27091-361827476.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
@@ -194,9 +194,10 @@
 
               <div class="image-wrapper">
                 <img
-                  src="./images/Hero_Image.jpg"
+                  src="./Images/Hero_Image.jpg"
                   alt="TechMynds Professional Team"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
