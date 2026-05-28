@@ -614,7 +614,7 @@ function sendReferralNotificationEmail(data) {
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
+                    <td style="padding: 16px 20px;">
                       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                           <td style="width: 40%;">
@@ -622,20 +622,6 @@ function sendReferralNotificationEmail(data) {
                           </td>
                           <td style="text-align: right;">
                             <a href="tel:${data.ReferrerPhone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.ReferrerPhone}</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 16px 20px;">
-                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="width: 40%;">
-                            <strong style="color: #666666; font-size: 13px;">Relationship</strong>
-                          </td>
-                          <td style="text-align: right;">
-                            <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.Relationship}</span>
                           </td>
                         </tr>
                       </table>
@@ -660,20 +646,6 @@ function sendReferralNotificationEmail(data) {
                           </td>
                           <td style="text-align: right;">
                             <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${data.CandidateName}</span>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
-                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="width: 40%;">
-                            <strong style="color: #666666; font-size: 13px;">Phone</strong>
-                          </td>
-                          <td style="text-align: right;">
-                            <a href="tel:${data.CandidatePhone}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.CandidatePhone}</a>
                           </td>
                         </tr>
                       </table>
