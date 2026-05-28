@@ -343,8 +343,14 @@ h1, h2, h3, h4, h5, h6,
    JOBS & REFERRAL SECTIONS
    ================================ */
 .jobs-section {
-  background: var(--light-bg);
-  padding: 80px 20px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 90px 20px;
+  position: relative;
+}
+
+.jobs-section .container {
+  max-width: 1180px;
 }
 
 .referral-section {
@@ -368,66 +374,81 @@ h1, h2, h3, h4, h5, h6,
    JOB OPENINGS TAB - ACCORDION/LIST VIEW
    ================================ */
 .listings-title {
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 40px;
-  text-align: center;
-  position: relative;
-  padding-bottom: 20px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #111827;
+  margin: 8px 0 0;
+  text-align: left;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.jobs-section-header {
+  display: flex;
+  align-items: end;
+  justify-content: flex-start;
+  margin-bottom: 34px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.section-eyebrow {
+  color: var(--primary-color);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .listings-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: var(--gradient-1);
-  border-radius: 2px;
+  display: none;
 }
 
 #jobListingsContainer {
   width: 100%;
   max-width: none;
   margin: 0;
+  display: grid;
+  gap: 16px;
 }
 
 /* Job Accordion Item */
 .job-accordion-item {
   width: 100%;
   background: var(--white);
-  border: 2px solid var(--border-color);
-  border-radius: 16px;
-  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
 }
 
 .job-accordion-item:hover {
-  border-color: var(--primary-light);
-  box-shadow: 0 8px 24px var(--shadow-light);
-  transform: translateY(-4px);
+  border-color: rgba(192, 0, 0, 0.32);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
 }
 
 .job-accordion-item.active {
-  border-color: var(--primary-color);
-  box-shadow: 0 12px 40px rgba(192, 0, 0, 0.15);
+  border-color: rgba(192, 0, 0, 0.42);
+  box-shadow: 0 22px 52px rgba(15, 23, 42, 0.12);
 }
 
 /* Job Header (Clickable) */
 .job-accordion-header {
-  padding: 28px 32px;
+  padding: 26px 30px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   background: var(--white);
-  transition: all 0.3s ease;
+  transition: background-color 0.25s ease;
   position: relative;
 }
 
@@ -436,11 +457,12 @@ h1, h2, h3, h4, h5, h6,
   position: absolute;
   left: 0;
   top: 0;
-  width: 5px;
+  width: 4px;
   height: 100%;
-  background: var(--gradient-1);
+  background: var(--primary-color);
   transform: scaleY(0);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+  transition: transform 0.25s ease;
 }
 
 .job-accordion-item.active .job-accordion-header::before {
@@ -448,53 +470,85 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .job-accordion-header:hover {
-  background: linear-gradient(135deg, rgba(192, 0, 0, 0.02) 0%, rgba(255, 68, 68, 0.02) 100%);
+  background: #fafafa;
 }
 
 .job-header-content {
   flex: 1;
+  min-width: 0;
 }
 
 .job-header-title {
-  font-size: 1.5rem;
+  font-size: 1.28rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
+  color: #111827;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
+  line-height: 1.3;
 }
 
 .job-header-title i {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(192, 0, 0, 0.08);
   color: var(--primary-color);
-  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex: 0 0 auto;
 }
 
 .job-header-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #4b5563;
 }
 
 .job-meta-item {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-height: 34px;
+  padding: 7px 11px;
+  background: #f9fafb;
+  border: 1px solid #edf0f3;
+  border-radius: 999px;
 }
 
 .job-meta-item i {
-  color: var(--primary-color);
-  font-size: 1.1rem;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
 /* Accordion Icon */
 .job-accordion-icon {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  color: #111827;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.job-accordion-item:hover .job-accordion-icon,
+.job-accordion-item.active .job-accordion-icon {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
 }
 
 .job-accordion-item.active .job-accordion-icon {
@@ -513,9 +567,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .job-details-wrapper {
-  padding: 32px;
-  background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
-  border-top: 2px solid var(--border-color);
+  padding: 30px;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
 }
 
 /* Job Title Section */
@@ -555,26 +609,25 @@ h1, h2, h3, h4, h5, h6,
 /* Meta Grid */
 .meta-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
-.meta-item {
+.meta-item,
+.meta-card {
   background: var(--white);
   padding: 20px;
-  border-radius: 12px;
-  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  min-height: 112px;
 }
 
-.meta-item:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow-light);
+.meta-item:hover,
+.meta-card:hover {
+  border-color: rgba(192, 0, 0, 0.28);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
 }
 
 .meta-item i {
@@ -588,38 +641,41 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .meta-label {
-  font-size: 1rem;
-  color: var(--primary-color);
-  margin-bottom: 4px;
-  font-weight: 500;
+  display: block;
+  font-size: 0.76rem;
+  color: #6b7280;
+  margin-bottom: 9px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
 }
 
 .meta-value {
-  font-size: 1.05rem;
-  color: var(--text-primary);
-  font-weight: 500;
+  font-size: 0.98rem;
+  color: #111827;
+  font-weight: 600;
+  line-height: 1.55;
   text-align: left;
 }
 
 /* Job Sections */
 .job-section {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   padding: 24px;
   background: var(--white);
-  border-radius: 12px;
-  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
 }
 
 .job-section-label {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--primary-color);
-  margin-bottom: 16px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 10px;
+  letter-spacing: 0.02em;
 }
 
 .job-section-label i {
@@ -628,10 +684,10 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .job-section-content {
-  text-align: justify;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
+  text-align: left;
+  font-size: 0.94rem;
+  color: #4b5563;
+  line-height: 1.75;
 }
 
 .job-section-content ul {
@@ -656,32 +712,33 @@ h1, h2, h3, h4, h5, h6,
 
 /* Apply Button */
 .apply-btn-wrapper {
-  text-align: center;
-  padding-top: 24px;
-  border-top: 2px solid var(--border-color);
+  text-align: right;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  justify-content: flex-end;
 }
 
 .apply-btn {
-  background: var(--gradient-1);
+  background: #111827;
   color: var(--white);
-  padding: 18px 48px;
+  padding: 14px 28px;
   border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
+  border-radius: 8px;
+  font-size: 0.98rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  box-shadow: 0 8px 24px var(--shadow-primary);
+  letter-spacing: 0;
+  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.18);
   display: inline-flex;
   align-items: center;
   gap: 12px;
 }
 
 .apply-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(192, 0, 0, 0.4);
-  background: var(--gradient-2);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(192, 0, 0, 0.24);
+  background: var(--primary-color);
 }
 
 .apply-btn:active {
@@ -1212,6 +1269,11 @@ select.form-input option:checked {
    RESPONSIVE DESIGN
    ================================ */
 @media (max-width: 1024px) {
+  .jobs-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .referral-wrapper {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -1270,7 +1332,7 @@ select.form-input option:checked {
   }
 
   .jobs-section {
-    padding: 80px 15px 20px;
+    padding: 70px 15px 28px;
     width: 100vw;
   }
 
@@ -1283,17 +1345,27 @@ select.form-input option:checked {
     font-size: 2rem;
   }
 
+  .jobs-section-header {
+    margin-bottom: 26px;
+    padding-bottom: 22px;
+  }
+
   .job-accordion-header {
     padding: 20px;
   }
 
   .job-header-title {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    align-items: flex-start;
   }
 
   .job-header-meta {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
+  }
+
+  .job-meta-item {
+    border-radius: 8px;
   }
 
   .job-details-wrapper {
@@ -1382,7 +1454,7 @@ select.form-input option:checked {
 
   .apply-btn,
   .referral-btn {
-    padding: 16px 32px;
+    padding: 14px 22px;
     font-size: 0.9rem;
   }
 
@@ -1414,8 +1486,34 @@ select.form-input option:checked {
     gap: 12px;
   }
 
+  .job-header-title i {
+    width: 34px;
+    height: 34px;
+  }
+
+  .job-header-meta {
+    width: 100%;
+  }
+
+  .job-meta-item {
+    width: 100%;
+  }
+
   .job-accordion-icon {
     align-self: flex-end;
+  }
+
+  .job-section {
+    padding: 18px;
+  }
+
+  .apply-btn-wrapper {
+    justify-content: stretch;
+  }
+
+  .apply-btn {
+    justify-content: center;
+    width: 100%;
   }
 }
 
