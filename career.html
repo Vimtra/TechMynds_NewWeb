@@ -479,21 +479,6 @@
             </div>
 
             <div class="form-group">
-              <label for="refCandidateEmail" class="form-label"
-                >Candidate Email <span class="required">*</span></label
-              >
-              <input
-                type="email"
-                id="refCandidateEmail"
-                name="candidate_email"
-                class="form-input"
-                placeholder="Enter candidate's email"
-                autocomplete="email"
-                required
-              />
-            </div>
-
-            <div class="form-group">
               <label for="refPosition" class="form-label"
                 >Position Referred For <span class="required">*</span></label
               >
@@ -634,7 +619,7 @@
     <script src="nav.js"></script>
     <script>
       const GOOGLE_APPS_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbxVgansEyw5juhwCgmIAHUkRq7ZOkAmoWbhle-wOW_MxtR8pa9VJMWwnDBm8BragcDqiA/exec";
+        "https://script.google.com/macros/s/AKfycbxn6oaMNS0i4iVdBYf9Ccc6r59S0YOAvelyYSZoxvemfiwxTbiD8yJS3bCU-A5bq5SK/exec";
       const JOB_APPLICATION_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
       const REFERRAL_SCRIPT_URL = GOOGLE_APPS_SCRIPT_URL;
 
@@ -1272,7 +1257,6 @@
       setupRealtimeValidation("referralApplicationForm");
       setupPhoneFormatting("refYourPhone");
       setupEmailValidation("refYourEmail");
-      setupEmailValidation("refCandidateEmail"); // Added for candidate email
       setupNameFormatting("refYourName");
       setupNameFormatting("refCandidateName");
 
@@ -1286,7 +1270,6 @@
           const refEmailInput = document.getElementById("refYourEmail");
           const refPhoneInput = document.getElementById("refYourPhone");
           const candNameInput = document.getElementById("refCandidateName");
-          const candEmailInput = document.getElementById("refCandidateEmail");
           const positionInput = document.getElementById("refPosition");
           const fileInput = document.getElementById("refCandidateResume");
 
@@ -1296,7 +1279,6 @@
             validateField(refEmailInput),
             validateField(refPhoneInput),
             validateField(candNameInput),
-            validateField(candEmailInput),
             validateField(positionInput),
             validateFile(fileInput),
           ];
@@ -1345,7 +1327,6 @@
               referrer_email: refEmailInput.value,
               referrer_phone: refPhoneInput.value,
               candidate_name: candNameInput.value,
-              candidate_email: candEmailInput.value,
               position_referred_for: positionInput.value,
               fileName: file.name,
               fileData: base64File,

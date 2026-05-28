@@ -97,7 +97,6 @@ function handleReferralSubmission(e) {
     
     // Extract and validate CANDIDATE fields
     const candidateName = (formData.candidate_name || "").trim();
-    const candidateEmail = (formData.candidate_email || "").trim();
     const candidatePhone = (formData.candidate_phone || "").trim();
     const positionReferredFor = (formData.position_referred_for || "").trim();
     
@@ -113,7 +112,6 @@ function handleReferralSubmission(e) {
     if (!referrerName) throw new Error("Missing required field: referrer_name");
     if (!referrerEmail) throw new Error("Missing required field: referrer_email");
     if (!candidateName) throw new Error("Missing required field: candidate_name");
-    if (!candidateEmail) throw new Error("Missing required field: candidate_email");
     if (!positionReferredFor) throw new Error("Missing required field: position_referred_for");
     if (!fileData) throw new Error("Candidate resume is required");
 
@@ -121,9 +119,6 @@ function handleReferralSubmission(e) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(referrerEmail)) {
       throw new Error("Invalid referrer email format");
-    }
-    if (!emailRegex.test(candidateEmail)) {
-      throw new Error("Invalid candidate email format");
     }
 
     Logger.log(`Processing referral from ${referrerName} for candidate ${candidateName}`);
@@ -183,7 +178,6 @@ function handleReferralSubmission(e) {
         "Referrer Phone",
         "Relationship",
         "Candidate Name",
-        "Candidate Email",
         "Candidate Phone",
         "Resume Link",
         "Notes"
@@ -204,10 +198,9 @@ function handleReferralSubmission(e) {
       sheet.setColumnWidth(5, 120);  // Referrer Phone
       sheet.setColumnWidth(6, 120);  // Relationship
       sheet.setColumnWidth(7, 150);  // Candidate Name
-      sheet.setColumnWidth(8, 200);  // Candidate Email
-      sheet.setColumnWidth(9, 120);  // Candidate Phone
-      sheet.setColumnWidth(10, 300); // Resume Link
-      sheet.setColumnWidth(11, 300); // Notes
+      sheet.setColumnWidth(8, 120);  // Candidate Phone
+      sheet.setColumnWidth(9, 300);  // Resume Link
+      sheet.setColumnWidth(10, 300); // Notes
       
       Logger.log("Headers created in Referral sheet");
     }
@@ -221,7 +214,6 @@ function handleReferralSubmission(e) {
       ReferrerPhone: referrerPhone || "N/A",
       Relationship: relationship || "N/A",
       CandidateName: candidateName,
-      CandidateEmail: candidateEmail,
       CandidatePhone: candidatePhone || "N/A",
       ResumeLink: fileUrl,
       Notes: notes || "N/A"
@@ -236,7 +228,6 @@ function handleReferralSubmission(e) {
       newRowData.ReferrerPhone,
       newRowData.Relationship,
       newRowData.CandidateName,
-      newRowData.CandidateEmail,
       newRowData.CandidatePhone,
       newRowData.ResumeLink,
       newRowData.Notes
@@ -679,20 +670,6 @@ function sendReferralNotificationEmail(data) {
                       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                           <td style="width: 40%;">
-                            <strong style="color: #666666; font-size: 13px;">Email</strong>
-                          </td>
-                          <td style="text-align: right;">
-                            <a href="mailto:${data.CandidateEmail}" style="color: #c00000; text-decoration: none; font-size: 14px; font-weight: 500;">${data.CandidateEmail}</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
-                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="width: 40%;">
                             <strong style="color: #666666; font-size: 13px;">Phone</strong>
                           </td>
                           <td style="text-align: right;">
@@ -727,22 +704,11 @@ function sendReferralNotificationEmail(data) {
               </div>
               ` : ''}
               
-              <!-- Action Buttons -->
+              <!-- Action Button -->
               <div style="text-align: center; margin-top: 32px;">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
-                  <tr>
-                    <td style="padding: 0 8px;">
-                      <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
-                        View Resume
-                      </a>
-                    </td>
-                    <td style="padding: 0 8px;">
-                      <a href="mailto:${data.CandidateEmail}?subject=Re: Referral for ${data.Position}" style="display: inline-block; background-color: #ffffff; color: #c00000; border: 2px solid #c00000; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s;">
-                        Contact Candidate
-                      </a>
-                    </td>
-                  </tr>
-                </table>
+                <a href="${data.ResumeLink}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c00000 0%, #8b0000 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(192,0,0,0.25); transition: all 0.3s;">
+                  View Resume
+                </a>
               </div>
               
             </td>
