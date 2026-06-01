@@ -354,7 +354,7 @@ select {
 }
 
 .logo-image {
-  height: 72px;
+  height: 90px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -642,7 +642,7 @@ select {
   }
 
   .logo-image {
-    height: 56px;
+    height: 72px;
   }
 
   .hamburger-btn {
@@ -795,7 +795,7 @@ select {
   }
 
   .logo-image {
-    height: 48px;
+    height: 62px;
   }
 }
 
@@ -812,7 +812,7 @@ select {
 .service-hero,
 .compact-hero,
 .us-staffing-hero {
-  margin-top: calc(var(--topbar-height) + var(--nav-height));
+  margin-top: 0;
 }
 
 .hero {
@@ -829,6 +829,8 @@ select {
   color: white;
   overflow: hidden;
   padding: 0 20px;
+  padding-top: calc(var(--topbar-height) + var(--nav-height));
+  box-sizing: border-box;
 }
 
 @media (min-width: 993px) {
@@ -836,6 +838,15 @@ select {
     margin-top: 0;
     height: 100vh;
     min-height: 100vh;
+    padding-top: calc(var(--topbar-height) + var(--nav-height));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding-top: calc(var(--topbar-height) + var(--nav-height-mobile));
   }
 }
 
@@ -901,7 +912,7 @@ select {
   font-family: var(--font-primary);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.5px;
   color: #ffffff;

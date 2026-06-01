@@ -598,7 +598,7 @@
 .saas-title {
   font-family: var(--font-primary);
   font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-  font-weight: 800;
+  font-weight: 600;
   color: #0f172a;
   line-height: 1.15;
   margin-bottom: 24px;

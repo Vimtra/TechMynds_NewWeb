@@ -1842,3 +1842,37 @@ input[type="submit"],
     height: 48px;
   }
 }
+
+/* ========================================
+   MISSION SECTION - ABOUT PAGE STYLING
+   ======================================== */
+
+#mission {
+  background: #ffffff !important;
+  padding: 60px 40px !important;
+}
+
+#mission::before {
+  display: none !important;
+}
+
+#mission::after {
+  display: none !important;
+}
+
+.strengths-container #mission-banner-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  #mission {
+    padding: 50px 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #mission {
+    padding: 40px 16px !important;
+  }
+}
