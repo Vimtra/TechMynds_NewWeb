@@ -375,13 +375,14 @@
 .service-hero {
   position: relative;
   width: 100%;
-  min-height: 680px;
+  min-height: calc(100svh - var(--header-offset));
   display: flex;
   align-items: center;
   background-image: url('./Images/Service_Img.jpg');
   background-size: cover;
   background-position: center right;
-  padding: 104px 0 92px;
+  margin-top: var(--header-offset);
+  padding: 0;
   z-index: 1;
   isolation: isolate;
   border-top: 3px solid var(--color-primary);
@@ -389,8 +390,7 @@
 
 @media (min-width: 993px) {
   .service-hero {
-    height: 100vh;
-    min-height: 600px;
+    min-height: calc(100svh - var(--header-offset));
   }
 }
 
@@ -840,9 +840,9 @@
 
 @media (max-width: 768px) {
   .service-hero {
-    height: auto;
-    min-height: 600px;
-    padding: 78px 0 68px;
+    margin-top: var(--header-offset-mobile);
+    min-height: calc(100svh - var(--header-offset-mobile));
+    padding: 56px 0;
     background-position: 62% center;
   }
 

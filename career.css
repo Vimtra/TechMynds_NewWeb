@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6,
    ================================ */
 .hero-section {
   position: relative;
-  height: 100vh;
+  min-height: calc(100svh - var(--header-offset));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,16 +136,15 @@ h1, h2, h3, h4, h5, h6,
 
 @media (min-width: 993px) {
   .hero-section {
-    height: 100vh;
-    min-height: 600px;
+    min-height: calc(100svh - var(--header-offset));
   }
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
   .hero-section {
-    height: auto;
-    min-height: auto;
-    padding: 120px 20px 80px;
+    margin-top: var(--header-offset-mobile);
+    min-height: calc(100svh - var(--header-offset-mobile));
+    padding: 48px 20px;
   }
 }
 
@@ -326,8 +325,9 @@ h1, h2, h3, h4, h5, h6,
 }
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;
-    padding: 20px 20px 60px;
+    margin-top: var(--header-offset-mobile);
+    min-height: calc(100svh - var(--header-offset-mobile));
+    padding: 40px 20px;
   }
   .hero-main h1 {
     font-size: 3.5rem;

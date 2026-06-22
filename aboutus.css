@@ -167,10 +167,10 @@ input[type="submit"],
 .us-staffing-hero {
   position: relative;
   background: linear-gradient(160deg, #ffffff 0%, #fdfcfb 60%, #fff2f2 100%);
-  margin-top: calc(var(--topbar-height) + var(--nav-height));
-  padding: 60px 0 60px;
+  margin-top: var(--header-offset);
+  padding: 0;
   overflow: hidden;
-  min-height: 68vh;
+  min-height: calc(100svh - var(--header-offset));
   display: flex;
   align-items: center;
   isolation: isolate;
@@ -419,8 +419,9 @@ input[type="submit"],
 
 @media (max-width: 900px) {
   .us-staffing-hero {
-    padding: 80px 0 40px;
-    min-height: auto;
+    margin-top: var(--header-offset-mobile);
+    min-height: calc(100svh - var(--header-offset-mobile));
+    padding: 48px 0;
   }
 
   .staffing-inner {
@@ -449,7 +450,7 @@ input[type="submit"],
 
 @media (max-width: 600px) {
   .us-staffing-hero {
-    padding: 70px 0 40px;
+    padding: 40px 0;
   }
 
   .staffing-inner {
