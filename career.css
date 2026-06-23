@@ -1,25 +1,4 @@
-/* ================================
-   ROOT VARIABLES - TECHMYNDS BRAND
-   ================================ */
-:root {
-  --primary-color: #c00000;
-  --primary-dark: #8b0000;
-  --primary-light: #dc143c;
-  --secondary-color: #1a1a1a;
-  --accent-color: #ff4444;
-  --accent-dark: #cc0000;
-  --light-bg: #fef5f5;
-  --text-primary: #1a1a1a;
-  --text-secondary: #5a5a5a;
-  --border-color: #ffe5e5;
-  --white: #ffffff;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --gradient-1: linear-gradient(135deg, #c00000 0%, #8b0000 100%);
-  --gradient-2: linear-gradient(135deg, #ff4444 0%, #c00000 100%);
-  --shadow-primary: rgba(192, 0, 0, 0.25);
-  --shadow-light: rgba(192, 0, 0, 0.1);
-}
+/* CSS Variables are now imported from _variables.css */
 
 /* ================================
    GLOBAL FONT

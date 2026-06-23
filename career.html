@@ -18,27 +18,83 @@
       rel="stylesheet"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="_variables.css" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="career.css" />
 
     <link rel="preload" as="image" href="./Images/Techmynds-logo.png" />
+    
+    <!-- Open Graph & Social Meta -->
+    <meta property="og:title" content="IT Jobs Charlotte NC | Tech Career Opportunities | TechMynds" />
+    <meta property="og:description" content="Search IT and technology jobs in Charlotte, NC. Explore career opportunities in software development, cloud engineering, and more. Apply with TechMynds today." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.techmyndsinc.com/career.html" />
+    <meta property="og:image" content="https://www.techmyndsinc.com/Images/Techmynds-logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="TechMynds Inc - IT Career Opportunities" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IT Jobs Charlotte NC | Tech Career Opportunities | TechMynds" />
+    <meta name="twitter:description" content="Search IT and technology jobs in Charlotte, NC. Explore career opportunities in software development, cloud engineering, and more. Apply with TechMynds today." />
+    <meta name="twitter:image" content="https://www.techmyndsinc.com/Images/Techmynds-logo.png" />
+    <link rel="canonical" href="https://www.techmyndsinc.com/career.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "IT Jobs and Career Opportunities",
+        "description": "Search IT and technology jobs in Charlotte, NC. Explore career opportunities in software development, cloud engineering, and more. Apply with TechMynds today.",
+        "url": "https://www.techmyndsinc.com/career.html",
+        "provider": {
+          "@type": "Organization",
+          "name": "TechMynds Inc",
+          "url": "https://www.techmyndsinc.com",
+          "logo": "https://www.techmyndsinc.com/Images/Techmynds-logo.png",
+          "description": "Top IT staffing company in Charlotte, NC. Expert technology recruitment, contract staffing, and permanent placement solutions for businesses.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1981 J N Pease Pl, Suite 104",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "postalCode": "28262",
+            "addressCountry": "US"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-732-587-6750",
+            "contactType": "Human Resources",
+            "email": "hr@techmyndsinc.com"
+          },
+          "sameAs": ["https://www.linkedin.com/company/techmyndsinc/"]
+        }
+      }
+    </script>
 
     <!-- Poppins font via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
     />
     <style>
+      /* Screen Reader Only Class */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       /* Enhanced Form Validation Styles */
       .form-input.is-invalid,
       .form-input.is-invalid:focus {
@@ -318,7 +374,7 @@
           Position: <strong id="jobPositionName">Software Developer</strong>
         </p>
 
-        <form id="jobApplicationForm" class="application-form">
+        <form id="jobApplicationForm" class="application-form" aria-label="Job application form">
           <div class="form-group">
             <label for="jobFullName" class="form-label"
               >Full Name <span class="required">*</span></label
@@ -331,6 +387,7 @@
               placeholder="Enter your full name"
               autocomplete="name"
               required
+              aria-required="true"
             />
           </div>
 
@@ -344,6 +401,7 @@
               placeholder="Enter your email"
               autocomplete="email"
               required
+              aria-required="true"
             />
           </div>
 
@@ -359,6 +417,7 @@
               placeholder="Enter your phone number"
               autocomplete="tel"
               required
+              aria-required="true"
             />
           </div>
 
@@ -377,6 +436,7 @@
                 accept=".pdf,.doc,.docx"
                 autocomplete="off"
                 required
+                aria-required="true"
               />
               <div class="file-upload-icon">
                 <i class="fas fa-cloud-upload-alt"></i>
@@ -414,8 +474,9 @@
         <h2 class="modal-title">Submit a Referral</h2>
         <p class="modal-subtitle">Help us find great talent!</p>
 
-        <form id="referralApplicationForm" class="application-form">
+        <form id="referralApplicationForm" class="application-form" aria-label="Employee referral form">
           <fieldset class="form-fieldset">
+            <legend class="sr-only">Referral Information</legend>
             <div class="form-group">
               <label for="refYourName" class="form-label"
                 >Your Full Name <span class="required">*</span></label
@@ -428,6 +489,7 @@
                 placeholder="Enter your full name"
                 autocomplete="name"
                 required
+                aria-required="true"
               />
             </div>
 
@@ -443,6 +505,7 @@
                 placeholder="Enter your email"
                 autocomplete="email"
                 required
+                aria-required="true"
               />
             </div>
 
@@ -458,6 +521,7 @@
                 placeholder="Enter your phone number"
                 autocomplete="tel"
                 required
+                aria-required="true"
               />
             </div>
           </fieldset>
@@ -475,6 +539,7 @@
                 placeholder="Enter candidate's full name"
                 autocomplete="name"
                 required
+                aria-required="true"
               />
             </div>
 
@@ -489,6 +554,7 @@
                 class="form-input"
                 placeholder="e.g. Software Developer"
                 required
+                aria-required="true"
               />
             </div>
 
@@ -505,6 +571,7 @@
                   accept=".pdf,.doc,.docx"
                   autocomplete="off"
                   required
+                  aria-required="true"
                 />
                 <div class="file-upload-icon">
                   <i class="fas fa-cloud-upload-alt"></i>

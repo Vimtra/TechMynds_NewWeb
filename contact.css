@@ -1,19 +1,4 @@
-:root {
-  --maroon-primary: #800000;
-  --maroon-secondary: #660000;
-  --maroon-light: #a00000;
-  --maroon-gradient: linear-gradient(135deg, #800000, #a00000);
-  /* --text-dark: #1a1a1a; */
-  --text-gray: #4a4a4a;
-  --text-light: #757575;
-  --bg-white: #ffffff;
-  /* --bg-gray: #f7f8fa; */
-  --border-light: #e5e7eb;
-  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
+/* CSS Variables are now imported from _variables.css */
 
 * {
   margin: 0;
@@ -539,8 +524,8 @@ input[type="submit"],
 
 /* Compact CTA */
 .compact-cta {
-  padding: 80px 0;
-  background: var(--bg-gray);
+  padding: var(--section-padding-xl) 0;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-bg-base) 100%);
 }
 
 .compact-cta .container {
@@ -550,52 +535,70 @@ input[type="submit"],
 .cta-wrapper {
   text-align: center;
   background: white;
-  padding: 60px 50px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-md);
+  padding: var(--section-padding-lg) var(--section-padding-md);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
   max-width: 900px;
   margin: 0 auto;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
 }
 
 .cta-icon-circle {
-  width: 80px;
-  height: 80px;
-  background: var(--maroon-gradient);
+  width: 88px;
+  height: 88px;
+  background: var(--gradient-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 25px;
+  margin: 0 auto var(--space-6);
   font-size: 2rem;
   color: white;
-  box-shadow: 0 8px 20px rgba(128, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(192, 0, 0, 0.3);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-wrapper:hover .cta-icon-circle {
+  transform: scale(1.1);
 }
 
 .cta-wrapper h3 {
-  font-family: "Poppins", sans-serif;
-
-  font-size: 1.85rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  margin-bottom: 15px;
-  line-height: 1.3;
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
 }
 
 .cta-wrapper p {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-family-primary);
   text-align: center;
-  font-size: 1.05rem;
-  color: var(--text-gray);
-  margin-bottom: 35px;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  line-height: var(--leading-relaxed);
 }
 
 .cta-btn-group {
   display: flex;
-  gap: 15px;
+  gap: var(--space-4);
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -603,36 +606,44 @@ input[type="submit"],
 .cta-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 15px 35px;
-  border-radius: 12px;
-  font-weight: 500;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: var(--font-size-base);
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-link:not(.cta-link-alt) {
-  background: var(--maroon-gradient);
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(192, 0, 0, 0.3);
 }
 
 .cta-link:not(.cta-link-alt):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(128, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(192, 0, 0, 0.4);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
 }
 
 .cta-link-alt {
   background: transparent;
-  color: var(--maroon-primary);
-  border: 2px solid var(--maroon-primary);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 4px 12px rgba(192, 0, 0, 0.1);
 }
 
 .cta-link-alt:hover {
-  background: var(--maroon-primary);
+  background: var(--color-primary);
   color: white;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(192, 0, 0, 0.3);
 }
 
 /* Responsive Design */
@@ -1105,3 +1116,4 @@ input[type="submit"],
     transform: translateY(-3px) scale(1.05);
   }
 }
+

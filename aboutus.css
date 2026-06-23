@@ -3,23 +3,7 @@
    Clean, Professional, Smooth Animations
    ======================================== */
 
-:root {
-  --color-primary: #c00000;
-  --color-secondary-dark: #800000;
-  --color-text-dark: #1a1a2e;
-  --color-text-medium: #555b6e;
-  --color-text-light: #666;
-  --color-bg-base: #f8f9fa;
-  --color-white: #ffffff;
-  --color-border: #e0e0e0;
-  --font-family-primary: "Poppins", sans-serif;
-  --font-family-heading: "Poppins", sans-serif;
-  --font-family-serif: "Poppins", sans-serif;
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 20px 50px rgba(192, 0, 0, 0.15);
-}
+/* CSS Variables are now imported from _variables.css */
 
 /* ========================================
    GLOBAL STYLES
@@ -538,22 +522,41 @@ input[type="submit"],
 
 .bento-card {
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  border: 1px solid rgba(192, 0, 0, 0.1);
-  border-radius: 24px;
-  padding: 48px 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--section-padding-md) var(--space-8);
   position: relative;
-
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .bento-card:hover {
-  border-color: rgba(192, 0, 0, 0.3);
-  box-shadow: 0 20px 40px rgba(192, 0, 0, 0.12);
+  border-color: rgba(198, 40, 40, 0.2);
+  box-shadow: var(--shadow-lg);
   transform: translateY(-8px);
   background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+}
+
+.bento-card:hover::before {
+  opacity: 1;
 }
 
 /* Large Bento Cards */

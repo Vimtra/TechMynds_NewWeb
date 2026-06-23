@@ -18,24 +18,84 @@
       rel="stylesheet"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="_variables.css" />
     <link rel="stylesheet" href="index.css" />
     <!-- Poppins font via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
     <link rel="stylesheet" href="contact.css" />
+    
+    <!-- Open Graph & Social Meta -->
+    <meta property="og:title" content="Contact IT Staffing Company Charlotte NC | TechMynds Inc" />
+    <meta property="og:description" content="Contact TechMynds Inc in Charlotte, NC for IT staffing solutions. Reach out to discuss your recruitment needs or job opportunities in technology." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.techmyndsinc.com/contact.html" />
+    <meta property="og:image" content="https://www.techmyndsinc.com/Images/Techmynds-logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="TechMynds Inc - IT Staffing Company Logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact IT Staffing Company Charlotte NC | TechMynds Inc" />
+    <meta name="twitter:description" content="Contact TechMynds Inc in Charlotte, NC for IT staffing solutions. Reach out to discuss your recruitment needs or job opportunities in technology." />
+    <meta name="twitter:image" content="https://www.techmyndsinc.com/Images/Techmynds-logo.png" />
+    <link rel="canonical" href="https://www.techmyndsinc.com/contact.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact TechMynds",
+        "description": "Contact TechMynds Inc in Charlotte, NC for IT staffing solutions. Reach out to discuss your recruitment needs or job opportunities in technology.",
+        "url": "https://www.techmyndsinc.com/contact.html",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "TechMynds Inc",
+          "url": "https://www.techmyndsinc.com",
+          "logo": "https://www.techmyndsinc.com/Images/Techmynds-logo.png",
+          "description": "Top IT staffing company in Charlotte, NC. Expert technology recruitment, contract staffing, and permanent placement solutions for businesses.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1981 J N Pease Pl, Suite 104",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "postalCode": "28262",
+            "addressCountry": "US"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+1-732-587-6750",
+              "contactType": "customer service",
+              "email": "hr@techmyndsinc.com",
+              "areaServed": "US"
+            }
+          ],
+          "sameAs": ["https://www.linkedin.com/company/techmyndsinc/"]
+        }
+      }
+    </script>
+    
     <style>
+      /* Screen Reader Only Class */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       /* Enhanced Form Validation Styles */
       .input-wrapper input.is-invalid,
       .input-wrapper textarea.is-invalid,
@@ -376,7 +436,7 @@
                 <p>Fill out the form below and we'll get back to you soon</p>
               </div>
 
-              <form id="contactForm" class="compact-form">
+              <form id="contactForm" class="compact-form" aria-label="Contact form">
                 <div class="form-grid">
                   <div
                     class="input-group-wrapper"
@@ -385,8 +445,9 @@
                     data-aos-delay="200"
                   >
                     <div class="input-wrapper">
-                      <i class="bi bi-person"></i>
-                      <input type="text" name="fullName" placeholder="Full Name *" required />
+                      <i class="bi bi-person" aria-hidden="true"></i>
+                      <label for="fullName" class="sr-only">Full Name</label>
+                      <input type="text" id="fullName" name="fullName" placeholder="Full Name *" required aria-required="true" />
                     </div>
                   </div>
 
@@ -397,8 +458,9 @@
                     data-aos-delay="250"
                   >
                     <div class="input-wrapper">
-                      <i class="bi bi-envelope"></i>
-                      <input type="email" name="email" placeholder="Email Address *" required />
+                      <i class="bi bi-envelope" aria-hidden="true"></i>
+                      <label for="email" class="sr-only">Email Address</label>
+                      <input type="email" id="email" name="email" placeholder="Email Address *" required aria-required="true" />
                     </div>
                   </div>
 
@@ -409,8 +471,9 @@
                     data-aos-delay="300"
                   >
                     <div class="input-wrapper">
-                      <i class="bi bi-telephone"></i>
-                      <input type="tel" name="phone" placeholder="Phone Number" />
+                      <i class="bi bi-telephone" aria-hidden="true"></i>
+                      <label for="phone" class="sr-only">Phone Number</label>
+                      <input type="tel" id="phone" name="phone" placeholder="Phone Number" />
                     </div>
                   </div>
 
@@ -421,8 +484,9 @@
                     data-aos-delay="350"
                   >
                     <div class="input-wrapper">
-                      <i class="bi bi-tag"></i>
-                      <select name="subject" required>
+                      <i class="bi bi-tag" aria-hidden="true"></i>
+                      <label for="subject" class="sr-only">Subject</label>
+                      <select id="subject" name="subject" required aria-required="true">
                         <option value="">Select Subject *</option>
                         <option value="staffing">Staffing Solutions</option>
                         <option value="career">Career Inquiry</option>
@@ -440,12 +504,15 @@
                     data-aos-delay="400"
                   >
                     <div class="input-wrapper">
-                      <i class="bi bi-chat-left-text"></i>
+                      <i class="bi bi-chat-left-text" aria-hidden="true"></i>
+                      <label for="message" class="sr-only">Your Message</label>
                       <textarea
+                        id="message"
                         name="message"
                         placeholder="Your Message *"
                         rows="5"
                         required
+                        aria-required="true"
                       ></textarea>
                     </div>
                   </div>
