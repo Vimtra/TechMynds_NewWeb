@@ -10,6 +10,20 @@
   scroll-behavior: smooth;
 }
 
+/* Fix Bootstrap Icons display */
+.bi,
+[class*=" bi-"] {
+  display: inline-block;
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* GPU Acceleration for Animations */
 [data-aos] {
   will-change: opacity, transform;
@@ -355,7 +369,7 @@ h1, h2, h3, h4, h5, h6,
 .listings-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text-main);
   margin: 8px 0 0;
   text-align: left;
   letter-spacing: 0;
@@ -372,7 +386,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .section-eyebrow {
-  color: var(--primary-color);
+  color: var(--color-primary);
   display: inline-flex;
   font-size: 0.78rem;
   font-weight: 700;
@@ -460,7 +474,7 @@ h1, h2, h3, h4, h5, h6,
 .job-header-title {
   font-size: 1.28rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-primary);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -473,7 +487,7 @@ h1, h2, h3, h4, h5, h6,
   height: 38px;
   border-radius: 8px;
   background: rgba(192, 0, 0, 0.08);
-  color: var(--primary-color);
+  color: var(--color-primary);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -511,7 +525,7 @@ h1, h2, h3, h4, h5, h6,
   height: 42px;
   border: 1px solid #e5e7eb;
   border-radius: 50%;
-  color: #111827;
+  color: var(--color-primary);
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
@@ -525,9 +539,9 @@ h1, h2, h3, h4, h5, h6,
 
 .job-accordion-item:hover .job-accordion-icon,
 .job-accordion-item.active .job-accordion-icon {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #ffffff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .job-accordion-item.active .job-accordion-icon {
@@ -564,7 +578,7 @@ h1, h2, h3, h4, h5, h6,
 .job-title-section h4 {
   font-size: 1.6rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-primary);
   margin: 0;
   display: flex;
   align-items: center;
@@ -572,13 +586,13 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .job-title-section h4 i {
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
 .job-title-section span {
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--color-primary);
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
   padding: 10px 22px;
   border-radius: 50px;
@@ -611,7 +625,7 @@ h1, h2, h3, h4, h5, h6,
 
 .meta-item i {
   font-size: 1.8rem;
-  color: var(--primary-color);
+  color: var(--color-primary);
   flex-shrink: 0;
 }
 
@@ -631,7 +645,7 @@ h1, h2, h3, h4, h5, h6,
 
 .meta-value {
   font-size: 0.98rem;
-  color: #111827;
+  color: var(--color-primary);
   font-weight: 600;
   line-height: 1.55;
   text-align: left;
@@ -649,7 +663,7 @@ h1, h2, h3, h4, h5, h6,
 .job-section-label {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-primary);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -658,14 +672,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .job-section-label i {
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-size: 1.2rem;
 }
 
 .job-section-content {
   text-align: left;
   font-size: 0.94rem;
-  color: #4b5563;
+  color: var(--color-text-primary);
   line-height: 1.75;
 }
 
@@ -684,7 +698,7 @@ h1, h2, h3, h4, h5, h6,
   content: "→";
   position: absolute;
   left: 0;
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -698,7 +712,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .apply-btn {
-  background: #111827;
+  background: var(--color-primary);
   color: var(--white);
   padding: 14px 28px;
   border: none;
@@ -717,7 +731,7 @@ h1, h2, h3, h4, h5, h6,
 .apply-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 34px rgba(192, 0, 0, 0.24);
-  background: var(--primary-color);
+  background: var(--color-primary-dark);
 }
 
 .apply-btn:active {
@@ -755,19 +769,19 @@ h1, h2, h3, h4, h5, h6,
 .referral-text p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   margin: 0;
 }
 
 .referral-text strong {
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-weight: 500;
 }
 
 .referral-benefits-title {
   font-size: 1.8rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-primary);
   margin-top: 32px;
   margin-bottom: 20px;
   display: flex;
@@ -794,7 +808,7 @@ h1, h2, h3, h4, h5, h6,
   /* align-items: center; */
   gap: 12px;
   font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   padding: 18px;
   background: var(--white);
   border-radius: 10px;
@@ -812,7 +826,7 @@ h1, h2, h3, h4, h5, h6,
   text-align: left;
 }
 .benefits-list i {
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-size: 1.4rem;
   flex-shrink: 0;
 }
@@ -832,14 +846,14 @@ h1, h2, h3, h4, h5, h6,
   font-family: "Poppins", sans-serif;
   font-size: 2rem;
   font-weight: 500;
-  color: var(--primary-dark);
+  color: var(--color-primary);
   margin-bottom: 12px;
   text-align: center;
 }
 
 .referral-card p {
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   font-size: 1rem;
   margin-bottom: 32px;
   line-height: 1.6;
@@ -854,8 +868,8 @@ h1, h2, h3, h4, h5, h6,
 
 .referral-btn {
   width: 100%;
-  background: var(--gradient-1);
-  color: var(--white);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #ffffff;
   padding: 18px;
   border: none;
   border-radius: 50px;
@@ -874,7 +888,7 @@ h1, h2, h3, h4, h5, h6,
 .referral-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(192, 0, 0, 0.4);
-  background: var(--gradient-2);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
 }
 
 .referral-btn:active {
@@ -939,7 +953,7 @@ h1, h2, h3, h4, h5, h6,
   right: 20px;
   background: transparent;
   border: none;
-  color: var(--text-primary);
+  color: var(--color-primary);
   font-size: 1.5rem;
   width: 45px;
   height: 45px;
@@ -964,7 +978,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .modal-close:hover {
-  color: var(--primary-color);
+  color: var(--color-primary);
   transform: rotate(90deg) scale(1.1);
 }
 
@@ -976,14 +990,14 @@ h1, h2, h3, h4, h5, h6,
 .modal-title {
   font-size: 2rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-primary);
   margin-bottom: 12px;
   padding-right: 0;
   margin-right: 60px;
 }
 
 .modal-subtitle {
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   font-size: 1rem;
   margin-bottom: 32px;
   line-height: 1.6;
@@ -1000,7 +1014,7 @@ h1, h2, h3, h4, h5, h6,
 
 .fieldset-legend {
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-primary);
   padding: 0 12px;
   font-size: 1rem;
   background: var(--white);
@@ -1010,7 +1024,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .fieldset-legend i {
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
 .form-group {
@@ -1020,7 +1034,7 @@ h1, h2, h3, h4, h5, h6,
 .form-label {
   display: block;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-primary);
   margin-bottom: 10px;
   font-size: 0.95rem;
   display: flex;
@@ -1043,7 +1057,7 @@ select.form-input {
   font-weight: 400;
   transition: all 0.3s ease;
   background: var(--white);
-  color: var(--text-primary);
+  color: var(--color-primary);
   width: 100%;
 }
 
@@ -1051,7 +1065,7 @@ select.form-input {
 .form-textarea:focus,
 select.form-input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 4px rgba(192, 0, 0, 0.1);
   background: var(--white);
 }
@@ -1096,7 +1110,7 @@ select.form-input:hover {
 
 .file-upload-icon {
   font-size: 4rem;
-  color: var(--primary-color);
+  color: var(--color-primary);
   margin-bottom: 20px;
   display: block;
   position: relative;
@@ -1122,32 +1136,32 @@ select.form-input:hover {
 .file-upload-title {
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-primary);
   margin-bottom: 8px;
 }
 
 .file-upload-subtitle {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   margin-bottom: 12px;
 }
 
 .file-upload-formats {
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   font-style: italic;
 }
 
 .file-upload:hover {
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.05) 0%, rgba(255, 68, 68, 0.05) 100%);
-  border-color: var(--primary-dark);
+  border-color: var(--color-primary);
   transform: translateY(-4px);
   box-shadow: 0 8px 24px var(--shadow-light);
 }
 
 .file-upload.dragover {
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
-  border-color: var(--primary-dark);
+  border-color: var(--color-primary);
   border-style: solid;
   transform: scale(1.02);
 }
@@ -1171,7 +1185,7 @@ select.form-input:hover {
 }
 
 .file-label {
-  color: var(--text-secondary);
+  color: var(--color-text-primary);
   font-size: 0.95rem;
   font-weight: 500;
   display: block;
@@ -1184,7 +1198,7 @@ select.form-input:hover {
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: var(--white);
   padding: 16px 36px;
   border: none;
@@ -1235,12 +1249,12 @@ select.form-input::-ms-expand {
 select.form-input option {
   padding: 10px;
   background: var(--white);
-  color: var(--text-primary);
+  color: var(--color-primary);
 }
 
 select.form-input option:checked {
   background: linear-gradient(135deg, rgba(192, 0, 0, 0.1) 0%, rgba(255, 68, 68, 0.1) 100%);
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-weight: 500;
 }
 

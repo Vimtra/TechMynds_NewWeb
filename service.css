@@ -54,7 +54,7 @@
 .service-section-head h2,
 .service-process-copy h2,
 .service-cta h2 {
-  color: var(--color-text-main);
+  color: var(--color-primary);
   font-family: var(--font-primary);
   font-weight: 800;
   letter-spacing: 0;
@@ -459,7 +459,7 @@
 .service-hero .hero-subtitle {
   font-family: var(--font-primary);
   font-size: clamp(1.06rem, 1.4vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.95) !important;
+  color: #ffffff !important;
   line-height: 1.7;
   max-width: 690px;
   margin-bottom: 40px;
@@ -477,7 +477,7 @@
   justify-content: center;
   min-height: 58px;
   padding: 0 36px;
-  background: #c62828;
+  background: var(--color-primary);
   color: #ffffff;
   font-family: var(--font-primary);
   font-weight: 500;
@@ -489,7 +489,7 @@
 }
 
 .service-hero .btn-hero-primary:hover {
-  background: #a01f1f;
+  background: var(--color-primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(198, 40, 40, 0.3);
   color: #ffffff;
@@ -743,7 +743,7 @@
 }
 
 .why-saas-item:hover .why-saas-icon {
-  background: #c62828;
+  background: var(--color-primary);
   color: #ffffff;
 }
 
@@ -819,7 +819,7 @@
 }
 
 .benefit-item:hover .benefit-icon {
-  background: #c62828;
+  background: var(--color-primary);
   color: #ffffff;
 }
 

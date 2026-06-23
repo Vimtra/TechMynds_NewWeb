@@ -4,6 +4,28 @@
   box-sizing: border-box;
 }
 
+/* Fix Bootstrap Icons display */
+.bi::before,
+[class*=" bi-"]::before,
+.bi::after,
+[class*=" bi-"]::after {
+  box-sizing: border-box;
+}
+
+/* Ensure Bootstrap Icons font is applied */
+.bi,
+[class*=" bi-"] {
+  display: inline-block;
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* CSS Variables are now imported from _variables.css */
 
 /* =========================================
@@ -1040,7 +1062,7 @@ select {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: var(--color-primary);
   color: #ffffff;
   border: none;
   min-height: 54px;
@@ -1079,7 +1101,7 @@ select {
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 40px rgba(192, 0, 0, 0.5);
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  background: var(--color-primary-dark);
 }
 
 .btn-primary:hover::before {
@@ -1834,7 +1856,7 @@ select {
 
 .bridging-intro h2 {
   font-family: var(--font-head);
-  color: var(--color-dark);
+  color: var(--color-text-main);
   font-size: clamp(2.25rem, 4.5vw, 2.9rem);
   font-weight: 800;
   letter-spacing: 0;
@@ -2388,7 +2410,7 @@ select {
   aspect-ratio: 1 / 1;
   padding: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, #c00000 0%, #800000 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: white;
   border: none;
   font-size: 1.5rem;

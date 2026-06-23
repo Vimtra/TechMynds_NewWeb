@@ -7,6 +7,40 @@
   scroll-behavior: smooth;
 }
 
+/* Fix Bootstrap Icons display */
+.bi,
+[class*=" bi-"] {
+  display: inline-block;
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix Font Awesome display */
+.fas,
+.far,
+.fab,
+[class*=" fa-"] {
+  display: inline-block;
+  font-family: "Font Awesome 6 Free" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+}
+
 /* GPU Acceleration for Animations */
 [data-aos] {
   will-change: opacity, transform;
@@ -167,21 +201,18 @@ input[type="submit"],
   font-size: 3.5rem;
   font-weight: 500;
   line-height: 1.1;
-  color: var(--text-dark);
+  color: var(--color-primary);
   margin-bottom: 20px;
   font-family: "Poppins", sans-serif;
 }
 
 .highlight-text {
-  background: var(--maroon-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
 }
 
 .compact-description {
   font-size: 1.1rem;
-  color: var(--text-gray);
+  color: var(--color-text-primary);
   margin-bottom: 25px;
   line-height: 1.7;
   max-width: 500px;
@@ -278,6 +309,46 @@ input[type="submit"],
   box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
 }
 
+.card-icon-wrapper i {
+  display: inline-block;
+  font-size: inherit;
+  color: inherit;
+}
+
+.card-icon-wrapper .bi::before {
+  display: inline-block;
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.card-icon-wrapper .fas,
+.card-icon-wrapper .far,
+.card-icon-wrapper .fab {
+  display: inline-block;
+  font-family: "Font Awesome 6 Free" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.card-icon-wrapper .fab {
+  font-family: "Font Awesome 6 Brands" !important;
+}
+
 .card-content {
   /* text-align: left; */
   flex: 1;
@@ -290,7 +361,7 @@ input[type="submit"],
   font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--color-primary);
   margin-bottom: 8px;
 }
 
@@ -353,14 +424,14 @@ input[type="submit"],
 
   font-size: 2rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--color-primary);
   margin-bottom: 10px;
 }
 
 .form-header-compact p {
   text-align: center;
   font-size: 0.95rem;
-  color: var(--text-gray);
+  color: var(--color-text-primary);
 }
 
 /* Improved Form Grid */
@@ -443,7 +514,7 @@ input[type="submit"],
 }
 
 .submit-btn-compact {
-  background: var(--maroon-gradient);
+  background: var(--color-primary);
   color: white;
   padding: 15px 44px;
   border: none;
