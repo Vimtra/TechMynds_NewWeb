@@ -12,10 +12,10 @@
     }
 
     // Fetch the navbar HTML file
-    fetch("./layouts/_navbar.html")
+    fetch("./_navbar.html")
       .then((response) => {
         if (!response.ok) {
-          console.warn("Failed to load navbar from layouts/_navbar.html");
+          console.warn("Failed to load navbar from _navbar.html");
           return null;
         }
         return response.text();
