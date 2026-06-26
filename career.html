@@ -1506,41 +1506,6 @@
         }
       }
 
-      // Validate file size and type
-      function validateFile(fileInput, maxSizeMB = 5) {
-        const file = fileInput.files[0];
-        if (!file) return true;
-
-        const maxSize = maxSizeMB * 1024 * 1024; // Convert to bytes
-        const allowedTypes = [
-          "application/pdf",
-          "application/msword",
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ];
-
-        if (file.size > maxSize) {
-          alert(`File size must be less than ${maxSizeMB}MB`);
-          fileInput.value = "";
-          return false;
-        }
-
-        if (!allowedTypes.includes(file.type)) {
-          alert("Only PDF and Word documents are allowed");
-          fileInput.value = "";
-          return false;
-        }
-
-        return true;
-      }
-
-      // Add file validation to both file inputs
-      document.getElementById("jobResume")?.addEventListener("change", function () {
-        validateFile(this);
-      });
-
-      document.getElementById("refCandidateResume")?.addEventListener("change", function () {
-        validateFile(this);
-      });
     </script>
 
     <button id="scrollToTopBtn" class="scroll-to-top-btn" title="Scroll to top">
