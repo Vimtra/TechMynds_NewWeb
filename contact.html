@@ -101,97 +101,7 @@
       }
     </script>
     
-    <style>
-      /* Screen Reader Only Class */
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      /* Enhanced Form Validation Styles */
-      .input-wrapper input.is-invalid,
-      .input-wrapper textarea.is-invalid,
-      .input-wrapper select.is-invalid {
-        border-color: #dc3545 !important;
-        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
-      }
-
-      .input-wrapper input.is-valid,
-      .input-wrapper textarea.is-valid,
-      .input-wrapper select.is-valid {
-        border-color: #28a745 !important;
-        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
-      }
-
-      .invalid-feedback {
-        display: block;
-        color: #dc3545;
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-        font-weight: 500;
-        padding-left: 2.5rem;
-      }
-
-      .invalid-feedback::before {
-        content: "⚠ ";
-        margin-right: 0.25rem;
-      }
-
-      .input-wrapper {
-        position: relative;
-      }
-
-      /* Smooth transitions for validation states */
-      .input-wrapper input,
-      .input-wrapper textarea,
-      .input-wrapper select {
-        transition:
-          border-color 0.15s ease-in-out,
-          box-shadow 0.15s ease-in-out;
-      }
-
-      /* Error shake animation */
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-        10%,
-        30%,
-        50%,
-        70%,
-        90% {
-          transform: translateX(-5px);
-        }
-        20%,
-        40%,
-        60%,
-        80% {
-          transform: translateX(5px);
-        }
-      }
-
-      .is-invalid {
-        animation: shake 0.5s;
-      }
-
-      /* Success checkmark for valid fields */
-      .is-valid ~ i {
-        color: #28a745;
-      }
-
-      /* Error icon for invalid fields */
-      .is-invalid ~ i {
-        color: #dc3545;
-      }
-    </style>
+    <link rel="stylesheet" href="_forms.css" />
   </head>
   <body>
     <!-- Corporate Top Bar -->
@@ -203,14 +113,14 @@
             target="_blank"
             rel="noopener noreferrer"
             class="top-bar-item top-bar-address"
-            ><i class="bi bi-geo-alt-fill"></i>
+            ><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
             <span>1981 J N Pease Pl, Suite 104, Charlotte, NC 28262</span></a
           >
           <a href="mailto:hr@techmyndsinc.com" class="top-bar-item"
-            ><i class="bi bi-envelope-fill"></i> <span>hr@techmyndsinc.com</span></a
+            ><i class="bi bi-envelope-fill" aria-hidden="true"></i> <span>hr@techmyndsinc.com</span></a
           >
           <a href="tel:+17325876750" class="top-bar-item"
-            ><i class="bi bi-telephone-fill"></i> <span>+1 732-587-6750</span></a
+            ><i class="bi bi-telephone-fill" aria-hidden="true"></i> <span>+1 732-587-6750</span></a
           >
         </div>
         <div class="top-bar-right">
@@ -221,7 +131,7 @@
             aria-label="LinkedIn"
             class="top-bar-social"
           >
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -257,6 +167,9 @@
 
         <div class="nav-panel" id="navPanel">
           <div class="nav-panel-header">
+            <div class="nav-drawer-brand" aria-hidden="true">
+              <img src="./Images/Techmynds-logo.png" alt="" class="nav-drawer-logo" />
+            </div>
             <button type="button" class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
               <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>
@@ -295,6 +208,7 @@
     </div>
 
     <!-- Compact Hero -->
+    <main>
     <section class="compact-hero">
       <div class="container">
         <div class="row align-items-center">
@@ -347,7 +261,7 @@
                 data-aos-duration="600"
                 data-aos-delay="600"
               >
-                <i class="bi bi-telephone-fill"></i>
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>
                 <span>Call Us</span>
               </div>
               <div
@@ -356,7 +270,7 @@
                 data-aos-duration="600"
                 data-aos-delay="700"
               >
-                <i class="bi bi-envelope-fill"></i>
+                <i class="bi bi-envelope-fill" aria-hidden="true"></i>
                 <span>Email</span>
               </div>
             </div>
@@ -382,10 +296,10 @@
               data-aos-duration="1000"
               data-aos-delay="200"
             >
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
             </div>
             <div class="card-content">
-              <h4>Email Address</h4>
+              <h2>Email Address</h2>
               <a href="mailto:hr@techmyndsinc.com">hr@techmyndsinc.com</a>
             </div>
           </div>
@@ -403,10 +317,10 @@
               data-aos-duration="1000"
               data-aos-delay="350"
             >
-              <i class="bi bi-telephone-fill"></i>
+              <i class="bi bi-telephone-fill" aria-hidden="true"></i>
             </div>
             <div class="card-content">
-              <h4>Contact No</h4>
+              <h2>Contact No</h2>
               <a href="tel:+17325876750">+1 732-587-6750</a>
             </div>
           </div>
@@ -424,10 +338,10 @@
               data-aos-duration="1000"
               data-aos-delay="500"
             >
-              <i class="bi bi-building"></i>
+              <i class="bi bi-building" aria-hidden="true"></i>
             </div>
             <div class="card-content">
-              <h4>Office Location</h4>
+              <h2>Office Location</h2>
               <a
                 href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
                 >1981 J N Pease Pl, Suite 104, Charlotte, NC 28262</a
@@ -544,7 +458,7 @@
                   >
                     <button type="submit" class="submit-btn-compact">
                       <span>Send Message</span>
-                      <i class="bi bi-arrow-right"></i>
+                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>
@@ -558,6 +472,7 @@
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3263.587787673089!2d-80.7499086!3d35.3122564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c3b5e7e9a41%3A0x4c4a87d6c5b4e6b1!2s1981%20J%20N%20Pease%20Pl%20Ste%20104%2C%20Charlotte%2C%20NC%2028262%2C%20USA!5e0!3m2!1sen!2sin!4v1738130000000&layer=s"
                 width="100%"
+                title="TechMynds Inc office location — 1981 J N Pease Pl, Suite 104, Charlotte, NC 28262"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -569,9 +484,9 @@
                 data-aos-delay="400"
               >
                 <div class="map-pin">
-                  <i class="bi bi-geo-alt-fill"></i>
+                  <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
                 </div>
-                <h5>Visit Our Office</h5>
+                <h3>Visit Our Office</h3>
                 <p>
                   1981 J N Pease Pl, Suite 104,<br />
                   Charlotte, NC 28262
@@ -593,7 +508,7 @@
             data-aos-duration="800"
             data-aos-delay="200"
           >
-            <i class="bi bi-briefcase-fill"></i>
+            <i class="bi bi-briefcase-fill" aria-hidden="true"></i>
           </div>
           <h3>Looking for Career Opportunities?</h3>
           <p>
@@ -603,16 +518,17 @@
           <div class="cta-btn-group">
             <a href="./career.html" class="cta-link">
               <span>Explore Openings</span>
-              <i class="bi bi-arrow-right"></i>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
             </a>
             <a href="./aboutus.html" class="cta-link cta-link-alt">
               <span>Learn More</span>
-              <i class="bi bi-arrow-right"></i>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
         </div>
       </div>
     </section>
+    </main>
 
     <!-- Footer (copied from index.html) -->
     <footer class="footer-main">
@@ -645,15 +561,15 @@
             <h5>Connect With Us</h5>
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
-                <i class="fas fa-envelope me-3 mt-1"></i>
+                <i class="fas fa-envelope me-3 mt-1" aria-hidden="true"></i>
                 <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
               </li>
               <li class="d-flex mb-2">
-                <i class="fas fa-phone-alt me-3 mt-1"></i>
+                <i class="fas fa-phone-alt me-3 mt-1" aria-hidden="true"></i>
                 <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
               </li>
               <li class="d-flex">
-                <i class="fas fa-map-marker-alt me-3 mt-1"></i>
+                <i class="fas fa-map-marker-alt me-3 mt-1" aria-hidden="true"></i>
                 <a
                   href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
                   target="_blank"
@@ -910,15 +826,9 @@
         setupPhoneFormatting();
       });
 
-      // Debug: Log the script URL on page load
-      console.log("🔗 Contact Script URL:", CONTACT_SCRIPT_URL);
-
-      // Verification: Check if script URL is configured
+      // Verify script URL is configured (no logging of the URL itself)
       if (!CONTACT_SCRIPT_URL || CONTACT_SCRIPT_URL.includes("YOUR_WEB_APP_URL_HERE")) {
-        console.error("⚠️ CRITICAL: Google Apps Script URL not configured!");
-        console.error("Please update CONTACT_SCRIPT_URL with your deployed web app URL");
-      } else {
-        console.log("✅ Script URL is configured");
+        console.error("Contact form: Google Apps Script URL is not configured.");
       }
 
       document.getElementById("contactForm").addEventListener("submit", async function (e) {
@@ -927,8 +837,6 @@
         const submitBtn = this.querySelector(".submit-btn-compact");
         const originalHTML = submitBtn.innerHTML;
         const formElement = this;
-
-        console.log("📝 Form submission started");
 
         // Get form inputs
         const fullNameInput = this.querySelector('input[name="fullName"]');
@@ -966,7 +874,7 @@
         }
 
         // Disable button and show loading state
-        submitBtn.innerHTML = '<span>Sending...</span> <i class="bi bi-hourglass-split"></i>';
+        submitBtn.innerHTML = '<span>Sending...</span> <i class="bi bi-hourglass-split" aria-hidden="true"></i>';
         submitBtn.style.pointerEvents = "none";
         submitBtn.disabled = true;
 
@@ -978,11 +886,6 @@
           const subject = subjectInput.value;
           const message = messageInput.value.trim();
 
-          console.log("📊 Form data collected:");
-          console.log("  Name:", fullName);
-          console.log("  Email:", email);
-          console.log("  Subject:", subject);
-
           // Prepare form data
           const formData = new URLSearchParams();
           formData.append("fullName", fullName);
@@ -990,9 +893,6 @@
           formData.append("phone", phone || "N/A");
           formData.append("subject", subject);
           formData.append("message", message);
-
-          console.log("📤 Submitting to Google Apps Script...");
-          console.log("Target URL:", CONTACT_SCRIPT_URL);
 
           // Send to Google Apps Script
           const response = await fetch(CONTACT_SCRIPT_URL, {
@@ -1002,16 +902,9 @@
             redirect: "follow",
           });
 
-          // Note: With no-cors mode, we can't read the response
-          // Assume success if no error was thrown
-          console.log("✅ Form submitted successfully to Apps Script");
-          console.log("⏳ Waiting for email to be processed...");
-          console.log("📧 Check your email: johninfant021@gmail.com");
-          console.log("📧 Also check SPAM folder!");
-
           // Show success message
           submitBtn.innerHTML =
-            '<span>Message Sent!</span> <i class="bi bi-check-circle-fill"></i>';
+            '<span>Message Sent!</span> <i class="bi bi-check-circle-fill" aria-hidden="true"></i>';
           submitBtn.style.background = "linear-gradient(135deg, #28a745, #20c997)";
 
           // Show success notification
@@ -1034,7 +927,7 @@
 
           // Show error message
           submitBtn.innerHTML =
-            '<span>Failed!</span> <i class="bi bi-exclamation-circle-fill"></i>';
+            '<span>Failed!</span> <i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>';
           submitBtn.style.background = "linear-gradient(135deg, #dc3545, #c82333)";
 
           // Show error notification
@@ -1054,8 +947,6 @@
        * Show notification message
        */
       function showNotification(message, type = "info") {
-        console.log(`📢 Notification (${type}):`, message);
-
         // Remove existing notification if any
         const existingNotification = document.querySelector(".form-notification");
         if (existingNotification) {
@@ -1152,7 +1043,7 @@
     </script>
 
     <button id="scrollToTopBtn" class="scroll-to-top-btn" title="Scroll to top">
-      <i class="bi bi-chevron-up"></i>
+      <i class="bi bi-chevron-up" aria-hidden="true"></i>
     </button>
 
     <!-- Scroll to Top Script -->

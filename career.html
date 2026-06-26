@@ -100,96 +100,7 @@
         -moz-osx-font-smoothing: grayscale;
       }
     </style>
-    <style>
-      /* Screen Reader Only Class */
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      /* Enhanced Form Validation Styles */
-      .form-input.is-invalid,
-      .form-input.is-invalid:focus {
-        border-color: #dc3545 !important;
-        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
-      }
-
-      .form-input.is-valid,
-      .form-input.is-valid:focus {
-        border-color: #28a745 !important;
-        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
-      }
-
-      .invalid-feedback {
-        display: block;
-        color: #dc3545;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-        font-weight: 500;
-      }
-
-      .invalid-feedback::before {
-        content: "⚠ ";
-        margin-right: 0.25rem;
-      }
-
-      /* File input validation feedback */
-      input[type="file"].is-invalid ~ .file-label {
-        color: #dc3545;
-      }
-
-      input[type="file"].is-valid ~ .file-label {
-        color: #28a745;
-      }
-
-      /* Select validation feedback */
-      select.is-invalid {
-        border-color: #dc3545 !important;
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dc3545' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-      }
-
-      select.is-valid {
-        border-color: #28a745 !important;
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2328a745' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-      }
-
-      /* Smooth transitions for validation states */
-      .form-input,
-      select {
-        transition:
-          border-color 0.15s ease-in-out,
-          box-shadow 0.15s ease-in-out;
-      }
-
-      /* Error shake animation */
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-        10%,
-        30%,
-        50%,
-        70%,
-        90% {
-          transform: translateX(-5px);
-        }
-        20%,
-        40%,
-        60%,
-        80% {
-          transform: translateX(5px);
-        }
-      }
-
-    </style>
+    <link rel="stylesheet" href="_forms.css" />
   </head>
   <body>
     <!-- Corporate Top Bar -->
@@ -201,14 +112,14 @@
             target="_blank"
             rel="noopener noreferrer"
             class="top-bar-item top-bar-address"
-            ><i class="bi bi-geo-alt-fill"></i>
+            ><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
             <span>1981 J N Pease Pl, Suite 104, Charlotte, NC 28262</span></a
           >
           <a href="mailto:hr@techmyndsinc.com" class="top-bar-item"
-            ><i class="bi bi-envelope-fill"></i> <span>hr@techmyndsinc.com</span></a
+            ><i class="bi bi-envelope-fill" aria-hidden="true"></i> <span>hr@techmyndsinc.com</span></a
           >
           <a href="tel:+17325876750" class="top-bar-item"
-            ><i class="bi bi-telephone-fill"></i> <span>+1 732-587-6750</span></a
+            ><i class="bi bi-telephone-fill" aria-hidden="true"></i> <span>+1 732-587-6750</span></a
           >
         </div>
         <div class="top-bar-right">
@@ -219,7 +130,7 @@
             aria-label="LinkedIn"
             class="top-bar-social"
           >
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -255,6 +166,9 @@
 
         <div class="nav-panel" id="navPanel">
           <div class="nav-panel-header">
+            <div class="nav-drawer-brand" aria-hidden="true">
+              <img src="./Images/Techmynds-logo.png" alt="" class="nav-drawer-logo" />
+            </div>
             <button type="button" class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
               <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>
@@ -284,6 +198,7 @@
 
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true"></div>
 
+    <main>
     <section class="hero-section">
       <div class="accent-bar accent-bar-top"></div>
       <div class="accent-bar accent-bar-mid"></div>
@@ -302,7 +217,7 @@
         <div class="jobs-section-header" data-aos="fade-up" data-aos-duration="800">
           <div>
             <span class="section-eyebrow">Current opportunities</span>
-            <h3 class="listings-title">Available Positions</h3>
+            <h2 class="listings-title">Available Positions</h2>
           </div>
         </div>
         <div id="jobListingsContainer"></div>
@@ -337,19 +252,19 @@
               </p>
               <ul class="benefits-list">
                 <li>
-                  <i class="fa-solid fa-check"></i>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
                   <span>Get rewarded for successful referrals</span>
                 </li>
                 <li>
-                  <i class="fa-solid fa-check"></i>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
                   <span>Help build a stronger team</span>
                 </li>
                 <li>
-                  <i class="fa-solid fa-check"></i>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
                   <span>Earn special bonuses and recognition</span>
                 </li>
                 <li>
-                  <i class="fa-solid fa-check"></i>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
                   <span>Support your professional network</span>
                 </li>
               </ul>
@@ -363,9 +278,9 @@
             >
               <div class="referral-card">
                 <div class="card-icon">
-                  <i class="fas fa-gift"></i>
+                  <i class="fas fa-gift" aria-hidden="true"></i>
                 </div>
-                <h3>Employee Referral Program</h3>
+                <h2>Employee Referral Program</h2>
                 <p>
                   Know someone who would be a perfect fit for our team? Help us find great talent
                   and get rewarded for it!
@@ -384,10 +299,11 @@
         </div>
       </div>
     </section>
+    </main>
 
     <div id="jobApplicationModal" class="modal-overlay">
       <div class="modal-content">
-        <button class="modal-close" onclick="closeJobApplicationForm()">×</button>
+        <button class="modal-close" aria-label="Close application form" onclick="closeJobApplicationForm()">×</button>
         <h2 class="modal-title">Apply for Position</h2>
         <p class="modal-subtitle">
           Position: <strong id="jobPositionName">Software Developer</strong>
@@ -458,7 +374,7 @@
                 aria-required="true"
               />
               <div class="file-upload-icon">
-                <i class="fas fa-cloud-upload-alt"></i>
+                <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
               </div>
               <div class="file-upload-content">
                 <div class="file-upload-title">Click or Drag to Upload</div>
@@ -474,7 +390,7 @@
 
         <div id="jobThankYouMessage" class="thank-you-container d-none mt-3 text-center">
           <div class="checkmark-circle mb-3" style="font-size: 3rem; color: var(--accent)">
-            <i class="bi bi-check-circle-fill"></i>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
           </div>
           <h5>Thank You for Your Application!</h5>
           <p>
@@ -487,8 +403,8 @@
 
     <div id="referralApplicationModal" class="modal-overlay">
       <div class="modal-content">
-        <button class="modal-close" onclick="closeReferralForm()">
-          <i class="fas fa-xmark"></i>
+        <button class="modal-close" aria-label="Close referral form" onclick="closeReferralForm()">
+          <i class="fas fa-xmark" aria-hidden="true"></i>
         </button>
         <h2 class="modal-title">Submit a Referral</h2>
         <p class="modal-subtitle">Help us find great talent!</p>
@@ -593,7 +509,7 @@
                   aria-required="true"
                 />
                 <div class="file-upload-icon">
-                  <i class="fas fa-cloud-upload-alt"></i>
+                  <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
                 </div>
                 <div class="file-upload-content">
                   <div class="file-upload-title">Click or Drag to Upload</div>
@@ -612,7 +528,7 @@
 
         <div id="referralThankYouMessage" class="thank-you-container d-none mt-3 text-center">
           <div class="checkmark-circle mb-3" style="font-size: 3rem; color: var(--accent)">
-            <i class="bi bi-check-circle-fill"></i>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
           </div>
           <h5>Thank You for Your Referral!</h5>
           <p>
@@ -655,15 +571,15 @@
             <h5>Connect With Us</h5>
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
-                <i class="fas fa-envelope me-3 mt-1"></i>
+                <i class="fas fa-envelope me-3 mt-1" aria-hidden="true"></i>
                 <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
               </li>
               <li class="d-flex mb-2">
-                <i class="fas fa-phone-alt me-3 mt-1"></i>
+                <i class="fas fa-phone-alt me-3 mt-1" aria-hidden="true"></i>
                 <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
               </li>
               <li class="d-flex">
-                <i class="fas fa-map-marker-alt me-3 mt-1"></i>
+                <i class="fas fa-map-marker-alt me-3 mt-1" aria-hidden="true"></i>
                 <a
                   href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
                   target="_blank"
@@ -805,17 +721,17 @@
         headerContent.className = "job-header-content";
         headerContent.innerHTML = `
           <div class="job-header-title">
-            <i class="fas fa-briefcase"></i>
+            <i class="fas fa-briefcase" aria-hidden="true"></i>
             ${job.title}
           </div>
           <div class="job-header-meta">
 
             <div class="job-meta-item">
-              <i class="fa-regular fa-calendar"></i>
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
               <span><strong>Date:</strong> ${job.details.postedDate}</span>
             </div>
             <div class="job-meta-item">
-              <i class="fas fa-users"></i>
+              <i class="fas fa-users" aria-hidden="true"></i>
               <span><strong>Openings:</strong> ${job.details.openings}</span>
             </div>
           </div>
@@ -824,7 +740,7 @@
         // Expand/collapse icon
         const accordionIcon = document.createElement("div");
         accordionIcon.className = "job-accordion-icon";
-        accordionIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        accordionIcon.innerHTML = '<i class="fas fa-chevron-down" aria-hidden="true"></i>';
 
         accordionHeader.appendChild(headerContent);
         accordionHeader.appendChild(accordionIcon);
@@ -869,7 +785,7 @@
 
 
             <div class="apply-btn-wrapper">
-              <button class="apply-btn" onclick="openJobApplicationForm('${job.title}')">
+              <button class="apply-btn" data-job-index="${index}">
                 Apply Now
               </button>
             </div>
@@ -879,6 +795,16 @@
         accordionItem.appendChild(accordionHeader);
         accordionItem.appendChild(accordionContent);
         listingsContainer.appendChild(accordionItem);
+      });
+
+      // Safe delegated handler — reads job title from the data array, never from DOM strings
+      listingsContainer.addEventListener("click", function (e) {
+        const btn = e.target.closest(".apply-btn[data-job-index]");
+        if (!btn) return;
+        const idx = parseInt(btn.dataset.jobIndex, 10);
+        if (!isNaN(idx) && allJobs[idx]) {
+          openJobApplicationForm(allJobs[idx].title);
+        }
       });
 
       // Toggle accordion function
@@ -1244,7 +1170,6 @@
         try {
           const file = fileInput.files[0];
 
-          console.log(`Processing file: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`);
           submitBtn.textContent = "Processing file...";
 
           const base64File = await new Promise((resolve, reject) => {
@@ -1254,7 +1179,6 @@
             reader.readAsDataURL(file);
           });
 
-          console.log("File converted to base64");
           submitBtn.textContent = "Submitting...";
 
           const formData = {
@@ -1267,10 +1191,6 @@
             mimeType: file.type || "application/pdf",
           };
 
-          console.log("📤 Sending to Google Apps Script...");
-          console.log("📍 URL:", JOB_APPLICATION_SCRIPT_URL);
-          console.log("📦 Form data keys:", Object.keys(formData));
-
           // Use fetch with redirect: 'follow' for Google Apps Script
           const response = await fetch(JOB_APPLICATION_SCRIPT_URL, {
             method: "POST",
@@ -1282,14 +1202,8 @@
             redirect: "follow",
           });
 
-          console.log("📡 Response received");
-
-          // With no-cors mode, we can't read the response, so we assume success if no error thrown
-          // The form submission was successful if we reach this point
-
           this.classList.add("d-none");
           document.getElementById("jobThankYouMessage").classList.remove("d-none");
-          console.log("✅ Application submitted successfully!");
 
           setTimeout(() => {
             closeJobApplicationForm();
@@ -1312,7 +1226,7 @@
           const msgBox = document.createElement("div");
           msgBox.className = "alert alert-danger d-flex align-items-center mb-3";
           msgBox.innerHTML = `
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>
             <div>Error: ${errorMessage}</div>
           `;
           modalContent.insertBefore(msgBox, this);
@@ -1395,7 +1309,6 @@
           try {
             const file = fileInput.files[0];
 
-            console.log(`📎 Processing file: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`);
             submitBtn.textContent = "Processing file...";
 
             const base64File = await new Promise((resolve, reject) => {
@@ -1405,7 +1318,6 @@
               reader.readAsDataURL(file);
             });
 
-            console.log("✅ File converted to base64");
             submitBtn.textContent = "Submitting...";
 
             const formData = {
@@ -1419,10 +1331,6 @@
               mimeType: file.type || "application/pdf",
             };
 
-            console.log("📤 Sending to Google Apps Script...");
-            console.log("📍 URL:", REFERRAL_SCRIPT_URL);
-            console.log("📦 Form data keys:", Object.keys(formData));
-
             const response = await fetch(REFERRAL_SCRIPT_URL, {
               method: "POST",
               mode: "no-cors", // Required for localhost testing with Google Apps Script
@@ -1433,14 +1341,8 @@
               redirect: "follow",
             });
 
-            console.log("📡 Response received");
-
-            // With no-cors mode, we can't read the response, so we assume success if no error thrown
-            // The form submission was successful if we reach this point
-
             this.classList.add("d-none");
             document.getElementById("referralThankYouMessage").classList.remove("d-none");
-            console.log("✅ Referral submitted successfully!");
 
             setTimeout(() => {
               closeReferralForm();
@@ -1463,7 +1365,7 @@
             const msgBox = document.createElement("div");
             msgBox.className = "alert alert-danger d-flex align-items-center mb-3";
             msgBox.innerHTML = `
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>
             <div>Error: ${errorMessage}</div>
           `;
             modalContent.insertBefore(msgBox, this);
@@ -1482,6 +1384,16 @@
 
       document.getElementById("referralApplicationModal").addEventListener("click", function (e) {
         if (e.target === this) {
+          closeReferralForm();
+        }
+      });
+
+      // Close any open modal on Escape key (WCAG 2.1.2 no-keyboard-trap pattern)
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") return;
+        if (document.getElementById("jobApplicationModal").classList.contains("active")) {
+          closeJobApplicationForm();
+        } else if (document.getElementById("referralApplicationModal").classList.contains("active")) {
           closeReferralForm();
         }
       });
@@ -1589,7 +1501,7 @@
 
         // Update icon to checkmark
         if (uploadIcon) {
-          uploadIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+          uploadIcon.innerHTML = '<i class="fas fa-check-circle" aria-hidden="true"></i>';
         }
 
         // Update title
@@ -1636,7 +1548,7 @@
     </script>
 
     <button id="scrollToTopBtn" class="scroll-to-top-btn" title="Scroll to top">
-      <i class="bi bi-chevron-up"></i>
+      <i class="bi bi-chevron-up" aria-hidden="true"></i>
     </button>
 
     <script>

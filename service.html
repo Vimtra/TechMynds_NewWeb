@@ -118,14 +118,14 @@
             target="_blank"
             rel="noopener noreferrer"
             class="top-bar-item top-bar-address"
-            ><i class="bi bi-geo-alt-fill"></i>
+            ><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
             <span>1981 J N Pease Pl, Suite 104, Charlotte, NC 28262</span></a
           >
           <a href="mailto:hr@techmyndsinc.com" class="top-bar-item"
-            ><i class="bi bi-envelope-fill"></i> <span>hr@techmyndsinc.com</span></a
+            ><i class="bi bi-envelope-fill" aria-hidden="true"></i> <span>hr@techmyndsinc.com</span></a
           >
           <a href="tel:+17325876750" class="top-bar-item"
-            ><i class="bi bi-telephone-fill"></i> <span>+1 732-587-6750</span></a
+            ><i class="bi bi-telephone-fill" aria-hidden="true"></i> <span>+1 732-587-6750</span></a
           >
         </div>
         <div class="top-bar-right">
@@ -136,7 +136,7 @@
             aria-label="LinkedIn"
             class="top-bar-social"
           >
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -172,6 +172,9 @@
 
         <div class="nav-panel" id="navPanel">
           <div class="nav-panel-header">
+            <div class="nav-drawer-brand" aria-hidden="true">
+              <img src="./Images/Techmynds-logo.png" alt="" class="nav-drawer-logo" />
+            </div>
             <button type="button" class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
               <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>
@@ -201,27 +204,37 @@
 
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true"></div>
 
-    <!-- Modern Hero Section -->
+    <!-- Premium Service Hero -->
     <section class="service-hero" aria-labelledby="service-hero-title">
-      <div class="hero-overlay"></div>
-      <div class="container relative-container h-100">
-        <div class="row h-100 align-items-center">
-          <div class="col-lg-8" data-aos="fade-right" data-aos-duration="1000">
-            <h1 class="hero-title" id="service-hero-title">
-              US Staffing
-            </h1>
-            <p class="hero-subtitle">Discover strategic staffing solutions designed to scale your technology teams and accelerate your digital transformation.</p>
-            <div class="hero-cta-group">
-              <a href="#why-choose" class="btn-hero-primary">Explore Advantages</a>
-              <a href="./contact.html" class="btn-hero-secondary">Partner With Us</a>
-            </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="container relative-container">
+        <div class="hero-inner">
+          <h1 class="hero-title" id="service-hero-title" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+            Our <span class="hero-title-accent">Services</span>
+          </h1>
+
+          <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
+            From contract staffing to permanent placements, TechMynds delivers elite technology talent and workforce solutions designed to scale with your business and accelerate digital transformation.
+          </p>
+
+          <div class="hero-cta-group" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+            <a href="#our-services" class="btn-hero-primary">
+              <span>Explore Services</span>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="./contact.html" class="btn-hero-secondary">
+              <span>Contact Us</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Redesigned Services Section (SaaS Stripe-like) -->
-    <section class="services-saas-section">
+    <section class="services-saas-section" id="our-services">
       <div class="saas-background">
         <div class="saas-blob saas-blob-1"></div>
         <div class="saas-blob saas-blob-2"></div>
@@ -230,7 +243,7 @@
       <div class="container relative-container">
         <div class="services-saas-header" data-aos="fade-up" data-aos-duration="800">
           <span class="saas-badge">Our Expertise</span>
-          <h1 class="saas-title">Comprehensive Staffing <span>Services</span></h1>
+          <h2 class="saas-title">Comprehensive Staffing <span>Services</span></h2>
           <p class="saas-subtitle">Delivering elite talent solutions tailored to your unique business requirements and growth objectives.</p>
         </div>
 
@@ -238,31 +251,31 @@
           <!-- Card 1 -->
           <div class="service-saas-card" data-aos="fade-up" data-aos-delay="100">
             <div class="service-saas-icon color-1">
-              <i class="bi bi-people-fill"></i>
+              <i class="bi bi-people-fill" aria-hidden="true"></i>
             </div>
             <h3>Contract Staffing</h3>
             <p>Ideal for businesses that need flexibility and temporary support, our contract staffing services provide access to professionals who can step in immediately to handle short-term projects or fill gaps in your workforce.</p>
-            <a href="./contact.html" class="saas-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            <a href="./contact.html" class="saas-link">Learn More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
           </div>
 
           <!-- Card 2 -->
           <div class="service-saas-card" data-aos="fade-up" data-aos-delay="200">
             <div class="service-saas-icon color-2">
-              <i class="bi bi-briefcase-fill"></i>
+              <i class="bi bi-briefcase-fill" aria-hidden="true"></i>
             </div>
             <h3>Long-Term Staffing</h3>
             <p>For companies looking to build a more stable workforce without the long-term commitment of permanent hiring, we offer long-term staffing solutions. Maintain operational flexibility with expertise.</p>
-            <a href="./contact.html" class="saas-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            <a href="./contact.html" class="saas-link">Learn More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
           </div>
 
           <!-- Card 3 -->
           <div class="service-saas-card" data-aos="fade-up" data-aos-delay="300">
             <div class="service-saas-icon color-3">
-              <i class="bi bi-award-fill"></i>
+              <i class="bi bi-award-fill" aria-hidden="true"></i>
             </div>
             <h3>Permanent Staffing</h3>
             <p>When you're looking for someone to join your team for the long haul, our permanent staffing services find the ideal full-time hire. Thorough recruitment for lasting success.</p>
-            <a href="./contact.html" class="saas-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            <a href="./contact.html" class="saas-link">Learn More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -286,7 +299,7 @@
         <div class="benefits-grid">
           <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
             <div class="benefit-icon">
-              <i class="bi bi-hourglass-split"></i>
+              <i class="bi bi-hourglass-split" aria-hidden="true"></i>
             </div>
             <div class="benefit-content">
               <h3>Rapid Deployment</h3>
@@ -296,7 +309,7 @@
           
           <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
             <div class="benefit-icon">
-              <i class="bi bi-person-check"></i>
+              <i class="bi bi-person-check" aria-hidden="true"></i>
             </div>
             <div class="benefit-content">
               <h3>Pre-Screened Talent</h3>
@@ -306,7 +319,7 @@
           
           <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
             <div class="benefit-icon">
-              <i class="bi bi-graph-up"></i>
+              <i class="bi bi-graph-up" aria-hidden="true"></i>
             </div>
             <div class="benefit-content">
               <h3>Scalable Solutions</h3>
@@ -316,7 +329,7 @@
           
           <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
             <div class="benefit-icon">
-              <i class="bi bi-briefcase"></i>
+              <i class="bi bi-briefcase" aria-hidden="true"></i>
             </div>
             <div class="benefit-content">
               <h3>Administrative Relief</h3>
@@ -326,7 +339,7 @@
           
           <div class="benefit-item" data-aos="fade-up" data-aos-delay="500">
             <div class="benefit-icon">
-              <i class="bi bi-telephone-inbound"></i>
+              <i class="bi bi-telephone-inbound" aria-hidden="true"></i>
             </div>
             <div class="benefit-content">
               <h3>Dedicated Support</h3>
@@ -336,7 +349,7 @@
           
           <div class="benefit-item" data-aos="fade-up" data-aos-delay="600">
             <div class="benefit-icon">
-              <i class="bi bi-arrow-repeat"></i>
+              <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
             </div>
             <div class="benefit-content">
               <h3>Flexible Transitions</h3>
@@ -379,15 +392,15 @@
             <h5>Connect With Us</h5>
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
-                <i class="bi bi-envelope-fill me-3 mt-1"></i>
+                <i class="bi bi-envelope-fill me-3 mt-1" aria-hidden="true"></i>
                 <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
               </li>
               <li class="d-flex mb-2">
-                <i class="bi bi-telephone-fill me-3 mt-1"></i>
+                <i class="bi bi-telephone-fill me-3 mt-1" aria-hidden="true"></i>
                 <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
               </li>
               <li class="d-flex">
-                <i class="bi bi-geo-alt-fill me-3 mt-1"></i>
+                <i class="bi bi-geo-alt-fill me-3 mt-1" aria-hidden="true"></i>
                 <a
                   href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
                   target="_blank"
@@ -425,7 +438,7 @@
     </footer>
 
     <button id="scrollToTopBtn" class="scroll-to-top-btn" title="Scroll to top">
-      <i class="bi bi-chevron-up"></i>
+      <i class="bi bi-chevron-up" aria-hidden="true"></i>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

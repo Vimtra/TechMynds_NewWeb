@@ -1,0 +1,118 @@
+/* =========================================
+   SHARED FORM STYLES
+   Used by contact.html and career.html.
+   Covers both .form-input and .input-wrapper input
+   selector patterns so either markup works.
+   ========================================= */
+
+/* Screen Reader Only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----- Invalid state ----- */
+.form-input.is-invalid,
+.form-input.is-invalid:focus,
+.form-textarea.is-invalid,
+.form-textarea.is-invalid:focus,
+.input-wrapper input.is-invalid,
+.input-wrapper textarea.is-invalid,
+.input-wrapper select.is-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* ----- Valid state ----- */
+.form-input.is-valid,
+.form-input.is-valid:focus,
+.form-textarea.is-valid,
+.form-textarea.is-valid:focus,
+.input-wrapper input.is-valid,
+.input-wrapper textarea.is-valid,
+.input-wrapper select.is-valid {
+  border-color: #28a745 !important;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+/* ----- Error message ----- */
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.input-wrapper .invalid-feedback {
+  margin-top: 0.5rem;
+  padding-left: 2.5rem;
+}
+
+.invalid-feedback::before {
+  content: "⚠ ";
+  margin-right: 0.25rem;
+}
+
+/* ----- File input feedback ----- */
+input[type="file"].is-invalid ~ .file-label {
+  color: #dc3545;
+}
+
+input[type="file"].is-valid ~ .file-label {
+  color: #28a745;
+}
+
+/* ----- Select validation SVG indicators ----- */
+select.is-invalid {
+  border-color: #dc3545 !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dc3545' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+select.is-valid {
+  border-color: #28a745 !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2328a745' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* ----- Adjacent-sibling icon coloring (contact.html pattern) ----- */
+.is-valid ~ i {
+  color: #28a745;
+}
+
+.is-invalid ~ i {
+  color: #dc3545;
+}
+
+/* ----- Smooth validation transitions ----- */
+.form-input,
+.form-textarea,
+.input-wrapper input,
+.input-wrapper textarea,
+.input-wrapper select,
+select {
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+/* ----- Shake animation on error ----- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.is-invalid {
+  animation: shake 0.5s;
+}

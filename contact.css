@@ -1186,3 +1186,16 @@ input[type="submit"],
   }
 }
 
+/* =========================================
+   HIDE DECORATIVE SHAPES ON MOBILE
+   Prevents off-canvas overflow and content overlap on small viewports.
+   ========================================= */
+@media (max-width: 768px) {
+  .geo-shape,
+  .geo-circle-1,
+  .geo-circle-2,
+  .geo-square-1,
+  .geo-triangle-1 {
+    display: none !important;
+  }
+}

@@ -68,6 +68,21 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(192, 0, 0, 0.1);
 }
 
+/* Accessibility — keyboard focus indication (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Inputs already use a box-shadow ring; suppress the duplicate outline on them */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.form-input:focus-visible,
+.form-textarea:focus-visible {
+  outline: none;
+}
+
 button,
 input[type="button"],
 input[type="submit"],
@@ -248,7 +263,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .hero-main h1 {
-  font-size: 5rem;
+  font-size: clamp(2.2rem, 7vw, 5rem);
   font-weight: 500;
   letter-spacing: -2px;
   margin-bottom: 32px;
@@ -320,9 +335,6 @@ h1, h2, h3, h4, h5, h6,
     min-height: calc(100svh - var(--header-offset-mobile));
     padding: 40px 20px;
   }
-  .hero-main h1 {
-    font-size: 3.5rem;
-  }
 
   .hero-main p {
     font-size: 1.1rem;
@@ -345,7 +357,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .referral-section {
-  background: var(--white);
+  background: var(--color-white);
   /* padding: 40px 20px; */
   /* margin: 30px 0; */
 }
@@ -407,7 +419,7 @@ h1, h2, h3, h4, h5, h6,
 /* Job Accordion Item */
 .job-accordion-item {
   width: 100%;
-  background: var(--white);
+  background: var(--color-white);
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   margin-bottom: 0;
@@ -438,7 +450,7 @@ h1, h2, h3, h4, h5, h6,
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  background: var(--white);
+  background: var(--color-white);
   transition: background-color 0.25s ease;
   position: relative;
 }
@@ -539,7 +551,7 @@ h1, h2, h3, h4, h5, h6,
 .job-accordion-item.active .job-accordion-icon {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .job-accordion-item.active .job-accordion-icon {
@@ -607,7 +619,7 @@ h1, h2, h3, h4, h5, h6,
 
 .meta-item,
 .meta-card {
-  background: var(--white);
+  background: var(--color-white);
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
@@ -653,7 +665,7 @@ h1, h2, h3, h4, h5, h6,
 .job-section {
   margin-bottom: 16px;
   padding: 24px;
-  background: var(--white);
+  background: var(--color-white);
   border-radius: 8px;
   border: 1px solid #e5e7eb;
 }
@@ -711,7 +723,7 @@ h1, h2, h3, h4, h5, h6,
 
 .apply-btn {
   background: var(--color-primary);
-  color: var(--white);
+  color: var(--color-white);
   padding: 14px 28px;
   border: none;
   border-radius: 8px;
@@ -808,7 +820,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 1.05rem;
   color: var(--color-text-primary);
   padding: 18px;
-  background: var(--white);
+  background: var(--color-white);
   border-radius: 10px;
   border: 2px solid var(--border-color);
   transition: all 0.3s ease;
@@ -831,7 +843,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Right Form Card */
 .referral-card {
-  background: var(--white);
+  background: var(--color-white);
   border-radius: 20px;
   padding: 50px;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
@@ -922,7 +934,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .modal-content {
-  background: var(--white);
+  background: var(--color-white);
   border-radius: 20px;
   padding: 45px;
   max-width: 700px;
@@ -1015,7 +1027,7 @@ h1, h2, h3, h4, h5, h6,
   color: var(--color-primary);
   padding: 0 12px;
   font-size: 1rem;
-  background: var(--white);
+  background: var(--color-white);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1054,7 +1066,7 @@ select.form-input {
   font-size: 0.95rem;
   font-weight: 400;
   transition: all 0.3s ease;
-  background: var(--white);
+  background: var(--color-white);
   color: var(--color-primary);
   width: 100%;
 }
@@ -1065,7 +1077,7 @@ select.form-input:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 4px rgba(192, 0, 0, 0.1);
-  background: var(--white);
+  background: var(--color-white);
 }
 
 .form-input:hover,
@@ -1197,7 +1209,7 @@ select.form-input:hover {
 
 .submit-btn {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: var(--white);
+  color: var(--color-white);
   padding: 16px 36px;
   border: none;
   border-radius: 12px;
@@ -1246,7 +1258,7 @@ select.form-input::-ms-expand {
 /* Style for selected option */
 select.form-input option {
   padding: 10px;
-  background: var(--white);
+  background: var(--color-white);
   color: var(--color-primary);
 }
 
@@ -1280,10 +1292,6 @@ select.form-input option:checked {
 }
 
 @media (max-width: 768px) {
-  .hero-main h1 {
-    font-size: 3rem;
-  }
-
   .hero-main p {
     font-size: 1.1rem;
   }
@@ -1433,10 +1441,6 @@ select.form-input option:checked {
 
   .tab-btn i {
     font-size: 1rem;
-  }
-
-  .hero-main h1 {
-    font-size: 2.2rem;
   }
 
   .hero-main p {
@@ -1700,5 +1704,18 @@ select.form-input option:checked {
   .scroll-to-top-btn:hover {
     width: 48px;
     height: 48px;
+  }
+}
+
+/* =========================================
+   HIDE DECORATIVE SHAPES ON MOBILE
+   Prevents off-canvas overflow and content overlap on small viewports.
+   ========================================= */
+@media (max-width: 768px) {
+  .accent-bar,
+  .accent-bar-top,
+  .accent-bar-mid,
+  .accent-bar-bottom {
+    display: none !important;
   }
 }
