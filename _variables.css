@@ -25,7 +25,7 @@
   --color-text-main: #0f172a;
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #5a5a5a;
-  --color-text-muted: #64748b;
+  --color-text-muted: #475569;
   --color-text-medium: #555b6e;
   --color-text-light: #666;
   --color-text-gray: #4a4a4a;
@@ -188,6 +188,38 @@
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ─────────────────────────────────────────
+     CANONICAL COMPONENT TOKENS
+     Preferred names for new/refactored CSS.
+     Existing references to older tokens (--color-*, --radius-*, --space-*) still work.
+     ───────────────────────────────────────── */
+
+  /* Cards */
+  --card-radius: var(--radius-lg);            /* 12px */
+  --card-padding: var(--space-8);             /* 32px */
+  --card-hover-lift: -4px;
+  --card-shadow: var(--shadow-md);
+  --card-shadow-hover: var(--shadow-lg);
+
+  /* Buttons */
+  --btn-radius: 10px;                          /* primary/secondary CTAs */
+  --btn-radius-pill: 50px;                     /* pill buttons */
+
+  /* Form inputs */
+  --input-radius: 8px;
+  --input-padding: 14px 16px;
+  --input-min-height: 48px;                    /* WCAG 2.5.5 touch target */
+
+  /* Focus ring */
+  --focus-ring: 3px solid var(--color-primary);
+  --focus-ring-offset: 2px;
+
+  /* Canonical text-color aliases */
+  --text-primary: var(--color-text-main);      /* darkest body text */
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);        /* now 7.46:1 — passes AAA */
+  --text-on-dark: var(--color-white);
 }
 
 /* =========================================

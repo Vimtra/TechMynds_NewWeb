@@ -1878,3 +1878,15 @@ input[type="submit"],
     padding: 40px 16px !important;
   }
 }
+
+/* =========================================
+   HIDE DECORATIVE SHAPES ON MOBILE
+   Prevents off-canvas overflow and content overlap on small viewports.
+   ========================================= */
+@media (max-width: 768px) {
+  .staffing-blob,
+  .staffing-blob-1,
+  .staffing-blob-2 {
+    display: none !important;
+  }
+}

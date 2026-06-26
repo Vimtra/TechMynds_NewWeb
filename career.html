@@ -81,10 +81,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
     <style>
       /* Fix Bootstrap Icons display */
       .bi::before,
@@ -252,19 +248,19 @@
               </p>
               <ul class="benefits-list">
                 <li>
-                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  <i class="bi bi-check" aria-hidden="true"></i>
                   <span>Get rewarded for successful referrals</span>
                 </li>
                 <li>
-                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  <i class="bi bi-check" aria-hidden="true"></i>
                   <span>Help build a stronger team</span>
                 </li>
                 <li>
-                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  <i class="bi bi-check" aria-hidden="true"></i>
                   <span>Earn special bonuses and recognition</span>
                 </li>
                 <li>
-                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  <i class="bi bi-check" aria-hidden="true"></i>
                   <span>Support your professional network</span>
                 </li>
               </ul>
@@ -278,7 +274,7 @@
             >
               <div class="referral-card">
                 <div class="card-icon">
-                  <i class="fas fa-gift" aria-hidden="true"></i>
+                  <i class="bi bi-gift" aria-hidden="true"></i>
                 </div>
                 <h2>Employee Referral Program</h2>
                 <p>
@@ -374,7 +370,7 @@
                 aria-required="true"
               />
               <div class="file-upload-icon">
-                <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                <i class="bi bi-cloud-upload" aria-hidden="true"></i>
               </div>
               <div class="file-upload-content">
                 <div class="file-upload-title">Click or Drag to Upload</div>
@@ -404,7 +400,7 @@
     <div id="referralApplicationModal" class="modal-overlay">
       <div class="modal-content">
         <button class="modal-close" aria-label="Close referral form" onclick="closeReferralForm()">
-          <i class="fas fa-xmark" aria-hidden="true"></i>
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
         </button>
         <h2 class="modal-title">Submit a Referral</h2>
         <p class="modal-subtitle">Help us find great talent!</p>
@@ -509,7 +505,7 @@
                   aria-required="true"
                 />
                 <div class="file-upload-icon">
-                  <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                  <i class="bi bi-cloud-upload" aria-hidden="true"></i>
                 </div>
                 <div class="file-upload-content">
                   <div class="file-upload-title">Click or Drag to Upload</div>
@@ -571,15 +567,15 @@
             <h5>Connect With Us</h5>
             <ul class="list-unstyled contact-list">
               <li class="d-flex mb-2">
-                <i class="fas fa-envelope me-3 mt-1" aria-hidden="true"></i>
+                <i class="bi bi-envelope-fill me-3 mt-1" aria-hidden="true"></i>
                 <a href="mailto:hr@techmyndsinc.com" class="footer-link p-0">hr@techmyndsinc.com</a>
               </li>
               <li class="d-flex mb-2">
-                <i class="fas fa-phone-alt me-3 mt-1" aria-hidden="true"></i>
+                <i class="bi bi-telephone-fill me-3 mt-1" aria-hidden="true"></i>
                 <a href="tel:+17325876750" class="footer-link p-0">+1 732-587-6750</a>
               </li>
               <li class="d-flex">
-                <i class="fas fa-map-marker-alt me-3 mt-1" aria-hidden="true"></i>
+                <i class="bi bi-geo-alt-fill me-3 mt-1" aria-hidden="true"></i>
                 <a
                   href="https://www.google.com/maps/search/1981+J+N+Pease+Pl+Suite+104+Charlotte+NC+28262"
                   target="_blank"
@@ -608,7 +604,7 @@
                 aria-label="Follow TechMynds on LinkedIn - where staffing professionals connect"
                 title="Connect with us on LinkedIn"
                 class="social-icon-footer"
-                ><i class="fab fa-linkedin-in"></i
+                ><i class="bi bi-linkedin"></i
               ></a>
             </div>
           </div>
@@ -721,17 +717,17 @@
         headerContent.className = "job-header-content";
         headerContent.innerHTML = `
           <div class="job-header-title">
-            <i class="fas fa-briefcase" aria-hidden="true"></i>
+            <i class="bi bi-briefcase-fill" aria-hidden="true"></i>
             ${job.title}
           </div>
           <div class="job-header-meta">
 
             <div class="job-meta-item">
-              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+              <i class="bi bi-calendar" aria-hidden="true"></i>
               <span><strong>Date:</strong> ${job.details.postedDate}</span>
             </div>
             <div class="job-meta-item">
-              <i class="fas fa-users" aria-hidden="true"></i>
+              <i class="bi bi-people-fill" aria-hidden="true"></i>
               <span><strong>Openings:</strong> ${job.details.openings}</span>
             </div>
           </div>
@@ -740,7 +736,7 @@
         // Expand/collapse icon
         const accordionIcon = document.createElement("div");
         accordionIcon.className = "job-accordion-icon";
-        accordionIcon.innerHTML = '<i class="fas fa-chevron-down" aria-hidden="true"></i>';
+        accordionIcon.innerHTML = '<i class="bi bi-chevron-down" aria-hidden="true"></i>';
 
         accordionHeader.appendChild(headerContent);
         accordionHeader.appendChild(accordionIcon);
@@ -1501,7 +1497,7 @@
 
         // Update icon to checkmark
         if (uploadIcon) {
-          uploadIcon.innerHTML = '<i class="fas fa-check-circle" aria-hidden="true"></i>';
+          uploadIcon.innerHTML = '<i class="bi bi-check-circle-fill" aria-hidden="true"></i>';
         }
 
         // Update title
