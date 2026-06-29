@@ -2197,6 +2197,17 @@ select {
   left: 0;
 }
 
+.footer-main .col-lg-2 .footer-link:hover {
+  padding-left: 0;
+  transform: none;
+  font-size: 1.03rem;
+  font-weight: 600;
+}
+
+.footer-main .col-lg-2 .footer-link::before {
+  display: none;
+}
+
 /* Contact Info */
 .footer-contact-info .contact-list {
   list-style: none;
