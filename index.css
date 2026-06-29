@@ -2555,10 +2555,6 @@ select {
   text-align: center;
   width: 100%;
   margin: 0 0 12px;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
 }
 
 .trusted-companies .container {
@@ -2582,6 +2578,7 @@ select {
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding: 10px 0 48px;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
           mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
@@ -2639,7 +2636,7 @@ select {
 .trusted-logo::after {
   content: attr(data-company);
   position: absolute;
-  bottom: calc(100% + 14px);
+  top: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   background: var(--color-dark);
@@ -2660,11 +2657,11 @@ select {
 .trusted-logo::before {
   content: "";
   position: absolute;
-  bottom: calc(100% + 8px);
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: var(--color-dark);
+  border-bottom-color: var(--color-dark);
   opacity: 0;
   transition: opacity 250ms ease;
 }
