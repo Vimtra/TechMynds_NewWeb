@@ -922,7 +922,7 @@
 
   .service-hero .btn-hero-primary,
   .service-hero .btn-hero-secondary {
-    width: min(280px, 100%);
+    width: min(220px, 100%);
     min-height: 52px;
     text-align: center;
     padding: 0 22px;
