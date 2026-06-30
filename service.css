@@ -437,7 +437,7 @@
 /* Title */
 .service-hero .hero-title {
   font-family: var(--font-primary);
-  font-size: clamp(2.75rem, 6vw, 5.25rem);
+  font-size: clamp(2.25rem, 4.8vw, 4.25rem);
   font-weight: 600;
   color: #172033 !important;
   line-height: 1.04;
@@ -877,7 +877,7 @@
   }
 
   .service-hero .hero-title {
-    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    font-size: clamp(2.1rem, 4.8vw, 3rem);
   }
 
   .service-hero .hero-glow {
@@ -902,7 +902,7 @@
   }
 
   .service-hero .hero-title {
-    font-size: clamp(2.35rem, 11vw, 3.25rem);
+    font-size: clamp(1.9rem, 9vw, 2.65rem);
     margin-bottom: 18px;
     line-height: 1.06;
   }
