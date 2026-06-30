@@ -916,12 +916,13 @@
   .service-hero .hero-cta-group {
     flex-direction: column;
     gap: 12px;
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
   }
 
   .service-hero .btn-hero-primary,
   .service-hero .btn-hero-secondary {
-    width: 100%;
+    width: min(280px, 100%);
     min-height: 52px;
     text-align: center;
     padding: 0 22px;
