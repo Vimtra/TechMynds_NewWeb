@@ -2555,6 +2555,8 @@ select {
   text-align: center;
   width: 100%;
   margin: 0 0 12px;
+  line-height: 1.18;
+  padding-bottom: 0.2em;
 }
 
 .trusted-companies .container {
